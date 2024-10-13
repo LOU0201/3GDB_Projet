@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class Reset : MonoBehaviour
 {
     public Transform joueur;
+    [SerializeField] public bool exit;
+    public Joueur scriptJ;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,10 +19,18 @@ public class Reset : MonoBehaviour
     {
         Vector3 coordonnees = transform.position;
         Vector3 CJ = joueur.position;
-        if (CJ == coordonnees)
+        if (CJ == coordonnees && exit == true)
         {
-            string currentSceneName = SceneManager.GetActiveScene().name;
-            SceneManager.LoadScene(currentSceneName);
+            //RestartScene();
+            scriptJ.Debut();
         }
+    }
+    void RestartScene()
+    {
+        // Get the current scene's index
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+
+        // Reload the current scene
+        SceneManager.LoadScene(currentSceneIndex);
     }
 }

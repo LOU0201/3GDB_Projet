@@ -6,6 +6,7 @@ public class Verification : MonoBehaviour
 {
     public GameObject[] collec;
     public GameObject sortie;
+    public Reset reset;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +19,7 @@ public class Verification : MonoBehaviour
         if (collec[1] == null && collec[0] == null)
         {
             Instantiate(sortie, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
-
+            reset.exit= true;
         }
         //for (int i = 0; i < collec.Length; i++)
         //{

@@ -7,11 +7,14 @@ public class Joueur : MonoBehaviour
     public int compte_carré = 0;
     public int variable_compte_carré = 3;
     public GameObject Update_grille3d;
-
+    private int x;
+    private int z;
+    private float tempx;
+    private float tempz;
     // Start is called before the first frame update
     void Start()
     {
-
+        Debut();
     }
 
     // Update is called once per frame
@@ -55,5 +58,15 @@ public class Joueur : MonoBehaviour
             compte_carré = 0;
             print("fais");
         }
+    }
+    public void Debut()
+    {
+        z = Random.Range(2, 16);
+        tempz = z;
+        tempz += 0.5f;
+        x = Random.Range(1, 16);
+        tempx = x;
+        tempx += 0.5f;
+        transform.position = new Vector3(tempx, 1.5f, tempz);
     }
 }
