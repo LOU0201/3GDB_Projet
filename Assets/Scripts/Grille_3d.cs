@@ -6,6 +6,10 @@ using UnityEngine;
 
 public class Grille_3d : MonoBehaviour
 {
+    public float y;
+    public float sux;
+    public float suz;
+    public GameObject LD;
     // Start is called before the first frame update
     void Start()
     {
@@ -55,6 +59,19 @@ public class Grille_3d : MonoBehaviour
             {
                 child.transform.GetChild(0).gameObject.SetActive(true);
                 child.transform.GetComponent<Boite>().libre = false;
+            }
+        }
+    }
+    public void Faire_Trou(Vector3 vec)
+    {
+        var bloc = GameObject.Find("sol");
+        Vector3 vec2 = new Vector3(transform.position.x+sux, y, transform.position.z+suz);
+        foreach (bloc in LD.transform)
+        {
+            if (bloc.transform.position == vec2)
+            {
+                Destroy(bloc);
+                Destroy(this.gameObject);
             }
         }
     }
