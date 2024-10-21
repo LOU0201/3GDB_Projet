@@ -9,7 +9,8 @@ public class Grille_3d : MonoBehaviour
     public float y;
     public float sux;
     public float suz;
-    public GameObject LD;
+    public Destructeur des;
+    public Joueur SJ;
     // Start is called before the first frame update
     void Start()
     {
@@ -64,15 +65,23 @@ public class Grille_3d : MonoBehaviour
     }
     public void Faire_Trou(Vector3 vec)
     {
-        var bloc = GameObject.Find("sol");
-        Vector3 vec2 = new Vector3(transform.position.x+sux, y, transform.position.z+suz);
-        foreach (bloc in LD.transform)
-        {
-            if (bloc.transform.position == vec2)
-            {
-                Destroy(bloc);
-                Destroy(this.gameObject);
-            }
-        }
+        des.casse_bloc = true;
+        //var bloc = GameObject.Find("sol");
+        //Vector3 vec2 = new Vector3(transform.position.x+sux, y, transform.position.z+suz);
+        //foreach (bloc in LD.transform)
+        //{
+        //    if (bloc.transform.position == vec2)
+        //    {
+        //        Destroy(bloc);
+        //        Destroy(this.gameObject);
+        //    }
+        //}
+        //foreach (Transform child in this.transform)
+        //{
+        //    if (child.transform.position == vec)
+        //    {
+        //        Destroy(child.gameObject);
+        //    }
+        //}
     }
 }
