@@ -11,7 +11,8 @@ public class Joueur : MonoBehaviour
     private int z;
     private float tempx;
     private float tempz;
-    private int fonction;
+    public int fonction;
+    public string Linput;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +26,7 @@ public class Joueur : MonoBehaviour
         {
             if (Update_grille3d.GetComponent<Grille_3d>().Estprit(transform.position+ new Vector3(1, 0, 0)))
             {
-                this.transform.position += new Vector3(1, 0, 0);
+                Droite();
                 compte_carré++;
             }
         }
@@ -33,7 +34,7 @@ public class Joueur : MonoBehaviour
         {
             if (Update_grille3d.GetComponent<Grille_3d>().Estprit(transform.position + new Vector3(-1, 0, 0)))
             {
-                this.transform.position += new Vector3(-1, 0, 0);
+                Gauche();
                 compte_carré++;
             }
         }
@@ -41,7 +42,7 @@ public class Joueur : MonoBehaviour
         {
             if (Update_grille3d.GetComponent<Grille_3d>().Estprit(transform.position + new Vector3(0, 0, 1)))
             {
-                this.transform.position += new Vector3(0, 0, 1);
+                Haut();
                 compte_carré++;
             }    
         }
@@ -49,13 +50,13 @@ public class Joueur : MonoBehaviour
         {
             if (Update_grille3d.GetComponent<Grille_3d>().Estprit(transform.position + new Vector3(0, 0, -1)))
             {
-                this.transform.position += new Vector3(0, 0, -1);
+                Bas();
                 compte_carré++;
             } 
         }
         if (compte_carré >= variable_compte_carré)
         {
-            fonction = Random.Range(1, 2);
+            fonction = Random.Range(1, 3);
             if (fonction == 1)
             {
                 Update_grille3d.GetComponent<Grille_3d>().Faire_carrer(transform.position);
@@ -64,9 +65,9 @@ public class Joueur : MonoBehaviour
             }
             if (fonction == 2)
             {
-                Update_grille3d.GetComponent<Grille_3d>().Faire_carrer(transform.position);
+                Update_grille3d.GetComponent<Grille_3d>().Faire_Trou(transform.position);
                 compte_carré = 0;
-                print("obstacle");
+                print("trou");
             }
         }
     }
@@ -79,5 +80,27 @@ public class Joueur : MonoBehaviour
         tempx = x;
         tempx += 0.5f;
         transform.position = new Vector3(tempx, 1.5f, tempz);
+    }
+
+    public void Haut()
+    {
+        this.transform.position += new Vector3(0, 0, 1);
+        Linput = "haut";
+    }
+    public void Gauche()
+    {
+        this.transform.position += new Vector3(-1, 0, 0);
+        Linput = "gauche";
+    }
+    public void Bas()
+    {
+        this.transform.position += new Vector3(0, 0, -1);
+        Linput = "bas";
+
+    }
+    public void Droite()
+    {
+        this.transform.position += new Vector3(1, 0, 0);
+        Linput = "droite";
     }
 }
