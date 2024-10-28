@@ -9,7 +9,7 @@ public class Boite : MonoBehaviour
     public bool fin = false;
     public bool début = false;
     public bool temporaire = false;
-    public int acsenseur = 0;
+    public int valeur;
     // Start is called before the first frame update
     void Start()
     {

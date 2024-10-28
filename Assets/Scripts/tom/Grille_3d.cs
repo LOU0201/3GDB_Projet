@@ -7,7 +7,7 @@ using UnityEngine;
 public class Grille_3d : MonoBehaviour
 {
     public GameObject joueur;
-
+    public GameObject prefabBoite;
     void Update()
     {
         
@@ -20,7 +20,6 @@ public class Grille_3d : MonoBehaviour
             {                
                 if (t.GetComponent<Boite>().fin)
                 {
-                    Est_fin();
                     Rapatriment();
                     return false;
                 }
@@ -57,19 +56,6 @@ public class Grille_3d : MonoBehaviour
             }
         }
     }
-    public void Est_fin()// Si est la fin
-    {
-        foreach (Transform t in this.transform)
-        {
-            if (t.GetComponent<Boite>().phantome)
-            {
-                t.GetComponent<Boite>().phantome = false;
-                t.GetComponent<Boite>().libre = false;
-                t.transform.GetChild(0).gameObject.SetActive(false);
-                t.transform.GetChild(1).gameObject.SetActive(true);
-            }
-        }
-    }
     public bool est_temporaire(Vector3 vec)// si est un phantome
     {
         foreach(Transform t in this.transform)
@@ -81,33 +67,6 @@ public class Grille_3d : MonoBehaviour
         }
         return false;
     }
-    public int est_acsenseur(Vector3 vec)
-    {
-        foreach(Transform t in this.transform)
-        {
-            if (t.transform.position == vec)
-            {            
-                return t.GetComponent<Boite>().acsenseur;
-            }
-        }
-        return 0;
-    }
-    public Vector3 fait_ascenseur(Vector3 vec)
-    {
-        if(est_acsenseur(vec)==1)
-        {
-            print("monte");
-            return vec += new Vector3(0, 1, 0);
-        }
-        else
-        {
-            if(est_acsenseur(vec)==-1)
-            {
-                return vec += new Vector3(0, -1, 0);
-            }
-        }
-        return vec;
-    }
     public void Faire_carrer(Vector3 vec)// Fais un phantome
     {
         foreach (Transform child in this.transform)
@@ -115,7 +74,11 @@ public class Grille_3d : MonoBehaviour
             if (child.transform.position == vec && !child.transform.GetComponent<Boite>().fin)
             {
                 child.transform.GetChild(0).gameObject.SetActive(true);
-                child.transform.GetComponent<Boite>().phantome = true;
+                child.transform.GetComponent<Boite>().libre = false;
+                GameObject boite = Instantiate(prefabBoite,vec + new Vector3(0,1,0),Quaternion.identity);
+                Boite scriptboite=boite.GetComponent<Boite>();
+                boite.transform.SetParent(this.transform);
+                scriptboite.Initialisation(true,false,false,false,false);
             }
         }
     }

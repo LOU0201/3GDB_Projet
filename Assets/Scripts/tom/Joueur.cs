@@ -28,6 +28,10 @@ public class Joueur : MonoBehaviour
                     compte_carré++;
                 }
             }
+                        else//Si le block n'est pas libre on fait ascention'
+            {
+                ascention( vec);
+            }
             Update_plus();
         }
         if (Input.GetKeyDown(KeyCode.LeftArrow)) 
@@ -42,6 +46,10 @@ public class Joueur : MonoBehaviour
                     compte_carré++;
                 }
             }
+                        else//Si le block n'est pas libre on fait ascention'
+            {
+                ascention( vec);
+            }
             Update_plus();
         }
         if (Input.GetKeyDown(KeyCode.UpArrow))
@@ -54,6 +62,10 @@ public class Joueur : MonoBehaviour
                 {
                     compte_carré++;
                 }
+            }
+                        else//Si le block n'est pas libre on fait ascention'
+            {
+                ascention( vec);
             }
             Update_plus();
         }
@@ -68,7 +80,36 @@ public class Joueur : MonoBehaviour
                     compte_carré++;
                 }
             } 
+            else//Si le block n'est pas libre on fait ascention'
+            {
+                ascention( vec);
+            }
             Update_plus();
+        }
+    }
+    public void ascention(Vector3 vec)//est charger de faire monter ou descendre le joueur si la boite n'est pas libre 
+    //en vérifiant si la boite placer juste audessus puis c'elle audessous sont libre, si c'est le cas le joueur va dans cette boite alors
+    {
+        Vector3 vec_bas=vec + new Vector3(0,-1,0);
+        if(Update_grille3d.GetComponent<Grille_3d>().Estprit(vec_bas))
+        {
+             this.transform.position =vec_bas;
+                if(Update_grille3d.GetComponent<Grille_3d>().est_temporaire(vec_bas))
+                {
+                    compte_carré++;
+                }
+        }
+        else
+        {
+            Vector3 vec_haut=vec + new Vector3(0,1,0);
+            if(Update_grille3d.GetComponent<Grille_3d>().Estprit(vec_haut))
+            {
+                this.transform.position =vec_haut;
+                if(Update_grille3d.GetComponent<Grille_3d>().est_temporaire(vec_haut))
+                {
+                    compte_carré++;
+                }
+            }
         }
     }
     public void Update_plus()
@@ -79,7 +120,6 @@ public class Joueur : MonoBehaviour
             compte_carré = 0;
             print("fais");
         }
-        this.transform.position=Update_grille3d.GetComponent<Grille_3d>().fait_ascenseur(this.transform.position);
     }
 
 }

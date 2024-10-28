@@ -7,7 +7,7 @@ public class Constructeur : MonoBehaviour
     public GameObject prefabBoite;
     public GameObject Joueur;
     public GameObject Update_grille3d;//Ne pas confondre Boite et Cube, Les boite sont des invisibles au Joueur, et les cubes sont les mures du jeu !!
-    public GameObject GrilleBlock;
+    public GameObject GrilleBlock;//Block = cube
     // Start is called before the first frame update
     void Start()
     {
@@ -56,14 +56,12 @@ public class Constructeur : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            cube.transform.position = this.transform.position;
-            cube.transform.SetParent(GrilleBlock.transform);
 
             GameObject boite = Instantiate(prefabBoite,this.transform.position,Quaternion.identity);
             Boite scriptboite=boite.GetComponent<Boite>();
             boite.transform.SetParent(Update_grille3d.transform);
-            scriptboite.Initialisation(false,false,false,false,false);
+            scriptboite.Initialisation(true,false,false,false,false);
+            boite.transform.GetChild(0).gameObject.SetActive(true);
 
             if(!Update_grille3d.GetComponent<Grille_3d>().Estprit_basique(this.transform.position + new Vector3(0,1,0)))
             {
