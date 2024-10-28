@@ -4200,10 +4200,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 95927872}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79ee26a88cae8fd4f8417bb0dee4cfe3, type: 3}
+  m_Script: {fileID: 11500000, guid: 1a2eceac2834b794489756edd0108084, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 123177524}
+  target: {fileID: 0}
 --- !u!114 &95927875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17636,13 +17636,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 386170293}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c12c742c99d232b409941f83e1bef97b, type: 3}
+  m_Script: {fileID: 11500000, guid: af3f4518fa4c4ac46b0b78c05f2aad66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 100
   cam: {fileID: 95927873}
-  minZoom: 0.5
-  maxZoom: 5
+  minZoom: 2
+  maxZoom: 8
 --- !u!65 &386170296
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -68287,6 +68287,11 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4966993554344675575, guid: d2d6a17767a04c6418705b858e004317,
+        type: 3}
+      propertyPath: Update_grille3d
+      value: 
+      objectReference: {fileID: 1595811924688116849}
     - target: {fileID: 6487273777093752211, guid: d2d6a17767a04c6418705b858e004317,
         type: 3}
       propertyPath: m_Name
@@ -78203,18 +78208,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1849435139}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2140885422 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1981718015113336566, guid: d2d6a17767a04c6418705b858e004317,
-    type: 3}
-  m_PrefabInstance: {fileID: 1849435139}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 229312437}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30d83f4fd5e1b7e4a89250763bca9d99, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!54 &2140885424
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -78237,7 +78230,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 122
@@ -78611,7 +78604,7 @@ PrefabInstance:
         type: 3}
       propertyPath: scriptJ
       value: 
-      objectReference: {fileID: 2140885422}
+      objectReference: {fileID: 0}
     - target: {fileID: 7627925685137405616, guid: bb4990176a4ed8d4fb7c65ca5da62137,
         type: 3}
       propertyPath: m_Name
@@ -78860,12 +78853,17 @@ PrefabInstance:
         type: 3}
       propertyPath: SJ
       value: 
-      objectReference: {fileID: 2140885422}
+      objectReference: {fileID: 0}
     - target: {fileID: 5223714886135154219, guid: 142d2a48dec04db429754d931bec3076,
         type: 3}
       propertyPath: des
       value: 
       objectReference: {fileID: 119721460}
+    - target: {fileID: 5223714886135154219, guid: 142d2a48dec04db429754d931bec3076,
+        type: 3}
+      propertyPath: joueur
+      value: 
+      objectReference: {fileID: 229312437}
     - target: {fileID: 8964565710103300319, guid: 142d2a48dec04db429754d931bec3076,
         type: 3}
       propertyPath: m_LocalPosition.x
