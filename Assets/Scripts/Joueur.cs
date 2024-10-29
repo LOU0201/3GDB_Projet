@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Joueur_V : MonoBehaviour
+public class Joueur : MonoBehaviour
 {
     public int compte_carré = 0;
     public int variable_compte_carré = 3;
@@ -65,7 +65,7 @@ public class Joueur_V : MonoBehaviour
             }
             if (fonction == 2)
             {
-                Update_grille3d.GetComponent<Grille_3d_V>().Faire_Trou(transform.position);
+                Update_grille3d.GetComponent<Grille_3d>().Faire_Trou(transform.position);
                 compte_carré = 0;
                 print("trou");
             }
