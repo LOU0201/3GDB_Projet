@@ -8,6 +8,7 @@ public class Joueur : MonoBehaviour
     public int variable_compte_carré = 3;
     public GameObject Update_grille3d;
     public Vector3 vec;
+    public int fonction;
     // Start is called before the first frame update
     void Start()
     {
@@ -116,9 +117,19 @@ public class Joueur : MonoBehaviour
     {
         if(compte_carré>=variable_compte_carré)
         {
-            Update_grille3d.GetComponent<Grille_3d>().Faire_carrer(transform.position);
-            compte_carré = 0;
-            print("fais");
+            fonction = Random.Range(1, 3);
+            if (fonction == 1)
+            {
+                Update_grille3d.GetComponent<Grille_3d>().Faire_carrer(transform.position);
+                compte_carré = 0;
+                print("obstacle");
+            }
+            if (fonction == 2)
+            {
+                Update_grille3d.GetComponent<Grille_3d>().Faire_Trou(transform.position);
+                compte_carré = 0;
+                print("trou");
+            }
         }
     }
 

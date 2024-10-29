@@ -7,7 +7,7 @@ public class Reset : MonoBehaviour
 {
     public Transform joueur;
     [SerializeField] public bool exit;
-    public Joueur scriptJ;
+    //public Joueur_V scriptJ;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +22,7 @@ public class Reset : MonoBehaviour
         if (CJ == coordonnees && exit == true)
         {
             //RestartScene();
-            scriptJ.Debut();
+            //scriptJ.Debut();
         }
     }
     void RestartScene()

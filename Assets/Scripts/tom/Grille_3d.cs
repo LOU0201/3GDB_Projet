@@ -8,6 +8,8 @@ public class Grille_3d : MonoBehaviour
 {
     public GameObject joueur;
     public GameObject prefabBoite;
+    public Destructeur des;
+    public Joueur SJ;
     void Update()
     {
         
@@ -81,5 +83,9 @@ public class Grille_3d : MonoBehaviour
                 scriptboite.Initialisation(true,false,false,false,false);
             }
         }
+    }
+    public void Faire_Trou(Vector3 vec)
+    {
+        des.casse_bloc = true;
     }
 }
