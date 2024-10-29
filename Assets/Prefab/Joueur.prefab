@@ -9,8 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7930719130216090326}
-  - component: {fileID: 4966993554344675575}
-  m_Layer: 0
+  - component: {fileID: 1981718015113336566}
+  - component: {fileID: 3562716124959074677}
+  m_Layer: 3
   m_Name: Joueur
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33,7 +34,7 @@ Transform:
   - {fileID: 2593589640419850892}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4966993554344675575
+--- !u!114 &1981718015113336566
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -48,7 +49,29 @@ MonoBehaviour:
   "compte_carr\xE9": 0
   "variable_compte_carr\xE9": 3
   Update_grille3d: {fileID: 0}
-  vec: {x: 0, y: 0, z: 0}
+--- !u!136 &3562716124959074677
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6487273777093752211}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6560597802438612383
 GameObject:
   m_ObjectHideFlags: 0
@@ -61,7 +84,7 @@ GameObject:
   - component: {fileID: 6824001625338063926}
   - component: {fileID: 7573089889538886996}
   - component: {fileID: 3254713766347120226}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
