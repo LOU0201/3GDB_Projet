@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8964565710103300319}
-  - component: {fileID: 5223714886135154219}
+  - component: {fileID: 2221342322315813719}
   m_Layer: 0
   m_Name: grille
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5223714886135154219
+--- !u!114 &2221342322315813719
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,6 +41,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 829760166936736102}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85ec6934d0d95c64384e72c54e65641c, type: 3}
+  m_Script: {fileID: 11500000, guid: 742eeda4467db914bb290e77361c5b6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  joueur: {fileID: 0}
+  prefabBoite: {fileID: 4021901750627738393, guid: c8b18993afa00a840bd0627d4ebf3a15,
+    type: 3}
+  des: {fileID: 0}
+  SJ: {fileID: 0}
