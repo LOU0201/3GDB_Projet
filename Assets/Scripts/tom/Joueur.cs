@@ -10,6 +10,7 @@ public class Joueur : MonoBehaviour
     public Vector3 vec;
     public int fonction;
     public bool LP;
+    public Vector3 pos;
     // Start is called before the first frame update
     void Start()
     {
@@ -136,5 +137,8 @@ public class Joueur : MonoBehaviour
             }
         }
     }
-
+    public void TP()
+    {
+        transform.position = pos;
+    }
 }
