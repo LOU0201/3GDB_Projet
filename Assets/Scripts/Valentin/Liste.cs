@@ -25,16 +25,19 @@ public class Liste : MonoBehaviour
             {
                 curseur=0;
             }
-            if(liste[curseur] != "rien")
+            if(liste[curseur] == "rien")
             {
-                if (liste[curseur] == "cube")
-                {
-                    G3D.Faire_carrer(joueur.position);
-                }
-                if (liste[curseur] == "trou")
-                {
-                    G3D.Faire_Trou(joueur.position);
-                }
+                Debug.Log("rien");
+            }
+            else if (liste[curseur] == "cube")
+            {
+                G3D.Faire_carrer(joueur.position);
+                Debug.Log("cube");
+            }
+            else if (liste[curseur] == "trou")
+            {
+                G3D.Faire_Trou(joueur.position);
+                Debug.Log("trou");
             }
         }
     }

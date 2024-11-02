@@ -20021,10 +20021,14 @@ MonoBehaviour:
   - trou
   - rien
   - cube
+  - trou
+  - rien
+  - cube
+  - cube
   curseur: 0
   G3D: {fileID: 2680937761804357272}
   joueur: {fileID: 2140885420}
-  limite: 5
+  limite: 9
 --- !u!1 &387146701
 GameObject:
   m_ObjectHideFlags: 0
@@ -78241,7 +78245,7 @@ PrefabInstance:
     - target: {fileID: 6291696713342298033, guid: d2d6a17767a04c6418705b858e004317,
         type: 3}
       propertyPath: LP
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6291696713342298033, guid: d2d6a17767a04c6418705b858e004317,
         type: 3}
@@ -90295,6 +90299,11 @@ PrefabInstance:
       propertyPath: joueur
       value: 
       objectReference: {fileID: 229312437}
+    - target: {fileID: 2221342322315813719, guid: 142d2a48dec04db429754d931bec3076,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5223714886135154219, guid: 142d2a48dec04db429754d931bec3076,
         type: 3}
       propertyPath: SJ

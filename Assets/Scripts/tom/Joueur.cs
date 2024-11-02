@@ -126,13 +126,13 @@ public class Joueur : MonoBehaviour
                 {
                     Update_grille3d.GetComponent<Grille_3d>().Faire_carrer(transform.position);
                     compte_carré = 0;
-                    print("obstacle");
+                    //print("obstacle");
                 }
                 if (fonction == 2)
                 {
                     Update_grille3d.GetComponent<Grille_3d>().Faire_Trou(transform.position);
                     compte_carré = 0;
-                    print("trou");
+                    //print("trou");
                 }
             }
         }
