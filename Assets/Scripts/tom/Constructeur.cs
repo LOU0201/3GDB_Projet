@@ -56,13 +56,21 @@ public class Constructeur : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-
-            GameObject boite = Instantiate(prefabBoite,this.transform.position,Quaternion.identity);
-            Boite scriptboite=boite.GetComponent<Boite>();
-            boite.transform.SetParent(Update_grille3d.transform);
-            scriptboite.Initialisation(true,false,false,false,false);
-            boite.transform.GetChild(0).gameObject.SetActive(true);
-
+            if(!Update_grille3d.GetComponent<Grille_3d>().Estprit_basique(this.transform.position))
+            {
+                GameObject boite = Instantiate(prefabBoite,this.transform.position,Quaternion.identity);
+                Boite scriptboite=boite.GetComponent<Boite>();
+                boite.transform.SetParent(Update_grille3d.transform);
+                scriptboite.Initialisation(false,false,false,false,false);
+                boite.transform.GetChild(0).gameObject.SetActive(true);
+            }
+            else
+            {
+                Boite b=Update_grille3d.GetComponent<Grille_3d>().trouve_boit(this.transform.position);
+                b.transform.GetChild(0).gameObject.SetActive(true);
+                b.transform.GetComponent<Boite>().libre = false;
+            }
+            
             if(!Update_grille3d.GetComponent<Grille_3d>().Estprit_basique(this.transform.position + new Vector3(0,1,0)))
             {
                 GameObject boite1 = Instantiate(prefabBoite,this.transform.position + new Vector3(0,1,0),Quaternion.identity);
@@ -75,6 +83,7 @@ public class Constructeur : MonoBehaviour
         {
             foreach(Transform t in GrilleBlock.transform)
             {
+                print("fait");
                 if (t.transform.position == this.transform.position)
                 {             
                     Destroy(t.gameObject);
