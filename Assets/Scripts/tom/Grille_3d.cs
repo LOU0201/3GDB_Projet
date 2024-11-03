@@ -8,6 +8,7 @@ public class Grille_3d : MonoBehaviour
 {
     public GameObject joueur;
     public GameObject prefabBoite;
+    public bool Blockeur=false;
     void Update()
     {
         
@@ -58,6 +59,10 @@ public class Grille_3d : MonoBehaviour
     }
     public Boolean EstStop(Vector3 vec)// Si est libre, mais plus basique
     {
+        if(Blockeur)
+        {
+            return false;
+        }
         foreach(Transform t in this.transform)
         {
             if (t.transform.position == vec)
