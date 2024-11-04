@@ -4,13 +4,13 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Grille_3d : MonoBehaviour
+public class Grille_3d_V : MonoBehaviour
 {
     public GameObject joueur;
     public GameObject prefabBoite;
     public bool Blockeur=false;
     public Destructeur des;
-    public Joueur SJ;
+    public Joueur_V SJ;
     void Update()
     {
         
