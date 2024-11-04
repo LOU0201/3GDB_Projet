@@ -40,4 +40,24 @@ public class Scènes : MonoBehaviour
             SceneManager.LoadScene(scene5);
         }
     }
+    public void Montée()
+    {
+        SceneManager.LoadScene(scene1);
+    }
+    public void Descente()
+    {
+        SceneManager.LoadScene(scene2);
+    }
+    public void Liste()
+    {
+        SceneManager.LoadScene(scene3);
+    }
+    public void Block()
+    {
+        SceneManager.LoadScene(scene4);
+    }
+    public void Dalle()
+    {
+        SceneManager.LoadScene(scene5);
+    }
 }
