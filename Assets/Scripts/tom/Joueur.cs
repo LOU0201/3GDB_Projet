@@ -93,24 +93,27 @@ public class Joueur : MonoBehaviour
     public void ascention(Vector3 vec)//est charger de faire monter ou descendre le joueur si la boite n'est pas libre 
     //en vérifiant si la boite placer juste audessus puis c'elle audessous sont libre, si c'est le cas le joueur va dans cette boite alors
     {
-        Vector3 vec_bas=vec + new Vector3(0,-1,0);
-        if(Update_grille3d.GetComponent<Grille_3d>().Estprit(vec_bas))
+        if (!Update_grille3d.GetComponent<Grille_3d>().EstStop(vec))
         {
-             this.transform.position =vec_bas;
-                if(Update_grille3d.GetComponent<Grille_3d>().est_temporaire(vec_bas))
-                {
-                    compte_carré++;
-                }
-        }
-        else
-        {
-            Vector3 vec_haut=vec + new Vector3(0,1,0);
-            if(Update_grille3d.GetComponent<Grille_3d>().Estprit(vec_haut))
+            Vector3 vec_bas=vec + new Vector3(0,-1,0);
+            if(Update_grille3d.GetComponent<Grille_3d>().Estprit(vec_bas))
             {
-                this.transform.position =vec_haut;
-                if(Update_grille3d.GetComponent<Grille_3d>().est_temporaire(vec_haut))
+                 this.transform.position =vec_bas;
+                    if(Update_grille3d.GetComponent<Grille_3d>().est_temporaire(vec_bas))
+                    {
+                        compte_carré++;
+                    }
+            }
+            else
+            {
+                Vector3 vec_haut=vec + new Vector3(0,1,0);
+                if(Update_grille3d.GetComponent<Grille_3d>().Estprit(vec_haut))
                 {
-                    compte_carré++;
+                    this.transform.position =vec_haut;
+                    if(Update_grille3d.GetComponent<Grille_3d>().est_temporaire(vec_haut))
+                    {
+                        compte_carré++;
+                    }
                 }
             }
         }

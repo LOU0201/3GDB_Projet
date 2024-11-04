@@ -8,11 +8,21 @@ public class Grille_3d : MonoBehaviour
 {
     public GameObject joueur;
     public GameObject prefabBoite;
-    public Destructeur des;
-    public Joueur SJ;
+    public bool Blockeur=false;
     void Update()
     {
         
+    }
+    public Boite trouve_boit(Vector3 vec)
+    {
+        foreach(Transform t in this.transform)
+        {
+            if (t.transform.position == vec)
+            {                
+                return t.GetComponent<Boite>();
+            }
+        }
+        return null;
     }
     public Boolean Estprit(Vector3 vec)// Si est libre, et vérifie si est fin pour pouvoir faire le Rapatriment  rend true si est libre
     {
@@ -40,6 +50,24 @@ public class Grille_3d : MonoBehaviour
             if (t.transform.position == vec)
             {                
                 if (t.GetComponent<Boite>().libre)
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    public Boolean EstStop(Vector3 vec)// Si est libre, mais plus basique
+    {
+        if(Blockeur)
+        {
+            return false;
+        }
+        foreach(Transform t in this.transform)
+        {
+            if (t.transform.position == vec)
+            {                
+                if (t.GetComponent<Boite>().Stop)
                 {
                     return true;
                 }
@@ -77,15 +105,12 @@ public class Grille_3d : MonoBehaviour
             {
                 child.transform.GetChild(0).gameObject.SetActive(true);
                 child.transform.GetComponent<Boite>().libre = false;
+                child.transform.GetComponent<Boite>().Stop = true;
                 GameObject boite = Instantiate(prefabBoite,vec + new Vector3(0,1,0),Quaternion.identity);
                 Boite scriptboite=boite.GetComponent<Boite>();
                 boite.transform.SetParent(this.transform);
                 scriptboite.Initialisation(true,false,false,false,false);
             }
         }
-    }
-    public void Faire_Trou(Vector3 vec)
-    {
-        des.casse_bloc = true;
     }
 }
