@@ -6,8 +6,7 @@ public class Constructeur : MonoBehaviour
 {
     public GameObject prefabBoite;
     public GameObject Joueur;
-    public GameObject Update_grille3d;//Ne pas confondre Boite et Cube, Les boite sont des invisibles au Joueur, et les cubes sont les mures du jeu !!
-    public GameObject GrilleBlock;//Block = cube
+    public GameObject Update_grille3d;
     // Start is called before the first frame update
     void Start()
     {
@@ -56,7 +55,7 @@ public class Constructeur : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if(!Update_grille3d.GetComponent<Grille_3d>().Estprit_basique(this.transform.position))
+            if(!Update_grille3d.GetComponent<Grille_3d>().trouve_boit(this.transform.position))
             {
                 GameObject boite = Instantiate(prefabBoite,this.transform.position,Quaternion.identity);
                 Boite scriptboite=boite.GetComponent<Boite>();
@@ -78,23 +77,31 @@ public class Constructeur : MonoBehaviour
                 scriptboite1.Initialisation(true,false,false,false,false);
                 boite1.transform.SetParent(Update_grille3d.transform);
             }
-        } 
-        if (Input.GetKeyDown(KeyCode.G))
+        }
+        if (Input.GetKeyDown(KeyCode.G))//Code de destruction
         {
-            foreach(Transform t in GrilleBlock.transform)
-            {
-                print("fait");
-                if (t.transform.position == this.transform.position)
-                {             
-                    Destroy(t.gameObject);
-                }
-            }
             foreach(Transform t in Update_grille3d.transform)
             {
-                if (t.transform.position == this.transform.position + new Vector3(0,1,0))
-                {                
-                    Boite scriptboiteduhaut=t.GetComponent<Boite>();
-                    scriptboiteduhaut.Initialisation(false,false,false,false,false);
+                if (t.transform.position == this.transform.position)
+                {                                                                                                                               //ON s'aintéressse en premier lieu à la boite du dessus'
+                    if(Update_grille3d.GetComponent<Grille_3d>().trouve_boit(this.transform.position + new Vector3(0,1,0)) && Update_grille3d.GetComponent<Grille_3d>().trouve_boit(this.transform.position + new Vector3(0,1,0)).libre)//Si trouveBoite rend quelque chose et si ce quelque chose est une boite avec sa variable libre vrai, alors fait sa
+                        {//rend sa variable libre fausse, car il y n'y a plus de blocs en dessous'
+                            Boite b=Update_grille3d.GetComponent<Grille_3d>().trouve_boit(t.transform.position + new Vector3(0,1,0));
+                            b.Initialisation(false,false,false,false,false);
+                        }
+                    t.transform.GetChild(0).gameObject.SetActive(false);//ici on s'aintéresse à la boite en question     
+                                          
+                                                                                     //ici, on s'aintéresse à la boite du dessous
+                    if(Update_grille3d.GetComponent<Grille_3d>().trouve_boit(this.transform.position + new Vector3(0,-1,0)))//Si trouveBoite rend quelque chose
+                        {
+                            if(!Update_grille3d.GetComponent<Grille_3d>().trouve_boit(this.transform.position + new Vector3(0,-1,0)).libre)// et si ce quelque chose est une boite avec sa variable libre faus, alors fait sa
+                                {
+                                    t.GetComponent<Boite>().Initialisation(true,false,false,false,false);//rend sa variable libre vrai, car il y a un blocs compacte en dessous
+                                }else
+                                {
+                                    t.GetComponent<Boite>().Initialisation(false,false,false,false,false);//rend sa variable libre fausse, car il n'y pas de blocs en dessous'
+                                }
+                        }
                 }
             }
         } 

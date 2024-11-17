@@ -25,6 +25,7 @@ public class Joueur : MonoBehaviour
             vec=transform.position+ new Vector3(1, 0, 0);
             if (Update_grille3d.GetComponent<Grille_3d>().Estprit(vec))
             {
+                surveillePhantome(Update_grille3d.GetComponent<Grille_3d>().trouve_boit(transform.position));
                 this.transform.position += new Vector3(1, 0, 0);
                 if(Update_grille3d.GetComponent<Grille_3d>().est_temporaire(vec))
                 {
@@ -42,6 +43,7 @@ public class Joueur : MonoBehaviour
             vec=transform.position+ new Vector3(-1, 0, 0);
             if (Update_grille3d.GetComponent<Grille_3d>().Estprit(vec))
             {
+                surveillePhantome(Update_grille3d.GetComponent<Grille_3d>().trouve_boit(transform.position));
                 this.transform.position += new Vector3(-1, 0, 0);
 
                 if(Update_grille3d.GetComponent<Grille_3d>().est_temporaire(vec))
@@ -60,6 +62,7 @@ public class Joueur : MonoBehaviour
             vec=transform.position+ new Vector3(0, 0, 1);
             if (Update_grille3d.GetComponent<Grille_3d>().Estprit(vec))
             {
+                surveillePhantome(Update_grille3d.GetComponent<Grille_3d>().trouve_boit(transform.position));
                 this.transform.position += new Vector3(0, 0, 1);
                 if(Update_grille3d.GetComponent<Grille_3d>().est_temporaire(vec))
                 {
@@ -77,6 +80,7 @@ public class Joueur : MonoBehaviour
             vec=transform.position+ new Vector3(0, 0, -1);
             if (Update_grille3d.GetComponent<Grille_3d>().Estprit(vec))
             {
+                surveillePhantome(Update_grille3d.GetComponent<Grille_3d>().trouve_boit(transform.position));
                 this.transform.position += new Vector3(0, 0, -1);
                 if(Update_grille3d.GetComponent<Grille_3d>().est_temporaire(vec))
                 {
@@ -129,15 +133,24 @@ public class Joueur : MonoBehaviour
                 {
                     Update_grille3d.GetComponent<Grille_3d>().Faire_carrer(transform.position);
                     compte_carré = 0;
+
                     //print("obstacle");
                 }
-                if (fonction == 2)
+                /*if (fonction == 2)
                 {
                     Update_grille3d.GetComponent<Grille_3d>().Faire_Trou(transform.position);
                     compte_carré = 0;
                     //print("trou");
-                }
+                }*/
             }
+        }
+    }
+    public void surveillePhantome(Boite b)
+    {
+        if(compte_carré==0)
+        {
+        b.transform.GetChild(1).gameObject.SetActive(false);
+        b.transform.GetChild(0).gameObject.SetActive(true);
         }
     }
     public void TP()

@@ -9,13 +9,11 @@ public class Grille_3d : MonoBehaviour
     public GameObject joueur;
     public GameObject prefabBoite;
     public bool Blockeur=false;
-    public Destructeur des;
-    public Joueur SJ;
     void Update()
     {
         
     }
-    public Boite trouve_boit(Vector3 vec)
+    public Boite trouve_boit(Vector3 vec)//Rend la boite au niveaux du vecteur demander, Atention peux rendre null
     {
         foreach(Transform t in this.transform)
         {
@@ -45,7 +43,7 @@ public class Grille_3d : MonoBehaviour
         }
         return false;
     }
-    public Boolean Estprit_basique(Vector3 vec)// Si est libre, mais plus basique
+    public Boolean Estprit_basique(Vector3 vec)// Si est libre, mais plus basique que Estprit
     {
         foreach(Transform t in this.transform)
         {
@@ -65,7 +63,7 @@ public class Grille_3d : MonoBehaviour
         {
             return false;
         }
-        foreach(Transform t in this.transform)
+        foreach(Transform t in this.transform)//Atention les block sont toujours blockant, se n'est qu'ici que l'on sait si l'on respecte le caractaire blockant du block'
         {
             if (t.transform.position == vec)
             {                
@@ -99,24 +97,27 @@ public class Grille_3d : MonoBehaviour
         }
         return false;
     }
-    public void Faire_carrer(Vector3 vec)// Fais un phantome
+    public void Faire_carrer(Vector3 vec)// Fais un phantome(un obstacle donc)
     {
-        foreach (Transform child in this.transform)
+        foreach (Transform child in this.transform)//Je prend la liste des emphant de Grille_3d
         {
             if (child.transform.position == vec && !child.transform.GetComponent<Boite>().fin)
             {
-                child.transform.GetChild(0).gameObject.SetActive(true);
-                child.transform.GetComponent<Boite>().libre = false;
-                child.transform.GetComponent<Boite>().Stop = true;
-                GameObject boite = Instantiate(prefabBoite,vec + new Vector3(0,1,0),Quaternion.identity);
-                Boite scriptboite=boite.GetComponent<Boite>();
-                boite.transform.SetParent(this.transform);
-                scriptboite.Initialisation(true,false,false,false,false);
+                Boite b=child.GetComponent<Boite>();//Des boit donc
+                b.libre = false;//Le cube est un obstacle
+                b.transform.GetChild(1).gameObject.SetActive(true);//i est donc plein
+                b.Stop = true;//il ne peux pas être montée
+                if(!Estprit_basique(vec + new Vector3(0,1,0)))//Si il y a un Block en haut, on passe, si non on fait ce-ci
+                {
+                    GameObject boite = Instantiate(prefabBoite,vec + new Vector3(0,1,0),Quaternion.identity);
+                    Boite scriptboite=boite.GetComponent<Boite>();
+                    scriptboite.transform.SetParent(this.transform);
+                    scriptboite.Initialisation(true,false,false,false,false);//une boit libre donc
+                }
             }
         }
     }
-    public void Faire_Trou(Vector3 vec)
-    {
-        des.casse_bloc = true;
+    public void Faire_Trou(Vector3 vec){
+        return;
     }
 }
