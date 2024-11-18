@@ -14,6 +14,6 @@ public class CameraFocus : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.LookAt(target);
+        transform.position = new Vector3(transform.position.x, target.position.y+ 8.81111f, transform.position.z);
     }
 }
