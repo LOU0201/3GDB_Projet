@@ -11,6 +11,7 @@ public class Joueur_V : MonoBehaviour
     public int fonction;
     public bool LP;
     public Vector3 pos;
+    public GameObject cam;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,20 +23,40 @@ public class Joueur_V : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            vec=transform.position+ new Vector3(1, 0, 0);
-            if (Update_grille3d.GetComponent<Grille_3d>().Estprit(vec))
+            if (cam.transform.rotation.eulerAngles.y <= 45f)
             {
-                this.transform.position += new Vector3(1, 0, 0);
-                if(Update_grille3d.GetComponent<Grille_3d>().est_temporaire(vec))
+                vec = transform.position + new Vector3(1, 0, 0);
+                if (Update_grille3d.GetComponent<Grille_3d>().Estprit(vec))
                 {
-                    compte_carré++;
+                    this.transform.position += new Vector3(1, 0, 0);
+                    if (Update_grille3d.GetComponent<Grille_3d>().est_temporaire(vec))
+                    {
+                        compte_carré++;
+                    }
                 }
+                else//Si le block n'est pas libre on fait ascention'
+                {
+                    ascention(vec);
+                }
+                Update_plus();
             }
-                        else//Si le block n'est pas libre on fait ascention'
+            else
             {
-                ascention( vec);
+                vec = transform.position + new Vector3(0, 0, -1);
+                if (Update_grille3d.GetComponent<Grille_3d>().Estprit(vec))
+                {
+                    this.transform.position += new Vector3(0, 0, -1);
+                    if (Update_grille3d.GetComponent<Grille_3d>().est_temporaire(vec))
+                    {
+                        compte_carré++;
+                    }
+                }
+                else//Si le block n'est pas libre on fait ascention'
+                {
+                    ascention(vec);
+                }
+                Update_plus();
             }
-            Update_plus();
         }
         if (Input.GetKeyDown(KeyCode.LeftArrow)) 
         {
@@ -49,9 +70,9 @@ public class Joueur_V : MonoBehaviour
                     compte_carré++;
                 }
             }
-                        else//Si le block n'est pas libre on fait ascention'
+            else//Si le block n'est pas libre on fait ascention'
             {
-                ascention( vec);
+                ascention(vec);
             }
             Update_plus();
         }
@@ -66,9 +87,9 @@ public class Joueur_V : MonoBehaviour
                     compte_carré++;
                 }
             }
-                        else//Si le block n'est pas libre on fait ascention'
+            else//Si le block n'est pas libre on fait ascention'
             {
-                ascention( vec);
+                ascention(vec);
             }
             Update_plus();
         }

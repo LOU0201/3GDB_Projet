@@ -9,6 +9,7 @@ public class Grille_3d : MonoBehaviour
     public GameObject joueur;
     public GameObject prefabBoite;
     public bool Blockeur=false;
+    public Destructeur des;
     void Update()
     {
         
@@ -117,7 +118,8 @@ public class Grille_3d : MonoBehaviour
             }
         }
     }
-    public void Faire_Trou(Vector3 vec){
-        return;
+    public void Faire_Trou(Vector3 vec)
+    {
+        des.casse_bloc = true;
     }
 }
