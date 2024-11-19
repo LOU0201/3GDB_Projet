@@ -12,9 +12,9 @@ public class Joueur : MonoBehaviour
     public bool LP;
     public Vector3 pos;
     // Start is called before the first frame update
-    void Start()
+    public int GetNextAction()
     {
-
+        return fonction;  // Accesses the next action type stored in fonction
     }
 
     // Update is called once per frame
