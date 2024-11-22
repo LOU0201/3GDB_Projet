@@ -4,39 +4,36 @@ using UnityEngine;
 
 public class Caméra : MonoBehaviour
 {
-    public float speed = 100f;
-    private float RotationX;
-    private float hauteur;
-    [SerializeField] private Camera cam;
-    private float zoom;
-    private float ZoomMultiplier= 2f;
-    public float minZoom= 2f;
-    public float maxZoom= 8f;
-    private float velocity= 0f;
-    private float smoothTime= 0.25f;
-    private Rigidbody rb;
-    // Start is called before the first frame update
+    public Camera cam;
+    public GameObject[] Lcam; // Liste des caméras
+    private int index = 0; // Index de la caméra active
+
     void Start()
     {
-        //zoom = cam.orthographicSize;
-        rb= GetComponent<Rigidbody>();
+        // Activer la première caméra
+        if (Lcam.Length >= 0)
+        {
+            cam.transform.position = Lcam[0].transform.position;
+            cam.transform.rotation = Quaternion.Euler(26.369f, 0f, cam.transform.rotation.z);
+        }
     }
 
-    // Update is called once per frame
     void Update()
     {
-        float scroll = Input.GetAxis("Mouse ScrollWheel");
-        rb.velocity += transform.forward * scroll;
-        rb.velocity -= transform.up * scroll;
-        //zoom -= scroll * ZoomMultiplier;
-        //zoom = Mathf.Clamp(zoom, minZoom, maxZoom);
-        //cam.orthographicSize = Mathf.SmoothDamp(cam.orthographicSize, zoom, ref velocity, smoothTime);
-        if (Input.GetMouseButton(0))
+        // Passer à la caméra précédente (A)
+        if (Input.GetKeyDown(KeyCode.Q))
         {
-            RotationX = Input.GetAxis("Mouse X");
-            //hauteur = Input.GetAxis("Mouse Y");
-            transform.Rotate(0, RotationX * speed * Time.deltaTime, 0);
-            //transform.Translate(0, hauteur * 2 * Time.deltaTime, 0);
+            cam.transform.position = Lcam[index].transform.position;
+            // Calculer le nouvel index (cyclique)
+            index = (index - 1 + Lcam.Length) % Lcam.Length;
+        }
+
+        // Passer à la caméra suivante (E)
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            cam.transform.position = Lcam[index].transform.position;
+            // Calculer le nouvel index (cyclique)
+            index = (index + 1) % Lcam.Length;
         }
     }
 }
