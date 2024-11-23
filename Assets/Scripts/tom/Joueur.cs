@@ -99,6 +99,7 @@ public class Joueur : MonoBehaviour
     {
         if (!Update_grille3d.GetComponent<Grille_3d>().EstStop(vec))
         {
+            surveillePhantome(Update_grille3d.GetComponent<Grille_3d>().trouve_boit(transform.position));
             Vector3 vec_bas=vec + new Vector3(0,-1,0);
             if(Update_grille3d.GetComponent<Grille_3d>().Estprit(vec_bas))
             {
@@ -110,6 +111,7 @@ public class Joueur : MonoBehaviour
             }
             else
             {
+                surveillePhantome(Update_grille3d.GetComponent<Grille_3d>().trouve_boit(transform.position));
                 Vector3 vec_haut=vec + new Vector3(0,1,0);
                 if(Update_grille3d.GetComponent<Grille_3d>().Estprit(vec_haut))
                 {
