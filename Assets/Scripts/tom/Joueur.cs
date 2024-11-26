@@ -12,6 +12,7 @@ public class Joueur : MonoBehaviour
     public bool LP;
     public Vector3 pos;
     public Camera cameraPrincipal; // Associez votre caméra ici via l'inspecteur
+    public bool trou;
     // Start is called before the first frame update
     public int GetNextAction()
     {
@@ -93,12 +94,20 @@ public class Joueur : MonoBehaviour
 
                     //print("obstacle");
                 }
-                /*if (fonction == 2)
+                if (fonction == 2)
                 {
-                    Update_grille3d.GetComponent<Grille_3d>().Faire_Trou(transform.position);
-                    compte_carré = 0;
-                    //print("trou");
-                }*/
+                    if (trou)
+                    {
+                        Update_grille3d.GetComponent<Grille_3d>().Faire_Trou(transform.position);
+                        compte_carré = 0;
+                        //print("trou");
+                    }
+                    else
+                    {
+                        Update_grille3d.GetComponent<Grille_3d>().Faire_carrer(transform.position);
+                        compte_carré = 0;
+                    }
+                }
             }
         }
     }

@@ -78434,13 +78434,18 @@ PrefabInstance:
     - target: {fileID: 8247233099554317461, guid: d2d6a17767a04c6418705b858e004317,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8247233099554317461, guid: d2d6a17767a04c6418705b858e004317,
         type: 3}
       propertyPath: Update_grille3d
       value: 
       objectReference: {fileID: 1595811924688116849}
+    - target: {fileID: 8247233099554317461, guid: d2d6a17767a04c6418705b858e004317,
+        type: 3}
+      propertyPath: cameraPrincipal
+      value: 
+      objectReference: {fileID: 95927873}
     m_RemovedComponents:
     - {fileID: 1981718015113336566, guid: d2d6a17767a04c6418705b858e004317, type: 3}
     m_RemovedGameObjects: []
@@ -90073,7 +90078,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 1849435139}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 229312437}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fd5852a359dd66342bb5ed46dc417c4c, type: 3}
   m_Name: 
@@ -90085,7 +90090,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 229312437}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d741c666c0821b347ab35b3f0ac57998, type: 3}
   m_Name: 
@@ -90684,6 +90689,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8614906234617093732, guid: 6db0ddc2514034047b2451df01c31190,
+        type: 3}
+      propertyPath: Point5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8614906234617093732, guid: 6db0ddc2514034047b2451df01c31190,
         type: 3}

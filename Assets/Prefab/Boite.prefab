@@ -327,6 +327,7 @@ GameObject:
   - component: {fileID: 8471816980154278000}
   - component: {fileID: 2786886944908568861}
   - component: {fileID: 1793110974088734330}
+  - component: {fileID: 1754520436528452270}
   m_Layer: 0
   m_Name: Boite
   m_TagString: Untagged
@@ -392,7 +393,22 @@ MonoBehaviour:
   fin: 0
   "d\xE9but": 0
   temporaire: 0
+  Stop: 0
   valeur: 0
+--- !u!114 &1754520436528452270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4021901750627738393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acb206ffd21e4db4794151c151d07c77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  des: {fileID: 8614906234617093732, guid: 6db0ddc2514034047b2451df01c31190, type: 3}
+  casse: {fileID: 7531597214093554653, guid: 6db0ddc2514034047b2451df01c31190, type: 3}
 --- !u!1 &4735093434459908334
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,6 +8,8 @@ public class Destructeur : MonoBehaviour
     public Transform joueur;
     public float tempsmax = 1f;
     public float temps = 0f;
+    public bool Point5;
+    private float posY;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,21 +19,29 @@ public class Destructeur : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Point5)
+        {
+            posY = 0.5f;
+        }
+        else
+        {
+            posY = 0f;
+        }
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            transform.position = new Vector3(joueur.position.x-1, 0.5f, joueur.position.z);
+            transform.position = new Vector3(joueur.position.x-1, posY, joueur.position.z);
         }
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            transform.position = new Vector3(joueur.position.x+1, 0.5f, joueur.position.z);
+            transform.position = new Vector3(joueur.position.x+1, posY, joueur.position.z);
         }
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            transform.position = new Vector3(joueur.position.x, 0.5f, joueur.position.z-1);
+            transform.position = new Vector3(joueur.position.x, posY, joueur.position.z-1);
         }
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            transform.position = new Vector3(joueur.position.x, 0.5f, joueur.position.z+1);
+            transform.position = new Vector3(joueur.position.x, posY, joueur.position.z+1);
         }
         if (casse_bloc == true)
         {
