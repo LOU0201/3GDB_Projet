@@ -4,36 +4,50 @@ using UnityEngine;
 
 public class Caméra : MonoBehaviour
 {
-    public Camera cam;
-    public GameObject[] Lcam; // Liste des caméras
-    private int index = 0; // Index de la caméra active
+    public Camera cam;                // Main camera
+    public GameObject[] Lcam;         // List of camera positions/rotations
+    private int index = 0;            // Current camera index
+    public float moveSpeed = 5f;      // Speed of position interpolation
+    public float rotateSpeed = 5f;    // Speed of rotation interpolation
+    private Vector3 targetPosition;   // Target position for smooth movement
+    private Quaternion targetRotation; // Target rotation for smooth rotation
 
     void Start()
     {
-        // Activer la première caméra
-        if (Lcam.Length >= 0)
+        // Activate the first camera position
+        if (Lcam.Length > 0)
         {
-            cam.transform.position = Lcam[0].transform.position;
-            cam.transform.rotation = Quaternion.Euler(26.369f, 0f, cam.transform.rotation.z);
+            SetTarget(0);
+            cam.transform.position = targetPosition;
+            cam.transform.rotation = targetRotation;
         }
     }
 
     void Update()
     {
-        // Passer à la caméra précédente (A)
+        // Smoothly move the camera towards the target position and rotation
+        cam.transform.position = Vector3.Lerp(cam.transform.position, targetPosition, Time.deltaTime * moveSpeed);
+        cam.transform.rotation = Quaternion.Slerp(cam.transform.rotation, targetRotation, Time.deltaTime * rotateSpeed);
+
+        // Switch to the previous camera (Q)
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            cam.transform.position = Lcam[index].transform.position;
-            // Calculer le nouvel index (cyclique)
             index = (index - 1 + Lcam.Length) % Lcam.Length;
+            SetTarget(index);
         }
 
-        // Passer à la caméra suivante (E)
+        // Switch to the next camera (E)
         if (Input.GetKeyDown(KeyCode.E))
         {
-            cam.transform.position = Lcam[index].transform.position;
-            // Calculer le nouvel index (cyclique)
             index = (index + 1) % Lcam.Length;
+            SetTarget(index);
         }
+    }
+
+    // Set the target position and rotation for the camera
+    private void SetTarget(int targetIndex)
+    {
+        targetPosition = Lcam[targetIndex].transform.position;
+        targetRotation = Lcam[targetIndex].transform.rotation;
     }
 }
