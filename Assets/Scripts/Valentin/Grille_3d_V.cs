@@ -10,7 +10,7 @@ public class Grille_3d_V : MonoBehaviour
     public GameObject prefabBoite;
     public bool Blockeur=false;
     public Destructeur des;
-    public Joueur_V SJ;
+    public Joueur SJ;
     void Update()
     {
         
@@ -117,6 +117,30 @@ public class Grille_3d_V : MonoBehaviour
     }
     public void Faire_Trou(Vector3 vec)
     {
-        des.casse_bloc = true;
+        foreach (Transform t in transform)
+        {
+            if (t.transform.position == vec + new Vector3(0, -1, 0))
+            {                                                                                                                               //ON s'aintéressse en premier lieu à la boite du dessus'
+                if (trouve_boit(vec+new Vector3(0,-1,0) + new Vector3(0, 1, 0)) && trouve_boit(vec+new Vector3(0,-1,0) + new Vector3(0, 1, 0)).libre)//Si trouveBoite rend quelque chose et si ce quelque chose est une boite avec sa variable libre vrai, alors fait sa
+                {//rend sa variable libre fausse, car il y n'y a plus de blocs en dessous'
+                    Boite b = trouve_boit(t.transform.position + new Vector3(0, 1, 0));
+                    b.Initialisation(false, false, false, false, false);
+                }
+                t.transform.GetChild(0).gameObject.SetActive(false);//ici on s'aintéresse à la boite en question     
+
+                //ici, on s'aintéresse à la boite du dessous
+                if (trouve_boit(vec+new Vector3(0,-1,0) + new Vector3(0, -1, 0)))//Si trouveBoite rend quelque chose
+                {
+                    if (!trouve_boit(vec+new Vector3(0,-1,0) + new Vector3(0, -1, 0)).libre)// et si ce quelque chose est une boite avec sa variable libre faus, alors fait sa
+                    {
+                        t.GetComponent<Boite>().Initialisation(true, false, false, false, false);//rend sa variable libre vrai, car il y a un blocs compacte en dessous
+                    }
+                    else
+                    {
+                        t.GetComponent<Boite>().Initialisation(false, false, false, false, false);//rend sa variable libre fausse, car il n'y pas de blocs en dessous'
+                    }
+                }
+            }
+        }
     }
 }

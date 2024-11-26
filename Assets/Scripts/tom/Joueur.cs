@@ -98,7 +98,7 @@ public class Joueur : MonoBehaviour
                 {
                     if (trou)
                     {
-                        Update_grille3d.GetComponent<Grille_3d>().Faire_Trou(transform.position);
+                        Update_grille3d.GetComponent<Grille_3d_V>().Faire_Trou(transform.position);
                         compte_carré = 0;
                         //print("trou");
                     }
