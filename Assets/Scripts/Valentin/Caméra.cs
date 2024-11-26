@@ -29,15 +29,15 @@ public class Caméra : MonoBehaviour
         cam.transform.position = Vector3.Lerp(cam.transform.position, targetPosition, Time.deltaTime * moveSpeed);
         cam.transform.rotation = Quaternion.Slerp(cam.transform.rotation, targetRotation, Time.deltaTime * rotateSpeed);
 
-        // Switch to the previous camera (Q)
-        if (Input.GetKeyDown(KeyCode.Q))
+        // Switch to the previous camera (E)
+        if (Input.GetKeyDown(KeyCode.E))
         {
             index = (index - 1 + Lcam.Length) % Lcam.Length;
             SetTarget(index);
         }
 
-        // Switch to the next camera (E)
-        if (Input.GetKeyDown(KeyCode.E))
+        // Switch to the next camera (Q)
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             index = (index + 1) % Lcam.Length;
             SetTarget(index);
