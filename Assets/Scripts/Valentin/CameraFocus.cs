@@ -16,9 +16,9 @@ public class CameraFocus : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        transform.position = new Vector3(transform.position.x, target.position.y+ 8.81111f, transform.position.z);
+        //transform.position = new Vector3(transform.position.x, target.position.y+ 8.81111f, transform.position.z);
         if (transform.position == pos1.transform.position)
         {
             transform.rotation = Quaternion.Euler(26.369f, 0f, transform.rotation.z);

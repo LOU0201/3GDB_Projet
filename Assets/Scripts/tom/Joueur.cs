@@ -11,6 +11,7 @@ public class Joueur : MonoBehaviour
     public int fonction;
     public bool LP;
     public Vector3 pos;
+    public Camera cameraPrincipal; // Associez votre caméra ici via l'inspecteur
     // Start is called before the first frame update
     public int GetNextAction()
     {
@@ -20,78 +21,32 @@ public class Joueur : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Récupérer la rotation Y de la caméra
+        float cameraRotationY = cameraPrincipal.transform.rotation.eulerAngles.y;
+
+        // Détermine les axes principaux basés sur la rotation
+        Vector3 forward = new Vector3(Mathf.Round(Mathf.Sin(Mathf.Deg2Rad * cameraRotationY)), 0, Mathf.Round(Mathf.Cos(Mathf.Deg2Rad * cameraRotationY)));
+        Vector3 right = new Vector3(Mathf.Round(Mathf.Cos(Mathf.Deg2Rad * cameraRotationY)), 0, -Mathf.Round(Mathf.Sin(Mathf.Deg2Rad * cameraRotationY)));
+
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            vec=transform.position+ new Vector3(1, 0, 0);
-            if (Update_grille3d.GetComponent<Grille_3d>().Estprit(vec))
-            {
-                surveillePhantome(Update_grille3d.GetComponent<Grille_3d>().trouve_boit(transform.position));
-                this.transform.position += new Vector3(1, 0, 0);
-                if(Update_grille3d.GetComponent<Grille_3d>().est_temporaire(vec))
-                {
-                    compte_carré++;
-                }
-            }
-                        else//Si le block n'est pas libre on fait ascention'
-            {
-                ascention( vec);
-            }
-            Update_plus();
+            vec = transform.position + right;
+            MovePlayer(vec);
         }
         if (Input.GetKeyDown(KeyCode.LeftArrow)) 
         {
-            vec=transform.position+ new Vector3(-1, 0, 0);
-            if (Update_grille3d.GetComponent<Grille_3d>().Estprit(vec))
-            {
-                surveillePhantome(Update_grille3d.GetComponent<Grille_3d>().trouve_boit(transform.position));
-                this.transform.position += new Vector3(-1, 0, 0);
-
-                if(Update_grille3d.GetComponent<Grille_3d>().est_temporaire(vec))
-                {
-                    compte_carré++;
-                }
-            }
-                        else//Si le block n'est pas libre on fait ascention'
-            {
-                ascention( vec);
-            }
-            Update_plus();
+            vec = transform.position - right;
+            MovePlayer(vec);
         }
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            vec=transform.position+ new Vector3(0, 0, 1);
-            if (Update_grille3d.GetComponent<Grille_3d>().Estprit(vec))
-            {
-                surveillePhantome(Update_grille3d.GetComponent<Grille_3d>().trouve_boit(transform.position));
-                this.transform.position += new Vector3(0, 0, 1);
-                if(Update_grille3d.GetComponent<Grille_3d>().est_temporaire(vec))
-                {
-                    compte_carré++;
-                }
-            }
-                        else//Si le block n'est pas libre on fait ascention'
-            {
-                ascention( vec);
-            }
-            Update_plus();
+            vec = transform.position + forward;
+            MovePlayer(vec);
         }
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            vec=transform.position+ new Vector3(0, 0, -1);
-            if (Update_grille3d.GetComponent<Grille_3d>().Estprit(vec))
-            {
-                surveillePhantome(Update_grille3d.GetComponent<Grille_3d>().trouve_boit(transform.position));
-                this.transform.position += new Vector3(0, 0, -1);
-                if(Update_grille3d.GetComponent<Grille_3d>().est_temporaire(vec))
-                {
-                    compte_carré++;
-                }
-            } 
-            else//Si le block n'est pas libre on fait ascention'
-            {
-                ascention( vec);
-            }
-            Update_plus();
+            vec = transform.position - forward;
+            MovePlayer(vec);
         }
     }
     public void ascention(Vector3 vec)//est charger de faire monter ou descendre le joueur si la boite n'est pas libre 
@@ -158,5 +113,23 @@ public class Joueur : MonoBehaviour
     public void TP()
     {
         transform.position = pos;
+    }
+    void MovePlayer(Vector3 targetPosition)
+    {
+        if (Update_grille3d.GetComponent<Grille_3d>().Estprit(vec))
+        {
+            surveillePhantome(Update_grille3d.GetComponent<Grille_3d>().trouve_boit(transform.position));
+            transform.position = targetPosition;
+            if (Update_grille3d.GetComponent<Grille_3d>().est_temporaire(vec))
+            {
+                compte_carré++;
+            }
+        }
+        else // Si le block n'est pas libre on fait ascension
+        {
+            ascention(targetPosition);
+        }
+
+        Update_plus();
     }
 }
