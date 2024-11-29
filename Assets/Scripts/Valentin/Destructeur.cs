@@ -21,27 +21,27 @@ public class Destructeur : MonoBehaviour
     {
         if (Point5)
         {
-            posY = 0.5f;
+            posY = joueur.position.y-1 + 0.5f;
         }
         else
         {
-            posY = 0f;
+            posY = joueur.position.y-1;
         }
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            transform.position = new Vector3(joueur.position.x-1, posY, joueur.position.z);
+            transform.position = new Vector3(joueur.position.x, posY, joueur.position.z);
         }
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            transform.position = new Vector3(joueur.position.x+1, posY, joueur.position.z);
+            transform.position = new Vector3(joueur.position.x, posY, joueur.position.z);
         }
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            transform.position = new Vector3(joueur.position.x, posY, joueur.position.z-1);
+            transform.position = new Vector3(joueur.position.x, posY, joueur.position.z);
         }
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            transform.position = new Vector3(joueur.position.x, posY, joueur.position.z+1);
+            transform.position = new Vector3(joueur.position.x, posY, joueur.position.z);
         }
         if (casse_bloc == true)
         {

@@ -11,6 +11,7 @@ public class Caméra : MonoBehaviour
     public float rotateSpeed = 5f;    // Speed of rotation interpolation
     private Vector3 targetPosition;   // Target position for smooth movement
     private Quaternion targetRotation; // Target rotation for smooth rotation
+    public Transform target;
 
     void Start()
     {
@@ -25,6 +26,7 @@ public class Caméra : MonoBehaviour
 
     void Update()
     {
+        //transform.position = new Vector3(transform.position.x, target.position.y + 0.5f, transform.position.z);
         // Smoothly move the camera towards the target position and rotation
         cam.transform.position = Vector3.Lerp(cam.transform.position, targetPosition, Time.deltaTime * moveSpeed);
         cam.transform.rotation = Quaternion.Slerp(cam.transform.rotation, targetRotation, Time.deltaTime * rotateSpeed);

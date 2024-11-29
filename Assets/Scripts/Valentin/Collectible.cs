@@ -7,8 +7,10 @@ public class Collectible : MonoBehaviour
     public Transform joueur;
     private int x;
     private int z;
+    private int y;
     private float tempx;
     private float tempz;
+    private float tempy;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +20,10 @@ public class Collectible : MonoBehaviour
         x = Random.Range(1, 16);
         tempx = x;
         tempx += 0.5f;
-        transform.position = new Vector3(tempx, 1.5f, tempz);
+        y = Random.Range(1, 7);
+        tempy = y;
+        tempy += 0.5f;
+        transform.position = new Vector3(tempx, tempy, tempz);
     }
 
     // Update is called once per frame
@@ -28,6 +33,7 @@ public class Collectible : MonoBehaviour
         Vector3 CJ = joueur.position;
         if (CJ== coordonnees)
         {
+            Instantiate(this.gameObject, new Vector3(x, y, z), Quaternion.identity);
             Destroy(this.gameObject);
         }
     }
