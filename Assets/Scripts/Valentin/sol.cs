@@ -6,7 +6,6 @@ public class sol : MonoBehaviour
 {
     public Destructeur des;
     public Transform casse;
-    public GameObject Update_grille3d;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +20,7 @@ public class sol : MonoBehaviour
         if (CC == coordonnees && des.casse_bloc == true)
         {
             Destroy(this.gameObject);
+            this.gameObject.SetActive(false);
         }
     }
 
