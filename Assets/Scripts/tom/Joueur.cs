@@ -61,7 +61,7 @@ public class Joueur : MonoBehaviour
             if(Update_grille3d.GetComponent<Grille_3d>().Estprit(vec_bas))
             {
                  this.transform.position =vec_bas;
-                 Liste.GetComponent<Liste>().UpdateTom();//Déplacement donc on lence la liste si néscéssaire
+                 Liste.GetComponent<ListeTom>().UpdateTom();//Déplacement donc on lence la liste si néscéssaire
 
                 if (Update_grille3d.GetComponent<Grille_3d>().est_temporaire(vec_bas))
                     {
@@ -75,7 +75,7 @@ public class Joueur : MonoBehaviour
                 if(Update_grille3d.GetComponent<Grille_3d>().Estprit(vec_haut))
                 {
                     this.transform.position =vec_haut;
-                    Liste.GetComponent<Liste>().UpdateTom();//Déplacement donc on lence la liste si néscéssaire
+                    Liste.GetComponent<ListeTom>().UpdateTom();//Déplacement donc on lence la liste si néscéssaire
 
                     if (Update_grille3d.GetComponent<Grille_3d>().est_temporaire(vec_haut))
                     {
@@ -140,7 +140,7 @@ public class Joueur : MonoBehaviour
         {
             surveillePhantome(Update_grille3d.GetComponent<Grille_3d>().trouve_boit(transform.position));
             transform.position = targetPosition;
-            Liste.GetComponent<Liste>().UpdateTom();//Déplacement donc on lence la liste si néscéssaire
+            Liste.GetComponent<ListeTom>().UpdateTom();//Déplacement donc on lence la liste si néscéssaire
 
             if (Update_grille3d.GetComponent<Grille_3d>().est_temporaire(vec))
             {
