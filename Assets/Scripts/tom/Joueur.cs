@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Joueur : MonoBehaviour
 {
+    public GameObject Liste;
     public int compte_carré = 0;
     public int variable_compte_carré = 3;
     public GameObject Update_grille3d;
@@ -60,7 +61,9 @@ public class Joueur : MonoBehaviour
             if(Update_grille3d.GetComponent<Grille_3d>().Estprit(vec_bas))
             {
                  this.transform.position =vec_bas;
-                    if(Update_grille3d.GetComponent<Grille_3d>().est_temporaire(vec_bas))
+                 Liste.GetComponent<Liste>().UpdateTom();//Déplacement donc on lence la liste si néscéssaire
+
+                if (Update_grille3d.GetComponent<Grille_3d>().est_temporaire(vec_bas))
                     {
                         compte_carré++;
                     }
@@ -72,18 +75,23 @@ public class Joueur : MonoBehaviour
                 if(Update_grille3d.GetComponent<Grille_3d>().Estprit(vec_haut))
                 {
                     this.transform.position =vec_haut;
-                    if(Update_grille3d.GetComponent<Grille_3d>().est_temporaire(vec_haut))
+                    Liste.GetComponent<Liste>().UpdateTom();//Déplacement donc on lence la liste si néscéssaire
+
+                    if (Update_grille3d.GetComponent<Grille_3d>().est_temporaire(vec_haut))
                     {
                         compte_carré++;
                     }
                 }
             }
+            //Donc tous les testes ont échouer, aussi bien Move Player que Assention 
         }
     }
     public void Update_plus()
     {
+        //Atention LP active UpdateTom()
         if (LP == false)
         {
+
             if (compte_carré >= variable_compte_carré)
             {
                 fonction = Random.Range(1, 3);
@@ -113,10 +121,13 @@ public class Joueur : MonoBehaviour
     }
     public void surveillePhantome(Boite b)
     {
-        if(compte_carré==0)
+        print("surveille");
+        if (!b.libre)
         {
-        b.transform.GetChild(1).gameObject.SetActive(false);
-        b.transform.GetChild(0).gameObject.SetActive(true);
+            print("surveilletest");
+
+            b.transform.GetChild(0).gameObject.SetActive(true);
+            b.transform.GetChild(1).gameObject.SetActive(false);
         }
     }
     public void TP()
@@ -129,6 +140,8 @@ public class Joueur : MonoBehaviour
         {
             surveillePhantome(Update_grille3d.GetComponent<Grille_3d>().trouve_boit(transform.position));
             transform.position = targetPosition;
+            Liste.GetComponent<Liste>().UpdateTom();//Déplacement donc on lence la liste si néscéssaire
+
             if (Update_grille3d.GetComponent<Grille_3d>().est_temporaire(vec))
             {
                 compte_carré++;

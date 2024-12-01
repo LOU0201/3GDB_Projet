@@ -14,7 +14,10 @@ public class Boite : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        if (Stop)
+        {
+            transform.GetChild(0).gameObject.GetComponent<Renderer>().material.color = Color.yellow;
+        }
         if (fin)
         {
             transform.GetChild(2).gameObject.SetActive(true);
@@ -22,6 +25,10 @@ public class Boite : MonoBehaviour
         if(temporaire)
         {
             transform.GetChild(3).gameObject.SetActive(true);
+        }
+        if (Stop)
+        {
+            transform.GetChild(0).gameObject.SetActive(true);
         }
     }
 
