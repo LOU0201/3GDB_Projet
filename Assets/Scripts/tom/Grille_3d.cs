@@ -142,6 +142,7 @@ public class Grille_3d : MonoBehaviour
                     if (!trouve_boit(t.transform.position + new Vector3(0, -1, 0)).libre)// et si ce quelque chose est une boite avec sa variable libre faus, alors fait sa
                     {
                         t.GetComponent<Boite>().Initialisation(true, false, false, false, false);//rend sa variable libre vrai, car il y a un blocs compacte en dessous
+                        //joueur.GetComponent<Joueur>().ascention(joueur.transform.position);
                     }
                     else
                     {

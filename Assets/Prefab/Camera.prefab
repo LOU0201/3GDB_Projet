@@ -137,7 +137,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79ee26a88cae8fd4f8417bb0dee4cfe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
   pos1: {fileID: 297276258650693745}
   pos2: {fileID: 8277384223752487066}
   pos3: {fileID: 8811307584828892691}
@@ -272,6 +271,9 @@ MonoBehaviour:
   - {fileID: 8277384223752487066}
   - {fileID: 8811307584828892691}
   - {fileID: 3324408235366485636}
+  moveSpeed: 5
+  rotateSpeed: 5
+  target: {fileID: 0}
 --- !u!1 &8277384223752487066
 GameObject:
   m_ObjectHideFlags: 0

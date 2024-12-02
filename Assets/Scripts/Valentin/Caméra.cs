@@ -12,9 +12,13 @@ public class Caméra : MonoBehaviour
     private Vector3 targetPosition;   // Target position for smooth movement
     private Quaternion targetRotation; // Target rotation for smooth rotation
     public Transform target;
+    private float fixedRotationX;    // Fixed X rotation
 
     void Start()
     {
+        // Store the initial X rotation to keep it fixed
+        fixedRotationX = cam.transform.rotation.eulerAngles.x;
+
         // Activate the first camera position
         if (Lcam.Length > 0)
         {
@@ -26,10 +30,16 @@ public class Caméra : MonoBehaviour
 
     void Update()
     {
-        //transform.position = new Vector3(transform.position.x, target.position.y + 0.5f, transform.position.z);
-        // Smoothly move the camera towards the target position and rotation
+        // Smoothly move the camera towards the target position
         cam.transform.position = Vector3.Lerp(cam.transform.position, targetPosition, Time.deltaTime * moveSpeed);
-        cam.transform.rotation = Quaternion.Slerp(cam.transform.rotation, targetRotation, Time.deltaTime * rotateSpeed);
+
+        // Adjust the target rotation to keep the X axis fixed
+        Vector3 targetEulerAngles = targetRotation.eulerAngles;
+        targetEulerAngles.x = fixedRotationX; // Preserve the original X rotation
+        Quaternion adjustedRotation = Quaternion.Euler(targetEulerAngles);
+
+        // Smoothly rotate the camera towards the adjusted rotation
+        cam.transform.rotation = Quaternion.Slerp(cam.transform.rotation, adjustedRotation, Time.deltaTime * rotateSpeed);
 
         // Switch to the previous camera (E)
         if (Input.GetKeyDown(KeyCode.E))
