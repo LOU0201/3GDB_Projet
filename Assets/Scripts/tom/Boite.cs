@@ -11,6 +11,8 @@ public class Boite : MonoBehaviour
     public bool temporaire = false;
     public bool Stop = false;
     public int valeur;
+    public Transform joueur;
+    public Material opaque;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +46,11 @@ public class Boite : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //Vector3 coordonnees = transform.position;
+        //Vector3 CJ = joueur.position;
+        //if (CJ != coordonnees)
+        //{
+        //    transform.GetChild(0).transform.GetComponent<Renderer>().material = opaque;
+        //}
     }
 }

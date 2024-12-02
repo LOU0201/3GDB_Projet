@@ -8,18 +8,18 @@ public class Grille_3d : MonoBehaviour
 {
     public GameObject joueur;
     public GameObject prefabBoite;
-    public bool Blockeur=false;
+    public bool Blockeur = false;
     public Destructeur des;
     void Update()
     {
-        
+
     }
     public Boite trouve_boit(Vector3 vec)//Rend la boite au niveaux du vecteur demander, Atention peux rendre null
     {
-        foreach(Transform t in this.transform)
+        foreach (Transform t in this.transform)
         {
             if (t.transform.position == vec)
-            {                
+            {
                 return t.GetComponent<Boite>();
             }
         }
@@ -27,10 +27,10 @@ public class Grille_3d : MonoBehaviour
     }
     public Boolean Estprit(Vector3 vec)// Si est libre, et vérifie si est fin pour pouvoir faire le Rapatriment  rend true si est libre
     {
-        foreach(Transform t in this.transform)
+        foreach (Transform t in this.transform)
         {
             if (t.transform.position == vec)
-            {                
+            {
                 if (t.GetComponent<Boite>().fin)
                 {
                     Rapatriment();
@@ -46,10 +46,10 @@ public class Grille_3d : MonoBehaviour
     }
     public Boolean Estprit_basique(Vector3 vec)// Si est libre, mais plus basique que Estprit
     {
-        foreach(Transform t in this.transform)
+        foreach (Transform t in this.transform)
         {
             if (t.transform.position == vec)
-            {                
+            {
                 if (t.GetComponent<Boite>().libre)
                 {
                     return true;
@@ -60,14 +60,14 @@ public class Grille_3d : MonoBehaviour
     }
     public Boolean EstStop(Vector3 vec)// Si est libre, mais plus basique
     {
-        if(Blockeur)
+        if (Blockeur)
         {
             return false;
         }
-        foreach(Transform t in this.transform)//Atention les block sont toujours blockant, se n'est qu'ici que l'on sait si l'on respecte le caractaire blockant du block'
+        foreach (Transform t in this.transform)//Atention les block sont toujours blockant, se n'est qu'ici que l'on sait si l'on respecte le caractaire blockant du block'
         {
             if (t.transform.position == vec)
-            {                
+            {
                 if (t.GetComponent<Boite>().Stop)
                 {
                     return true;
@@ -81,18 +81,18 @@ public class Grille_3d : MonoBehaviour
         joueur.GetComponent<Joueur>().compte_carré = 0;
         foreach (Transform t in this.transform)
         {
-            if(t.GetComponent<Boite>().début)
+            if (t.GetComponent<Boite>().début)
             {
-                joueur.transform.position=t.transform.position;
+                joueur.transform.position = t.transform.position;
             }
         }
     }
     public bool est_temporaire(Vector3 vec)// si est un phantome
     {
-        foreach(Transform t in this.transform)
+        foreach (Transform t in this.transform)
         {
             if (t.transform.position == vec)
-            {                
+            {
                 return !t.GetComponent<Boite>().temporaire;
             }
         }
@@ -104,16 +104,19 @@ public class Grille_3d : MonoBehaviour
         {
             if (child.transform.position == vec && !child.transform.GetComponent<Boite>().fin)
             {
-                Boite b=child.GetComponent<Boite>();//Des boit donc
+                Boite b = child.GetComponent<Boite>();//Des boit donc
                 b.libre = false;//Le cube est un obstacle
                 b.transform.GetChild(1).gameObject.SetActive(true);//i est donc plein
-                b.Stop = true;//il ne peux pas être montée
-                if(!Estprit_basique(vec + new Vector3(0,1,0)))//Si il y a un Block en haut, on passe, si non on fait ce-ci
+                if (!Blockeur)
                 {
-                    GameObject boite = Instantiate(prefabBoite,vec + new Vector3(0,1,0),Quaternion.identity);
-                    Boite scriptboite=boite.GetComponent<Boite>();
+                    b.transform.GetChild(0).transform.GetComponent<Renderer>().material.color = Color.yellow;
+                }
+                if (!Estprit_basique(vec + new Vector3(0, 1, 0)))//Si il y a un Block en haut, on passe, si non on fait ce-ci
+                {
+                    GameObject boite = Instantiate(prefabBoite, vec + new Vector3(0, 1, 0), Quaternion.identity);
+                    Boite scriptboite = boite.GetComponent<Boite>();
                     scriptboite.transform.SetParent(this.transform);
-                    scriptboite.Initialisation(true,false,false,false,false);//une boit libre donc
+                    scriptboite.Initialisation(true, false, false, false, false);//une boit libre donc
                 }
             }
         }
@@ -121,5 +124,31 @@ public class Grille_3d : MonoBehaviour
     public void Faire_Trou(Vector3 vec)
     {
         des.casse_bloc = true;
+        foreach (Transform t in transform)
+        {
+            if (t.transform.position == vec + new Vector3(0, -1, 0))
+            {                                                                                                                               //ON s'aintéressse en premier lieu à la boite du dessus'
+                //if (trouve_boit(vec + new Vector3(0, -1, 0)).libre)//Si trouveBoite rend quelque chose et si ce quelque chose est une boite avec sa variable libre vrai, alors fait sa
+                //{//rend sa variable libre fausse, car il y n'y a plus de blocs en dessous'
+                //    Boite b = trouve_boit(t.transform.position);
+                //    b.Initialisation(false, false, false, false, false);
+                //}
+                t.transform.GetChild(0).gameObject.SetActive(false);
+                t.transform.GetChild(1).gameObject.SetActive(false);
+                t.transform.GetComponent<Boite>().libre = true;
+                joueur.transform.position = new Vector3(joueur.transform.position.x, joueur.transform.position.y-1f, joueur.transform.position.z);
+                if (trouve_boit(t.transform.position + new Vector3(0, -1, 0)))//Si trouveBoite rend quelque chose
+                {
+                    if (!trouve_boit(t.transform.position + new Vector3(0, -1, 0)).libre)// et si ce quelque chose est une boite avec sa variable libre faus, alors fait sa
+                    {
+                        t.GetComponent<Boite>().Initialisation(true, false, false, false, false);//rend sa variable libre vrai, car il y a un blocs compacte en dessous
+                    }
+                    else
+                    {
+                        t.GetComponent<Boite>().Initialisation(false, false, false, false, false);//rend sa variable libre fausse, car il n'y pas de blocs en dessous'
+                    }
+                }
+            }
+        }
     }
 }

@@ -10,7 +10,6 @@ public class Grille_3d_V : MonoBehaviour
     public GameObject prefabBoite;
     public bool Blockeur=false;
     public Destructeur des;
-    public Joueur SJ;
     void Update()
     {
         
@@ -117,13 +116,14 @@ public class Grille_3d_V : MonoBehaviour
     }
     public void Faire_Trou(Vector3 vec)
     {
+        Debug.Log(vec);
         foreach (Transform t in transform)
         {
             if (t.transform.position == vec + new Vector3(0, -1, 0))
             {                                                                                                                               //ON s'aintéressse en premier lieu à la boite du dessus'
-                if (trouve_boit(vec+new Vector3(0,-1,0) + new Vector3(0, 1, 0)) && trouve_boit(vec+new Vector3(0,-1,0) + new Vector3(0, 1, 0)).libre)//Si trouveBoite rend quelque chose et si ce quelque chose est une boite avec sa variable libre vrai, alors fait sa
+                if (trouve_boit(vec+new Vector3(0,-1,0)).libre)//Si trouveBoite rend quelque chose et si ce quelque chose est une boite avec sa variable libre vrai, alors fait sa
                 {//rend sa variable libre fausse, car il y n'y a plus de blocs en dessous'
-                    Boite b = trouve_boit(t.transform.position + new Vector3(0, 1, 0));
+                    Boite b = trouve_boit(t.transform.position);
                     b.Initialisation(false, false, false, false, false);
                 }
                 t.transform.GetChild(0).gameObject.SetActive(false);//ici on s'aintéresse à la boite en question     
