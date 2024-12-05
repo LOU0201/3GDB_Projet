@@ -23,4 +23,9 @@ public class TP : MonoBehaviour
             scriptJ.TP();
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        scriptJ.TP();
+    }
 }
