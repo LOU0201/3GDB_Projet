@@ -84,23 +84,25 @@ public class Constructeur : MonoBehaviour
             {
                 if (t.transform.position == this.transform.position)
                 {                                                                                                                               //ON s'aintéressse en premier lieu à la boite du dessus'
-                    if(Update_grille3d.GetComponent<Grille_3d>().trouve_boit(this.transform.position + new Vector3(0,1,0)) && Update_grille3d.GetComponent<Grille_3d>().trouve_boit(this.transform.position + new Vector3(0,1,0)).libre)//Si trouveBoite rend quelque chose et si ce quelque chose est une boite avec sa variable libre vrai, alors fait sa
-                        {//rend sa variable libre fausse, car il y n'y a plus de blocs en dessous'
-                            Boite b=Update_grille3d.GetComponent<Grille_3d>().trouve_boit(t.transform.position + new Vector3(0,1,0));
+                    if(Update_grille3d.GetComponent<Grille_3d>().trouve_boit(this.transform.position + new Vector3(0,1,0)))//Si trouveBoite rend quelque chose, alors fait sa
+                    {//rend ça variable libre fausse(à la boite du dessus), car il y n'y a plus de blocs en dessous'
+                        Boite b=Update_grille3d.GetComponent<Grille_3d>().trouve_boit(t.transform.position + new Vector3(0,1,0));
                             b.Initialisation(false,false,false,false,false);
                         }
-                    t.transform.GetChild(0).gameObject.SetActive(false);//ici on s'aintéresse à la boite en question     
-                                          
-                                                                                     //ici, on s'aintéresse à la boite du dessous
-                    if(Update_grille3d.GetComponent<Grille_3d>().trouve_boit(this.transform.position + new Vector3(0,-1,0)))//Si trouveBoite rend quelque chose
+                    t.transform.GetChild(0).gameObject.SetActive(false);//ici on s'aintéresse à la boite en question  
+                    t.transform.GetChild(1).gameObject.SetActive(false);
+
+                    //ici, on s'aintéresse à la boite du dessous
+                    if (Update_grille3d.GetComponent<Grille_3d>().trouve_boit(this.transform.position + new Vector3(0,-1,0)))//Si trouveBoite rend quelque chose
                         {
                             if(!Update_grille3d.GetComponent<Grille_3d>().trouve_boit(this.transform.position + new Vector3(0,-1,0)).libre)// et si ce quelque chose est une boite avec sa variable libre faus, alors fait sa
+                        {                                                                           //ici, on s'aintéresse à la boite en question (du milieu)
+                            t.GetComponent<Boite>().Initialisation(true,false,false,false,false);//rend sa variable libre vrai(à la boite en question  (du milieu)), car il y a un blocs compacte en dessous
+                        }
+                        else
                                 {
-                                    t.GetComponent<Boite>().Initialisation(true,false,false,false,false);//rend sa variable libre vrai, car il y a un blocs compacte en dessous
-                                }else
-                                {
-                                    t.GetComponent<Boite>().Initialisation(false,false,false,false,false);//rend sa variable libre fausse, car il n'y pas de blocs en dessous'
-                                }
+                                    t.GetComponent<Boite>().Initialisation(false,false,false,false,false);//rend sa variable libre fausse(à la boite en question (du milieu) ), car il n'y pas de blocs en dessous'
+                        }
                         }
                 }
             }

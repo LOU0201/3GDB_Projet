@@ -56,12 +56,12 @@ public class Joueur : MonoBehaviour
     {
         if (!Update_grille3d.GetComponent<Grille_3d>().EstStop(vec))
         {
-            surveillePhantome(Update_grille3d.GetComponent<Grille_3d>().trouve_boit(transform.position));
             Vector3 vec_bas=vec + new Vector3(0,-1,0);
             if(Update_grille3d.GetComponent<Grille_3d>().Estprit(vec_bas))
             {
-                 this.transform.position =vec_bas;
-                 Liste.GetComponent<ListeTom>().UpdateTom();//Déplacement donc on lence la liste si néscéssaire
+                surveillePhantome(Update_grille3d.GetComponent<Grille_3d>().trouve_boit(transform.position));
+                this.transform.position =vec_bas;
+                Liste.GetComponent<ListeTom>().UpdateTom();//Déplacement donc on lence la liste si néscéssaire
 
                 if (Update_grille3d.GetComponent<Grille_3d>().est_temporaire(vec_bas))
                     {
@@ -70,10 +70,10 @@ public class Joueur : MonoBehaviour
             }
             else
             {
-                surveillePhantome(Update_grille3d.GetComponent<Grille_3d>().trouve_boit(transform.position));
                 Vector3 vec_haut=vec + new Vector3(0,1,0);
                 if(Update_grille3d.GetComponent<Grille_3d>().Estprit(vec_haut))
                 {
+                    surveillePhantome(Update_grille3d.GetComponent<Grille_3d>().trouve_boit(transform.position));
                     this.transform.position =vec_haut;
                     Liste.GetComponent<ListeTom>().UpdateTom();//Déplacement donc on lence la liste si néscéssaire
 
@@ -91,7 +91,6 @@ public class Joueur : MonoBehaviour
         //Atention LP active UpdateTom()
         if (LP == false)
         {
-
             if (compte_carré >= variable_compte_carré)
             {
                 fonction = Random.Range(1, 3);

@@ -126,27 +126,29 @@ public class Grille_3d : MonoBehaviour
         des.casse_bloc = true;
         foreach (Transform t in transform)
         {
-            if (t.transform.position == vec + new Vector3(0, -1, 0))
-            {                                                                                                                               //ON s'aintéressse en premier lieu à la boite du dessus'
-                //if (trouve_boit(vec + new Vector3(0, -1, 0)).libre)//Si trouveBoite rend quelque chose et si ce quelque chose est une boite avec sa variable libre vrai, alors fait sa
-                //{//rend sa variable libre fausse, car il y n'y a plus de blocs en dessous'
-                //    Boite b = trouve_boit(t.transform.position);
-                //    b.Initialisation(false, false, false, false, false);
-                //}
+            if (t.transform.position == vec + new Vector3(0, -1, 0))//On s'aintéresse ici, au bloc que l'on veux détruir c'est à dire celui juste endessous du joueur 
+            {
+                vec = new Vector3(0, -1, 0);//On baisse donc d'un crant
+                //ON s'aintéressse en premier lieu à la boite du dessus'
+                if (trouve_boit(vec + new Vector3(0, 1, 0)))//Si trouveBoite rend quelque chose 
+                {//rend sa variable libre fausse, car il y n'y a plus de blocs en dessous'
+                    Boite b = trouve_boit(vec + new Vector3(0, 1, 0));
+                    b.Initialisation(false, false, false, false, false);
+                }
                 t.transform.GetChild(0).gameObject.SetActive(false);
                 t.transform.GetChild(1).gameObject.SetActive(false);
-                t.transform.GetComponent<Boite>().libre = true;
-                joueur.transform.position = new Vector3(joueur.transform.position.x, joueur.transform.position.y-1f, joueur.transform.position.z);
+                //joueur.transform.position = new Vector3(joueur.transform.position.x, joueur.transform.position.y-1f, joueur.transform.position.z);
+                //ici, on s'aintéresse à la boite du dessous
                 if (trouve_boit(t.transform.position + new Vector3(0, -1, 0)))//Si trouveBoite rend quelque chose
                 {
                     if (!trouve_boit(t.transform.position + new Vector3(0, -1, 0)).libre)// et si ce quelque chose est une boite avec sa variable libre faus, alors fait sa
                     {
-                        t.GetComponent<Boite>().Initialisation(true, false, false, false, false);//rend sa variable libre vrai, car il y a un blocs compacte en dessous
+                        t.GetComponent<Boite>().Initialisation(true, false, false, false, false);//rend sa variable libre vrai (à la boite en question  (du milieu)), car il y a un blocs compacte en dessous
                         //joueur.GetComponent<Joueur>().ascention(joueur.transform.position);
                     }
                     else
                     {
-                        t.GetComponent<Boite>().Initialisation(false, false, false, false, false);//rend sa variable libre fausse, car il n'y pas de blocs en dessous'
+                        t.GetComponent<Boite>().Initialisation(false, false, false, false, false);//rend sa variable libre fausse (à la boite en question  (du milieu)), car il n'y pas de blocs en dessous'
                     }
                 }
             }
