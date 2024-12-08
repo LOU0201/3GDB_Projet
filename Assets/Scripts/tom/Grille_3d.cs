@@ -10,6 +10,7 @@ public class Grille_3d : MonoBehaviour
     public GameObject prefabBoite;
     public bool Blockeur = false;
     public Destructeur des;
+    public ResetTom ResetTom;
     void Update()
     {
 
@@ -78,14 +79,7 @@ public class Grille_3d : MonoBehaviour
     }
     public void Rapatriment()// Rapatriment du joueur
     {
-        joueur.GetComponent<Joueur>().compte_carré = 0;
-        foreach (Transform t in this.transform)
-        {
-            if (t.GetComponent<Boite>().début)
-            {
-                joueur.transform.position = t.transform.position;
-            }
-        }
+        ResetTom.Rappatriment();
     }
     public bool est_temporaire(Vector3 vec)// si est un phantome
     {
