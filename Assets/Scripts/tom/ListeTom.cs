@@ -93,7 +93,7 @@ public class ListeTom : MonoBehaviour
     // Updates the UI Images to show the items in positions 1, 2, and 3
     private void UpdateUpcomingSpawnDisplay()
     {
-        for (int i = 0; i < 3; i++) // Loop through the 3 upcoming icons
+        for (int i = 0; i < upcomingSpawnIcons.Length; i++) // Loop through the 3 upcoming icons
         {
             // Get the index for the current, next, and the one after that
             int index = (currentIndex + i) % liste.Length;
