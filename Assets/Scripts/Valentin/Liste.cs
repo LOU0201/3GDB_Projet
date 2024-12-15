@@ -63,6 +63,11 @@ public class Liste : MonoBehaviour
         }
     }
 
+    public string[] GetItems()
+    {
+        return liste;
+    }
+
     // Updates the UI Images to show the items in positions 1, 2, and 3
     private void UpdateUpcomingSpawnDisplay()
     {
