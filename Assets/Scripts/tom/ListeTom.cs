@@ -4,8 +4,6 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-
-
 public class ListeTom : MonoBehaviour
 {
     public string[] liste; // Array of spawnable objects ("cube", "trou", "rien")
@@ -26,13 +24,6 @@ public class ListeTom : MonoBehaviour
     {
         currentIndex = 0;
 
-        // Ensure `liste` is valid
-        if (liste == null || liste.Length == 0 || upcomingSpawnIcons.Length < 3)
-        {
-            Debug.LogError("Liste is empty, not assigned, or upcomingSpawnIcons is not properly set!");
-            return;
-        }
-
         UpdateUpcomingSpawnDisplay(); // Show the first set of predictions
     }
 
@@ -44,12 +35,10 @@ public class ListeTom : MonoBehaviour
         if (currentItem == "cube")
         {
             G3D.Faire_carrer(joueur.position); // Spawn a cube
-            Debug.Log("Spawned: cube");
         }
         else if (currentItem == "trou")
         {
             G3D.Faire_Trou(joueur.position); // Spawn a hole FaireTrou va donc désactiver le cube en bas du joueur
-            Debug.Log("Spawned: trou");
         }
         else if (currentItem == "rien")
         {
@@ -58,7 +47,7 @@ public class ListeTom : MonoBehaviour
 
         // Move to the next index in the list
         currentIndex = (currentIndex + 1) % liste.Length;
-
+        FindObjectOfType<NewConveyor>().UpdateConveyor();
         // Update the predictions for the next three items
         UpdateUpcomingSpawnDisplay();
         

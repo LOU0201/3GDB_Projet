@@ -10,13 +10,15 @@ public class conveyorListe : MonoBehaviour
     public ListeTom listeTom; // Reference to ListeTom
     public GameObject arrowIndicator; // Arrow indicator GameObject
 
+    private Vector3 normalScale = Vector3.one; // Normal scale for elements
+    private Vector3 highlightScale = Vector3.one * 1.2f; // Scaled-up size for highlighted elements
+
     void Start()
     {
         InitializeConveyor();
         InitializeArrow();
     }
 
-    // Initializes the conveyor with all elements from the ListeTom
     void InitializeConveyor()
     {
         if (listeTom == null || listeTom.liste.Length == 0)
@@ -25,29 +27,22 @@ public class conveyorListe : MonoBehaviour
             return;
         }
 
-        // Get conveyor width and element spacing
         float conveyorWidth = conveyorBelt.rect.width;
         float elementWidth = conveyorWidth / listeTom.liste.Length;
 
-        // Create and position initial elements from left to right
         for (int i = 0; i < listeTom.liste.Length; i++)
         {
             GameObject element = Instantiate(prefabElement, conveyorBelt);
-
-            // Position from left to right
             float posX = -conveyorWidth / 2 + elementWidth / 2 + i * elementWidth;
             element.transform.localPosition = new Vector3(posX, 0, 0);
-
-            // Update element sprite based on the item from ListeTom
             string item = listeTom.liste[i];
             UpdateElementSprite(element.GetComponent<Image>(), item);
         }
 
-        // Position the arrow at the first element
+        UpdateHighlightedElements();
         UpdateArrowPosition();
     }
 
-    // Initializes the arrow indicator above the first element
     void InitializeArrow()
     {
         if (arrowIndicator == null)
@@ -56,18 +51,14 @@ public class conveyorListe : MonoBehaviour
             return;
         }
 
-        // Make the arrow a child of the conveyor
         arrowIndicator.transform.SetParent(conveyorBelt);
-
-        // Ensure the arrow is properly anchored and positioned
         RectTransform arrowRect = arrowIndicator.GetComponent<RectTransform>();
-        arrowRect.anchorMin = new Vector2(0.5f, 1); // Anchor to the top center
+        arrowRect.anchorMin = new Vector2(0.5f, 1);
         arrowRect.anchorMax = new Vector2(0.5f, 1);
-        arrowRect.pivot = new Vector2(0.5f, 0);    // Pivot bottom-center
+        arrowRect.pivot = new Vector2(0.5f, 0);
         UpdateArrowPosition();
     }
 
-    // Updates the conveyor display (called when the player moves or the list is updated)
     public void UpdateConveyor()
     {
         if (listeTom == null || listeTom.liste.Length == 0)
@@ -76,28 +67,43 @@ public class conveyorListe : MonoBehaviour
             return;
         }
 
-        // Get conveyor width and element spacing
         float conveyorWidth = conveyorBelt.rect.width;
         float elementWidth = conveyorWidth / listeTom.liste.Length;
 
-        // Loop through all elements
         for (int i = 0; i < listeTom.liste.Length; i++)
         {
-            // Find the element's position (starting from left to right)
             Transform elementTransform = conveyorBelt.GetChild(i);
             float posX = -conveyorWidth / 2 + elementWidth / 2 + i * elementWidth;
             elementTransform.localPosition = new Vector3(posX, 0, 0);
 
-            // Update the sprite of the element based on the item from ListeTom
             string item = listeTom.liste[i];
             UpdateElementSprite(elementTransform.GetComponent<Image>(), item);
         }
 
-        // Update the arrow position to point to the current element
+        UpdateHighlightedElements();
         UpdateArrowPosition();
     }
 
-    // Updates the arrow's position to align with the current active element
+    private void UpdateHighlightedElements()
+    {
+        for (int i = 0; i < listeTom.liste.Length; i++)
+        {
+            Transform elementTransform = conveyorBelt.GetChild(i);
+            if (i == listeTom.currentIndex) // Current event
+            {
+                elementTransform.localScale = highlightScale;
+            }
+            else if (i > listeTom.currentIndex && i <= listeTom.currentIndex + 2) // Next two events
+            {
+                elementTransform.localScale = highlightScale * 0.9f; // Slightly smaller than current
+            }
+            else
+            {
+                elementTransform.localScale = normalScale; // Reset others to default
+            }
+        }
+    }
+
     private void UpdateArrowPosition()
     {
         if (arrowIndicator == null)
@@ -112,18 +118,12 @@ public class conveyorListe : MonoBehaviour
             return;
         }
 
-        // Get the index of the current active element
         int currentIndex = listeTom.currentIndex;
-
-        // Find the current element in the conveyor
         Transform currentElement = conveyorBelt.GetChild(currentIndex);
-
-        // Position the arrow above the current element
-        Vector3 arrowPosition = currentElement.localPosition + new Vector3(0, 50, 0); // Adjust Y-offset as needed
+        Vector3 arrowPosition = currentElement.localPosition + new Vector3(0, 50, 0); // Adjust Y-offset
         arrowIndicator.GetComponent<RectTransform>().localPosition = arrowPosition;
     }
 
-    // Updates the sprite of a conveyor element based on the list item
     private void UpdateElementSprite(Image image, string item)
     {
         if (item == "cube")
