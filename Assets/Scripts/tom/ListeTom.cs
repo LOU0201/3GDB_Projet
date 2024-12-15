@@ -4,6 +4,8 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
+
+
 public class ListeTom : MonoBehaviour
 {
     public string[] liste; // Array of spawnable objects ("cube", "trou", "rien")
@@ -16,6 +18,8 @@ public class ListeTom : MonoBehaviour
     public Sprite rienSprite; // Icon for "Rien"
     public Sprite trouSprite; // Icon for "Trou"
     public Sprite cubeSprite; // Icon for "Cube"
+    public conveyorListe conveyorBeltUI;
+    public NewConveyor conveyorBelt;
 
     // Start is called before the first frame update
     void Start()
@@ -33,35 +37,6 @@ public class ListeTom : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        // Check for movement input
-        /*if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            // Perform the action for the current item
-            string currentItem = liste[currentIndex];
-            if (currentItem == "cube")
-            {
-                G3D.Faire_carrer(joueur.position); // Spawn a cube
-                Debug.Log("Spawned: cube");
-            }
-            else if (currentItem == "trou")
-            {
-                G3D.Faire_Trou(joueur.position); // Spawn a hole
-                Debug.Log("Spawned: trou");
-            }
-            else if (currentItem == "rien")
-            {
-                Debug.Log("Nothing spawned this step.");
-            }
-
-            // Move to the next index in the list
-            currentIndex = (currentIndex + 1) % liste.Length;
-
-            // Update the predictions for the next three items
-            UpdateUpcomingSpawnDisplay();
-        }*/
-    }//Donc ce que fait le script en Update est désormais appeller par la fonction
     public void UpdateTom()
     {
         // Perform the action for the current item
@@ -86,6 +61,7 @@ public class ListeTom : MonoBehaviour
 
         // Update the predictions for the next three items
         UpdateUpcomingSpawnDisplay();
+        
     }
 
 
