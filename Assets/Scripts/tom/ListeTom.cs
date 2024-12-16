@@ -16,7 +16,6 @@ public class ListeTom : MonoBehaviour
     public Sprite rienSprite; // Icon for "Rien"
     public Sprite trouSprite; // Icon for "Trou"
     public Sprite cubeSprite; // Icon for "Cube"
-    public conveyorListe conveyorBeltUI;
     public NewConveyor conveyorBelt;
 
     // Start is called before the first frame update
