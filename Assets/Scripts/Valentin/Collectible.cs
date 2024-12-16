@@ -11,6 +11,7 @@ public class Collectible : MonoBehaviour
     private float tempx;
     private float tempz;
     private float tempy;
+    public int max;
     // Start is called before the first frame update
     void Start()
     {
