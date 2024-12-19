@@ -14,7 +14,12 @@ public class Joueur : MonoBehaviour
     public Vector3 pos;
     public Camera cameraPrincipal; // Associez votre caméra ici via l'inspecteur
     public bool trou;
+    FMOD.Studio.EventInstance move;
     // Start is called before the first frame update
+    public void Start()
+    {
+        move= FMODUnity.RuntimeManager.CreateInstance("event:/V1/Player/playermove");
+    }
     public int GetNextAction()
     {
         return fonction;  // Accesses the next action type stored in fonction
@@ -54,6 +59,7 @@ public class Joueur : MonoBehaviour
     public void ascention(Vector3 vec)//est charger de faire monter ou descendre le joueur si la boite n'est pas libre 
     //en vérifiant si la boite placer juste audessus puis c'elle audessous sont libre, si c'est le cas le joueur va dans cette boite alors
     {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/V1/Player/playerclimb");
         if (!Update_grille3d.GetComponent<Grille_3d>().EstStop(vec))
         {
 

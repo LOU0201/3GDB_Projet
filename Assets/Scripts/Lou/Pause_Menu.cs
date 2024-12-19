@@ -18,6 +18,7 @@ public class Pause_Menu : MonoBehaviour
 
     public void TogglePauseMenu()
     {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/UI/button");
         if (isPaused)
         {
             // Unpause the game and start fade-out before hiding the menu
