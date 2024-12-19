@@ -27,5 +27,6 @@ public class TP : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         scriptJ.TP();
+        FMODUnity.RuntimeManager.PlayOneShot("event:/V1/System/leveldone");
     }
 }
