@@ -21,12 +21,12 @@ public class TP : MonoBehaviour
         if (CJ == coordonnees)
         {
             scriptJ.TP();
+            FMODUnity.RuntimeManager.PlayOneShot("event:/V1/System/leveldone");
         }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         scriptJ.TP();
-        FMODUnity.RuntimeManager.PlayOneShot("event:/V1/System/leveldone");
     }
 }

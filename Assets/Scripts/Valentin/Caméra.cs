@@ -59,6 +59,7 @@ public class Caméra : MonoBehaviour
     // Set the target position and rotation for the camera
     private void SetTarget(int targetIndex)
     {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/V1/System/movecam");
         targetPosition = Lcam[targetIndex].transform.position;
         targetRotation = Lcam[targetIndex].transform.rotation;
     }
