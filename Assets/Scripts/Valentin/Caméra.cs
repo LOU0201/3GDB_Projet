@@ -46,6 +46,7 @@ public class Caméra : MonoBehaviour
         {
             index = (index - 1 + Lcam.Length) % Lcam.Length;
             SetTarget(index);
+            FMODUnity.RuntimeManager.PlayOneShot("event:/V1/System/movecam");
         }
 
         // Switch to the next camera (Q)
@@ -53,13 +54,13 @@ public class Caméra : MonoBehaviour
         {
             index = (index + 1) % Lcam.Length;
             SetTarget(index);
+            FMODUnity.RuntimeManager.PlayOneShot("event:/V1/System/movecam");
         }
     }
 
     // Set the target position and rotation for the camera
     private void SetTarget(int targetIndex)
     {
-        FMODUnity.RuntimeManager.PlayOneShot("event:/V1/System/movecam");
         targetPosition = Lcam[targetIndex].transform.position;
         targetRotation = Lcam[targetIndex].transform.rotation;
     }
