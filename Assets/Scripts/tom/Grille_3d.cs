@@ -94,7 +94,6 @@ public class Grille_3d : MonoBehaviour
     }
     public void Faire_carrer(Vector3 vec)// Fais un phantome(un obstacle donc)
     {
-        FMODUnity.RuntimeManager.PlayOneShot("event:/V1/Gameplay/blockplace");
         foreach (Transform child in this.transform)//Je prend la liste des emphant de Grille_3d
         {
             if (child.transform.position == vec && !child.transform.GetComponent<Boite>().fin)
@@ -112,6 +111,7 @@ public class Grille_3d : MonoBehaviour
                     Boite scriptboite = boite.GetComponent<Boite>();
                     scriptboite.transform.SetParent(this.transform);
                     scriptboite.Initialisation(true, false, false, false, false);//une boit libre donc
+                    FMODUnity.RuntimeManager.PlayOneShot("event:/V1/Gameplay/blockplace");
                 }
             }
         }

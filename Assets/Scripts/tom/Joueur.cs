@@ -15,10 +15,13 @@ public class Joueur : MonoBehaviour
     public Camera cameraPrincipal; // Associez votre caméra ici via l'inspecteur
     public bool trou;
     FMOD.Studio.EventInstance move;
+    public float Ygrav;
+    private Rigidbody RB;
     // Start is called before the first frame update
     public void Start()
     {
         move= FMODUnity.RuntimeManager.CreateInstance("event:/V1/Player/playermove");
+        RB = GetComponent<Rigidbody>();
     }
     public int GetNextAction()
     {
@@ -55,6 +58,14 @@ public class Joueur : MonoBehaviour
             vec = transform.position - forward;
             MovePlayer(vec);
         }
+        //if (transform.position == new Vector3(transform.position.x, Ygrav, transform.position.z))
+        //{
+        //    RB.useGravity = true;
+        //}
+        //else
+        //{
+        //    RB.useGravity = false;
+        //}
     }
     public void ascention(Vector3 vec)//est charger de faire monter ou descendre le joueur si la boite n'est pas libre 
     //en vérifiant si la boite placer juste audessus puis c'elle audessous sont libre, si c'est le cas le joueur va dans cette boite alors
