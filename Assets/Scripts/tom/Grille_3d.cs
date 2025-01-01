@@ -8,7 +8,7 @@ public class Grille_3d : MonoBehaviour
 {
     public GameObject joueur;
     public GameObject prefabBoite;
-    public bool Blockeur = false;
+    public bool Non_Blockeur = false;
     public Destructeur des;
     public ResetTom ResetTom;
     void Update()
@@ -59,13 +59,13 @@ public class Grille_3d : MonoBehaviour
         }
         return false;
     }
-    public Boolean EstStop(Vector3 vec)// Si est libre, mais plus basique
+    public Boolean EstStop(Vector3 vec)
     {
-        if (Blockeur)
+        if (Non_Blockeur)
         {
             return false;
         }
-        foreach (Transform t in this.transform)//Atention les block sont toujours blockant, se n'est qu'ici que l'on sait si l'on respecte le caractaire blockant du block'
+        foreach (Transform t in this.transform)
         {
             if (t.transform.position == vec)
             {
@@ -101,9 +101,10 @@ public class Grille_3d : MonoBehaviour
                 Boite b = child.GetComponent<Boite>();//Des boit donc
                 b.libre = false;//Le cube est un obstacle
                 b.transform.GetChild(1).gameObject.SetActive(true);//i est donc plein
-                if (!Blockeur)
+                if (!Non_Blockeur)
                 {
                     b.transform.GetChild(0).transform.GetComponent<Renderer>().material.color = Color.yellow;
+                    b.GetComponent<Boite>().Stop = true;
                 }
                 if (!Estprit_basique(vec + new Vector3(0, 1, 0)))//Si il y a un Block en haut, on passe, si non on fait ce-ci
                 {

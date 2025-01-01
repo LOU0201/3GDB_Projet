@@ -56,7 +56,7 @@ public class Constructeur : MonoBehaviour
             this.transform.position += new Vector3(0, -1, 0);
         }
 
-        if (Input.GetKeyDown(KeyCode.E))//UNE ENTRER
+        if (Input.GetKeyDown(KeyCode.F))//UNE Sortie
         {
             if (!Update_grille3d.GetComponent<Grille_3d>().trouve_boit(this.transform.position) || Update_grille3d.GetComponent<Grille_3d>().trouve_boit(this.transform.position).libre)
             {
@@ -67,7 +67,7 @@ public class Constructeur : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.T))//UNE SORTIE
+        if (Input.GetKeyDown(KeyCode.E))//UNE Entrer
         {
             if (!Update_grille3d.GetComponent<Grille_3d>().trouve_boit(this.transform.position))
             {
@@ -96,29 +96,79 @@ public class Constructeur : MonoBehaviour
                 boite1.transform.SetParent(Update_grille3d.transform);
             }
         }
-
+        if (Input.GetKeyDown(KeyCode.T))  //Code de création d'un temporaire
+        {
+            if (!Update_grille3d.GetComponent<Grille_3d>().trouve_boit(this.transform.position))
+            {
+                GameObject boite = Instantiate(prefabBoite, this.transform.position, Quaternion.identity);
+                Boite scriptboite = boite.GetComponent<Boite>();
+                boite.transform.SetParent(Update_grille3d.transform);
+                scriptboite.Initialisation(false, false, false, false, false);
+                boite.transform.GetChild(3).gameObject.SetActive(true);
+                boite.transform.GetComponent<Boite>().libre = true;
+                boite.transform.GetComponent<Boite>().temporaire = true;
+            }
+            else
+            {
+                Boite b = Update_grille3d.GetComponent<Grille_3d>().trouve_boit(this.transform.position);
+                b.transform.GetComponent<Boite>().libre = true;
+                b.transform.GetComponent<Boite>().temporaire = true;
+                b.transform.GetChild(3).gameObject.SetActive(true);
+            }
+        }
         if (Input.GetKeyDown(KeyCode.Space))  //Code de création
         {
-            if(!Update_grille3d.GetComponent<Grille_3d>().trouve_boit(this.transform.position))
+            if (!Update_grille3d.GetComponent<Grille_3d>().trouve_boit(this.transform.position))
             {
-                GameObject boite = Instantiate(prefabBoite,this.transform.position,Quaternion.identity);
-                Boite scriptboite=boite.GetComponent<Boite>();
+                GameObject boite = Instantiate(prefabBoite, this.transform.position, Quaternion.identity);
+                Boite scriptboite = boite.GetComponent<Boite>();
                 boite.transform.SetParent(Update_grille3d.transform);
-                scriptboite.Initialisation(false,false,false,false,false);
+                scriptboite.Initialisation(false, false, false, false, false);
                 boite.transform.GetChild(0).gameObject.SetActive(true);
             }
             else
             {
-                Boite b=Update_grille3d.GetComponent<Grille_3d>().trouve_boit(this.transform.position);
+                Boite b = Update_grille3d.GetComponent<Grille_3d>().trouve_boit(this.transform.position);
                 b.transform.GetChild(0).gameObject.SetActive(true);
                 b.transform.GetComponent<Boite>().libre = false;
             }
-            
-            if(!Update_grille3d.GetComponent<Grille_3d>().Estprit_basique(this.transform.position + new Vector3(0,1,0)))
+
+            if (!Update_grille3d.GetComponent<Grille_3d>().Estprit_basique(this.transform.position + new Vector3(0, 1, 0)))
             {
-                GameObject boite1 = Instantiate(prefabBoite,this.transform.position + new Vector3(0,1,0),Quaternion.identity);
-                Boite scriptboite1=boite1.GetComponent<Boite>();
-                scriptboite1.Initialisation(true,false,false,false,false);
+                GameObject boite1 = Instantiate(prefabBoite, this.transform.position + new Vector3(0, 1, 0), Quaternion.identity);
+                Boite scriptboite1 = boite1.GetComponent<Boite>();
+                scriptboite1.Initialisation(true, false, false, false, false);
+                boite1.transform.SetParent(Update_grille3d.transform);
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.B))  //Code de création de boite bloquant
+        {
+            if (!Update_grille3d.GetComponent<Grille_3d>().trouve_boit(this.transform.position))
+            {
+                GameObject boite = Instantiate(prefabBoite, this.transform.position, Quaternion.identity);
+                Boite scriptboite = boite.GetComponent<Boite>();
+                boite.transform.SetParent(Update_grille3d.transform);
+                scriptboite.Initialisation(false, false, false, false, false);
+                scriptboite.Stop=true;
+                boite.transform.GetChild(0).transform.GetComponent<Renderer>().material.color = Color.yellow;
+                boite.transform.GetChild(0).gameObject.SetActive(true);
+            }
+            else
+            {
+                Boite b = Update_grille3d.GetComponent<Grille_3d>().trouve_boit(this.transform.position);
+                b.transform.GetChild(0).transform.GetComponent<Renderer>().material.color = Color.yellow;
+
+                b.transform.GetChild(0).gameObject.SetActive(true);
+                b.transform.GetComponent<Boite>().libre = false;
+                b.GetComponent<Boite>().Stop = true;    
+            }
+
+            if (!Update_grille3d.GetComponent<Grille_3d>().Estprit_basique(this.transform.position + new Vector3(0, 1, 0)))
+            {
+                GameObject boite1 = Instantiate(prefabBoite, this.transform.position + new Vector3(0, 1, 0), Quaternion.identity);
+                Boite scriptboite1 = boite1.GetComponent<Boite>();
+                scriptboite1.Initialisation(true, false, false, false, false);
                 boite1.transform.SetParent(Update_grille3d.transform);
             }
         }
