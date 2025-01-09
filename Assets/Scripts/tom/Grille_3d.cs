@@ -15,6 +15,19 @@ public class Grille_3d : MonoBehaviour
     {
 
     }
+    public void isFin(Vector3 vec)
+    {
+        foreach (Transform t in this.transform)
+        {
+            if (t.transform.position == vec)
+            {
+                if (t.GetComponent<Boite>().fin)
+                {
+                    Rapatriment();
+                }
+            }
+        }
+    }
     public Boite trouve_boit(Vector3 vec)//Rend la boite au niveaux du vecteur demander, Atention peux rendre null
     {
         foreach (Transform t in this.transform)
@@ -32,11 +45,6 @@ public class Grille_3d : MonoBehaviour
         {
             if (t.transform.position == vec)
             {
-                if (t.GetComponent<Boite>().fin)
-                {
-                    Rapatriment();
-                    return false;
-                }
                 if (t.GetComponent<Boite>().libre)
                 {
                     return true;
@@ -45,7 +53,7 @@ public class Grille_3d : MonoBehaviour
         }
         return false;
     }
-    public Boolean Estprit_basique(Vector3 vec)// Si est libre, mais plus basique que Estprit
+    public Boolean Estprit_basique(Vector3 vec)//Même chose
     {
         foreach (Transform t in this.transform)
         {
@@ -100,6 +108,7 @@ public class Grille_3d : MonoBehaviour
             {
                 Boite b = child.GetComponent<Boite>();//Des boit donc
                 b.libre = false;//Le cube est un obstacle
+                b.phantome = true;
                 b.transform.GetChild(1).gameObject.SetActive(true);//i est donc plein
                 if (!Non_Blockeur)
                 {
@@ -125,16 +134,18 @@ public class Grille_3d : MonoBehaviour
         {
             if (t.transform.position == vec + new Vector3(0, -1, 0))//On s'aintéresse ici, au bloc que l'on veux détruir c'est à dire celui juste endessous du joueur 
             {
-                vec = new Vector3(0, -1, 0);//On baisse donc d'un crant
+                vec += new Vector3(0, -1, 0);//On baisse donc d'un crant
                 //ON s'aintéressse en premier lieu à la boite du dessus'
                 if (trouve_boit(vec + new Vector3(0, 1, 0)))//Si trouveBoite rend quelque chose 
                 {//rend sa variable libre fausse, car il y n'y a plus de blocs en dessous'
                     Boite b = trouve_boit(vec + new Vector3(0, 1, 0));
                     b.Initialisation(false, false, false, false, false);
                 }
+                //Ici, on s'aintéresse au cube que l'on veux détruire
+                //donc on éfface le cube
+
                 t.transform.GetChild(0).gameObject.SetActive(false);
                 t.transform.GetChild(1).gameObject.SetActive(false);
-                //joueur.transform.position = new Vector3(joueur.transform.position.x, joueur.transform.position.y-1f, joueur.transform.position.z);
                 //ici, on s'aintéresse à la boite du dessous
                 if (trouve_boit(t.transform.position + new Vector3(0, -1, 0)))//Si trouveBoite rend quelque chose
                 {

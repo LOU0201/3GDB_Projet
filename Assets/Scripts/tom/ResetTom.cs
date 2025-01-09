@@ -7,8 +7,6 @@ public class ResetTom : MonoBehaviour
 {
     public Transform joueur;
     public Constructeur cons;
-    //public Joueur_V scriptJ;
-    // Start is called before the first frame update
     void Start()
     {
         if (cons.isActive)
@@ -24,6 +22,6 @@ public class ResetTom : MonoBehaviour
     public void Rappatriment()
     {
         joueur.transform.position=transform.position;
-
+        print("ERapatriment");
     }
 }
