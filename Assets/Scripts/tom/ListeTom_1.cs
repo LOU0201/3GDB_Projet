@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-public class ListeTom : MonoBehaviour
+public class ListeTom_1 : MonoBehaviour
 {
     public string[] liste; // Array of spawnable objects ("cube", "trou", "rien")
     public int currentIndex; // Current index in the list
