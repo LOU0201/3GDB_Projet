@@ -88,6 +88,7 @@ public class Grille_3d : MonoBehaviour
     public void Rapatriment()// Rapatriment du joueur
     {
         ResetTom.Rappatriment();
+        FMODUnity.RuntimeManager.PlayOneShot("event:/V1/System/leveldone");
     }
     public bool est_temporaire(Vector3 vec)// si est un phantome
     {
