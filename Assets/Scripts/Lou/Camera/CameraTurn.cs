@@ -3,112 +3,88 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
 public class CameraTurn : MonoBehaviour
 {
-    public Transform sideCameraTransform; // Side camera to perform the rotation
-    public Transform playerTransform; // The player to rotate around
-    public GameObject mainCamera; // Main camera to activate after the side camera
-    public GameObject uiElement; // UI element to activate after rotation
-    public CanvasGroup panelToFade; // Panel to fade out
-    public TextMeshProUGUI textToFade; // TMP text to fade out
+    [SerializeField] private Transform sideCameraTransform; // Side camera attached to this script
+    [SerializeField] private Transform playerTransform; // Player to rotate around
+    [SerializeField] private GameObject mainCamera; // Main camera to activate after rotation
+    [SerializeField] private GameObject uiElement; // UI element to activate after rotation
     public float rotationSpeed = 50f; // Speed of the camera rotation
-    public float fadeDuration = 2f; // Duration of the fade effect
 
-    private Quaternion originalRotation; // Original rotation of the side camera
     private bool isRotating = false;
+    private float targetYPosition = 19.32f; // Target Y position for the side camera
 
     void Start()
     {
-        if (sideCameraTransform == null)
-            sideCameraTransform = Camera.main.transform;
-
-        originalRotation = sideCameraTransform.rotation;
-
         if (mainCamera != null)
             mainCamera.SetActive(false); // Ensure the main camera is deactivated initially
 
         if (uiElement != null)
-            uiElement.SetActive(false); // Ensure the UI element is initially inactive
-
-        if (panelToFade != null)
-            panelToFade.alpha = 1f; // Ensure full opacity initially
-
-        if (textToFade != null)
-        {
-            Color color = textToFade.color;
-            color.a = 1f; // Ensure text is fully visible initially
-            textToFade.color = color;
-        }
+            uiElement.SetActive(false); // Ensure the UI element is deactivated initially
     }
 
     void Update()
     {
-        if (panelToFade.alpha > 0f || (textToFade != null && textToFade.color.a > 0f))
+        if (!isRotating)
         {
-            // Fade out the panel
-            if (panelToFade != null)
-            {
-                panelToFade.alpha -= Time.deltaTime / fadeDuration;
-
-                if (panelToFade.alpha <= 0f)
-                    panelToFade.gameObject.SetActive(false);
-            }
-
-            // Fade out the text
-            if (textToFade != null)
-            {
-                Color color = textToFade.color;
-                color.a -= Time.deltaTime / fadeDuration;
-                textToFade.color = color;
-
-                if (color.a <= 0f)
-                    textToFade.gameObject.SetActive(false);
-            }
-
-            // Start the rotation only after both fades are complete
-            if (panelToFade != null && panelToFade.alpha <= 0f &&
-                textToFade != null && textToFade.color.a <= 0f &&
-                !isRotating)
-            {
-                StartCoroutine(RotateAroundPlayer());
-            }
+            StartCoroutine(MoveAndRotateCamera());
         }
     }
 
-    IEnumerator RotateAroundPlayer()
+    private IEnumerator MoveAndRotateCamera()
     {
         isRotating = true;
 
-        float totalRotation = 0f;
-
-        while (totalRotation < 360f)
+        // Move the camera to the target Y position while rotating
+        while (Mathf.Abs(sideCameraTransform.position.y - targetYPosition) > 0.01f) // Ensure it stops at the target position
         {
-            float step = rotationSpeed * Time.deltaTime;
+            float rotationStep = rotationSpeed * Time.deltaTime;
 
-            // Rotate the camera around the player on the Y-axis
-            sideCameraTransform.RotateAround(playerTransform.position, Vector3.up, step);
+            // Rotate around the player on the Y-axis
+            sideCameraTransform.RotateAround(playerTransform.position, Vector3.up, rotationStep);
 
-            totalRotation += step;
+            // Move downward towards the target Y position
+            Vector3 currentPosition = sideCameraTransform.position;
+            currentPosition.y = Mathf.MoveTowards(currentPosition.y, targetYPosition, rotationStep * 0.1f); // Adjust movement speed as needed
+            sideCameraTransform.position = currentPosition;
 
             yield return null;
         }
 
-        // Return the camera to its original position and rotation
-        sideCameraTransform.rotation = originalRotation;
+        // Ensure the Y position is exactly at the target to prevent overshooting
+        Vector3 finalPosition = sideCameraTransform.position;
+        finalPosition.y = targetYPosition;
+        sideCameraTransform.position = finalPosition;
 
-        // Activate the main camera and deactivate the side camera
+        // Complete one full rotation after reaching the target position
+        float totalRotation = 0f;
+        while (totalRotation < 360f)
+        {
+            float rotationStep = rotationSpeed * Time.deltaTime;
+            totalRotation += rotationStep;
+            sideCameraTransform.RotateAround(playerTransform.position, Vector3.up, rotationStep);
+            yield return null;
+        }
+
+        // Reset the Y rotation to 0 to avoid abrupt changes
+        Quaternion resetRotation = sideCameraTransform.rotation;
+        resetRotation.eulerAngles = new Vector3(resetRotation.eulerAngles.x, 0f, resetRotation.eulerAngles.z);
+        sideCameraTransform.rotation = resetRotation;
+
+        // Activate the main camera and UI, and deactivate this object
         if (mainCamera != null)
         {
             mainCamera.SetActive(true);
         }
-        gameObject.SetActive(false);
 
-        // Activate the UI element
         if (uiElement != null)
         {
             uiElement.SetActive(true);
         }
+
+        gameObject.SetActive(false);
 
         isRotating = false;
     }
