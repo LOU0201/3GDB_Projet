@@ -1854,7 +1854,7 @@ MonoBehaviour:
   phantome: 0
   fin: 0
   "d\xE9but": 0
-  temporaire: 0
+  temporaire: 1
   Stop: 0
   valeur: 0
   joueur: {fileID: 0}
@@ -18835,7 +18835,6 @@ GameObject:
   m_Component:
   - component: {fileID: 853137168}
   - component: {fileID: 853137167}
-  - component: {fileID: 853137169}
   m_Layer: 0
   m_Name: grille3d (1)
   m_TagString: Untagged
@@ -18859,7 +18858,7 @@ MonoBehaviour:
   prefabBoite: {fileID: 4021901750627738393, guid: c8b18993afa00a840bd0627d4ebf3a15,
     type: 3}
   Non_Blockeur: 1
-  des: {fileID: 853137169}
+  des: {fileID: 0}
   ResetTom: {fileID: 1651035951}
 --- !u!4 &853137168
 Transform:
@@ -18953,23 +18952,6 @@ Transform:
   - {fileID: 306600060}
   m_Father: {fileID: 1329996199}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &853137169
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 853137166}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87c4bd8a021555c4d9fc895746e582da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  casse_bloc: 0
-  joueur: {fileID: 0}
-  tempsmax: 1
-  temps: 0
-  Point5: 0
 --- !u!1 &857688680
 GameObject:
   m_ObjectHideFlags: 0
@@ -20744,7 +20726,7 @@ MonoBehaviour:
   Update_grille3d: {fileID: 853137166}
   vec: {x: 0, y: 0, z: 0}
   fonction: 0
-  LP: 0
+  LP: 1
   pos: {x: 0, y: 0, z: 0}
   cameraPrincipal: {fileID: 1928691308}
   trou: 0
@@ -21734,7 +21716,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &982920637
 Transform:
   m_ObjectHideFlags: 0
@@ -35336,7 +35318,7 @@ PrefabInstance:
     - target: {fileID: 846206375390795296, guid: 21d4d3368cea87f4284fda767dc12d0d,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3801115060057334124, guid: 21d4d3368cea87f4284fda767dc12d0d,
         type: 3}
@@ -41127,15 +41109,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1937758089}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61326faa2cdfbc54f89bffa8275fe44a, type: 3}
+  m_Script: {fileID: 11500000, guid: d3dc7c8ce180ab845bdf2bfc396de7c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   liste:
-  - rien
   - trou
+  - rien
   currentIndex: 0
-  G3D: {fileID: 0}
-  joueur: {fileID: 0}
+  G3D: {fileID: 853137167}
+  joueur: {fileID: 926263345}
   upcomingSpawnIcons: []
   rienSprite: {fileID: 0}
   trouSprite: {fileID: 0}
