@@ -38,6 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
+  m_IndirectSpecularColor: {r: 0.17276937, g: 0.2158928, b: 0.29782706, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -20731,12 +20732,12 @@ MonoBehaviour:
   m_RequiresColorTexture: 0
   m_Version: 2
   m_TaaSettings:
-    m_Quality: 3
-    m_FrameInfluence: 0.1
-    m_JitterScale: 1
-    m_MipBias: 0
-    m_VarianceClampScale: 0.9
-    m_ContrastAdaptiveSharpening: 0
+    quality: 3
+    frameInfluence: 0.1
+    jitterScale: 1
+    mipBias: 0
+    varianceClampScale: 0.9
+    contrastAdaptiveSharpening: 0
 --- !u!114 &1160958365
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20828,6 +20829,11 @@ PrefabInstance:
       propertyPath: opaque
       value: 
       objectReference: {fileID: 2100000, guid: df4e7e5935f5b8141ace5e1ce0cf6473, type: 2}
+    - target: {fileID: 3560230201070614295, guid: c8b18993afa00a840bd0627d4ebf3a15,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4021901750627738393, guid: c8b18993afa00a840bd0627d4ebf3a15,
         type: 3}
       propertyPath: m_Name
@@ -27349,6 +27355,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2221342322315813719, guid: 142d2a48dec04db429754d931bec3076,
+        type: 3}
+      propertyPath: Non_Blockeur
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5223714886135154219, guid: 142d2a48dec04db429754d931bec3076,
         type: 3}
       propertyPath: SJ
@@ -32753,8 +32764,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1069970231}
   - {fileID: 2022415243}
+  - {fileID: 1069970231}
   - {fileID: 309716487}
   - {fileID: 597288369}
   - {fileID: 2101506121}
@@ -39155,6 +39166,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Joueur
+      objectReference: {fileID: 0}
+    - target: {fileID: 204350628122206957, guid: 2e1d1a04aa852c8449d0cbce4e496c1a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7260695335499758499, guid: 2e1d1a04aa852c8449d0cbce4e496c1a,
         type: 3}
