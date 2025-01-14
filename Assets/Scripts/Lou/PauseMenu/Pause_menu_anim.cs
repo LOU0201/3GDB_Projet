@@ -15,11 +15,11 @@ public class Pause_menu_anim : MonoBehaviour
 
     void Start()
     {
-        // Store the initial anchored position when the script starts
         originalPosition = rectTransform.anchoredPosition;
     }
     public void FadeIn()
     {
+        
         canvasGroup.alpha = 0f;
         rectTransform.anchoredPosition = new Vector2(originalPosition.x, originalPosition.y - 1000f);
         rectTransform.DOAnchorPos(originalPosition, fadeTime, false).SetEase(Ease.OutElastic);
@@ -30,12 +30,12 @@ public class Pause_menu_anim : MonoBehaviour
 
     public void FadeOut()
     {
+       
         canvasGroup.alpha = 1f;
         rectTransform.transform.localPosition = new Vector3(0f, 0f, 0f);
         rectTransform.DOAnchorPos(new Vector2(0f, -1000f), fadeTime, false).SetEase(Ease.InOutQuint);
         canvasGroup.DOFade(0, fadeTime);
 
-      
     }
 
     IEnumerator iconAnime()

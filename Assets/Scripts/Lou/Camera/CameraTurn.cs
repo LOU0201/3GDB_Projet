@@ -7,14 +7,14 @@ using DG.Tweening;
 
 public class CameraTurn : MonoBehaviour
 {
-    [SerializeField] private Transform sideCameraTransform; // Side camera attached to this script
-    [SerializeField] private Transform playerTransform; // Player to rotate around
-    [SerializeField] private GameObject mainCamera; // Main camera to activate after rotation
-    [SerializeField] private GameObject uiElement; // UI element to activate after rotation
+    [SerializeField] private Transform sideCameraTransform; 
+    [SerializeField] private Transform playerTransform; 
+    [SerializeField] private GameObject mainCamera; 
+    [SerializeField] private GameObject uiElement; 
     public float rotationSpeed = 50f; // Speed of the camera rotation
 
     private bool isRotating = false;
-    private float targetYPosition = 19.32f; // Target Y position for the side camera
+    public float targetYPosition = 19.32f; // Target Y position for the side camera
 
     void Start()
     {
