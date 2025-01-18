@@ -39,32 +39,44 @@ public class Grille_3d : MonoBehaviour
         }
         return null;
     }
-    public Boolean Estprit(Vector3 vec)// Si est libre, et vérifie si est fin pour pouvoir faire le Rapatriment  rend true si est libre
+    public Boolean Estprit(Vector3 vec)// Si est libre,   rend true si est libre
     {
+        bool var=false;
         foreach (Transform t in this.transform)
         {
             if (t.transform.position == vec)
             {
+                if (!t.GetComponent<Boite>().libre)
+                {
+                    return false;
+                }
                 if (t.GetComponent<Boite>().libre)
                 {
-                    return true;
+                    var =true;
                 }
             }
         }
+        if (var) { return true; }
         return false;
     }
     public Boolean Estprit_basique(Vector3 vec)//Même chose
     {
+        bool var = false;
         foreach (Transform t in this.transform)
         {
             if (t.transform.position == vec)
             {
+                if (!t.GetComponent<Boite>().libre)
+                {
+                    return false;
+                }
                 if (t.GetComponent<Boite>().libre)
                 {
-                    return true;
+                    var = true;
                 }
             }
         }
+        if (var) { return true; }
         return false;
     }
     public Boolean EstStop(Vector3 vec)
