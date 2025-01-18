@@ -125,7 +125,14 @@ public class Joueur : MonoBehaviour
         {
             if (compte_carré >= variable_compte_carré )
             {
-                fonction = 1;
+                if (trou == false)
+                {
+                    fonction = 1;
+                }
+                else
+                {
+                    fonction= Random.Range(1, 3);
+                }
                 if (fonction == 1)
                 {
                     Update_grille3d.GetComponent<Grille_3d>().Faire_carrer(transform.position);
@@ -137,7 +144,7 @@ public class Joueur : MonoBehaviour
                 {
                     if (trou)
                     {
-                        Update_grille3d.GetComponent<Grille_3d_V>().Faire_Trou(transform.position);
+                        Update_grille3d.GetComponent<Grille_3d>().Faire_Trou(transform.position);
                         compte_carré = 0;
                         //print("trou");
                     }

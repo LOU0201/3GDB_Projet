@@ -19,26 +19,26 @@ public class Scènes : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            SceneManager.LoadScene(scene1);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            SceneManager.LoadScene(scene2);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            SceneManager.LoadScene(scene3);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            SceneManager.LoadScene(scene4);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha5))
-        {
-            SceneManager.LoadScene(scene5);
-        }
+        //if (Input.GetKeyDown(KeyCode.Alpha1))
+        //{
+        //    SceneManager.LoadScene(scene1);
+        //}
+        //if (Input.GetKeyDown(KeyCode.Alpha2))
+        //{
+        //    SceneManager.LoadScene(scene2);
+        //}
+        //if (Input.GetKeyDown(KeyCode.Alpha3))
+        //{
+        //    SceneManager.LoadScene(scene3);
+        //}
+        //if (Input.GetKeyDown(KeyCode.Alpha4))
+        //{
+        //    SceneManager.LoadScene(scene4);
+        //}
+        //if (Input.GetKeyDown(KeyCode.Alpha5))
+        //{
+        //    SceneManager.LoadScene(scene5);
+        //}
     }
     public void Montée()
     {

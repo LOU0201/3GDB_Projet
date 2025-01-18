@@ -11,7 +11,6 @@ public class Caméra : MonoBehaviour
     public float rotateSpeed = 5f;    // Speed of rotation interpolation
     private Vector3 targetPosition;   // Target position for smooth movement
     private Quaternion targetRotation; // Target rotation for smooth rotation
-    public Transform target;
     private float fixedRotationX;    // Fixed X rotation
 
     void Start()
