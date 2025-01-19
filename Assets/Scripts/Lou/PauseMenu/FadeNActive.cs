@@ -11,17 +11,32 @@ public class FadeNActive : MonoBehaviour
     [SerializeField] private float fadeDuration = 1f; // Fade duration
     [SerializeField] private MonoBehaviour targetScript; // Script to enable after fading
     [SerializeField] private float delayBeforeActivate = 1f; // Delay before activating the script
+    [SerializeField] private Camera sideCamera; // Reference to the side camera
+    [SerializeField] private Camera mainCamera; // Reference to the main camera
+    [SerializeField] private GameObject PauseMenu; // UI element to activate
+    [SerializeField] private GameObject Intro; // Parent GameObject to deactivate
+
+    private Coroutine activationCoroutine; // Reference to the coroutine
 
     private void Start()
     {
+        // Start the fade process if the text is assigned
         if (fadeText != null)
         {
-            // Fade out the text
             fadeText.DOFade(0f, fadeDuration).SetEase(Ease.Linear);
         }
 
         // Start the delayed activation process
-        StartCoroutine(ActivateScriptAfterFade());
+        activationCoroutine = StartCoroutine(ActivateScriptAfterFade());
+    }
+
+    private void Update()
+    {
+        // Check for left mouse click
+        if (Input.GetMouseButtonDown(0))
+        {
+            SkipProcess();
+        }
     }
 
     private IEnumerator ActivateScriptAfterFade()
@@ -34,9 +49,32 @@ public class FadeNActive : MonoBehaviour
         {
             targetScript.enabled = true;
         }
+    }
 
-        // Optional: Self-destruction after activating the script
-        //Destroy(this);
+    private void SkipProcess()
+    {
+        // Stop the ongoing activation coroutine
+        if (activationCoroutine != null)
+        {
+            StopCoroutine(activationCoroutine);
+        }
+
+        // Immediately reset fade (if ongoing) and make text fully visible
+        if (fadeText != null)
+        {
+            fadeText.DOKill(); // Stops any ongoing DOTween process
+            fadeText.alpha = 1f; // Reset text visibility
+        }
+
+        sideCamera.gameObject.SetActive(false);
+
+        mainCamera.gameObject.SetActive(true);
+
+        // Activate pause menu     
+            PauseMenu.SetActive(true);       
+        // Deactivate intro     
+            Intro.SetActive(false);
+        
     }
 }
 
