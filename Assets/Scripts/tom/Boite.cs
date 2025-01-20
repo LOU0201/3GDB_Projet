@@ -10,6 +10,7 @@ public class Boite : MonoBehaviour
     public bool début = false;
     public bool temporaire = false;
     public bool Stop = false;
+    public bool phantomeRouge=false;
     public int valeur;
     public Transform joueur;
     public Material opaque;

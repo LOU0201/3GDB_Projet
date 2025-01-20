@@ -166,17 +166,41 @@ public class Joueur : MonoBehaviour
 
             b.transform.GetChild(0).gameObject.SetActive(true);
             b.transform.GetChild(1).gameObject.SetActive(false);
+            b.phantome = false; 
         }
     }
+    public void surveillePhantomeRouge (Boite b)
+    {
+        if (!b)
+        {
+            print("Erreur");
+        }
+        else
+        {
+            print("surveille");
+            if (b.phantomeRouge)
+            {
+                print("surveilletest");
+
+                b.transform.GetChild(4).gameObject.SetActive(false);
+                b.phantomeRouge = false;
+            }
+        }
+    }
+
     public void TP()
     {
         transform.position = pos;
     }
     void MovePlayer(Vector3 targetPosition)
     {
+
         if (Update_grille3d.GetComponent<Grille_3d>().Estprit(vec))
         {
+            Update_grille3d.GetComponent<Grille_3d>().refreche();
+
             surveillePhantome(Update_grille3d.GetComponent<Grille_3d>().trouve_boit(transform.position));
+            print(transform.position + new Vector3(0, -1, 0));
             transform.position = targetPosition;
             if (Liste & Update_grille3d.GetComponent<Grille_3d>().est_temporaire(vec))
             {
@@ -189,9 +213,10 @@ public class Joueur : MonoBehaviour
         }
         else // Si le block n'est pas libre on fait ascension
         {
+            Update_grille3d.GetComponent<Grille_3d>().refreche();
+
             ascention(targetPosition);
         }
-
         Update_plus();
     }
 }

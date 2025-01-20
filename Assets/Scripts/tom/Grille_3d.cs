@@ -11,9 +11,35 @@ public class Grille_3d : MonoBehaviour
     public bool Non_Blockeur = false;
     public Destructeur des;
     public ResetTom ResetTom;
+    public GameObject prefabCubeRouge;
+
+    private void Start()
+    {
+        foreach (Transform t in this.transform)
+        {
+            if (t.GetComponent<Boite>())
+            {
+                Instantiate(prefabCubeRouge).transform.SetParent(t.transform, false);
+            }
+        }
+    }
     void Update()
     {
 
+    }
+    public void refreche()
+    {
+        print("refreche_fais");
+        foreach (Transform t in this.transform)
+        {
+
+            if (t.GetComponent<Boite>().phantomeRouge)
+            {
+                t.GetComponent<Boite>().phantomeRouge=false;
+                t.transform.GetChild(4).gameObject.SetActive(false);//i est donc plein
+
+            }
+        }
     }
     public void isFin(Vector3 vec)
     {
@@ -141,6 +167,7 @@ public class Grille_3d : MonoBehaviour
     }
     public void Faire_Trou(Vector3 vec)
     {
+        print("FaireTroue");
         FMODUnity.RuntimeManager.PlayOneShot("event:/V1/Gameplay/blockbreak");
         des.casse_bloc = true;
         foreach (Transform t in transform)
@@ -156,7 +183,8 @@ public class Grille_3d : MonoBehaviour
                 }
                 //Ici, on s'aintéresse au cube que l'on veux détruire
                 //donc on éfface le cube
-
+                t.GetComponent<Boite>().phantomeRouge = true;
+                t.transform.GetChild(4).gameObject.SetActive(true);
                 t.transform.GetChild(0).gameObject.SetActive(false);
                 t.transform.GetChild(1).gameObject.SetActive(false);
                 //ici, on s'aintéresse à la boite du dessous
