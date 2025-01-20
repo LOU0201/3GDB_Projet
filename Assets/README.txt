@@ -7,7 +7,7 @@ Joueur : Joueur
 Is Active : False
 Update_grille 3d : grille3d
 
-C pour le constructeur
+C pour le constructeur(pour lancer le constructeur)
 E pour l'entrer (donc la fin du niveaux)
 F pour la sortie(donc le début du niveaux)
 T pour un temporaire
