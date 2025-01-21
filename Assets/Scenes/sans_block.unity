@@ -285,6 +285,7 @@ MonoBehaviour:
   Non_Blockeur: 0
   des: {fileID: 1077107641}
   ResetTom: {fileID: 0}
+  prefabCubeRouge: {fileID: 0}
 --- !u!1001 &428356720
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -414,6 +415,12 @@ Camera:
     type: 3}
   m_PrefabInstance: {fileID: 1904824960}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1049990705 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7260695335499758499, guid: 2e1d1a04aa852c8449d0cbce4e496c1a,
+    type: 3}
+  m_PrefabInstance: {fileID: 87200961}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1077107640
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -477,6 +484,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8614906234617093732, guid: 6db0ddc2514034047b2451df01c31190,
+        type: 3}
+      propertyPath: joueur
+      value: 
+      objectReference: {fileID: 1049990705}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -612,6 +624,18 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!114 &1355535588 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8913781764688980727, guid: 0b1a468956676de408daa8dc0dd34c00,
+    type: 3}
+  m_PrefabInstance: {fileID: 428356720}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1406171985
 GameObject:
   m_ObjectHideFlags: 0
@@ -643,7 +667,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabBoite: {fileID: 4021901750627738393, guid: c8b18993afa00a840bd0627d4ebf3a15,
     type: 3}
-  prefabEntrer: {fileID: 0}
+  prefabEntrer: {fileID: 884501465455927028, guid: 6162babdbb806054c8419e0ba7972b68,
+    type: 3}
   Joueur: {fileID: 204350628122206957, guid: 2e1d1a04aa852c8449d0cbce4e496c1a, type: 3}
   isActive: 1
   Update_grille3d: {fileID: 147037772}
@@ -692,14 +717,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bc6950176e3c044383ead9bad6d5f32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  liste: []
+  liste:
+  - rien
+  - rien
   currentIndex: 0
   G3D: {fileID: 147037774}
   joueur: {fileID: 0}
   upcomingSpawnIcons:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1355535588}
+  - {fileID: 1355535588}
+  - {fileID: 1355535588}
   rienSprite: {fileID: 21300000, guid: bf9c82489d43e004ea2b82afc0993be4, type: 3}
   trouSprite: {fileID: 21300000, guid: b7a801a841999814b9f5a838ee43828b, type: 3}
   cubeSprite: {fileID: 21300000, guid: 9add30ee206ad9b4b9182ba6636bf4ae, type: 3}
@@ -842,6 +869,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -2.11
       objectReference: {fileID: 0}
+    - target: {fileID: 3049562739659268551, guid: 03807a1437532d04983e6ee1d79f4cc0,
+        type: 3}
+      propertyPath: playerTransform
+      value: 
+      objectReference: {fileID: 1049990705}
     - target: {fileID: 3805869328748446289, guid: 03807a1437532d04983e6ee1d79f4cc0,
         type: 3}
       propertyPath: angle
@@ -870,7 +902,7 @@ PrefabInstance:
     - target: {fileID: 5332557177190436379, guid: 03807a1437532d04983e6ee1d79f4cc0,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5901720109652056898, guid: 03807a1437532d04983e6ee1d79f4cc0,
         type: 3}
