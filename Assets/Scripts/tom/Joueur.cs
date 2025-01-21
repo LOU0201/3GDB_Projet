@@ -217,6 +217,5 @@ public class Joueur : MonoBehaviour
         }
         Update_plus();
         print("MovePlayer_fais");
-
     }
 }
