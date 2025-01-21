@@ -6,6 +6,8 @@ public class sol : MonoBehaviour
 {
     public Destructeur des;
     public Transform casse;
+
+    public bool enableHoles = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,8 +21,13 @@ public class sol : MonoBehaviour
         Vector3 CC = casse.position;
         if (CC == coordonnees && des.casse_bloc == true)
         {
-            Destroy(this.gameObject);
-            this.gameObject.SetActive(false);
+            if (enableHoles)
+            {
+                //Destroy(this.gameObject);
+                this.gameObject.SetActive(false);
+            }
+            
+            
         }
     }
 

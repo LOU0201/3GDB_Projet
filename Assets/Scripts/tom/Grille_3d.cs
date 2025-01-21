@@ -11,6 +11,8 @@ public class Grille_3d : MonoBehaviour
     public bool Non_Blockeur = false;
     public Destructeur des;
     public ResetTom ResetTom;
+    
+    public bool EnableBoites = true;
     void Update()
     {
 
@@ -26,7 +28,7 @@ public class Grille_3d : MonoBehaviour
         }
         return null;
     }
-    public Boolean Estprit(Vector3 vec)// Si est libre, et vérifie si est fin pour pouvoir faire le Rapatriment  rend true si est libre
+    public Boolean Estprit(Vector3 vec)// Si est libre, et vï¿½rifie si est fin pour pouvoir faire le Rapatriment  rend true si est libre
     {
         foreach (Transform t in this.transform)
         {
@@ -96,25 +98,30 @@ public class Grille_3d : MonoBehaviour
     {
         foreach (Transform child in this.transform)//Je prend la liste des emphant de Grille_3d
         {
-            if (child.transform.position == vec && !child.transform.GetComponent<Boite>().fin)
+            if (EnableBoites)
             {
-                Boite b = child.GetComponent<Boite>();//Des boit donc
-                b.libre = false;//Le cube est un obstacle
-                b.transform.GetChild(1).gameObject.SetActive(true);//i est donc plein
-                if (!Non_Blockeur)
+                if (child.transform.position == vec && !child.transform.GetComponent<Boite>().fin)
                 {
-                    b.transform.GetChild(0).transform.GetComponent<Renderer>().material.color = Color.yellow;
-                    b.GetComponent<Boite>().Stop = true;
-                }
-                if (!Estprit_basique(vec + new Vector3(0, 1, 0)))//Si il y a un Block en haut, on passe, si non on fait ce-ci
-                {
-                    GameObject boite = Instantiate(prefabBoite, vec + new Vector3(0, 1, 0), Quaternion.identity);
-                    Boite scriptboite = boite.GetComponent<Boite>();
-                    scriptboite.transform.SetParent(this.transform);
-                    scriptboite.Initialisation(true, false, false, false, false);//une boit libre donc
-                    FMODUnity.RuntimeManager.PlayOneShot("event:/V1/Gameplay/blockplace");
+                    Boite b = child.GetComponent<Boite>();//Des boit donc
+                    b.libre = false;//Le cube est un obstacle
+                    b.transform.GetChild(1).gameObject.SetActive(true);//i est donc plein
+                    if (!Non_Blockeur)
+                    {
+                        b.transform.GetChild(0).transform.GetComponent<Renderer>().material.color = Color.yellow;
+                        b.GetComponent<Boite>().Stop = true;
+                    }
+                    if (!Estprit_basique(vec + new Vector3(0, 1, 0)))//Si il y a un Block en haut, on passe, si non on fait ce-ci
+                    {
+                        GameObject boite = Instantiate(prefabBoite, vec + new Vector3(0, 1, 0), Quaternion.identity);
+                        Boite scriptboite = boite.GetComponent<Boite>();
+                        scriptboite.transform.SetParent(this.transform);
+                        scriptboite.Initialisation(true, false, false, false, false);//une boit libre donc
+                        FMODUnity.RuntimeManager.PlayOneShot("event:/V1/Gameplay/blockplace");
+                    
+                    }
                 }
             }
+            
         }
     }
     public void Faire_Trou(Vector3 vec)
@@ -123,10 +130,10 @@ public class Grille_3d : MonoBehaviour
         des.casse_bloc = true;
         foreach (Transform t in transform)
         {
-            if (t.transform.position == vec + new Vector3(0, -1, 0))//On s'aintéresse ici, au bloc que l'on veux détruir c'est à dire celui juste endessous du joueur 
+            if (t.transform.position == vec + new Vector3(0, -1, 0))//On s'aintï¿½resse ici, au bloc que l'on veux dï¿½truir c'est ï¿½ dire celui juste endessous du joueur 
             {
                 vec = new Vector3(0, -1, 0);//On baisse donc d'un crant
-                //ON s'aintéressse en premier lieu à la boite du dessus'
+                //ON s'aintï¿½ressse en premier lieu ï¿½ la boite du dessus'
                 if (trouve_boit(vec + new Vector3(0, 1, 0)))//Si trouveBoite rend quelque chose 
                 {//rend sa variable libre fausse, car il y n'y a plus de blocs en dessous'
                     Boite b = trouve_boit(vec + new Vector3(0, 1, 0));
@@ -135,17 +142,17 @@ public class Grille_3d : MonoBehaviour
                 t.transform.GetChild(0).gameObject.SetActive(false);
                 t.transform.GetChild(1).gameObject.SetActive(false);
                 //joueur.transform.position = new Vector3(joueur.transform.position.x, joueur.transform.position.y-1f, joueur.transform.position.z);
-                //ici, on s'aintéresse à la boite du dessous
+                //ici, on s'aintï¿½resse ï¿½ la boite du dessous
                 if (trouve_boit(t.transform.position + new Vector3(0, -1, 0)))//Si trouveBoite rend quelque chose
                 {
                     if (!trouve_boit(t.transform.position + new Vector3(0, -1, 0)).libre)// et si ce quelque chose est une boite avec sa variable libre faus, alors fait sa
                     {
-                        t.GetComponent<Boite>().Initialisation(true, false, false, false, false);//rend sa variable libre vrai (à la boite en question  (du milieu)), car il y a un blocs compacte en dessous
+                        t.GetComponent<Boite>().Initialisation(true, false, false, false, false);//rend sa variable libre vrai (ï¿½ la boite en question  (du milieu)), car il y a un blocs compacte en dessous
                         //joueur.GetComponent<Joueur>().ascention(joueur.transform.position);
                     }
                     else
                     {
-                        t.GetComponent<Boite>().Initialisation(false, false, false, false, false);//rend sa variable libre fausse (à la boite en question  (du milieu)), car il n'y pas de blocs en dessous'
+                        t.GetComponent<Boite>().Initialisation(false, false, false, false, false);//rend sa variable libre fausse (ï¿½ la boite en question  (du milieu)), car il n'y pas de blocs en dessous'
                     }
                 }
             }

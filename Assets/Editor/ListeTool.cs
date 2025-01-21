@@ -11,9 +11,8 @@ namespace Editor
         
         private int targetInstanceID;
         
-        bool ListeToolMode = false;
-        bool EnableNormalBlocs = true;
-        bool EnableBlockBlocs = false;
+        bool EnableBlocks = true;
+        bool ToggleBlockType = false;
         bool EnableHoles = true;
 
 
@@ -58,46 +57,106 @@ namespace Editor
         private void OnGUI()
         {
             
-            EditorGUILayout.LabelField("Toggles");
-            ListeToolMode = EditorGUILayout.Toggle("Enable liste tool mode", ListeToolMode);
-            EnableNormalBlocs = EditorGUILayout.Toggle("Enable normal blocs", EnableNormalBlocs);
-            //ScriptListe.Non_Blockeur = EditorGUILayout.Toggle("Enable bloqueur blocs", ScriptListe.Non_Blockeur);
-            EnableHoles = EditorGUILayout.Toggle("Enable trous", EnableHoles);
+            GUILayout.Label("Toggles", EditorStyles.boldLabel);
             
-            ScriptListe = (Grille_3d)EditorGUILayout.ObjectField("Target Script", ScriptListe, typeof(Grille_3d), true);
+            EnableBlocks = EditorGUILayout.Toggle("Enable Blocks", EnableBlocks);
+            
+            EnableHoles = EditorGUILayout.Toggle("Enable Holes", EnableHoles);
+            
+            ToggleBlockType = EditorGUILayout.Toggle("Toggle Block Type", ToggleBlockType);
+                        if (!ToggleBlockType)
+                        {
+                            EditorGUILayout.LabelField("Active blocks : Blocking blocks");
+                        }
+                        else
+                        {
+                            EditorGUILayout.LabelField("Active blocks : Normal blocks");
+                        }
+                        
+            EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
+            
+            GUILayout.Label("Cleanup", EditorStyles.boldLabel);
+            
+            #region BlockingToggleOLD
+            // ScriptListe = (Grille_3d)EditorGUILayout.ObjectField("Target Script", ScriptListe, typeof(Grille_3d), true);
+            //
+            // if (ScriptListe != null)
+            // {
+            //     targetInstanceID = ScriptListe.GetInstanceID();
+            //     // Display a toggle to modify the bool
+            //     EnableBlockBlocs = EditorGUILayout.Toggle("Enable bloqueur blocs", ScriptListe.Non_Blockeur);
+            //     
+            //     if (EnableBlockBlocs != ScriptListe.Non_Blockeur)
+            //     {
+            //         Undo.RecordObject(ScriptListe, "Modify My Bool"); // Add to Undo
+            //         ScriptListe.Non_Blockeur = EnableBlockBlocs;               // Update the bool
+            //         EditorUtility.SetDirty(ScriptListe);             // Mark as dirty for saving
+            //     }
+            // }
+            #endregion
 
-            if (ScriptListe != null)
+            #region BlockingToggle
+            GameObject grille = GameObject.FindGameObjectWithTag("grille");
+
+            if (grille != null)
             {
-                targetInstanceID = ScriptListe.GetInstanceID();
-                // Display a toggle to modify the bool
-                EnableBlockBlocs = EditorGUILayout.Toggle("Enable bloqueur blocs", ScriptListe.Non_Blockeur);
-                
-                if (EnableBlockBlocs != ScriptListe.Non_Blockeur)
+                Grille_3d scriptGrille = grille.GetComponent<Grille_3d>();
+                if (scriptGrille != null)
                 {
-                    Undo.RecordObject(ScriptListe, "Modify My Bool"); // Add to Undo
-                    ScriptListe.Non_Blockeur = EnableBlockBlocs;               // Update the bool
-                    EditorUtility.SetDirty(ScriptListe);             // Mark as dirty for saving
+                    scriptGrille.Non_Blockeur = ToggleBlockType;
                 }
             }
+            #endregion
+            
+            #region ToggleHoles
+            
+            GameObject baseObject = GameObject.FindGameObjectWithTag("base");
 
-            if (GUILayout.Button("Clear all blocs & holes"))
+            if (baseObject != null)
             {
-                GameObject[] boxes = GameObject.FindGameObjectsWithTag("boite");
-
-                foreach (GameObject box in boxes)
+                // Iterate through all children of the "base" object
+                foreach (Transform child in baseObject.transform)
                 {
-                    // Get the Renderer component
-                    Renderer renderer = box.GetComponent<Renderer>();
-
-                    // Check if the Renderer exists and its material color is yellow
-                    if (renderer != null && renderer.material.color == Color.yellow)
+                    // Check if the child has the desired script
+                    sol childScript = child.GetComponent<sol>();
+                    if (childScript != null)
                     {
-                        Destroy(box); // Destroy the GameObject
+                        // Set the bool in the child's script based on this script's toggleValue
+                        childScript.enableHoles = EnableHoles;
                     }
                 }
             }
+            else
+            {
+                Debug.LogWarning("No object tagged 'base' found in the scene.");
+            }
+            
+            #endregion
 
-            if (GUILayout.Button("Clear normal blocs"))
+            #region EnableBlocks
+
+            GameObject grilleblocks = GameObject.FindGameObjectWithTag("grille");
+
+            if (grilleblocks != null)
+            {
+                Grille_3d scriptGrille = grilleblocks.GetComponent<Grille_3d>();
+                if (scriptGrille != null)
+                {
+                    scriptGrille.EnableBoites = EnableBlocks;
+                }
+            }
+
+            #endregion
+
+            #region ClearBlocksHolesButton
+            if (GUILayout.Button("Clear Everything"))
+            {
+               
+            }
+            #endregion
+
+            #region ClearNormalBlocksButton
+            if (GUILayout.Button("Clear Normal Blocks"))
             {
                 GameObject[] taggedObjects = GameObject.FindGameObjectsWithTag("boite");
 
@@ -109,7 +168,7 @@ namespace Editor
                     if (whiteChild != null)
                     {
                         // Modify the script attached to the parent
-                        ModifyScript(obj);
+                        EditBlockBools(obj);
 
                         // Set the white child to inactive
                         whiteChild.gameObject.SetActive(false);
@@ -137,8 +196,10 @@ namespace Editor
 
                 return null;
             }
+            #endregion
 
-            if (GUILayout.Button("Clear blocking blocs"))
+            #region ClearBlockingBlocksButton
+            if (GUILayout.Button("Clear Blocking Blocks"))
             {
                 GameObject[] taggedObjects = GameObject.FindGameObjectsWithTag("boite");
 
@@ -150,7 +211,7 @@ namespace Editor
                     if (yellowChild != null)
                     {
                         // Modify the script attached to the parent
-                        ModifyScript(obj);
+                        EditBlockBools(obj);
 
                         // Set the yellow child to inactive
                         yellowChild.gameObject.SetActive(false);
@@ -179,18 +240,36 @@ namespace Editor
                 return null;
             
             }
+            #endregion
 
-            if (GUILayout.Button("Clear holes blocs"))
+            #region ClearHolesButton
+            if (GUILayout.Button("Clear Holes"))
             {
-                
-            }
+                GameObject ground = GameObject.FindGameObjectWithTag("base");
 
+                if (ground != null)
+                {
+                    // Activate all children of the "base" object
+                    foreach (Transform child in ground.transform)
+                    {
+                        child.gameObject.SetActive(true);
+                    }
+                }
+                else
+                {
+                    Debug.LogWarning("No object tagged 'base' found in the scene.");
+                }
+            }
+            #endregion
+
+            #region RestartLevelButton
             if (GUILayout.Button("Restart level"))
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
+            #endregion
             
-            void ModifyScript(GameObject obj)
+            void EditBlockBools(GameObject obj)
             {
                 // Get the custom script attached to the object
                 var scriptBoite = obj.GetComponent<Boite>();
