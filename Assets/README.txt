@@ -27,5 +27,5 @@ Joueur : Joueur
 
 Upcoming Spawn Icons : ????????
 
-pour le reste contentez-vous de copier coller dans la scène New Scene 2
+pour le reste contentez-vous de copier coller dans la scène sans_block
 et de vider la hiérarchie emphant de grille3d pour avoir une scène vierge
