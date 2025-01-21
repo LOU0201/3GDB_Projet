@@ -396,7 +396,6 @@ MonoBehaviour:
   - {fileID: 3324408235366485636}
   moveSpeed: 5
   rotateSpeed: 5
-  target: {fileID: 0}
 --- !u!1 &6748100513114062099
 GameObject:
   m_ObjectHideFlags: 0
@@ -409,8 +408,6 @@ GameObject:
   - component: {fileID: 3215144196114399225}
   - component: {fileID: 6101746069753175876}
   - component: {fileID: 784721366618760254}
-  - component: {fileID: 6549036058225103295}
-  - component: {fileID: 3049562739659268551}
   m_Layer: 0
   m_Name: Side Camera
   m_TagString: MainCamera
@@ -546,36 +543,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!114 &6549036058225103295
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6748100513114062099}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attenuationObject: {fileID: 0}
---- !u!114 &3049562739659268551
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6748100513114062099}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53beb9d96ba3e3545a7ab8b093f94a67, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sideCameraTransform: {fileID: 5080532232319800903}
-  playerTransform: {fileID: 0}
-  mainCamera: {fileID: 797712365325667328}
-  uiElement: {fileID: 0}
-  rotationSpeed: 100
 --- !u!1 &8277384223752487066
 GameObject:
   m_ObjectHideFlags: 0

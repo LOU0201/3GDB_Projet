@@ -225,9 +225,8 @@ MonoBehaviour:
   "d\xE9but": 0
   temporaire: 1
   Stop: 0
+  phantomeRouge: 0
   valeur: 0
-  joueur: {fileID: 0}
-  opaque: {fileID: 0}
 --- !u!64 &8389711
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1079,6 +1078,8 @@ MonoBehaviour:
   Non_Blockeur: 0
   des: {fileID: 1077107641}
   ResetTom: {fileID: 0}
+  prefabCubeRouge: {fileID: 3197968449055342827, guid: 48e418f9865c38e40bb2d7f0d7e3fb25,
+    type: 3}
 --- !u!1 &205480613
 GameObject:
   m_ObjectHideFlags: 0
@@ -1598,9 +1599,8 @@ MonoBehaviour:
   "d\xE9but": 0
   temporaire: 0
   Stop: 0
+  phantomeRouge: 0
   valeur: 0
-  joueur: {fileID: 0}
-  opaque: {fileID: 0}
 --- !u!64 &281357443
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3309,9 +3309,8 @@ MonoBehaviour:
   "d\xE9but": 0
   temporaire: 1
   Stop: 0
+  phantomeRouge: 0
   valeur: 0
-  joueur: {fileID: 0}
-  opaque: {fileID: 0}
 --- !u!64 &474284103
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3500,7 +3499,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 213007538}
-  - {fileID: 1563764323}
   m_Father: {fileID: 7681919}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &485295392
@@ -4071,9 +4069,8 @@ MonoBehaviour:
   "d\xE9but": 0
   temporaire: 0
   Stop: 0
+  phantomeRouge: 0
   valeur: 0
-  joueur: {fileID: 0}
-  opaque: {fileID: 0}
 --- !u!64 &552457082
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5277,9 +5274,8 @@ MonoBehaviour:
   "d\xE9but": 0
   temporaire: 0
   Stop: 0
+  phantomeRouge: 0
   valeur: 0
-  joueur: {fileID: 0}
-  opaque: {fileID: 0}
 --- !u!64 &687211374
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5505,9 +5501,8 @@ MonoBehaviour:
   "d\xE9but": 0
   temporaire: 1
   Stop: 0
+  phantomeRouge: 0
   valeur: 0
-  joueur: {fileID: 0}
-  opaque: {fileID: 0}
 --- !u!64 &739110790
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7516,9 +7511,8 @@ MonoBehaviour:
   "d\xE9but": 0
   temporaire: 0
   Stop: 0
+  phantomeRouge: 0
   valeur: 0
-  joueur: {fileID: 220096888}
-  opaque: {fileID: 0}
 --- !u!64 &1069665399
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8195,9 +8189,8 @@ MonoBehaviour:
   "d\xE9but": 0
   temporaire: 0
   Stop: 0
+  phantomeRouge: 0
   valeur: 0
-  joueur: {fileID: 0}
-  opaque: {fileID: 0}
 --- !u!64 &1139394156
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8409,9 +8402,8 @@ MonoBehaviour:
   "d\xE9but": 0
   temporaire: 1
   Stop: 0
+  phantomeRouge: 0
   valeur: 0
-  joueur: {fileID: 0}
-  opaque: {fileID: 0}
 --- !u!64 &1180247567
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9926,6 +9918,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5393508406687934712, guid: f246c0ac11c6e204881f46931c43282a,
+        type: 3}
+      propertyPath: Intro
+      value: 
+      objectReference: {fileID: 1733158959}
+    - target: {fileID: 5393508406687934712, guid: f246c0ac11c6e204881f46931c43282a,
+        type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 588938244}
+    - target: {fileID: 5393508406687934712, guid: f246c0ac11c6e204881f46931c43282a,
+        type: 3}
+      propertyPath: sideCamera
+      value: 
+      objectReference: {fileID: 1967089827}
+    - target: {fileID: 5393508406687934712, guid: f246c0ac11c6e204881f46931c43282a,
+        type: 3}
+      propertyPath: PauseButton
+      value: 
+      objectReference: {fileID: 1720302311}
     - target: {fileID: 7972154800602138116, guid: f246c0ac11c6e204881f46931c43282a,
         type: 3}
       propertyPath: m_text
@@ -11445,74 +11457,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1545611346}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1563764322
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1563764323}
-  - component: {fileID: 1563764325}
-  - component: {fileID: 1563764324}
-  m_Layer: 0
-  m_Name: EventSystem
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1563764323
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1563764322}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 485295391}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1563764324
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1563764322}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
---- !u!114 &1563764325
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1563764322}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
-  m_sendNavigationEvents: 1
-  m_DragThreshold: 10
 --- !u!1 &1571687632
 GameObject:
   m_ObjectHideFlags: 0
@@ -12064,9 +12008,8 @@ MonoBehaviour:
   "d\xE9but": 0
   temporaire: 0
   Stop: 0
+  phantomeRouge: 0
   valeur: 0
-  joueur: {fileID: 0}
-  opaque: {fileID: 0}
 --- !u!64 &1620893520
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -12496,7 +12439,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2140446274}
-  - {fileID: 1955379152}
   m_Father: {fileID: 7681919}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1671882008
@@ -12586,9 +12528,8 @@ MonoBehaviour:
   "d\xE9but": 0
   temporaire: 1
   Stop: 0
+  phantomeRouge: 0
   valeur: 0
-  joueur: {fileID: 0}
-  opaque: {fileID: 0}
 --- !u!64 &1674059717
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -12749,6 +12690,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 9204419411167420219, guid: 58a6c0657e5666743a13c482f151a800,
     type: 3}
   m_PrefabInstance: {fileID: 643141903}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1733158959 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3757551246815902867, guid: f246c0ac11c6e204881f46931c43282a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1336519464}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1812514832
 GameObject:
@@ -13660,9 +13607,8 @@ MonoBehaviour:
   "d\xE9but": 0
   temporaire: 0
   Stop: 0
+  phantomeRouge: 0
   valeur: 0
-  joueur: {fileID: 0}
-  opaque: {fileID: 0}
 --- !u!64 &1946906097
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -13745,74 +13691,6 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1955258894}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
-  m_sendNavigationEvents: 1
-  m_DragThreshold: 10
---- !u!1 &1955379151
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1955379152}
-  - component: {fileID: 1955379154}
-  - component: {fileID: 1955379153}
-  m_Layer: 0
-  m_Name: EventSystem
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1955379152
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1955379151}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1671882007}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1955379153
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1955379151}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
---- !u!114 &1955379154
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1955379151}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
@@ -13927,6 +13805,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1965354838}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!20 &1967089827 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 3215144196114399225, guid: 03807a1437532d04983e6ee1d79f4cc0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1904824960}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1989873010
 GameObject:
   m_ObjectHideFlags: 0
@@ -14329,9 +14213,8 @@ MonoBehaviour:
   "d\xE9but": 0
   temporaire: 0
   Stop: 0
+  phantomeRouge: 0
   valeur: 0
-  joueur: {fileID: 0}
-  opaque: {fileID: 0}
 --- !u!64 &2041775692
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -15132,9 +15015,8 @@ MonoBehaviour:
   "d\xE9but": 0
   temporaire: 0
   Stop: 0
+  phantomeRouge: 0
   valeur: 0
-  joueur: {fileID: 0}
-  opaque: {fileID: 0}
 --- !u!64 &2103928127
 MeshCollider:
   m_ObjectHideFlags: 0
