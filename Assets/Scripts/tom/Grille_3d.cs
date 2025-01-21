@@ -128,7 +128,7 @@ public class Grille_3d : MonoBehaviour
         ResetTom.Rappatriment();
         FMODUnity.RuntimeManager.PlayOneShot("event:/V1/System/leveldone");
     }
-    public bool est_temporaire(Vector3 vec)// si est un phantome
+    public bool est_temporaire(Vector3 vec)// si n'est pas un freez padh
     {
         foreach (Transform t in this.transform)
         {
@@ -139,7 +139,7 @@ public class Grille_3d : MonoBehaviour
         }
         return false;
     }
-    public void Faire_carrer(Vector3 vec)// Fais un phantome(un obstacle donc)
+    public void Faire_carrer(Vector3 vec)// Fais un phantome(un obstacle donc) Sur la position du joueur !!!!
     {
         foreach (Transform child in this.transform)//Je prend la liste des emphant de Grille_3d
         {
@@ -165,14 +165,14 @@ public class Grille_3d : MonoBehaviour
             }
         }
     }
-    public void Faire_Trou(Vector3 vec)
+    public void Faire_Trou(Vector3 vec) //Sur la position du joueur !!!!
     {
         print("FaireTroue");
         FMODUnity.RuntimeManager.PlayOneShot("event:/V1/Gameplay/blockbreak");
         des.casse_bloc = true;
         foreach (Transform t in transform)
         {
-            if (t.transform.position == vec + new Vector3(0, -1, 0))//On s'aintéresse ici, au bloc que l'on veux détruir c'est à dire celui juste endessous du joueur 
+            if (t.transform.position == vec + new Vector3(0, -1, 0) && (!trouve_boit(vec).transform.GetComponent<Boite>().fin)) //On s'aintéresse ici, au bloc que l'on veux détruir c'est à dire celui juste endessous du joueur 
             {
                 vec += new Vector3(0, -1, 0);//On baisse donc d'un crant
                 //ON s'aintéressse en premier lieu à la boite du dessus'

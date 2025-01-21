@@ -20,7 +20,8 @@ public class Joueur : MonoBehaviour
     // Start is called before the first frame update
     public void Start()
     {
-        move= FMODUnity.RuntimeManager.CreateInstance("event:/V1/Player/playermove");
+        
+        move = FMODUnity.RuntimeManager.CreateInstance("event:/V1/Player/playermove");
         RB = GetComponent<Rigidbody>();
     }
     public int GetNextAction()
@@ -194,13 +195,12 @@ public class Joueur : MonoBehaviour
     }
     void MovePlayer(Vector3 targetPosition)
     {
+        Update_grille3d.GetComponent<Grille_3d>().refreche();
 
         if (Update_grille3d.GetComponent<Grille_3d>().Estprit(vec))
         {
-            Update_grille3d.GetComponent<Grille_3d>().refreche();
 
             surveillePhantome(Update_grille3d.GetComponent<Grille_3d>().trouve_boit(transform.position));
-            print(transform.position + new Vector3(0, -1, 0));
             transform.position = targetPosition;
             if (Liste & Update_grille3d.GetComponent<Grille_3d>().est_temporaire(vec))
             {
@@ -213,10 +213,10 @@ public class Joueur : MonoBehaviour
         }
         else // Si le block n'est pas libre on fait ascension
         {
-            Update_grille3d.GetComponent<Grille_3d>().refreche();
-
             ascention(targetPosition);
         }
         Update_plus();
+        print("MovePlayer_fais");
+
     }
 }
