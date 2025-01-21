@@ -13,7 +13,7 @@ public class FadeNActive : MonoBehaviour
     [SerializeField] private float delayBeforeActivate = 1f; // Delay before activating the script
     [SerializeField] private Camera sideCamera; // Reference to the side camera
     [SerializeField] private Camera mainCamera; // Reference to the main camera
-    [SerializeField] private GameObject PauseMenu; // UI element to activate
+    [SerializeField] private GameObject PauseButton; // UI element to activate
     [SerializeField] private GameObject Intro; // Parent GameObject to deactivate
 
     private Coroutine activationCoroutine; // Reference to the coroutine
@@ -71,7 +71,7 @@ public class FadeNActive : MonoBehaviour
         mainCamera.gameObject.SetActive(true);
 
         // Activate pause menu     
-            PauseMenu.SetActive(true);       
+            PauseButton.SetActive(true);       
         // Deactivate intro     
             Intro.SetActive(false);
         
