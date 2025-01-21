@@ -206,11 +206,11 @@ public class Joueur : MonoBehaviour
             Update_grille3d.GetComponent<Grille_3d>().refreche();
             surveillePhantome(Update_grille3d.GetComponent<Grille_3d>().trouve_boit(transform.position));
             transform.position = targetPosition;
-            if (Liste & Update_grille3d.GetComponent<Grille_3d>().est_temporaire(vec))
+            if (Liste & Update_grille3d.GetComponent<Grille_3d>().est_temporaire(targetPosition))
             {
                 Liste.GetComponent<ListeTom>().UpdateTom();//Déplacement donc on lence la liste si néscéssaire
             }
-            if (Update_grille3d.GetComponent<Grille_3d>().est_temporaire(vec))
+            if (Update_grille3d.GetComponent<Grille_3d>().est_temporaire(targetPosition))
             {
                 compte_carré++;
             }
