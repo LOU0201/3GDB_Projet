@@ -15,6 +15,14 @@ SPACE pour un cube(normale)
 B pour un bloquant(cube jaune sur lequel on ne peux pas grimper)
 G pour un cube de destruction
 
+Grille_3d:
+Joueur: Joueur 1
+Prefab Boite: Boite
+Non_Blockeur : True
+Des: Destructeur
+Reset Tom: ResetTom
+Prefab Cube Rouge: futur-trou
+
 CAMERA:
 	Copier/coller la caméra dans New Scenen 2
 

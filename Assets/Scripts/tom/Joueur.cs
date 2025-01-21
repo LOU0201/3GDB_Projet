@@ -86,6 +86,8 @@ public class Joueur : MonoBehaviour
             Vector3 vec_bas =vec + new Vector3(0,-1,0);
             if(Update_grille3d.GetComponent<Grille_3d>().Estprit(vec_bas))
             {
+                Update_grille3d.GetComponent<Grille_3d>().refreche();
+
                 surveillePhantome(Update_grille3d.GetComponent<Grille_3d>().trouve_boit(transform.position));
                 this.transform.position =vec_bas;
                 if (Liste & Update_grille3d.GetComponent<Grille_3d>().est_temporaire(vec))
@@ -100,7 +102,9 @@ public class Joueur : MonoBehaviour
             }
             else
             {
-                Vector3 vec_haut=vec + new Vector3(0,1,0);
+                Update_grille3d.GetComponent<Grille_3d>().refreche();
+
+                Vector3 vec_haut =vec + new Vector3(0,1,0);
                 if(Update_grille3d.GetComponent<Grille_3d>().Estprit(vec_haut))
                 {
                     surveillePhantome(Update_grille3d.GetComponent<Grille_3d>().trouve_boit(transform.position));
@@ -195,11 +199,11 @@ public class Joueur : MonoBehaviour
     }
     void MovePlayer(Vector3 targetPosition)
     {
-        Update_grille3d.GetComponent<Grille_3d>().refreche();
+        
 
-        if (Update_grille3d.GetComponent<Grille_3d>().Estprit(vec))
+        if (Update_grille3d.GetComponent<Grille_3d>().Estprit(targetPosition))
         {
-
+            Update_grille3d.GetComponent<Grille_3d>().refreche();
             surveillePhantome(Update_grille3d.GetComponent<Grille_3d>().trouve_boit(transform.position));
             transform.position = targetPosition;
             if (Liste & Update_grille3d.GetComponent<Grille_3d>().est_temporaire(vec))

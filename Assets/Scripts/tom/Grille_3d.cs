@@ -47,9 +47,9 @@ public class Grille_3d : MonoBehaviour
         {
             if (t.transform.position == vec)
             {
+                print("rapatriment");
                 if (t.GetComponent<Boite>().fin)
                 {
-                    print("rapatriment");
                     Rapatriment();
                 }
             }
@@ -126,8 +126,8 @@ public class Grille_3d : MonoBehaviour
     }
     public void Rapatriment()// Rapatriment du joueur
     {
-        ResetTom.Rappatriment();
         FMODUnity.RuntimeManager.PlayOneShot("event:/V1/System/leveldone");
+        ResetTom.Rappatriment();
     }
     public bool est_temporaire(Vector3 vec)// si n'est pas un freez padh
     {
