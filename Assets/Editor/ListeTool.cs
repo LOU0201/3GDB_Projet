@@ -8,25 +8,15 @@ namespace Editor
     public class ListeTool : EditorWindow
     {
         Grille_3d ScriptListe;
+        Joueur ScriptJoueur;
         
         private int targetInstanceID;
         
         bool EnableBlocks = true;
         bool ToggleBlockType = false;
         bool EnableHoles = true;
-
-
-        private void Update()
-        {
-            
-            
-            
-            // if (EnableBlockBlocs)
-            // {
-            //     ScriptListe.Non_Blockeur = true;
-            // }
-        }
         
+        Vector3 playerPos;
 
         [MenuItem("Outils/ListeTool")]
         private static void ShowWindow()
@@ -34,6 +24,11 @@ namespace Editor
             var window = GetWindow<ListeTool>();
             window.titleContent = new GUIContent("ListeTool");
             window.Show();
+        }
+
+        void Start()
+        {
+            playerPos = new Vector3(8.5f, 1.5f, 7.5f);
         }
         
         private void OnEnable()
@@ -54,9 +49,12 @@ namespace Editor
             }
         }
         
+        
+        
         private void OnGUI()
         {
             
+            #region Toggles
             GUILayout.Label("Toggles", EditorStyles.boldLabel);
             
             EnableBlocks = EditorGUILayout.Toggle("Enable Blocks", EnableBlocks);
@@ -72,6 +70,8 @@ namespace Editor
                         {
                             EditorGUILayout.LabelField("Active blocks : Normal blocks");
                         }
+                        
+            #endregion
                         
             EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
             
@@ -151,7 +151,9 @@ namespace Editor
             #region ClearBlocksHolesButton
             if (GUILayout.Button("Clear Everything"))
             {
-               
+               ClearNB();
+               ClearBB();
+               ClearH();
             }
             #endregion
 
@@ -261,6 +263,27 @@ namespace Editor
                 }
             }
             #endregion
+            
+            EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
+            
+            GUILayout.Label("Misc", EditorStyles.boldLabel);
+
+            #region RespawnPlayerButton
+            if (GUILayout.Button("Respawn Player"))
+            {
+                GameObject player = GameObject.FindGameObjectWithTag("joueur");
+
+                if (player != null)
+                {
+                    //player.transform.position = playerPos;
+                    Joueur joueurScript = player.GetComponent<Joueur>();
+                    if (joueurScript != null)
+                    {
+                        player.transform.position = joueurScript.pos;
+                    }
+                }
+            }
+            #endregion
 
             #region RestartLevelButton
             if (GUILayout.Button("Restart level"))
@@ -268,6 +291,8 @@ namespace Editor
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
             #endregion
+            
+            HandleShortcuts();
             
             void EditBlockBools(GameObject obj)
             {
@@ -278,6 +303,124 @@ namespace Editor
                     scriptBoite.libre = true; // Enable one bool
                     scriptBoite.Stop = false; // Disable another bool
                 }
+            }
+            
+            #region ClearVoids
+            void ClearNB()
+            {
+                GameObject[] taggedObjects = GameObject.FindGameObjectsWithTag("boite");
+
+                foreach (GameObject obj in taggedObjects)
+                {
+                    // Check if this GameObject has a child with white material
+                    Transform whiteChild = FindWhiteMaterialChildVoid(obj.transform);
+
+                    if (whiteChild != null)
+                    {
+                        // Modify the script attached to the parent
+                        EditBlockBools(obj);
+
+                        // Set the white child to inactive
+                        whiteChild.gameObject.SetActive(false);
+                    }
+                }
+            }
+
+            Transform FindWhiteMaterialChildVoid(Transform parent)
+            {
+                // Check each child recursively
+                foreach (Transform child in parent)
+                {
+                    Renderer childRenderer = child.GetComponent<Renderer>();
+                    if (childRenderer != null && childRenderer.material.color == Color.white)
+                    {
+                        return child; // Return the child with white material
+                    }
+
+                    Transform foundInChild = FindWhiteMaterialChildVoid(child); // Recursive call
+                    if (foundInChild != null)
+                    {
+                        return foundInChild;
+                    }
+                }
+
+                return null;
+            }
+            
+
+            void ClearBB()
+            {
+                GameObject[] taggedObjects = GameObject.FindGameObjectsWithTag("boite");
+
+                foreach (GameObject obj in taggedObjects)
+                {
+                    // Check if this GameObject has a child with yellow material
+                    Transform yellowChild = FindYellowMaterialChildVoid(obj.transform);
+
+                    if (yellowChild != null)
+                    {
+                        // Modify the script attached to the parent
+                        EditBlockBools(obj);
+
+                        // Set the yellow child to inactive
+                        yellowChild.gameObject.SetActive(false);
+                    }
+                }
+            }
+
+            Transform FindYellowMaterialChildVoid(Transform parent)
+            {
+                // Check each child recursively
+                foreach (Transform child in parent)
+                {
+                    Renderer childRenderer = child.GetComponent<Renderer>();
+                    if (childRenderer != null && childRenderer.material.color == Color.yellow)
+                    {
+                        return child; // Return the child with yellow material
+                    }
+
+                    Transform foundInChild = FindYellowMaterialChildVoid(child); // Recursive call
+                    if (foundInChild != null)
+                    {
+                        return foundInChild;
+                    }
+                }
+
+                return null;
+            }
+
+            void ClearH()
+            {
+                GameObject ground = GameObject.FindGameObjectWithTag("base");
+
+                if (ground != null)
+                {
+                    // Activate all children of the "base" object
+                    foreach (Transform child in ground.transform)
+                    {
+                        child.gameObject.SetActive(true);
+                    }
+                }
+                else
+                {
+                    Debug.LogWarning("No object tagged 'base' found in the scene.");
+                }
+            }
+            #endregion
+        }
+        
+        private void HandleShortcuts()
+        {
+            // Get the current event
+            Event EventToggleBlock = Event.current;
+
+            // Check if the event is a key press and matches your desired shortcut
+            if (EventToggleBlock.type == EventType.KeyDown && EventToggleBlock.shift && EventToggleBlock.keyCode == KeyCode.T)
+            {
+                ToggleBlockType = !ToggleBlockType; // Toggle the bool
+                Debug.Log($"My Toggle is now: {ToggleBlockType}");
+                Repaint(); // Refresh the UI to show the updated toggle state
+                EventToggleBlock.Use(); // Mark the event as used
             }
         }
     }
