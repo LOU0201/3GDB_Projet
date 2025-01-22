@@ -22,6 +22,5 @@ public class ResetTom : MonoBehaviour
     public void Rappatriment()
     {
         joueur.transform.position=transform.position;
-        print("ERapatriment");
     }
 }

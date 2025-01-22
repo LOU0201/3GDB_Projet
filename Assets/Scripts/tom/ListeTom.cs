@@ -52,6 +52,10 @@ public class ListeTom : MonoBehaviour
         
     }
 
+    public void setIndex()
+    {
+        currentIndex = 0;
+    }
 
 
     // Updates the UI Images to show the items in positions 1, 2, and 3

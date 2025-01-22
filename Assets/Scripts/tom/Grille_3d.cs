@@ -12,6 +12,7 @@ public class Grille_3d : MonoBehaviour
     public Destructeur des;
     public ResetTom ResetTom;
     public GameObject prefabCubeRouge;
+    public ListeTom listeTom;
 
     private void Start()
     {
@@ -29,7 +30,6 @@ public class Grille_3d : MonoBehaviour
     }
     public void refreche()
     {
-        print("refreche_fais");
         foreach (Transform t in this.transform)
         {
 
@@ -37,7 +37,6 @@ public class Grille_3d : MonoBehaviour
             {
                 t.GetComponent<Boite>().phantomeRouge=false;
                 t.transform.GetChild(4).gameObject.SetActive(false);//i est donc plein
-
             }
         }
     }
@@ -47,7 +46,6 @@ public class Grille_3d : MonoBehaviour
         {
             if (t.transform.position == vec)
             {
-                print("rapatriment");
                 if (t.GetComponent<Boite>().fin)
                 {
                     Rapatriment();
@@ -128,6 +126,7 @@ public class Grille_3d : MonoBehaviour
     {
         FMODUnity.RuntimeManager.PlayOneShot("event:/V1/System/leveldone");
         ResetTom.Rappatriment();
+        listeTom.setIndex();
     }
     public bool est_temporaire(Vector3 vec)// si n'est pas un freez padh
     {
@@ -173,9 +172,8 @@ public class Grille_3d : MonoBehaviour
         des.casse_bloc = true;
         foreach (Transform t in transform)
         {
-            if (t.transform.position == vec + new Vector3(0, -1, 0) /*&& (!trouve_boit(vec).transform.GetComponent<Boite>().fin)*/) //On s'aintéresse ici, au bloc que l'on veux détruir c'est à dire celui juste endessous du joueur et on vérifie si le block ou l'on est est une sortie
+            if (t.transform.position == vec + new Vector3(0, -1, 0) && (!trouve_boit(vec).transform.GetComponent<Boite>().fin)) //On s'aintéresse ici, au bloc que l'on veux détruir c'est à dire celui juste endessous du joueur et on vérifie si le block ou l'on est est une sortie
             {
-                print("triic " + t.transform.position);
                 Vector3 vec2 = vec+new Vector3(0, -1, 0);//On baisse donc d'un crant
                 //ON s'aintéressse en premier lieu à la boite du dessus'
                 if (trouve_boit(vec2 + new Vector3(0, 1, 0)))//Si trouveBoite rend quelque chose 

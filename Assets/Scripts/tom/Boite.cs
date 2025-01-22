@@ -12,6 +12,7 @@ public class Boite : MonoBehaviour
     public bool Stop = false;
     public bool phantomeRouge=false;
     public int valeur;
+    public GameObject reTurne;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,7 +42,13 @@ public class Boite : MonoBehaviour
         this.début = début;
         this.temporaire = temporaire;
     }
-
+    public void OnTriggerEnter(Collider collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            collision.gameObject.transform.position = reTurne.transform.position;
+        }
+    }
     // Update is called once per frame
     void Update()
     {

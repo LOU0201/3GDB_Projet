@@ -86,37 +86,29 @@ public class Joueur : MonoBehaviour
             Vector3 vec_bas =vec + new Vector3(0,-1,0);
             if(Update_grille3d.GetComponent<Grille_3d>().Estprit(vec_bas))
             {
+                surveillePhantome(Update_grille3d.GetComponent<Grille_3d>().trouve_boit(transform.position));
                 Update_grille3d.GetComponent<Grille_3d>().refreche();
 
-                surveillePhantome(Update_grille3d.GetComponent<Grille_3d>().trouve_boit(transform.position));
                 this.transform.position =vec_bas;
                 if (Liste & Update_grille3d.GetComponent<Grille_3d>().est_temporaire(vec))
                 {
                     Liste.GetComponent<ListeTom>().UpdateTom();//Déplacement donc on lence la liste si néscéssaire
-
                 }
-                if (Update_grille3d.GetComponent<Grille_3d>().est_temporaire(vec_bas))
-                    {
-                        compte_carré++;
-                    }
             }
             else
             {
-                Update_grille3d.GetComponent<Grille_3d>().refreche();
 
                 Vector3 vec_haut =vec + new Vector3(0,1,0);
                 if(Update_grille3d.GetComponent<Grille_3d>().Estprit(vec_haut))
                 {
                     surveillePhantome(Update_grille3d.GetComponent<Grille_3d>().trouve_boit(transform.position));
+                    Update_grille3d.GetComponent<Grille_3d>().refreche();
+
                     this.transform.position =vec_haut;
                     if (Liste & Update_grille3d.GetComponent<Grille_3d>().est_temporaire(vec))
                     {
                         Liste.GetComponent<ListeTom>().UpdateTom();//Déplacement donc on lence la liste si néscéssaire
 
-                    }
-                    if (Update_grille3d.GetComponent<Grille_3d>().est_temporaire(vec_haut))
-                    {
-                        compte_carré++;
                     }
                 }
             }
@@ -164,11 +156,8 @@ public class Joueur : MonoBehaviour
     }
     public void surveillePhantome(Boite b)
     {
-        print("surveille");
         if (b.phantome)
         {
-            print("surveilletest");
-
             b.transform.GetChild(0).gameObject.SetActive(true);
             b.transform.GetChild(1).gameObject.SetActive(false);
             b.phantome = false; 
@@ -178,15 +167,12 @@ public class Joueur : MonoBehaviour
     {
         if (!b)
         {
-            print("Erreur");
+            print("ErreurPhantomeRouge");
         }
         else
         {
-            print("surveille");
             if (b.phantomeRouge)
             {
-                print("surveilletest");
-
                 b.transform.GetChild(4).gameObject.SetActive(false);
                 b.phantomeRouge = false;
             }
@@ -199,20 +185,14 @@ public class Joueur : MonoBehaviour
     }
     void MovePlayer(Vector3 targetPosition)
     {
-        
-
         if (Update_grille3d.GetComponent<Grille_3d>().Estprit(targetPosition))
         {
-            Update_grille3d.GetComponent<Grille_3d>().refreche();
             surveillePhantome(Update_grille3d.GetComponent<Grille_3d>().trouve_boit(transform.position));
+            Update_grille3d.GetComponent<Grille_3d>().refreche();
             transform.position = targetPosition;
             if (Liste & Update_grille3d.GetComponent<Grille_3d>().est_temporaire(targetPosition))
             {
                 Liste.GetComponent<ListeTom>().UpdateTom();//Déplacement donc on lence la liste si néscéssaire
-            }
-            if (Update_grille3d.GetComponent<Grille_3d>().est_temporaire(targetPosition))
-            {
-                compte_carré++;
             }
         }
         else // Si le block n'est pas libre on fait ascension
@@ -220,6 +200,5 @@ public class Joueur : MonoBehaviour
             ascention(targetPosition);
         }
         Update_plus();
-        print("MovePlayer_fais");
     }
 }
