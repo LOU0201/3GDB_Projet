@@ -126,7 +126,7 @@ public class Grille_3d : MonoBehaviour
     {
         FMODUnity.RuntimeManager.PlayOneShot("event:/V1/System/leveldone");
         ResetTom.Rappatriment();
-        listeTom.setIndex();
+        //listeTom.setIndex();
     }
     public bool est_temporaire(Vector3 vec)// si n'est pas un freez padh
     {

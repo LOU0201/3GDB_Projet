@@ -19,9 +19,17 @@ public class ResetTom : MonoBehaviour
         }
 
         }
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            print("Space");
+
+        }
+    }
     public void Rappatriment()
     {
-        joueur.transform.position= transform.position;
+        joueur.transform.position= this.transform.position;
         print("rapatrimenyyyyyyyyyyyt");
     }
 }
