@@ -3,6 +3,7 @@ using UnityEngine;
 public class CameraFOVGizmo : MonoBehaviour
 {
     public Camera targetCamera; // Caméra dont le FOV sera représenté
+    public bool affichage;
 
     void OnDrawGizmos()
     {
@@ -19,7 +20,10 @@ public class CameraFOVGizmo : MonoBehaviour
         // Ajouter la rotation X et Z de la caméra référencée à l'objet
         rotation *= Quaternion.Euler(targetCamera.transform.eulerAngles.x, 0, targetCamera.transform.eulerAngles.z);
 
-        DrawCameraFOV(targetCamera, position, rotation);
+        if (affichage == true)
+        {
+            DrawCameraFOV(targetCamera, position, rotation);
+        }
     }
 
     void DrawCameraFOV(Camera cam, Vector3 position, Quaternion rotation)
