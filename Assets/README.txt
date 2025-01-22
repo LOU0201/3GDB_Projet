@@ -33,7 +33,9 @@ Current Index : 0
 G3D : grille3d
 Joueur : Joueur
 
-Upcoming Spawn Icons : ????????
+Upcoming Spawn Icons : à ignorer, cherche dans Lou prefab folder --> "display" coller dedans pour qu'il marche normalement 
+
+POUR L'UI, UTILISER LE CROIX ROUGE!!!
 
 pour le reste contentez-vous de copier coller dans la scène sans_block
 et de vider la hiérarchie emphant de grille3d pour avoir une scène vierge
