@@ -44,7 +44,6 @@ public class Joueur : MonoBehaviour
             vec = transform.position + right;
             MovePlayer(vec);
             Update_grille3d.GetComponent<Grille_3d>().isFin(transform.position);
-
         }
         if (Input.GetKeyDown(KeyCode.LeftArrow)) 
         {

@@ -21,6 +21,7 @@ public class ResetTom : MonoBehaviour
         }
     public void Rappatriment()
     {
-        joueur.transform.position=transform.position;
+        joueur.transform.position=new Vector3(0,100,0);
+        print("rapatrimenyyyyyyyyyyyt");
     }
 }
