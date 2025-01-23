@@ -46,9 +46,16 @@ public class Boite : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            collision.gameObject.transform.position = reTurne.transform.position;
+            // Call the Rappatriment() function on the ResetTom object
+            if (reTurne != null) // Check if reTurne is assigned
+            {
+                reTurne.GetComponent<ResetTom>().Rappatriment();
+            }
+            else
+            {
+                Debug.LogError("reTurne is not assigned in Boite script.");
+            }
         }
-        print("return");
     }
     // Update is called once per frame
     void Update()

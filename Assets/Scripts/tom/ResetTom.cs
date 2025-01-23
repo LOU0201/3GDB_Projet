@@ -29,7 +29,7 @@ public class ResetTom : MonoBehaviour
     }
     public void Rappatriment()
     {
-        joueur.transform.position= this.transform.position;
+        joueur.transform.position = this.transform.position; ;
         print("rapatrimenyyyyyyyyyyyt");
     }
 }

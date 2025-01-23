@@ -21,9 +21,8 @@ public class Sortie : MonoBehaviour
             // Increment the score
             playerScore++;
             scoreText.text = "Score: " + playerScore.ToString();
-
-            // Call the Rappatriment() function on the ResetTom object
             resetTom.Rappatriment();
+            Debug.Log("Rappatriment() called from Sortie script.");
         }
     }
 }
