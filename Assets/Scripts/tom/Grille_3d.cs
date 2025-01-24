@@ -13,7 +13,7 @@ public class Grille_3d : MonoBehaviour
     public ResetTom ResetTom;
     public GameObject prefabCubeRouge;
     public ListeTom listeTom;
-
+    public float CS;
     private void Start()
     {
         foreach (Transform t in this.transform)
@@ -127,6 +127,7 @@ public class Grille_3d : MonoBehaviour
     {
         FMODUnity.RuntimeManager.PlayOneShot("event:/V1/System/leveldone");
         ResetTom.Rappatriment();
+        CS++;
         //listeTom.setIndex();
     }
     public bool est_temporaire(Vector3 vec)// si n'est pas un freez padh

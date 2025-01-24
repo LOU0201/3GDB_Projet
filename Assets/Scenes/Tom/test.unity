@@ -20542,7 +20542,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 427072177}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 460661783}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6bc6950176e3c044383ead9bad6d5f32, type: 3}
@@ -22509,13 +22509,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd5852a359dd66342bb5ed46dc417c4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Liste: {fileID: 0}
+  Liste: {fileID: 460661783}
   "compte_carr\xE9": 0
   "variable_compte_carr\xE9": 3
   Update_grille3d: {fileID: 1630015993}
   vec: {x: 0, y: 0, z: 0}
   fonction: 0
-  LP: 0
+  LP: 1
   pos: {x: 0, y: 0, z: 0}
   cameraPrincipal: {fileID: 1083120706}
   trou: 0
@@ -22953,13 +22953,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5373490846884708359, guid: c266e0d2a89e5294fb4e2be56f0d9e08,
         type: 3}
+      propertyPath: G3D
+      value: 
+      objectReference: {fileID: 1630015994}
+    - target: {fileID: 5373490846884708359, guid: c266e0d2a89e5294fb4e2be56f0d9e08,
+        type: 3}
       propertyPath: joueur
       value: 
       objectReference: {fileID: 425297231}
     - target: {fileID: 5373490846884708359, guid: c266e0d2a89e5294fb4e2be56f0d9e08,
         type: 3}
+      propertyPath: conveyorBelt
+      value: 
+      objectReference: {fileID: 1104519048}
+    - target: {fileID: 5373490846884708359, guid: c266e0d2a89e5294fb4e2be56f0d9e08,
+        type: 3}
       propertyPath: liste.Array.size
-      value: 1
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5373490846884708359, guid: c266e0d2a89e5294fb4e2be56f0d9e08,
+        type: 3}
+      propertyPath: liste.Array.data[1]
+      value: rien
+      objectReference: {fileID: 0}
+    - target: {fileID: 5373490846884708359, guid: c266e0d2a89e5294fb4e2be56f0d9e08,
+        type: 3}
+      propertyPath: liste.Array.data[2]
+      value: cube
       objectReference: {fileID: 0}
     - target: {fileID: 7559218748827188405, guid: c266e0d2a89e5294fb4e2be56f0d9e08,
         type: 3}
@@ -25087,6 +25107,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 455678550}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &460661783 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7559218748827188405, guid: c266e0d2a89e5294fb4e2be56f0d9e08,
+    type: 3}
+  m_PrefabInstance: {fileID: 427072177}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &471854430
 GameObject:
   m_ObjectHideFlags: 0
@@ -58626,6 +58652,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1096905747}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1104519048 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 647581726198578119, guid: 58a6c0657e5666743a13c482f151a800,
+    type: 3}
+  m_PrefabInstance: {fileID: 1344030046}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 261ae0f30f46a4d4facbd59712c48dee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1107529324
 GameObject:
   m_ObjectHideFlags: 0
@@ -70352,7 +70390,7 @@ PrefabInstance:
     - target: {fileID: 647581726198578119, guid: 58a6c0657e5666743a13c482f151a800,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1126906373106853238, guid: 58a6c0657e5666743a13c482f151a800,
         type: 3}
@@ -85895,7 +85933,7 @@ MonoBehaviour:
   ResetTom: {fileID: 1589697431}
   prefabCubeRouge: {fileID: 3197968449055342827, guid: 48e418f9865c38e40bb2d7f0d7e3fb25,
     type: 3}
-  listeTom: {fileID: 0}
+  listeTom: {fileID: 388696001}
 --- !u!4 &1630015995
 Transform:
   m_ObjectHideFlags: 0
@@ -87118,7 +87156,7 @@ PrefabInstance:
     - target: {fileID: 1974351859367076865, guid: 7b9d3b869b977504bb1198d4fb264630,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2889929058126463019, guid: 7b9d3b869b977504bb1198d4fb264630,
         type: 3}
