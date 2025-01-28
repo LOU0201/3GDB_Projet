@@ -3,6 +3,7 @@ using UnityEngine;
 public class CameraFOVGizmo : MonoBehaviour
 {
     public Camera targetCamera; // Caméra dont le FOV sera représenté
+    [HideInInspector]
     public bool affichage;
 
     void OnDrawGizmos()

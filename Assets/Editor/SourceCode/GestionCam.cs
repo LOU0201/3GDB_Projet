@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
@@ -39,11 +37,9 @@ public class GestionCam : EditorWindow
             if (cameraFOVGizmo1 != null)
             {
                 FOV1 = EditorGUILayout.Toggle("FOV :", cameraFOVGizmo1.affichage);
-                if (FOV1 != cameraFOVGizmo1.affichage)
-                {
-                    cameraFOVGizmo1.affichage = FOV1;
-                    EditorUtility.SetDirty(cameraFOVGizmo1); // Marquer le composant comme modifié pour que Unity prenne en compte le changement
-                }
+                Undo.RecordObject(cameraFOVGizmo1, "Toggle Debug FOV");
+                cameraFOVGizmo1.affichage = FOV1;
+                EditorUtility.SetDirty(cameraFOVGizmo1);
             }
             HandleObjectPosition(ref pos1, ref x1, ref y1, ref z1);
         }
@@ -55,11 +51,9 @@ public class GestionCam : EditorWindow
             if (cameraFOVGizmo2 != null)
             {
                 FOV2 = EditorGUILayout.Toggle("FOV :", cameraFOVGizmo2.affichage);
-                if (FOV2 != cameraFOVGizmo2.affichage)
-                {
-                    cameraFOVGizmo2.affichage = FOV2;
-                    EditorUtility.SetDirty(cameraFOVGizmo2);
-                }
+                Undo.RecordObject(cameraFOVGizmo2, "Toggle Debug FOV");
+                cameraFOVGizmo2.affichage = FOV2;
+                EditorUtility.SetDirty(cameraFOVGizmo2);
             }
             HandleObjectPosition(ref pos2, ref x2, ref y2, ref z2);
         }
@@ -71,11 +65,9 @@ public class GestionCam : EditorWindow
             if (cameraFOVGizmo3 != null)
             {
                 FOV3 = EditorGUILayout.Toggle("FOV :", cameraFOVGizmo3.affichage);
-                if (FOV3 != cameraFOVGizmo3.affichage)
-                {
-                    cameraFOVGizmo3.affichage = FOV3;
-                    EditorUtility.SetDirty(cameraFOVGizmo3);
-                }
+                Undo.RecordObject(cameraFOVGizmo3, "Toggle Debug FOV");
+                cameraFOVGizmo3.affichage = FOV3;
+                EditorUtility.SetDirty(cameraFOVGizmo3);
             }
             HandleObjectPosition(ref pos3, ref x3, ref y3, ref z3);
         }
@@ -87,16 +79,16 @@ public class GestionCam : EditorWindow
             if (cameraFOVGizmo4 != null)
             {
                 FOV4 = EditorGUILayout.Toggle("FOV :", cameraFOVGizmo4.affichage);
-                if (FOV4 != cameraFOVGizmo4.affichage)
-                {
-                    cameraFOVGizmo4.affichage = FOV4;
-                    EditorUtility.SetDirty(cameraFOVGizmo4);
-                }
+                Undo.RecordObject(cameraFOVGizmo4, "Toggle Debug FOV");
+                cameraFOVGizmo4.affichage = FOV4;
+                EditorUtility.SetDirty(cameraFOVGizmo4);
             }
             HandleObjectPosition(ref pos4, ref x4, ref y4, ref z4);
         }
 
-        fond = EditorGUILayout.ObjectField("fond du niveau :", fond, typeof(GameObject), true) as GameObject;
+        GUILayout.Label("Fond du niveau", EditorStyles.boldLabel);
+
+        fond = EditorGUILayout.ObjectField("objet du fond :", fond, typeof(GameObject), true) as GameObject;
         texture = EditorGUILayout.ObjectField("texture du fond :", texture, typeof(Material), true) as Material;
 
         if (GUILayout.Button("appliquer texture"))
@@ -104,11 +96,42 @@ public class GestionCam : EditorWindow
             ChangerFond();
         }
 
+        //if (GUILayout.Button("rafraîchir coordonnés"))
+        //{
+        //    Repaint();
+        //}
+
         if (GUILayout.Button("Défaire"))
         {
-            // PerformUndo();
+            Undo.PerformUndo();
         }
+
+        if (GUILayout.Button("Refaire"))
+        {
+            Undo.PerformRedo();
+        }
+
     }
+    //private void Update()
+    //{
+    //    x1 = pos1.transform.position.x;
+    //    y1 = pos1.transform.position.y;
+    //    z1 = pos1.transform.position.z;
+
+    //    x2 = pos2.transform.position.x;
+    //    y2 = pos2.transform.position.y;
+    //    z2 = pos2.transform.position.z;
+
+    //    x3 = pos3.transform.position.x;
+    //    y3 = pos3.transform.position.y;
+    //    z3 = pos3.transform.position.z;
+
+    //    x4 = pos4.transform.position.x;
+    //    y4 = pos4.transform.position.y;
+    //    z4 = pos4.transform.position.z;
+
+    //    Repaint();
+    //}
 
     private void HandleObjectPosition(ref GameObject obj, ref float x, ref float y, ref float z)
     {
@@ -118,28 +141,23 @@ public class GestionCam : EditorWindow
 
         if (GUI.changed)
         {
-            // Enregistrer l'état de l'objet pour l'undo
             Undo.RecordObject(obj.transform, "Move Object");
 
-            // Appliquer la nouvelle position
             obj.transform.position = new Vector3(x, y, z);
 
-            // Marquer la scène comme ayant été modifiée
             EditorUtility.SetDirty(obj);
         }
+
     }
 
     private void ChangerFond()
     {
-        fond.GetComponent<Renderer>().material = texture;
+        Renderer render = fond.GetComponent<Renderer>();
 
-        if (GUI.changed)
-        {
-            // Enregistrer l'état de l'objet pour l'undo
-            Undo.RecordObject(fond.GetComponent<Renderer>().material= texture, "Change Background");
+        Undo.RecordObject(render, "Change Background");
 
-            // Marquer la scène comme ayant été modifiée
-            EditorUtility.SetDirty(texture);
-        }
+        render.sharedMaterial = texture;
+
+        EditorUtility.SetDirty(render);
     }
 }
