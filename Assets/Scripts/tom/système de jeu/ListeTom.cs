@@ -33,15 +33,18 @@ public class ListeTom : MonoBehaviour
         string currentItem = liste[currentIndex];
         if (currentItem == "cube")
         {
+            GetComponent<musiqueblocs>().Note();
             G3D.Faire_carrer(joueur.position); // Spawn a cube
         }
         else if (currentItem == "trou")
         {
             G3D.Faire_Trou(joueur.position); // Spawn a hole FaireTrou va donc désactiver le cube en bas du joueur
+            GetComponent<musiqueblocs>().Note();
         }
         else if (currentItem == "rien")
         {
             Debug.Log("Nothing spawned this step.");
+            FMODUnity.RuntimeManager.PlayOneShot("event:/V2/Player/Move");
         }
 
         // Move to the next index in the list
@@ -61,7 +64,6 @@ public class ListeTom : MonoBehaviour
     // Updates the UI Images to show the items in positions 1, 2, and 3
     private void UpdateUpcomingSpawnDisplay()
     {
-        FMODUnity.RuntimeManager.PlayOneShot("event:/V1/Player/playermove");
         for (int i = 0; i < upcomingSpawnIcons.Length; i++) // Loop through the 3 upcoming icons
         {
             // Get the index for the current, next, and the one after that

@@ -39631,6 +39631,8 @@ PrefabInstance:
     - {fileID: 1579459408577423984, guid: 92e8705844ce2684caa68b5178a6cde7, type: 3}
     - {fileID: 4051006308330338847, guid: 92e8705844ce2684caa68b5178a6cde7, type: 3}
     - {fileID: 36327725824074711, guid: 92e8705844ce2684caa68b5178a6cde7, type: 3}
+    - {fileID: 5901438042488050124, guid: 92e8705844ce2684caa68b5178a6cde7, type: 3}
+    - {fileID: 229732397152743403, guid: 92e8705844ce2684caa68b5178a6cde7, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92e8705844ce2684caa68b5178a6cde7, type: 3}
@@ -64834,6 +64836,11 @@ PrefabInstance:
       propertyPath: listeTom
       value: 
       objectReference: {fileID: 281368823}
+    - target: {fileID: 899624023277782966, guid: 58a6c0657e5666743a13c482f151a800,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1126906373106853238, guid: 58a6c0657e5666743a13c482f151a800,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -64949,6 +64956,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8123403168519427876, guid: 58a6c0657e5666743a13c482f151a800,
+        type: 3}
+      propertyPath: m_text
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 9204419411167420219, guid: 58a6c0657e5666743a13c482f151a800,
         type: 3}
@@ -82467,7 +82479,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scaleDuration: 3
-  Delay: 4
+  delay: 0.5
+  scaleDownOnX: 1
 --- !u!1001 &1561605010
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -102260,6 +102273,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 677969307301613847, guid: 7b9d3b869b977504bb1198d4fb264630,
+        type: 3}
+      propertyPath: PlayEvent
+      value: 19
+      objectReference: {fileID: 0}
     - target: {fileID: 873910048734958872, guid: 7b9d3b869b977504bb1198d4fb264630,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -102269,6 +102287,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: FadeOut
+      objectReference: {fileID: 0}
+    - target: {fileID: 1933609168227184733, guid: 7b9d3b869b977504bb1198d4fb264630,
+        type: 3}
+      propertyPath: PlayEvent
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 1974351859367076865, guid: 7b9d3b869b977504bb1198d4fb264630,
         type: 3}
@@ -102514,6 +102537,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4986925765460222743, guid: 7b9d3b869b977504bb1198d4fb264630,
+        type: 3}
+      propertyPath: PlayEvent
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 5706747079180775883, guid: 7b9d3b869b977504bb1198d4fb264630,
         type: 3}

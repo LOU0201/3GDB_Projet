@@ -162,7 +162,7 @@ public class Grille_3d : MonoBehaviour
                     Boite scriptboite = boite.GetComponent<Boite>();
                     scriptboite.transform.SetParent(this.transform);
                     scriptboite.Initialisation(true, false, false, false, false);//une boit libre donc
-                    FMODUnity.RuntimeManager.PlayOneShot("event:/V1/Gameplay/blockplace");
+                    FMODUnity.RuntimeManager.PlayOneShot("event:/V2/Blocs/Place");
                 }
             }
         }
@@ -170,7 +170,7 @@ public class Grille_3d : MonoBehaviour
     public void Faire_Trou(Vector3 vec) //Sur la position du joueur !!!!
     {
         print("FaireTroue: " + vec);
-        FMODUnity.RuntimeManager.PlayOneShot("event:/V1/Gameplay/blockbreak");
+        FMODUnity.RuntimeManager.PlayOneShot("event:/V2/Blocs/Break");
         des.casse_bloc = true;
         foreach (Transform t in transform)
         {

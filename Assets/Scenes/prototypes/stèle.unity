@@ -7095,6 +7095,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: FadeOut
       objectReference: {fileID: 0}
+    - target: {fileID: 1933609168227184733, guid: 7b9d3b869b977504bb1198d4fb264630,
+        type: 3}
+      propertyPath: PlayEvent
+      value: 17
+      objectReference: {fileID: 0}
     - target: {fileID: 1974351859367076865, guid: 7b9d3b869b977504bb1198d4fb264630,
         type: 3}
       propertyPath: m_Name
@@ -7339,6 +7344,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4986925765460222743, guid: 7b9d3b869b977504bb1198d4fb264630,
+        type: 3}
+      propertyPath: PlayEvent
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 5276601112239158492, guid: 7b9d3b869b977504bb1198d4fb264630,
         type: 3}
@@ -16432,6 +16442,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   joueur: {fileID: 1695659186}
   cons: {fileID: 800144798}
+  scoreText: {fileID: 0}
+  popUpText: {fileID: 0}
 --- !u!136 &825820323
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -17838,12 +17850,12 @@ PrefabInstance:
         type: 3}
       propertyPath: G3D
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 712261476}
     - target: {fileID: 5373490846884708359, guid: c266e0d2a89e5294fb4e2be56f0d9e08,
         type: 3}
       propertyPath: joueur
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1695659186}
     - target: {fileID: 5373490846884708359, guid: c266e0d2a89e5294fb4e2be56f0d9e08,
         type: 3}
       propertyPath: conveyorBelt
@@ -21695,6 +21707,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6892241421939670694, guid: f246c0ac11c6e204881f46931c43282a,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -124.19995
+      objectReference: {fileID: 0}
+    - target: {fileID: 6892241421939670694, guid: f246c0ac11c6e204881f46931c43282a,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 18.599976
       objectReference: {fileID: 0}
     - target: {fileID: 7972154800602138116, guid: f246c0ac11c6e204881f46931c43282a,
         type: 3}
@@ -25764,7 +25786,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scaleDuration: 3
-  Delay: 4
+  delay: 0.5
+  scaleDownOnX: 1
 --- !u!1 &1243617794
 GameObject:
   m_ObjectHideFlags: 0
@@ -37146,6 +37169,8 @@ PrefabInstance:
     - {fileID: 1579459408577423984, guid: 92e8705844ce2684caa68b5178a6cde7, type: 3}
     - {fileID: 4051006308330338847, guid: 92e8705844ce2684caa68b5178a6cde7, type: 3}
     - {fileID: 36327725824074711, guid: 92e8705844ce2684caa68b5178a6cde7, type: 3}
+    - {fileID: 5901438042488050124, guid: 92e8705844ce2684caa68b5178a6cde7, type: 3}
+    - {fileID: 229732397152743403, guid: 92e8705844ce2684caa68b5178a6cde7, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92e8705844ce2684caa68b5178a6cde7, type: 3}
@@ -40243,6 +40268,11 @@ PrefabInstance:
       propertyPath: listeTom
       value: 
       objectReference: {fileID: 883817560}
+    - target: {fileID: 1085918149533623681, guid: 58a6c0657e5666743a13c482f151a800,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1126906373106853238, guid: 58a6c0657e5666743a13c482f151a800,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -40357,6 +40387,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8123403168519427876, guid: 58a6c0657e5666743a13c482f151a800,
+        type: 3}
+      propertyPath: m_text
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 9204419411167420219, guid: 58a6c0657e5666743a13c482f151a800,
         type: 3}
