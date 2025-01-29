@@ -2,23 +2,16 @@ using UnityEngine;
 
 public class CameraFOVGizmo : MonoBehaviour
 {
-    public Camera targetCamera; // Caméra dont le FOV sera représenté
+    public Camera targetCamera;
     [HideInInspector]
     public bool affichage;
 
     void OnDrawGizmos()
     {
-        if (targetCamera == null)
-        {
-            //Debug.LogWarning("Aucune caméra référencée !");
-            return;
-        }
 
-        // Utiliser la position de l'objet portant le script et la rotation Y
         Vector3 position = transform.position;
         Quaternion rotation = Quaternion.Euler(0, transform.eulerAngles.y, 0);
 
-        // Ajouter la rotation X et Z de la caméra référencée à l'objet
         rotation *= Quaternion.Euler(targetCamera.transform.eulerAngles.x, 0, targetCamera.transform.eulerAngles.z);
 
         if (affichage == true)
@@ -31,19 +24,16 @@ public class CameraFOVGizmo : MonoBehaviour
     {
         Gizmos.color = Color.cyan;
 
-        // Obtenir les paramètres de la caméra
         float fov = cam.fieldOfView;
         float aspectRatio = cam.aspect;
         float nearClip = cam.nearClipPlane;
         float farClip = cam.farClipPlane;
 
-        // Calculer les dimensions du FOV
         float halfHeightNear = Mathf.Tan(fov * 0.5f * Mathf.Deg2Rad) * nearClip;
         float halfWidthNear = halfHeightNear * aspectRatio;
         float halfHeightFar = Mathf.Tan(fov * 0.5f * Mathf.Deg2Rad) * farClip;
         float halfWidthFar = halfHeightFar * aspectRatio;
 
-        // Calculer les coins des plans de coupe
         Vector3 forward = rotation * Vector3.forward;
         Vector3 right = rotation * Vector3.right;
         Vector3 up = rotation * Vector3.up;
@@ -58,7 +48,6 @@ public class CameraFOVGizmo : MonoBehaviour
         Vector3 bottomLeftFar = position + forward * farClip - right * halfWidthFar - up * halfHeightFar;
         Vector3 bottomRightFar = position + forward * farClip + right * halfWidthFar - up * halfHeightFar;
 
-        // Dessiner les lignes du FOV
         Gizmos.DrawLine(topLeftNear, topRightNear);
         Gizmos.DrawLine(topRightNear, bottomRightNear);
         Gizmos.DrawLine(bottomRightNear, bottomLeftNear);
