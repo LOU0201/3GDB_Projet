@@ -18,11 +18,11 @@ namespace Editor
         
         Vector3 playerPos;
 
-        [MenuItem("Outils/ListeTool")]
+        [MenuItem("Outils/Level Control Tool")]
         private static void ShowWindow()
         {
             var window = GetWindow<ListeTool>();
-            window.titleContent = new GUIContent("ListeTool");
+            window.titleContent = new GUIContent("Level Control Tool");
             window.Show();
         }
 
@@ -207,15 +207,12 @@ namespace Editor
 
                 foreach (GameObject obj in taggedObjects)
                 {
-                    // Check if this GameObject has a child with yellow material
                     Transform yellowChild = FindYellowMaterialChild(obj.transform);
 
                     if (yellowChild != null)
                     {
-                        // Modify the script attached to the parent
                         EditBlockBools(obj);
-
-                        // Set the yellow child to inactive
+                        
                         yellowChild.gameObject.SetActive(false);
                     }
                 }
@@ -223,16 +220,15 @@ namespace Editor
 
             Transform FindYellowMaterialChild(Transform parent)
             {
-                // Check each child recursively
                 foreach (Transform child in parent)
                 {
                     Renderer childRenderer = child.GetComponent<Renderer>();
                     if (childRenderer != null && childRenderer.material.color == Color.yellow)
                     {
-                        return child; // Return the child with yellow material
+                        return child;
                     }
 
-                    Transform foundInChild = FindYellowMaterialChild(child); // Recursive call
+                    Transform foundInChild = FindYellowMaterialChild(child); 
                     if (foundInChild != null)
                     {
                         return foundInChild;
@@ -251,7 +247,6 @@ namespace Editor
 
                 if (ground != null)
                 {
-                    // Activate all children of the "base" object
                     foreach (Transform child in ground.transform)
                     {
                         child.gameObject.SetActive(true);
