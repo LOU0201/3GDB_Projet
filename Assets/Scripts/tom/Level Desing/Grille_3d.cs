@@ -105,6 +105,21 @@ public class Grille_3d : MonoBehaviour
         if (var) { return true; }
         return false;
     }
+    public Boolean Estprit_clean(Vector3 vec)//Même chose
+    {
+        bool var = false;
+        foreach (Transform t in this.transform)
+        {
+            if (t.transform.position == vec)
+            {
+                t.GetComponent<Boite>().libre = true;
+                var = true;
+
+            }
+        }
+        if (var) { return false; }
+        else { return true; }
+    }
     public Boolean EstStop(Vector3 vec)
     {
         if (Non_Blockeur)
@@ -147,6 +162,7 @@ public class Grille_3d : MonoBehaviour
         {
             if (child.transform.position == vec && !child.transform.GetComponent<Boite>().fin)
             {
+                print("fais carrer");
                 Boite b = child.GetComponent<Boite>();//Des boit donc
                 b.libre = false;//Le cube est un obstacle
                 b.phantome = true;
@@ -156,8 +172,9 @@ public class Grille_3d : MonoBehaviour
                     b.transform.GetChild(0).transform.GetComponent<Renderer>().material.color = Color.yellow;
                     b.GetComponent<Boite>().Stop = true;
                 }
-                if (!Estprit_basique(vec + new Vector3(0, 1, 0)))//Si il y a un Block en haut, on passe, si non on fait ce-ci
+                if (Estprit_clean(vec + new Vector3(0, 1, 0)))//Si il y a un Block en haut, on passe, si non on fait ce-ci
                 {
+                    print("fait");
                     GameObject boite = Instantiate(prefabBoite, vec + new Vector3(0, 1, 0), Quaternion.identity);
                     Boite scriptboite = boite.GetComponent<Boite>();
                     scriptboite.transform.SetParent(this.transform);

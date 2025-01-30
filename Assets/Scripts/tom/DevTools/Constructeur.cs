@@ -133,7 +133,7 @@ public class Constructeur : MonoBehaviour
                 b.transform.GetComponent<Boite>().libre = false;
             }
 
-            if (!Update_grille3d.GetComponent<Grille_3d>().Estprit_basique(this.transform.position + new Vector3(0, 1, 0)))
+            if (Update_grille3d.GetComponent<Grille_3d>().Estprit_clean(this.transform.position + new Vector3(0, 1, 0)))
             {
                 GameObject boite1 = Instantiate(prefabBoite, this.transform.position + new Vector3(0, 1, 0), Quaternion.identity);
                 Boite scriptboite1 = boite1.GetComponent<Boite>();
@@ -164,7 +164,7 @@ public class Constructeur : MonoBehaviour
                 b.GetComponent<Boite>().Stop = true;    
             }
 
-            if (!Update_grille3d.GetComponent<Grille_3d>().Estprit_basique(this.transform.position + new Vector3(0, 1, 0)))
+            if (!Update_grille3d.GetComponent<Grille_3d>().Estprit_clean(this.transform.position + new Vector3(0, 1, 0)))
             {
                 GameObject boite1 = Instantiate(prefabBoite, this.transform.position + new Vector3(0, 1, 0), Quaternion.identity);
                 Boite scriptboite1 = boite1.GetComponent<Boite>();
