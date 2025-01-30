@@ -31,29 +31,63 @@ public class ListeTom : MonoBehaviour
     // Update is called once per frame
     public void UpdateTom()
     {
-        // Perform the action for the current item
-        string currentItem = liste[currentIndex];
-        if (currentItem == "cube")
+        if (false)
         {
-            GetComponent<musiqueblocs>().Note();
-            G3D.Faire_carrer(joueur.position); // Spawn a cube
-        }
-        else if (currentItem == "trou")
-        {
-            G3D.Faire_Trou(joueur.position); // Spawn a hole FaireTrou va donc désactiver le cube en bas du joueur
-            GetComponent<musiqueblocs>().Note();
-        }
-        else if (currentItem == "rien")
-        {
-            Debug.Log("Nothing spawned this step.");
-            FMODUnity.RuntimeManager.PlayOneShot("event:/V2/Player/Move");
-        }
+            var=false;
+            // Perform the action for the current item
+            string currentItem = liste[currentIndex];
+            if (currentItem == "cube")
+            {
+                GetComponent<musiqueblocs>().Note();
+                G3D.Faire_carrer(joueur.position); // Spawn a cube
+            }
+            else if (currentItem == "trou")
+            {
+                G3D.Faire_Trou(joueur.position); // Spawn a hole FaireTrou va donc désactiver le cube en bas du joueur
+                GetComponent<musiqueblocs>().Note();
+            }
+            else if (currentItem == "rien")
+            {
+                Debug.Log("Nothing spawned this step.");
+                FMODUnity.RuntimeManager.PlayOneShot("event:/V2/Player/Move");
+            }
 
-        // Move to the next index in the list
-        currentIndex = (currentIndex + 1) % liste.Length;
-        FindObjectOfType<NewConveyor>().UpdateConveyor();
-        // Update the predictions for the next three items
-        UpdateUpcomingSpawnDisplay();
+
+            // Move to the next index in the list
+            currentIndex = (currentIndex) % liste.Length;
+            FindObjectOfType<NewConveyor>().UpdateConveyor();
+            // Update the predictions for the next three items
+            UpdateUpcomingSpawnDisplay();
+        }
+        else
+        {
+            // Perform the action for the current item
+            currentIndex = (currentIndex + 1) % liste.Length;
+            string currentItem = liste[currentIndex];
+            if (currentItem == "cube")
+            {
+                GetComponent<musiqueblocs>().Note();
+                G3D.Faire_carrer(joueur.position); // Spawn a cube
+            }
+            else if (currentItem == "trou")
+            {
+                G3D.Faire_Trou(joueur.position); // Spawn a hole FaireTrou va donc désactiver le cube en bas du joueur
+                GetComponent<musiqueblocs>().Note();
+            }
+            else if (currentItem == "rien")
+            {
+                Debug.Log("Nothing spawned this step.");
+                FMODUnity.RuntimeManager.PlayOneShot("event:/V2/Player/Move");
+            }
+
+
+            // Move to the next index in the list
+            FindObjectOfType<NewConveyor>().UpdateConveyor();
+            // Update the predictions for the next three items
+            UpdateUpcomingSpawnDisplay();
+        }
+        
+
     }
 
     public void setIndex()

@@ -84,7 +84,6 @@ public class Joueur : MonoBehaviour
     {
         if (!Update_grille3d.GetComponent<Grille_3d>().EstStop(vec))
         {
-
             Vector3 vec_bas =vec + new Vector3(0,-1,0);
             if(Update_grille3d.GetComponent<Grille_3d>().Estprit(vec_bas))
             {
@@ -93,14 +92,12 @@ public class Joueur : MonoBehaviour
                 Update_grille3d.GetComponent<Grille_3d>().refreche();
                 FMODUnity.RuntimeManager.PlayOneShot("event:/V2/Player/Drop");
                 if (Liste & Update_grille3d.GetComponent<Grille_3d>().est_temporaire(vec))
-                {
-
+                { 
                     Liste.GetComponent<ListeTom>().UpdateTom();//Déplacement donc on lence la liste si néscéssaire
                 }
             }
             else
             {
-
                 Vector3 vec_haut =vec + new Vector3(0,1,0);
                 if(Update_grille3d.GetComponent<Grille_3d>().Estprit(vec_haut))
                 {
@@ -113,7 +110,6 @@ public class Joueur : MonoBehaviour
                         Liste.GetComponent<ListeTom>().UpdateTom();//Déplacement donc on lence la liste si néscéssaire
 
                     }
-
                 }
             }
             //Donc tous les testes ont échouer, aussi bien Move Player que Assention 
@@ -182,7 +178,6 @@ public class Joueur : MonoBehaviour
             }
         }
     }
-
     public void TP()
     {
         transform.position = pos;
