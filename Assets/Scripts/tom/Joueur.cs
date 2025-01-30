@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Joueur : MonoBehaviour
 {
@@ -38,7 +39,12 @@ public class Joueur : MonoBehaviour
         // Détermine les axes principaux basés sur la rotation
         Vector3 forward = new Vector3(Mathf.Round(Mathf.Sin(Mathf.Deg2Rad * cameraRotationY)), 0, Mathf.Round(Mathf.Cos(Mathf.Deg2Rad * cameraRotationY)));
         Vector3 right = new Vector3(Mathf.Round(Mathf.Cos(Mathf.Deg2Rad * cameraRotationY)), 0, -Mathf.Round(Mathf.Sin(Mathf.Deg2Rad * cameraRotationY)));
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Scene scene= SceneManager.GetActiveScene();
+            SceneManager.LoadScene(scene.name);
 
+        }
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             vec = transform.position + right;
