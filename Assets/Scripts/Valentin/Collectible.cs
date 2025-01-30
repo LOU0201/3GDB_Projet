@@ -34,6 +34,7 @@ public class Collectible : MonoBehaviour
         Vector3 CJ = joueur.position;
         if (CJ== coordonnees)
         {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Placeholders/Items/itemcollect");
             Instantiate(this.gameObject, new Vector3(x, y, z), Quaternion.identity);
             Destroy(this.gameObject);
         }

@@ -19,7 +19,7 @@ public class Verification : MonoBehaviour
         if (collec[1] == null && collec[0] == null)
         {
             Instantiate(sortie, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
-            reset.exit= true;
+            //reset.exit= true;
         }
         //for (int i = 0; i < collec.Length; i++)
         //{
