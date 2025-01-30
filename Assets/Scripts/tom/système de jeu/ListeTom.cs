@@ -18,6 +18,8 @@ public class ListeTom : MonoBehaviour
     public Sprite cubeSprite; // Icon for "Cube"
     public NewConveyor conveyorBelt;
 
+    private bool var=true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -52,7 +54,6 @@ public class ListeTom : MonoBehaviour
         FindObjectOfType<NewConveyor>().UpdateConveyor();
         // Update the predictions for the next three items
         UpdateUpcomingSpawnDisplay();
-        
     }
 
     public void setIndex()

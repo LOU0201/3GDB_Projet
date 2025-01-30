@@ -89,11 +89,12 @@ public class Joueur : MonoBehaviour
             if(Update_grille3d.GetComponent<Grille_3d>().Estprit(vec_bas))
             {
                 surveillePhantome(Update_grille3d.GetComponent<Grille_3d>().trouve_boit(transform.position));
+                this.transform.position = vec_bas;
                 Update_grille3d.GetComponent<Grille_3d>().refreche();
                 FMODUnity.RuntimeManager.PlayOneShot("event:/V2/Player/Drop");
-                this.transform.position =vec_bas;
                 if (Liste & Update_grille3d.GetComponent<Grille_3d>().est_temporaire(vec))
                 {
+
                     Liste.GetComponent<ListeTom>().UpdateTom();//Déplacement donc on lence la liste si néscéssaire
                 }
             }
@@ -103,15 +104,16 @@ public class Joueur : MonoBehaviour
                 Vector3 vec_haut =vec + new Vector3(0,1,0);
                 if(Update_grille3d.GetComponent<Grille_3d>().Estprit(vec_haut))
                 {
-                    surveillePhantome(Update_grille3d.GetComponent<Grille_3d>().trouve_boit(transform.position));
-                    Update_grille3d.GetComponent<Grille_3d>().refreche();
                     FMODUnity.RuntimeManager.PlayOneShot("event:/V2/Player/Climb");
-                    this.transform.position =vec_haut;
+                    surveillePhantome(Update_grille3d.GetComponent<Grille_3d>().trouve_boit(transform.position));
+                    this.transform.position = vec_haut;
+                    Update_grille3d.GetComponent<Grille_3d>().refreche();
                     if (Liste & Update_grille3d.GetComponent<Grille_3d>().est_temporaire(vec))
                     {
                         Liste.GetComponent<ListeTom>().UpdateTom();//Déplacement donc on lence la liste si néscéssaire
 
                     }
+
                 }
             }
             //Donc tous les testes ont échouer, aussi bien Move Player que Assention 
@@ -190,8 +192,8 @@ public class Joueur : MonoBehaviour
         if (Update_grille3d.GetComponent<Grille_3d>().Estprit(targetPosition))
         {
             surveillePhantome(Update_grille3d.GetComponent<Grille_3d>().trouve_boit(transform.position));
-            Update_grille3d.GetComponent<Grille_3d>().refreche();
             transform.position = targetPosition;
+            Update_grille3d.GetComponent<Grille_3d>().refreche();
             if (Liste & Update_grille3d.GetComponent<Grille_3d>().est_temporaire(targetPosition))
             {
                 Liste.GetComponent<ListeTom>().UpdateTom();//Déplacement donc on lence la liste si néscéssaire
