@@ -145,7 +145,7 @@ public class Grille_3d : MonoBehaviour
         CS++;
         //listeTom.setIndex();
     }
-    public bool est_temporaire(Vector3 vec)// si n'est pas un freez padh
+    public bool est_temporaire(Vector3 vec)// si N'est pas un freez padh
     {
         foreach (Transform t in this.transform)
         {
@@ -154,7 +154,7 @@ public class Grille_3d : MonoBehaviour
                 return !t.GetComponent<Boite>().temporaire;
             }
         }
-        return false;
+        return true;
     }
     public void Faire_carrer(Vector3 vec)// Fais un phantome(un obstacle donc) Sur la position du joueur !!!!
     {
