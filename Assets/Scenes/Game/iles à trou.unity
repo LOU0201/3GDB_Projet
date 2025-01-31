@@ -7302,7 +7302,7 @@ PrefabInstance:
         type: 3}
       propertyPath: playerTransform
       value: 
-      objectReference: {fileID: 1682725681}
+      objectReference: {fileID: 1322244952}
     - target: {fileID: 1849276179182745396, guid: f246c0ac11c6e204881f46931c43282a,
         type: 3}
       propertyPath: sideCameraTransform
@@ -22172,6 +22172,37 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1322049611}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1322244951
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1322244952}
+  m_Layer: 0
+  m_Name: centre
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1322244952
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1322244951}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.12, y: -0.53, z: -2.18}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1329959822
 GameObject:
   m_ObjectHideFlags: 0
@@ -32074,13 +32105,28 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 375479888037365798, guid: 92e8705844ce2684caa68b5178a6cde7,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1795094859}
+    - target: {fileID: 375479888037365798, guid: 92e8705844ce2684caa68b5178a6cde7,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 1826612774}
     - target: {fileID: 375479888037365798, guid: 92e8705844ce2684caa68b5178a6cde7,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 375479888037365798, guid: 92e8705844ce2684caa68b5178a6cde7,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
       value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 375479888037365798, guid: 92e8705844ce2684caa68b5178a6cde7,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7397937161339098250, guid: 92e8705844ce2684caa68b5178a6cde7,
         type: 3}
@@ -35137,3 +35183,4 @@ SceneRoots:
   - {fileID: 1901348768}
   - {fileID: 770237560}
   - {fileID: 1945184230}
+  - {fileID: 1322244952}

@@ -33,4 +33,9 @@ public class Reset : MonoBehaviour
         // Reload the current scene
         SceneManager.LoadScene(currentSceneIndex);
     }
+
+    public void GameQuit()
+    {
+        Application.Quit();
+    }
 }

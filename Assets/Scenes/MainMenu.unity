@@ -134,6 +134,8 @@ GameObject:
   - component: {fileID: 12144311}
   - component: {fileID: 12144310}
   - component: {fileID: 12144309}
+  - component: {fileID: 12144313}
+  - component: {fileID: 12144312}
   m_Layer: 5
   m_Name: Play
   m_TagString: Untagged
@@ -280,6 +282,68 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 12144307}
   m_CullTransparentMesh: 1
+--- !u!114 &12144312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 12144307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 130158912
+      Data2: 1113606652
+      Data3: 29609107
+      Data4: 1851592610
+    Path: event:/V2/UI/Click
+  Event: 
+  PlayEvent: 19
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &12144313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 12144307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 2006979574
+      Data2: 1304863114
+      Data3: 984486020
+      Data4: 1044665946
+    Path: event:/UI/button
+  Event: 
+  PlayEvent: 17
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!114 &23971546 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 330919682615893411, guid: 92e8705844ce2684caa68b5178a6cde7,
@@ -304,6 +368,8 @@ GameObject:
   - component: {fileID: 58955359}
   - component: {fileID: 58955358}
   - component: {fileID: 58955357}
+  - component: {fileID: 58955361}
+  - component: {fileID: 58955360}
   m_Layer: 5
   m_Name: quit
   m_TagString: Untagged
@@ -375,7 +441,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 58955358}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 909968865}
+        m_TargetAssemblyTypeName: Reset, Assembly-CSharp
+        m_MethodName: GameQuit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &58955358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -414,6 +492,68 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 58955355}
   m_CullTransparentMesh: 1
+--- !u!114 &58955360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 58955355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 130158912
+      Data2: 1113606652
+      Data3: 29609107
+      Data4: 1851592610
+    Path: event:/V2/UI/Click
+  Event: 
+  PlayEvent: 19
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &58955361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 58955355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 2006979574
+      Data2: 1304863114
+      Data3: 984486020
+      Data4: 1044665946
+    Path: event:/UI/button
+  Event: 
+  PlayEvent: 17
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &150919206 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5983349612527672938, guid: 7bd1d9d33bfea6f4e8d3896b4190e5dc,
@@ -1065,6 +1205,124 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 90, y: 90, z: -90}
+--- !u!1001 &538191639
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1252257797868404099, guid: 419cc15c07f68d74ead2e817bdc9976d,
+        type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1252257797868404099, guid: 419cc15c07f68d74ead2e817bdc9976d,
+        type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1252257797868404099, guid: 419cc15c07f68d74ead2e817bdc9976d,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1252257797868404099, guid: 419cc15c07f68d74ead2e817bdc9976d,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1252257797868404099, guid: 419cc15c07f68d74ead2e817bdc9976d,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1252257797868404099, guid: 419cc15c07f68d74ead2e817bdc9976d,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1252257797868404099, guid: 419cc15c07f68d74ead2e817bdc9976d,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 507
+      objectReference: {fileID: 0}
+    - target: {fileID: 1252257797868404099, guid: 419cc15c07f68d74ead2e817bdc9976d,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 285
+      objectReference: {fileID: 0}
+    - target: {fileID: 1252257797868404099, guid: 419cc15c07f68d74ead2e817bdc9976d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1252257797868404099, guid: 419cc15c07f68d74ead2e817bdc9976d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1252257797868404099, guid: 419cc15c07f68d74ead2e817bdc9976d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1252257797868404099, guid: 419cc15c07f68d74ead2e817bdc9976d,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1252257797868404099, guid: 419cc15c07f68d74ead2e817bdc9976d,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1252257797868404099, guid: 419cc15c07f68d74ead2e817bdc9976d,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1252257797868404099, guid: 419cc15c07f68d74ead2e817bdc9976d,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1252257797868404099, guid: 419cc15c07f68d74ead2e817bdc9976d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 407
+      objectReference: {fileID: 0}
+    - target: {fileID: 1252257797868404099, guid: 419cc15c07f68d74ead2e817bdc9976d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 1252257797868404099, guid: 419cc15c07f68d74ead2e817bdc9976d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1252257797868404099, guid: 419cc15c07f68d74ead2e817bdc9976d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1252257797868404099, guid: 419cc15c07f68d74ead2e817bdc9976d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4961993737663603108, guid: 419cc15c07f68d74ead2e817bdc9976d,
+        type: 3}
+      propertyPath: m_Name
+      value: Toy menu
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 419cc15c07f68d74ead2e817bdc9976d, type: 3}
 --- !u!224 &702803770 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 9199166548283537931, guid: 24033214ff78c2646b9d0cc4d5d3987b,
@@ -1248,6 +1506,7 @@ GameObject:
   - component: {fileID: 909968860}
   - component: {fileID: 909968862}
   - component: {fileID: 909968863}
+  - component: {fileID: 909968865}
   - component: {fileID: 909968864}
   m_Layer: 0
   m_Name: Main Camera
@@ -1392,6 +1651,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   power: 0.01
+--- !u!114 &909968865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 909968858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d2f7a4e6a5ba8d428103b51969f029e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &935251661 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5990437226832724562, guid: 7bd1d9d33bfea6f4e8d3896b4190e5dc,
@@ -1433,6 +1704,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 7397937161339098250, guid: 92e8705844ce2684caa68b5178a6cde7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8006996036663459359, guid: 92e8705844ce2684caa68b5178a6cde7,
         type: 3}
@@ -1561,6 +1837,8 @@ GameObject:
   - component: {fileID: 1604649737}
   - component: {fileID: 1604649736}
   - component: {fileID: 1604649735}
+  - component: {fileID: 1604649739}
+  - component: {fileID: 1604649738}
   m_Layer: 5
   m_Name: options
   m_TagString: Untagged
@@ -1671,6 +1949,68 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1604649733}
   m_CullTransparentMesh: 1
+--- !u!114 &1604649738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1604649733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 130158912
+      Data2: 1113606652
+      Data3: 29609107
+      Data4: 1851592610
+    Path: event:/V2/UI/Click
+  Event: 
+  PlayEvent: 19
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &1604649739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1604649733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 2006979574
+      Data2: 1304863114
+      Data3: 984486020
+      Data4: 1044665946
+    Path: event:/UI/button
+  Event: 
+  PlayEvent: 17
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &1660878040
 GameObject:
   m_ObjectHideFlags: 0
@@ -3114,3 +3454,4 @@ SceneRoots:
   - {fileID: 492619034}
   - {fileID: 1720206606}
   - {fileID: 1602314809}
+  - {fileID: 538191639}
