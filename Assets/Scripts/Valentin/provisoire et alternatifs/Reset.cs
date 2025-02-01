@@ -38,4 +38,10 @@ public class Reset : MonoBehaviour
     {
         Application.Quit();
     }
+
+    // Loads the Main Menu
+    public void ReturnToMainMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
 }

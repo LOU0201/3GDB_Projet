@@ -29603,6 +29603,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2d6a17767a04c6418705b858e004317, type: 3}
+--- !u!114 &818081495 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 74067878581191558, guid: d2d6a17767a04c6418705b858e004317,
+    type: 3}
+  m_PrefabInstance: {fileID: 818081494}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1947943559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d2f7a4e6a5ba8d428103b51969f029e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &823876850
 GameObject:
   m_ObjectHideFlags: 0
@@ -68485,6 +68497,16 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 516317262}
+    - target: {fileID: 1026005432591008871, guid: 7b9d3b869b977504bb1198d4fb264630,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 818081495}
+    - target: {fileID: 1026005432591008871, guid: 7b9d3b869b977504bb1198d4fb264630,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GameQuit
+      objectReference: {fileID: 0}
     - target: {fileID: 1974351859367076865, guid: 7b9d3b869b977504bb1198d4fb264630,
         type: 3}
       propertyPath: m_Name
@@ -68610,6 +68632,16 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 1920790380}
+    - target: {fileID: 8215253712388841922, guid: 7b9d3b869b977504bb1198d4fb264630,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 818081495}
+    - target: {fileID: 8215253712388841922, guid: 7b9d3b869b977504bb1198d4fb264630,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ReturnToMainMenu
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
