@@ -424,8 +424,10 @@ MonoBehaviour:
   - {fileID: 8277384223752487066}
   - {fileID: 8811307584828892691}
   - {fileID: 3324408235366485636}
-  moveSpeed: 5
-  rotateSpeed: 5
+  moveSmoothTime: 0.3
+  rotateSmoothTime: 0.2
+  target: {fileID: 0}
+  distanceFromTarget: 10
 --- !u!1 &6748100513114062099
 GameObject:
   m_ObjectHideFlags: 0
