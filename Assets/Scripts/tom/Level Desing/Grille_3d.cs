@@ -1,11 +1,16 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class Grille_3d : MonoBehaviour
 {
+    //Refactorisation
+    public bool debug = false;
+
+
     public GameObject joueur;
     public GameObject prefabBoite;
     public bool Non_Blockeur = false;
@@ -16,13 +21,7 @@ public class Grille_3d : MonoBehaviour
     public float CS;
     private void Start()
     {
-        foreach (Transform t in this.transform)
-        {
-            if (t.GetComponent<Boite>())
-            {
-                Instantiate(prefabCubeRouge).transform.SetParent(t.transform, false);
-            }
-        }
+
     }
     void Update()
     {
@@ -35,8 +34,7 @@ public class Grille_3d : MonoBehaviour
 
             if (t.GetComponent<Boite>().phantomeRouge)
             {
-                t.GetComponent<Boite>().phantomeRouge=false;
-                t.transform.GetChild(4).gameObject.SetActive(false);//i est donc plein
+                Destroy(t);
             }
         }
     }
@@ -65,61 +63,20 @@ public class Grille_3d : MonoBehaviour
         }
         return null;
     }
-    public Boolean Estprit(Vector3 vec)// Si est libre,   rend true si est libre
-    {
-        bool var=false;
-        foreach (Transform t in this.transform)
-        {
-            if (t.transform.position == vec)
-            {
-                if (!t.GetComponent<Boite>().libre)
-                {
-                    return false;
-                }
-                if (t.GetComponent<Boite>().libre)
-                {
-                    var =true;
-                }
-            }
-        }
-        if (var) { return true; }
-        return false;
-    }
-    public Boolean Estprit_basique(Vector3 vec)//Même chose
-    {
-        bool var = false;
-        foreach (Transform t in this.transform)
-        {
-            if (t.transform.position == vec)
-            {
-                if (!t.GetComponent<Boite>().libre)
-                {
-                    return false;
-                }
-                if (t.GetComponent<Boite>().libre)
-                {
-                    var = true;
-                }
-            }
-        }
-        if (var) { return true; }
-        return false;
-    }
-    public Boolean Estprit_clean(Vector3 vec)//Même chose
-    {
-        bool var = false;
-        foreach (Transform t in this.transform)
-        {
-            if (t.transform.position == vec)
-            {
-                t.GetComponent<Boite>().libre = true;
-                var = true;
 
+    public Boolean isPlein(Vector3 vec)
+    {
+        foreach (Transform t in this.transform)
+        {
+            if (t.transform.position == vec)
+            {
+                return true;
             }
         }
-        if (var) { return false; }
-        else { return true; }
+        return false;   
     }
+
+
     public Boolean EstStop(Vector3 vec)
     {
         if (Non_Blockeur)
@@ -143,7 +100,7 @@ public class Grille_3d : MonoBehaviour
         FMODUnity.RuntimeManager.PlayOneShot("event:/V1/System/leveldone");
         ResetTom.Rappatriment();
         CS++;
-        //listeTom.setIndex();
+        listeTom.setIndex();
     }
     public bool est_temporaire(Vector3 vec)// si N'est pas un freez padh
     {
@@ -162,61 +119,48 @@ public class Grille_3d : MonoBehaviour
         {
             if (child.transform.position == vec && !child.transform.GetComponent<Boite>().fin)
             {
-                print("fais carrer");
-                Boite b = child.GetComponent<Boite>();//Des boit donc
-                b.libre = false;//Le cube est un obstacle
-                b.phantome = true;
-                b.transform.GetChild(1).gameObject.SetActive(true);//i est donc plein
-                if (!Non_Blockeur)
+                if (debug)
                 {
-                    b.transform.GetChild(0).transform.GetComponent<Renderer>().material.color = Color.yellow;
-                    b.GetComponent<Boite>().Stop = true;
+                    Debug.Log("BOITE_FIN : " + (vec));
                 }
-                if (Estprit_clean(vec + new Vector3(0, 1, 0)))//Si il y a un Block en haut, on passe, si non on fait ce-ci
+            }
+            if (child.transform.position == vec)
+            {
+                if (debug)
                 {
-                    print("fait");
-                    GameObject boite = Instantiate(prefabBoite, vec + new Vector3(0, 1, 0), Quaternion.identity);
-                    Boite scriptboite = boite.GetComponent<Boite>();
-                    scriptboite.transform.SetParent(this.transform);
-                    scriptboite.Initialisation(true, false, false, false, false);//une boit libre donc
-                    FMODUnity.RuntimeManager.PlayOneShot("event:/V2/Blocs/Place");
+                    Debug.Log("BOITE_INCONUE : " + (vec));
                 }
             }
         }
+        GameObject boite = Instantiate(prefabBoite, vec, Quaternion.identity);
+        boite.transform.SetParent(this.transform);
+        boite.GetComponent<Boite>().SetType("Normal");//une boit normal donc
+        FMODUnity.RuntimeManager.PlayOneShot("event:/V2/Blocs/Place");
     }
     public void Faire_Trou(Vector3 vec) //Sur la position du joueur !!!!
     {
         print("FaireTroue: " + vec);
         FMODUnity.RuntimeManager.PlayOneShot("event:/V2/Blocs/Break");
-        des.casse_bloc = true;
         foreach (Transform t in transform)
         {
             if (t.transform.position == vec + new Vector3(0, -1, 0) && (!trouve_boit(vec).transform.GetComponent<Boite>().fin)) //On s'aintéresse ici, au bloc que l'on veux détruir c'est à dire celui juste endessous du joueur et on vérifie si le block ou l'on est est une sortie
             {
-                Vector3 vec2 = vec+new Vector3(0, -1, 0);//On baisse donc d'un crant
-                //ON s'aintéressse en premier lieu à la boite du dessus'
-                if (trouve_boit(vec2 + new Vector3(0, 1, 0)))//Si trouveBoite rend quelque chose 
-                {//rend sa variable libre fausse, car il y n'y a plus de blocs en dessous'
-                    Boite b = trouve_boit(vec2 + new Vector3(0, 1, 0));
-                    b.Initialisation(false, false, false, false, false);
-                }
-                //Ici, on s'aintéresse au cube que l'on veux détruire
-                //donc on éfface le cube
-                t.GetComponent<Boite>().phantomeRouge = true;
-                t.transform.GetChild(4).gameObject.SetActive(true);
-                t.transform.GetChild(0).gameObject.SetActive(false);
-                t.transform.GetChild(1).gameObject.SetActive(false);
-                //ici, on s'aintéresse à la boite du dessous
-                if (trouve_boit(t.transform.position + new Vector3(0, -1, 0)))//Si trouveBoite rend quelque chose
+                t.gameObject.GetComponent<Boite>().SetType("RedGhost");
+            }
+            else
+            {
+                if (t.transform.position == vec + new Vector3(0, -1, 0))
                 {
-                    if (!trouve_boit(t.transform.position + new Vector3(0, -1, 0)).libre)// et si ce quelque chose est une boite avec sa variable libre faus, alors fait sa
+                    if (debug)
                     {
-                        t.GetComponent<Boite>().Initialisation(true, false, false, false, false);//rend sa variable libre vrai (à la boite en question  (du milieu)), car il y a un blocs compacte en dessous
-                        //joueur.GetComponent<Joueur>().ascention(joueur.transform.position);
+                        Debug.Log("FIN : " + (vec));
                     }
-                    else
+                }
+                else
+                {
+                    if (debug)
                     {
-                        t.GetComponent<Boite>().Initialisation(false, false, false, false, false);//rend sa variable libre fausse (à la boite en question  (du milieu)), car il n'y pas de blocs en dessous'
+                        Debug.Log("ERREURE_Boite_absente : " + (vec));
                     }
                 }
             }

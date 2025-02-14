@@ -7,21 +7,13 @@ using TMPro;
 public class ResetTom : MonoBehaviour
 {
     public Transform joueur;
-    public Constructeur cons;
     public TMP_Text scoreText;
 
     private int playerScore = 0;
     public Popup popUpText;
     void Start()
     {
-        if (cons.isActive)
-        {
-            this.gameObject.transform.GetChild(0).gameObject.SetActive(true);
-        }
-        else
-        {
-            this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
-        }
+
 
         popUpText = GetComponent<Popup>();
 

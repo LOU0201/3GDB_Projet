@@ -206,7 +206,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1932410251299890384
 Transform:
   m_ObjectHideFlags: 0
@@ -250,7 +250,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: df4e7e5935f5b8141ace5e1ce0cf6473, type: 2}
+  - {fileID: 2100000, guid: 084263d019433d740b7a8068ce688fc2, type: 2}
   - {fileID: 2100000, guid: 4bc22005720d1c640b4582b015860d86, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -367,15 +367,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1d19b7341d28664e8d1d1e820722429, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  libre: 1
+  type: 0
   phantome: 0
   fin: 0
   "d\xE9but": 0
   temporaire: 0
   Stop: 0
+  phantomeRouge: 0
   valeur: 0
-  joueur: {fileID: 0}
-  opaque: {fileID: 0}
+  reTurne: {fileID: 0}
+  childRenderer: {fileID: 5261765914916719340}
+  matA: {fileID: 2100000, guid: 084263d019433d740b7a8068ce688fc2, type: 2}
+  matB: {fileID: 2100000, guid: d4ece173bdacba4459d664ecc216e0ff, type: 2}
 --- !u!114 &1754520436528452270
 MonoBehaviour:
   m_ObjectHideFlags: 0

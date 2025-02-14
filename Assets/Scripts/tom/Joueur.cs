@@ -5,10 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class Joueur : MonoBehaviour
 {
+    //Refactorisation
+    public bool debug=false;
+
     public GameObject Liste;
     public int compte_carré;
     public int variable_compte_carré = 3;
-    public GameObject Update_grille3d;
+    public Grille_3d Update_grille3d;
     public Vector3 vec;
     public int fonction;
     public bool LP;
@@ -47,27 +50,27 @@ public class Joueur : MonoBehaviour
         {
             vec = transform.position + right;
             MovePlayer(vec);
-            Update_grille3d.GetComponent<Grille_3d>().isFin(transform.position);
+            Update_grille3d.isFin(transform.position);
         }
         if (Input.GetKeyDown(KeyCode.LeftArrow)) 
         {
             vec = transform.position - right;
             MovePlayer(vec);
-            Update_grille3d.GetComponent<Grille_3d>().isFin(transform.position);
+            Update_grille3d.isFin(transform.position);
 
         }
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             vec = transform.position + forward;
             MovePlayer(vec);
-            Update_grille3d.GetComponent<Grille_3d>().isFin(transform.position);
+            Update_grille3d.isFin(transform.position);
 
         }
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             vec = transform.position - forward;
             MovePlayer(vec);
-            Update_grille3d.GetComponent<Grille_3d>().isFin(transform.position);
+            Update_grille3d.isFin(transform.position);
 
         }
         //if (transform.position == new Vector3(transform.position.x, Ygrav, transform.position.z))
@@ -78,42 +81,6 @@ public class Joueur : MonoBehaviour
         //{
         //    RB.useGravity = false;
         //}
-    }
-    public void ascention(Vector3 vec)//est charger de faire monter ou descendre le joueur si la boite n'est pas libre 
-    //en vérifiant si la boite placer juste audessus puis c'elle audessous sont libre, si c'est le cas le joueur va dans cette boite alors
-    {
-        if (!Update_grille3d.GetComponent<Grille_3d>().EstStop(vec))
-        {
-            Vector3 vec_bas =vec + new Vector3(0,-1,0);
-            if(Update_grille3d.GetComponent<Grille_3d>().Estprit(vec_bas))
-            {
-                surveillePhantome(Update_grille3d.GetComponent<Grille_3d>().trouve_boit(transform.position));
-                this.transform.position = vec_bas;
-                Update_grille3d.GetComponent<Grille_3d>().refreche();
-                FMODUnity.RuntimeManager.PlayOneShot("event:/V2/Player/Drop");
-                if (Liste & Update_grille3d.GetComponent<Grille_3d>().est_temporaire(vec))
-                { 
-                    Liste.GetComponent<ListeTom>().UpdateTom();//Déplacement donc on lence la liste si néscéssaire
-                }
-            }
-            else
-            {
-                Vector3 vec_haut =vec + new Vector3(0,1,0);
-                if(Update_grille3d.GetComponent<Grille_3d>().Estprit(vec_haut))
-                {
-                    FMODUnity.RuntimeManager.PlayOneShot("event:/V2/Player/Climb");
-                    surveillePhantome(Update_grille3d.GetComponent<Grille_3d>().trouve_boit(transform.position));
-                    this.transform.position = vec_haut;
-                    Update_grille3d.GetComponent<Grille_3d>().refreche();
-                    if (Liste & Update_grille3d.GetComponent<Grille_3d>().est_temporaire(vec))
-                    {
-                        Liste.GetComponent<ListeTom>().UpdateTom();//Déplacement donc on lence la liste si néscéssaire
-
-                    }
-                }
-            }
-            //Donc tous les testes ont échouer, aussi bien Move Player que Assention 
-        }
     }
     public void Update_plus()
     {
@@ -132,7 +99,7 @@ public class Joueur : MonoBehaviour
                 }
                 if (fonction == 1)
                 {
-                    Update_grille3d.GetComponent<Grille_3d>().Faire_carrer(transform.position);
+                    Update_grille3d.Faire_carrer(transform.position);
                     compte_carré = 0;
 
                     //print("obstacle");
@@ -141,13 +108,13 @@ public class Joueur : MonoBehaviour
                 {
                     if (trou)
                     {
-                        Update_grille3d.GetComponent<Grille_3d>().Faire_Trou(transform.position);
+                        Update_grille3d.Faire_Trou(transform.position);
                         compte_carré = 0;
                         //print("trou");
                     }
                     else
                     {
-                        Update_grille3d.GetComponent<Grille_3d>().Faire_carrer(transform.position);
+                        Update_grille3d.Faire_carrer(transform.position);
                         compte_carré = 0;
                     }
                 }
@@ -184,19 +151,79 @@ public class Joueur : MonoBehaviour
     }
     void MovePlayer(Vector3 targetPosition)
     {
-        if (Update_grille3d.GetComponent<Grille_3d>().Estprit(targetPosition))
+        if (Update_grille3d.isPlein(targetPosition))
         {
-            surveillePhantome(Update_grille3d.GetComponent<Grille_3d>().trouve_boit(transform.position));
-            transform.position = targetPosition;
-            Update_grille3d.GetComponent<Grille_3d>().refreche();
-            if (Liste & Update_grille3d.GetComponent<Grille_3d>().est_temporaire(targetPosition))
+            if (Update_grille3d.isPlein(targetPosition+new Vector3(0,1,0)))
             {
-                Liste.GetComponent<ListeTom>().UpdateTom();//Déplacement donc on lence la liste si néscéssaire
+                if (debug)
+                {
+                    Debug.Log("BLOQUE_MUR : " + (targetPosition + new Vector3(0, 1, 0)));
+                }
+            }else
+            {
+                if (Update_grille3d.EstStop(targetPosition))
+                {
+                    if (debug)
+                    {
+                        Debug.Log("BLOQUE_BLOQUANT : " + (targetPosition));
+                    }
+                }
+                else
+                {
+                    surveillePhantome(Update_grille3d.trouve_boit(transform.position));
+                    transform.position = (targetPosition + new Vector3(0, 1, 0));
+                    Update_grille3d.refreche();
+                    if (Liste & Update_grille3d.est_temporaire(targetPosition))
+                    {
+                        Liste.GetComponent<ListeTom>().UpdateTom();//Déplacement donc on lence la liste si néscéssaire
+                    }
+                    if (debug)
+                    {
+                        Debug.Log("AVANCE_HAUT : " + (targetPosition + new Vector3(0, 1, 0)));
+                    }
+                }
             }
         }
-        else // Si le block n'est pas libre on fait ascension
+        else 
         {
-            ascention(targetPosition);
+            if (Update_grille3d.isPlein(targetPosition + new Vector3(0, -1, 0)))
+            {
+                surveillePhantome(Update_grille3d.trouve_boit(transform.position));
+                transform.position = (targetPosition);
+                Update_grille3d.refreche();
+                if (Liste & Update_grille3d.est_temporaire(targetPosition + new Vector3(0, -1, 0)))
+                {
+                    Liste.GetComponent<ListeTom>().UpdateTom();//Déplacement donc on lence la liste si néscéssaire
+                }
+                if (debug)
+                {
+                    Debug.Log("AVANCE : " + (targetPosition));
+                }
+            }
+            else
+            {
+                if (Update_grille3d.isPlein(targetPosition + new Vector3(0, -2, 0)))
+                {
+                    surveillePhantome(Update_grille3d.trouve_boit(transform.position));
+                    transform.position = (targetPosition + new Vector3(0, -1, 0));
+                    Update_grille3d.refreche();
+                    if (Liste & Update_grille3d.est_temporaire(targetPosition + new Vector3(0, -2, 0)))
+                    {
+                        Liste.GetComponent<ListeTom>().UpdateTom();//Déplacement donc on lence la liste si néscéssaire
+                    }
+                    if (debug)
+                    {
+                        Debug.Log("AVANCE_BAS : " + (targetPosition + new Vector3(0, -1, 0)));
+                    }
+                }
+                else
+                {
+                    if (debug)
+                    {
+                        Debug.Log("BLOQUE_TROU : " + (targetPosition + new Vector3(0, -1, 0)));
+                    }
+                }
+            }
         }
         Update_plus();
     }
