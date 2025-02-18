@@ -44,7 +44,7 @@ public class ListeTom : MonoBehaviour
             else if (currentItem == "trou")
             {
                 G3D.Faire_Trou(joueur.position); // Spawn a hole FaireTrou va donc désactiver le cube en bas du joueur
-                GetComponent<musiqueblocs>().Note();
+               // GetComponent<musiqueblocs>().Note();
             }
             else if (currentItem == "rien")
             {
