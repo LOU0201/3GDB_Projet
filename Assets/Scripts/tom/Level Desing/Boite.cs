@@ -76,8 +76,15 @@ public class Boite : MonoBehaviour
                 stringType = "Stop";
                 break;
         }
+        if (temporaire)
+        {
+            transform.GetChild(3).gameObject.SetActive(true);
+        }
+        else
+        {
+            transform.GetChild(3).gameObject.SetActive(false);
+        }
     }
-
     public void SetType(string i)
     {
         switch (i)
