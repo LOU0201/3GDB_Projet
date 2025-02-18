@@ -12,7 +12,6 @@ public class Boite : MonoBehaviour
         Phantome,
         Fin,
         Debut,
-        Temp,
         RedGhost,
         Stop
     }
@@ -22,41 +21,58 @@ public class Boite : MonoBehaviour
     public bool fin = false;
     public bool début = false;
     public bool temporaire = false;
-    public bool Stop = false;
     public bool phantomeRouge=false;
     public int valeur;
     public GameObject reTurne;
 
     public MeshRenderer childRenderer;
-    public Material matA;
-    public Material matB;
-        
+    public Material Solide;
+    public Material Phantome;
+    public Material Sortie;
+    public Material RedGhost;
+    public Material Stop;
+    public Material Debut;
+
+
+
     private void OnValidate()
     {
         switch (type)
         {
             case Type.Normal:
-                childRenderer.sharedMaterial = matA;
+                childRenderer.sharedMaterial = Solide;
+                gameObject.GetComponent<ResetTom>().enabled = false;
                 stringType = "Normal";
+                fin = false;
                 break;
             case Type.Phantome:
-                childRenderer.sharedMaterial = matA;
+                childRenderer.sharedMaterial = Phantome;
+                gameObject.GetComponent<ResetTom>().enabled = false;
                 stringType = "Phantome";
+                fin = false;
                 break;
             case Type.Fin:
-                childRenderer.sharedMaterial = matB;
+                childRenderer.sharedMaterial = Sortie;
+                gameObject.GetComponent<ResetTom>().enabled = false;
+                fin = true;
                 stringType = "Fin";
                 break;
             case Type.Debut:
                 stringType = "Debut";
-                break;
-            case Type.Temp:
-                stringType = "Temp";
+                childRenderer.sharedMaterial = Debut;
+                gameObject.GetComponent<ResetTom>().enabled = true;
+                fin = false;
                 break;
             case Type.RedGhost:
+                childRenderer.sharedMaterial = RedGhost;
+                gameObject.GetComponent<ResetTom>().enabled = false;
+                fin = false;
                 stringType = "RedGhost";
                 break;
             case Type.Stop:
+                childRenderer.sharedMaterial = Stop;
+                gameObject.GetComponent<ResetTom>().enabled = false;
+                fin = false;
                 stringType = "Stop";
                 break;
         }
@@ -82,10 +98,6 @@ public class Boite : MonoBehaviour
                 this.type = Type.Debut;
                 OnValidate();
                 break;
-            case "Temp":
-                this.type = Type.Temp;
-                OnValidate();
-                break;
             case "RedGhost":
                 this.type = Type.RedGhost;
                 OnValidate();
@@ -106,22 +118,7 @@ public class Boite : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (Stop)
-        {
-            transform.GetChild(0).gameObject.GetComponent<Renderer>().material.color = Color.yellow;
-        }
-        if (fin)
-        {
-            transform.GetChild(2).gameObject.SetActive(true);
-        }
-        if(temporaire)
-        {
-            transform.GetChild(3).gameObject.SetActive(true);
-        }
-        if (Stop)
-        {
-            transform.GetChild(0).gameObject.SetActive(true);
-        }
+
     }
 
     public void Initialisation (bool phantome, bool fin, bool début, bool temporaire) 
@@ -140,7 +137,7 @@ public class Boite : MonoBehaviour
             // Call the Rappatriment() function on the ResetTom object
             if (reTurne != null) // Check if reTurne is assigned
             {
-                reTurne.GetComponent<ResetTom>().Rappatriment();
+               // reTurne.GetComponent<ResetTom>().Rappatriment();
             }
             else
             {

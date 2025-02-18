@@ -123,27 +123,18 @@ public class Joueur : MonoBehaviour
     }
     public void surveillePhantome(Boite b)
     {
-        if (b.phantome)
+        if(b != null)
         {
-            b.transform.GetChild(0).gameObject.SetActive(true);
-            b.transform.GetChild(1).gameObject.SetActive(false);
-            b.phantome = false; 
-        }
-    }
-    public void surveillePhantomeRouge (Boite b)
-    {
-        if (!b)
-        {
-            print("ErreurPhantomeRouge");
-        }
-        else
-        {
-            if (b.phantomeRouge)
+            if (debug)
             {
-                b.transform.GetChild(4).gameObject.SetActive(false);
-                b.phantomeRouge = false;
+                Debug.Log("fais_surveillePhantome");
+            }
+            if (b.equalType("Phantome"))
+            {
+                b.gameObject.GetComponent<Boite>().SetType("Normal");
             }
         }
+
     }
     public void TP()
     {
@@ -225,6 +216,5 @@ public class Joueur : MonoBehaviour
                 }
             }
         }
-        Update_plus();
     }
 }

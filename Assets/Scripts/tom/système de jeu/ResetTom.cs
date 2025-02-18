@@ -6,7 +6,6 @@ using TMPro;
 
 public class ResetTom : MonoBehaviour
 {
-    public Transform joueur;
     public TMP_Text scoreText;
 
     private int playerScore = 0;
@@ -15,7 +14,7 @@ public class ResetTom : MonoBehaviour
     {
 
 
-        popUpText = GetComponent<Popup>();
+      //  popUpText = GetComponent<Popup>();
 
     }
     public void Update()
@@ -26,11 +25,11 @@ public class ResetTom : MonoBehaviour
 
         }
     }
-    public void Rappatriment()
+    public void Rappatriment(Transform joueur)
     {
         joueur.transform.position = this.transform.position; ;
         playerScore++;
-        scoreText.text = "Score: " + playerScore.ToString();
+      //  scoreText.text = "Score: " + playerScore.ToString();
         //popUpText.ShowPopUpText("+1");
         print("rapatrimenyyyyyyyyyyyt");
     }

@@ -50,9 +50,7 @@ public class ListeTom_1 : MonoBehaviour
 
     }
 
-
-
-/*    // Updates the UI Images to show the items in positions 1, 2, and 3
+// Updates the UI Images to show the items in positions 1, 2, and 3
     private void UpdateUpcomingSpawnDisplay()
     {
         FMODUnity.RuntimeManager.PlayOneShot("event:/V1/Player/playermove");
@@ -76,5 +74,5 @@ public class ListeTom_1 : MonoBehaviour
                 upcomingSpawnIcons[i].sprite = rienSprite; // Default to "Rien" icon
             }
         }
-    }*/
+    }
 }

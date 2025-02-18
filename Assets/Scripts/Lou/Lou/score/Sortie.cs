@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 
 public class Sortie : MonoBehaviour
-{
+{   //=================================>   BUGER N'EST PAS UTILISER    <=======================================
     [Header("UI Components")]
     public TMP_Text scoreText; // Reference to the score text UI element
 
@@ -21,7 +21,7 @@ public class Sortie : MonoBehaviour
             // Increment the score
             playerScore++;
             scoreText.text = "Score: " + playerScore.ToString();
-            resetTom.Rappatriment();
+          //  resetTom.Rappatriment();
             Debug.Log("Rappatriment() called from Sortie script.");
         }
     }

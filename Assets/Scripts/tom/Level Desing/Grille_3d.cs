@@ -32,9 +32,9 @@ public class Grille_3d : MonoBehaviour
         foreach (Transform t in this.transform)
         {
 
-            if (t.GetComponent<Boite>().phantomeRouge)
+            if (t.GetComponent<Boite>().equalType("RedGhost"))
             {
-                Destroy(t);
+                Destroy(t.gameObject);
             }
         }
     }
@@ -68,10 +68,11 @@ public class Grille_3d : MonoBehaviour
     {
         foreach (Transform t in this.transform)
         {
-            if (t.transform.position == vec)
+            if (t.transform.position == vec && !t.gameObject.GetComponent<Boite>().equalType("Fin"))
             {
                 return true;
             }
+
         }
         return false;   
     }
@@ -87,7 +88,7 @@ public class Grille_3d : MonoBehaviour
         {
             if (t.transform.position == vec)
             {
-                if (t.GetComponent<Boite>().Stop)
+                if (t.GetComponent<Boite>().equalType("Stop"))
                 {
                     return true;
                 }
@@ -98,7 +99,13 @@ public class Grille_3d : MonoBehaviour
     public void Rapatriment()// Rapatriment du joueur
     {
         FMODUnity.RuntimeManager.PlayOneShot("event:/V1/System/leveldone");
-        ResetTom.Rappatriment();
+        foreach(Transform t in this.transform)
+        {
+            if (t.gameObject.GetComponent<Boite>().equalType("Debut"))
+            {
+                t.gameObject.GetComponent<ResetTom>().Rappatriment(joueur.transform);
+            }
+        }
         CS++;
         listeTom.setIndex();
     }
@@ -115,27 +122,29 @@ public class Grille_3d : MonoBehaviour
     }
     public void Faire_carrer(Vector3 vec)// Fais un phantome(un obstacle donc) Sur la position du joueur !!!!
     {
-        foreach (Transform child in this.transform)//Je prend la liste des emphant de Grille_3d
+        if (trouve_boit(vec))
         {
-            if (child.transform.position == vec && !child.transform.GetComponent<Boite>().fin)
+            if (trouve_boit(vec).equalType("Fin"))
             {
                 if (debug)
                 {
-                    Debug.Log("BOITE_FIN : " + (vec));
+                    Debug.Log("BOITE_FIN : " + vec);
                 }
-            }
-            if (child.transform.position == vec)
+            }else
             {
                 if (debug)
                 {
-                    Debug.Log("BOITE_INCONUE : " + (vec));
+                    Debug.Log("ERREURE_BOITE_INCONNUE : " + vec);
                 }
             }
+        }else 
+        {
+                GameObject boite = Instantiate(prefabBoite, vec, Quaternion.identity);
+                boite.transform.SetParent(this.transform);
+                boite.GetComponent<Boite>().SetType("Phantome");//une boit normal donc
+                FMODUnity.RuntimeManager.PlayOneShot("event:/V2/Blocs/Place");
+                print("fais_cube : "+vec);
         }
-        GameObject boite = Instantiate(prefabBoite, vec, Quaternion.identity);
-        boite.transform.SetParent(this.transform);
-        boite.GetComponent<Boite>().SetType("Normal");//une boit normal donc
-        FMODUnity.RuntimeManager.PlayOneShot("event:/V2/Blocs/Place");
     }
     public void Faire_Trou(Vector3 vec) //Sur la position du joueur !!!!
     {
@@ -143,9 +152,13 @@ public class Grille_3d : MonoBehaviour
         FMODUnity.RuntimeManager.PlayOneShot("event:/V2/Blocs/Break");
         foreach (Transform t in transform)
         {
-            if (t.transform.position == vec + new Vector3(0, -1, 0) && (!trouve_boit(vec).transform.GetComponent<Boite>().fin)) //On s'aintéresse ici, au bloc que l'on veux détruir c'est à dire celui juste endessous du joueur et on vérifie si le block ou l'on est est une sortie
+            if (t.transform.position == vec + new Vector3(0, -1, 0) && (!(trouve_boit(vec)  && trouve_boit(vec).transform.GetComponent<Boite>().fin))) //On s'aintéresse ici, au bloc que l'on veux détruir c'est à dire celui juste endessous du joueur et on vérifie si le block ou l'on est est une sortie
             {
                 t.gameObject.GetComponent<Boite>().SetType("RedGhost");
+                if (debug)
+                {
+                    Debug.Log("RedGhost : " + (vec));
+                }
             }
             else
             {

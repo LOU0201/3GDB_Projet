@@ -132,7 +132,7 @@ Transform:
   m_GameObject: {fileID: 2527332890232393355}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.49, z: 0}
+  m_LocalPosition: {x: 0, y: 0.501, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -250,8 +250,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 084263d019433d740b7a8068ce688fc2, type: 2}
-  - {fileID: 2100000, guid: 4bc22005720d1c640b4582b015860d86, type: 2}
+  - {fileID: -876546973899608171, guid: 1a207e3bee00db44b940e6f362a8e148, type: 3}
+  - {fileID: 2100000, guid: df4e7e5935f5b8141ace5e1ce0cf6473, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -305,7 +305,7 @@ GameObject:
   - component: {fileID: 8471816980154278000}
   - component: {fileID: 2786886944908568861}
   - component: {fileID: 1793110974088734330}
-  - component: {fileID: 1754520436528452270}
+  - component: {fileID: 6476511047616165731}
   m_Layer: 0
   m_Name: Boite
   m_TagString: Untagged
@@ -372,27 +372,30 @@ MonoBehaviour:
   fin: 0
   "d\xE9but": 0
   temporaire: 0
-  Stop: 0
   phantomeRouge: 0
   valeur: 0
   reTurne: {fileID: 0}
   childRenderer: {fileID: 5261765914916719340}
-  matA: {fileID: 2100000, guid: 084263d019433d740b7a8068ce688fc2, type: 2}
-  matB: {fileID: 2100000, guid: d4ece173bdacba4459d664ecc216e0ff, type: 2}
---- !u!114 &1754520436528452270
+  Solide: {fileID: -876546973899608171, guid: 1a207e3bee00db44b940e6f362a8e148, type: 3}
+  Phantome: {fileID: 2100000, guid: 63e54989b59d3e3419190632df8055d6, type: 2}
+  Sortie: {fileID: 2100000, guid: 2f0664f552ff00642b6831d8b500100b, type: 2}
+  RedGhost: {fileID: 2100000, guid: 8da7b5099383f7b4eac7f70f31ebbbbe, type: 2}
+  Stop: {fileID: 2100000, guid: 7544fd18aca7f1b41843dc5f12d2a85e, type: 2}
+  Debut: {fileID: 2100000, guid: 5ee1dfd8fa775a442b95819b7b30d7b8, type: 2}
+--- !u!114 &6476511047616165731
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4021901750627738393}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: acb206ffd21e4db4794151c151d07c77, type: 3}
+  m_Script: {fileID: 11500000, guid: 8ec876f19e1a43947946db9867b7e4d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  des: {fileID: 8614906234617093732, guid: 6db0ddc2514034047b2451df01c31190, type: 3}
-  casse: {fileID: 7531597214093554653, guid: 6db0ddc2514034047b2451df01c31190, type: 3}
+  scoreText: {fileID: 0}
+  popUpText: {fileID: 0}
 --- !u!1 &4735093434459908334
 GameObject:
   m_ObjectHideFlags: 0

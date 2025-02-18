@@ -31,7 +31,7 @@ public class ListeTom : MonoBehaviour
     // Update is called once per frame
     public void UpdateTom()
     {
-        if (false)
+        if (var)
         {
             var=false;
             // Perform the action for the current item
@@ -66,13 +66,13 @@ public class ListeTom : MonoBehaviour
             string currentItem = liste[currentIndex];
             if (currentItem == "cube")
             {
-                GetComponent<musiqueblocs>().Note();
+               // GetComponent<musiqueblocs>().Note();
                 G3D.Faire_carrer(joueur.position); // Spawn a cube
             }
             else if (currentItem == "trou")
             {
                 G3D.Faire_Trou(joueur.position); // Spawn a hole FaireTrou va donc désactiver le cube en bas du joueur
-                GetComponent<musiqueblocs>().Note();
+                //GetComponent<musiqueblocs>().Note();
             }
             else if (currentItem == "rien")
             {
@@ -93,6 +93,7 @@ public class ListeTom : MonoBehaviour
     public void setIndex()
     {
         currentIndex = 0;
+        print("setIndex");
     }
 
 
