@@ -4,21 +4,28 @@ using UnityEngine;
 
 public class Caméra : MonoBehaviour
 {
-    public Camera cam;                // Main camera
-    public GameObject[] Lcam;         // List of camera positions/rotations
-    private int index = 0;            // Current camera index
-    public float moveSpeed = 5f;      // Speed of position interpolation
-    public float rotateSpeed = 5f;    // Speed of rotation interpolation
-    private Vector3 targetPosition;   // Target position for smooth movement
-    private Quaternion targetRotation; // Target rotation for smooth rotation
-    private float fixedRotationX;    // Fixed X rotation
+    public Camera cam;
+    public GameObject[] Lcam;         // Liste des positions de caméra
+    private int index = 0;             // Index actuel de la caméra
+
+    public float moveSmoothTime = 0.3f;  // Temps de lissage pour le déplacement
+    public float rotateSmoothTime = 0.2f; // Temps de lissage pour la rotation
+
+    private Vector3 targetPosition;   // Position cible
+    private Quaternion targetRotation; // Rotation cible
+    private float fixedRotationX;     // Rotation X fixe
+
+    private Vector3 velocity = Vector3.zero; // Vélocité pour SmoothDamp
+    private float rotationVelocityY = 0f;    // Vélocité pour SmoothDampAngle (Y)
+    private float rotationVelocityZ = 0f;    // Vélocité pour SmoothDampAngle (Z)
+
+    public Transform target;  // Objet que la caméra doit observer
+    public float distanceFromTarget = 5f; // Distance de la caméra par rapport à l'objet cible
 
     void Start()
     {
-        // Store the initial X rotation to keep it fixed
         fixedRotationX = cam.transform.rotation.eulerAngles.x;
 
-        // Activate the first camera position
         if (Lcam.Length > 0)
         {
             SetTarget(0);
@@ -29,18 +36,27 @@ public class Caméra : MonoBehaviour
 
     void Update()
     {
-        // Smoothly move the camera towards the target position
-        cam.transform.position = Vector3.Lerp(cam.transform.position, targetPosition, Time.deltaTime * moveSpeed);
+        if (target == null) return; // Ne rien faire si aucun objet cible n'est défini
 
-        // Adjust the target rotation to keep the X axis fixed
+        // Obtenir la rotation actuelle et cible
+        Vector3 currentEulerAngles = cam.transform.eulerAngles;
         Vector3 targetEulerAngles = targetRotation.eulerAngles;
-        targetEulerAngles.x = fixedRotationX; // Preserve the original X rotation
-        Quaternion adjustedRotation = Quaternion.Euler(targetEulerAngles);
 
-        // Smoothly rotate the camera towards the adjusted rotation
-        cam.transform.rotation = Quaternion.Slerp(cam.transform.rotation, adjustedRotation, Time.deltaTime * rotateSpeed);
+        // Garder la rotation X fixe
+        targetEulerAngles.x = fixedRotationX;
 
-        // Switch to the previous camera (E)
+        // Appliquer une interpolation fluide sur Y et Z
+        float smoothY = Mathf.SmoothDampAngle(currentEulerAngles.y, targetEulerAngles.y, ref rotationVelocityY, rotateSmoothTime);
+        float smoothZ = Mathf.SmoothDampAngle(currentEulerAngles.z, targetEulerAngles.z, ref rotationVelocityZ, rotateSmoothTime);
+
+        // Appliquer la rotation lissée
+        cam.transform.rotation = Quaternion.Euler(fixedRotationX, smoothY, smoothZ);
+
+        // **Repositionnement immédiat** après la rotation pour que l'objet reste au centre
+        Vector3 offset = cam.transform.forward * -distanceFromTarget;
+        cam.transform.position = target.position + offset;
+
+        // Changer de caméra avec Q et E
         if (Input.GetKeyDown(KeyCode.E))
         {
             index = (index - 1 + Lcam.Length) % Lcam.Length;
@@ -48,7 +64,6 @@ public class Caméra : MonoBehaviour
             FMODUnity.RuntimeManager.PlayOneShot("event:/V1/System/movecam");
         }
 
-        // Switch to the next camera (Q)
         if (Input.GetKeyDown(KeyCode.Q))
         {
             index = (index + 1) % Lcam.Length;
@@ -57,10 +72,8 @@ public class Caméra : MonoBehaviour
         }
     }
 
-    // Set the target position and rotation for the camera
     private void SetTarget(int targetIndex)
     {
-        targetPosition = Lcam[targetIndex].transform.position;
         targetRotation = Lcam[targetIndex].transform.rotation;
     }
 }
