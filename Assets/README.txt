@@ -37,4 +37,4 @@ Notez bien pour creer des cubes spéciaux modifier le type.
 Exception pour les cubes temporaires modifier manuellement le boolean Temporaire.
 
 	Si vous avez des bugs ou des incompréentions, n'ésitez surtout pas à nous faire signe !!!
-
+	Ou encore des idées d'améliorations !!!
