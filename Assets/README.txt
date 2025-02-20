@@ -36,5 +36,5 @@ Maintenant vous pouvez modifier vos niveaux facilement.
 Notez bien pour creer des cubes spéciaux modifier le type.
 Exception pour les cubes temporaires modifier manuellement le boolean Temporaire.
 
-	Si vous avez des bugs ou des incompréentions, n'ésitez surtout pas à me faire signe !!!
+	Si vous avez des bugs ou des incompréentions, n'ésitez surtout pas à nous faire signe !!!
 
