@@ -27,7 +27,7 @@ public class ResetTom : MonoBehaviour
     }
     public void Rappatriment(Transform joueur)
     {
-        joueur.transform.position = this.transform.position; ;
+        joueur.transform.position = this.transform.position+new Vector3(0,1,0); ;
         playerScore++;
       //  scoreText.text = "Score: " + playerScore.ToString();
         //popUpText.ShowPopUpText("+1");
