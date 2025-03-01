@@ -106,6 +106,10 @@ public class Grille_3d : MonoBehaviour
                 t.gameObject.GetComponent<ResetTom>().Rappatriment(joueur.transform);
             }
         }
+        if (debug)
+        {
+            Debug.Log("ResetListe");
+        }
         CS++;
         listeTom.setIndex();
     }
@@ -152,31 +156,35 @@ public class Grille_3d : MonoBehaviour
         FMODUnity.RuntimeManager.PlayOneShot("event:/V2/Blocs/Break");
         foreach (Transform t in transform)
         {
-            if (t.transform.position == vec + new Vector3(0, -1, 0) && (!(trouve_boit(vec)  && trouve_boit(vec).transform.GetComponent<Boite>().fin))) //On s'aintéresse ici, au bloc que l'on veux détruir c'est à dire celui juste endessous du joueur et on vérifie si le block ou l'on est est une sortie
+            if (t.transform.position == vec + new Vector3(0, -1, 0))
             {
-                t.gameObject.GetComponent<Boite>().SetType("RedGhost");
-                if (debug)
+                if (!(trouve_boit(vec) && trouve_boit(vec).transform.GetComponent<Boite>().fin))//On s'aintéresse ici, au bloc que l'on veux détruir c'est à dire celui juste endessous du joueur et on vérifie si le block ou l'on est est une sortie
                 {
-                    Debug.Log("RedGhost : " + (vec));
-                }
-            }
-            else
-            {
-                if (t.transform.position == vec + new Vector3(0, -1, 0))
-                {
+                    t.gameObject.GetComponent<Boite>().SetType("RedGhost");
                     if (debug)
                     {
-                        Debug.Log("FIN : " + (vec));
+                        Debug.Log("RedGhost : " + (vec));
                     }
                 }
                 else
                 {
-                    if (debug)
+                    if (t.transform.position == vec + new Vector3(0, -1, 0))
                     {
-                        Debug.Log("ERREURE_Boite_absente : " + (vec));
+                        if (debug)
+                        {
+                            Debug.Log("FIN : " + (vec));
+                        }
+                    }
+                    else
+                    {
+                        if (debug)
+                        {
+                            Debug.Log("ERREURE_Boite_absente : " + (vec));
+                        }
                     }
                 }
             }
+
         }
     }
 }

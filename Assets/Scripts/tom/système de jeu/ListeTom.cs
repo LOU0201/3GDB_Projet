@@ -31,6 +31,7 @@ public class ListeTom : MonoBehaviour
     // Update is called once per frame
     public void UpdateTom()
     {
+        print("currentIndex : " + currentIndex);
         if (var)
         {
             var=false;
@@ -93,6 +94,7 @@ public class ListeTom : MonoBehaviour
     public void setIndex()
     {
         currentIndex = 0;
+        var=true;
         print("setIndex");
     }
 
