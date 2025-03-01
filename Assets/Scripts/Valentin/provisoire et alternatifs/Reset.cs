@@ -19,11 +19,11 @@ public class Reset : MonoBehaviour
     {
         //Vector3 coordonnees = transform.position;
         //Vector3 CJ = joueur.position;
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            RestartScene();
-            //scriptJ.Debut();
-        }
+        //if (Input.GetKeyDown(KeyCode.R))
+        //{
+        //    RestartScene();
+        //    //scriptJ.Debut();
+        //}
     }
     void RestartScene()
     {
