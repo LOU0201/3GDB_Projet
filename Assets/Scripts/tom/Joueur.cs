@@ -82,6 +82,10 @@ public class Joueur : MonoBehaviour
         //    RB.useGravity = false;
         //}
     }
+    public bool isDebut()//Ici, Luu
+    {
+        return Update_grille3d.trouve_boit(transform.position).equalType("Debut");
+    }
     public void Update_plus()
     {
         //Atention LP active UpdateTom()
