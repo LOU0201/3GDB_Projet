@@ -74,7 +74,7 @@ public class Grille_3d : MonoBehaviour
             }
 
         }
-        return false;   
+        return false;
     }
 
 
@@ -99,12 +99,16 @@ public class Grille_3d : MonoBehaviour
     public void Rapatriment()// Rapatriment du joueur
     {
         FMODUnity.RuntimeManager.PlayOneShot("event:/V1/System/leveldone");
-        foreach(Transform t in this.transform)
+        foreach (Transform t in this.transform)
         {
             if (t.gameObject.GetComponent<Boite>().equalType("Debut"))
             {
                 t.gameObject.GetComponent<ResetTom>().Rappatriment(joueur.transform);
             }
+        }
+        if (debug)
+        {
+            Debug.Log("ResetListe");
         }
         CS++;
         listeTom.setIndex();
@@ -130,20 +134,22 @@ public class Grille_3d : MonoBehaviour
                 {
                     Debug.Log("BOITE_FIN : " + vec);
                 }
-            }else
+            }
+            else
             {
                 if (debug)
                 {
                     Debug.Log("ERREURE_BOITE_INCONNUE : " + vec);
                 }
             }
-        }else 
+        }
+        else
         {
-                GameObject boite = Instantiate(prefabBoite, vec, Quaternion.identity);
-                boite.transform.SetParent(this.transform);
-                boite.GetComponent<Boite>().SetType("Phantome");//une boit normal donc
-                FMODUnity.RuntimeManager.PlayOneShot("event:/V2/Blocs/Place");
-                print("fais_cube : "+vec);
+            GameObject boite = Instantiate(prefabBoite, vec, Quaternion.identity);
+            boite.transform.SetParent(this.transform);
+            boite.GetComponent<Boite>().SetType("Phantome");//une boit normal donc
+            FMODUnity.RuntimeManager.PlayOneShot("event:/V2/Blocs/Place");
+            print("fais_cube : " + vec);
         }
     }
     public void Faire_Trou(Vector3 vec) //Sur la position du joueur !!!!
@@ -152,31 +158,35 @@ public class Grille_3d : MonoBehaviour
         FMODUnity.RuntimeManager.PlayOneShot("event:/V2/Blocs/Break");
         foreach (Transform t in transform)
         {
-            if (t.transform.position == vec + new Vector3(0, -1, 0) && (!(trouve_boit(vec)  && trouve_boit(vec).transform.GetComponent<Boite>().fin))) //On s'aintéresse ici, au bloc que l'on veux détruir c'est à dire celui juste endessous du joueur et on vérifie si le block ou l'on est est une sortie
+            if (t.transform.position == vec + new Vector3(0, -1, 0))
             {
-                t.gameObject.GetComponent<Boite>().SetType("RedGhost");
-                if (debug)
+                if (!(trouve_boit(vec) && trouve_boit(vec).transform.GetComponent<Boite>().fin))//On s'aintéresse ici, au bloc que l'on veux détruir c'est à dire celui juste endessous du joueur et on vérifie si le block ou l'on est est une sortie
                 {
-                    Debug.Log("RedGhost : " + (vec));
-                }
-            }
-            else
-            {
-                if (t.transform.position == vec + new Vector3(0, -1, 0))
-                {
+                    t.gameObject.GetComponent<Boite>().SetType("RedGhost");
                     if (debug)
                     {
-                        Debug.Log("FIN : " + (vec));
+                        Debug.Log("RedGhost : " + (vec));
                     }
                 }
                 else
                 {
-                    if (debug)
+                    if (t.transform.position == vec + new Vector3(0, -1, 0))
                     {
-                        Debug.Log("ERREURE_Boite_absente : " + (vec));
+                        if (debug)
+                        {
+                            Debug.Log("FIN : " + (vec));
+                        }
+                    }
+                    else
+                    {
+                        if (debug)
+                        {
+                            Debug.Log("ERREURE_Boite_absente : " + (vec));
+                        }
                     }
                 }
             }
+
         }
     }
 }

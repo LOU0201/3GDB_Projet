@@ -31,6 +31,7 @@ public class ResetTom : MonoBehaviour
         playerScore++;
       //  scoreText.text = "Score: " + playerScore.ToString();
         //popUpText.ShowPopUpText("+1");
-        print("rapatrimenyyyyyyyyyyyt");
+        print("rapatrimenyyyyyyyyyyyt" + this.transform.position);
+        print(playerScore);
     }
 }
