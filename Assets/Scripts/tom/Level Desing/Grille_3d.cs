@@ -18,7 +18,6 @@ public class Grille_3d : MonoBehaviour
     public ResetTom ResetTom;
     public GameObject prefabCubeRouge;
     public ListeTom listeTom;
-    public float CS;
     private void Start()
     {
 
@@ -110,7 +109,6 @@ public class Grille_3d : MonoBehaviour
         {
             Debug.Log("ResetListe");
         }
-        CS++;
         listeTom.setIndex();
     }
     public bool est_temporaire(Vector3 vec)// si N'est pas un freez padh

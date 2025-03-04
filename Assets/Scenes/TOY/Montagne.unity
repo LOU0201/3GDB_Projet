@@ -2183,7 +2183,6 @@ MonoBehaviour:
   prefabCubeRouge: {fileID: 2453802386500359339, guid: 98d12df1e6b388144b1775d3d429c285,
     type: 3}
   listeTom: {fileID: 0}
-  CS: 0
 --- !u!1001 &151369870
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15241,12 +15240,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21ae61de8f30be34dad398abc7070f94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabBoite: {fileID: 4021901750627738393, guid: c8b18993afa00a840bd0627d4ebf3a15,
-    type: 3}
-  prefabEntrer: {fileID: 0}
-  Joueur: {fileID: 204350628122206957, guid: 2e1d1a04aa852c8449d0cbce4e496c1a, type: 3}
-  isActive: 1
-  Update_grille3d: {fileID: 147037772}
 --- !u!4 &1406171987
 Transform:
   m_ObjectHideFlags: 0
@@ -15532,6 +15525,7 @@ MonoBehaviour:
   trouSprite: {fileID: 21300000, guid: b7a801a841999814b9f5a838ee43828b, type: 3}
   cubeSprite: {fileID: 21300000, guid: 9add30ee206ad9b4b9182ba6636bf4ae, type: 3}
   conveyorBelt: {fileID: 0}
+  deplacement: 0
 --- !u!4 &1466179451
 Transform:
   m_ObjectHideFlags: 0
@@ -18470,6 +18464,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 385916308}
+  maxsortie: 10
   popUpText: {fileID: 0}
 --- !u!1001 &1759405840
 PrefabInstance:

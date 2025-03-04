@@ -16,6 +16,6 @@ public class texte_sorties : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        score.text = "Sorties : " + G3D.CS;
+        //score.text = "Sorties : " + G3D.CS;
     }
 }

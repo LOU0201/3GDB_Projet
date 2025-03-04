@@ -17,7 +17,7 @@ public class ListeTom : MonoBehaviour
     public Sprite trouSprite; // Icon for "Trou"
     public Sprite cubeSprite; // Icon for "Cube"
     public NewConveyor conveyorBelt;
-
+    public int deplacement;
     private bool var = true;
 
     // Start is called before the first frame update
@@ -31,6 +31,7 @@ public class ListeTom : MonoBehaviour
     // Update is called once per frame
     public void UpdateTom()
     {
+        deplacement++;
         print("currentIndex : " + currentIndex);
         if (var)
         {
