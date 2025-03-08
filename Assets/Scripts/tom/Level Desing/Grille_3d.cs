@@ -46,7 +46,6 @@ public class Grille_3d : MonoBehaviour
             {
                 if (t.GetComponent<Boite>().fin)
                 {
-                    Debug.Log("Player reached the end!");
                     Rapatriment();
                 }
             }
