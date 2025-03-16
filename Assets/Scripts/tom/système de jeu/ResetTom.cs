@@ -7,36 +7,58 @@ using TMPro;
 public class ResetTom : MonoBehaviour
 {
     public TMP_Text scoreText;
-
-    private int playerScore = 0;
+    public TMP_Text scoreText2;
+    public TMP_Text scoreText3;
+    public int playerScore = 0;
+    public int minsortie;
     public int maxsortie;
     public Popup popUpText;
+    public bool Max= false;
+    public GameObject écran;
+    public Collectible collec;
     void Start()
     {
-
-
-      //  popUpText = GetComponent<Popup>();
-
+        scoreText.text = "Sorties: " + playerScore.ToString() + "/" + minsortie.ToString();
+        scoreText2.text = "Sorties Maximum: " + playerScore.ToString() + "/" + maxsortie.ToString();
+        scoreText3.text = "Collectible: Non-obtenu";
     }
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && playerScore == minsortie && Max)
         {
-            print("Space");
-
+            écran.SetActive(true);
+        }
+        if(collec.collecté)
+        {
+            scoreText3.text = "Collectible: Obtenu";
         }
     }
     public void Rappatriment(Transform joueur)
     {
-        joueur.transform.position = this.transform.position+new Vector3(0,1,0); ;
-        playerScore++;
+        playerScore+= 1;
+        joueur.transform.position = this.transform.position+new Vector3(0,1,0);
         if (scoreText != null) 
         {
-            scoreText.text = "Sorties: " + playerScore.ToString() + "/" + maxsortie.ToString(); scoreText.text = "Sorties: " + playerScore.ToString() + "/" + maxsortie.ToString();
+            scoreText.text = "Sorties: " + playerScore.ToString() + "/" + minsortie.ToString();
+            scoreText2.text = "Sorties Maximum: " + playerScore.ToString() + "/" + maxsortie.ToString();
+        }
 
+        if (playerScore == minsortie)
+        {
+            if (!Max)
+            {
+                écran.SetActive(true);
+            }
+            else
+            {
+                Debug.Log("INPUT DE FIN");
+            }
+        }
+        if(playerScore == maxsortie)
+        {
+            écran.SetActive(true);
         }
         //popUpText.ShowPopUpText("+1");
         print("rapatrimenyyyyyyyyyyyt" + this.transform.position);
-        print(playerScore);
     }
 }

@@ -5,8 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class Niveau : MonoBehaviour
 {
-    public string name;
+    public string LVname;
     public Transform joueur;
+    public Transform[] alentours;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +21,16 @@ public class Niveau : MonoBehaviour
         Vector3 CJ = joueur.position;
         if (CJ == coordonnees)
         {
-            SceneManager.LoadScene(name);
+            SceneManager.LoadScene(LVname);
+        }
+
+        foreach(Transform t in alentours)
+        {
+            Vector3 COT = t.transform.position;
+            if (CJ == COT)
+            {
+                Debug.Log("ça marche");
+            }
         }
     }
 }

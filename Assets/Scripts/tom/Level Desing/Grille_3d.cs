@@ -47,6 +47,7 @@ public class Grille_3d : MonoBehaviour
                 {
                     Debug.Log("Player reached the end!");
                     Rapatriment();
+                    t.GetComponent<ResetTom>().enabled = true;
                 }
             }
         }
