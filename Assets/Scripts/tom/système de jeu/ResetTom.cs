@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System;
 
 public class ResetTom : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class ResetTom : MonoBehaviour
     public bool Max= false;
     public GameObject écran;
     public Collectible collec;
+    public event Action nivFini;
     void Start()
     {
         if(scoreText != null)
@@ -31,10 +33,12 @@ public class ResetTom : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && playerScore == minsortie && Max)
         {
             écran.SetActive(true);
+            Star();
         }
         if(collec!=null && collec.collecté)
         {
             scoreText3.text = "Collectible: Obtenu";
+            Star();
         }
     }
     public void Rappatriment(Transform joueur)
@@ -52,6 +56,7 @@ public class ResetTom : MonoBehaviour
             if (!Max)
             {
                 écran.SetActive(true);
+                Star();
             }
             else
             {
@@ -61,8 +66,13 @@ public class ResetTom : MonoBehaviour
         if(playerScore == maxsortie)
         {
             écran.SetActive(true);
+            Star();
         }
         //popUpText.ShowPopUpText("+1");
         print("rapatrimenyyyyyyyyyyyt" + this.transform.position);
+    }
+    private void Star()
+    {
+        GameManager.Instance.starsUp();
     }
 }

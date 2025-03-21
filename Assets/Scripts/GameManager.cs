@@ -5,18 +5,19 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    public float collectibles = 0f;
+    public float étoiles = 0f;
 
     private void Awake()
     {
         Instance = this;
+        DontDestroyOnLoad(this.gameObject);
     }
     public void Hello_World()
     {
         Debug.Log("Hello World!");
     }
-    public void coinsUp()
+    public void starsUp()
     {
-        collectibles += 1;
+        étoiles += 1;
     }
 }
