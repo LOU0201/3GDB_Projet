@@ -20,9 +20,13 @@ public class ResetTom : MonoBehaviour
     public event Action nivFini;
     void Start()
     {
-        scoreText.text = "Sorties: " + playerScore.ToString() + "/" + minsortie.ToString();
-        scoreText2.text = "Sorties Maximum: " + playerScore.ToString() + "/" + maxsortie.ToString();
-        scoreText3.text = "Collectible: Non-obtenu";
+        if(scoreText != null)
+        {
+            scoreText.text = "Sorties: " + playerScore.ToString() + "/" + minsortie.ToString();
+            scoreText2.text = "Sorties Maximum: " + playerScore.ToString() + "/" + maxsortie.ToString();
+            scoreText3.text = "Collectible: Non-obtenu";
+        }
+
     }
     public void Update()
     {
@@ -31,7 +35,7 @@ public class ResetTom : MonoBehaviour
             écran.SetActive(true);
             Star();
         }
-        if(collec.collecté)
+        if(collec!=null && collec.collecté)
         {
             scoreText3.text = "Collectible: Obtenu";
             Star();

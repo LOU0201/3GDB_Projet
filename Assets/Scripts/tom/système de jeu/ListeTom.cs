@@ -23,7 +23,7 @@ public class ListeTom : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentIndex = 0;
+        currentIndex = -1;
 
         UpdateUpcomingSpawnDisplay(); // Show the first set of predictions
     }
@@ -31,6 +31,10 @@ public class ListeTom : MonoBehaviour
     // Update is called once per frame
     public void UpdateTom()
     {
+        if(currentIndex == -1)
+        {
+            currentIndex = 0;
+        }
         deplacement++;
         print("currentIndex : " + currentIndex);
         if (var)
@@ -63,6 +67,10 @@ public class ListeTom : MonoBehaviour
         }
         else
         {
+            if (currentIndex == -1)
+            {
+                currentIndex = 0;
+            }
             // Perform the action for the current item
             currentIndex = (currentIndex + 1) % liste.Length;
             string currentItem = liste[currentIndex];
@@ -88,13 +96,13 @@ public class ListeTom : MonoBehaviour
             // Update the predictions for the next three items
             UpdateUpcomingSpawnDisplay();
         }
-
+        print("Current index" + currentIndex);
 
     }
 
     public void setIndex()
     {
-        currentIndex = 0;
+        currentIndex = -1;
         var = true;
         print("setIndex");
     }
@@ -105,22 +113,25 @@ public class ListeTom : MonoBehaviour
     {
         for (int i = 0; i < upcomingSpawnIcons.Length; i++) // Loop through the 3 upcoming icons
         {
-            // Get the index for the current, next, and the one after that
-            int index = (currentIndex + i) % liste.Length;
-            string nextItem = liste[index];
+            if (currentIndex != -1)
+            {
+                // Get the index for the current, next, and the one after that
+                int index = (currentIndex + i) % liste.Length;
+                string nextItem = liste[index];
 
-            // Assign the appropriate sprite to each Image
-            if (nextItem == "cube")
-            {
-                upcomingSpawnIcons[i].sprite = cubeSprite;
-            }
-            else if (nextItem == "trou")
-            {
-                upcomingSpawnIcons[i].sprite = trouSprite;
-            }
-            else
-            {
-                upcomingSpawnIcons[i].sprite = rienSprite; // Default to "Rien" icon
+                // Assign the appropriate sprite to each Image
+                if (nextItem == "cube")
+                {
+                    upcomingSpawnIcons[i].sprite = cubeSprite;
+                }
+                else if (nextItem == "trou")
+                {
+                    upcomingSpawnIcons[i].sprite = trouSprite;
+                }
+                else
+                {
+                    upcomingSpawnIcons[i].sprite = rienSprite; // Default to "Rien" icon
+                }
             }
         }
     }
