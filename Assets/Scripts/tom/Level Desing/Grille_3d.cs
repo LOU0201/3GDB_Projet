@@ -12,7 +12,10 @@ public class Grille_3d : MonoBehaviour
 
 
     public GameObject joueur;
-    public GameObject prefabBoite;
+    private GameObject prefabBoite;
+    public bool CubeJaune;
+    public GameObject prefabBoiteNormale;
+    public GameObject prefabBoiteJaune;
     public bool Non_Blockeur = false;
     public Destructeur des;
     public ResetTom ResetTom;
@@ -21,9 +24,17 @@ public class Grille_3d : MonoBehaviour
     public float CS;
     private void Start()
     {
+        if (CubeJaune)
+        {
+            prefabBoite = prefabBoiteJaune;
+        }
+        else
+        {
+            prefabBoite = prefabBoiteNormale;
 
+        }
     }
-    void Update()
+        void Update()
     {
 
     }
