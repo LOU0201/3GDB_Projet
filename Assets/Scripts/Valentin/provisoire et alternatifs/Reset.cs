@@ -7,7 +7,7 @@ public class Reset : MonoBehaviour
 {
     //public Transform joueur;
     //[SerializeField] public bool exit;
-    //public Joueur_V scriptJ;
+    public CheckReset CR;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,20 +17,23 @@ public class Reset : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Vector3 coordonnees = transform.position;
-        //Vector3 CJ = joueur.position;
-        //if (Input.GetKeyDown(KeyCode.R))
-        //{
-        //    RestartScene();
-        //    //scriptJ.Debut();
-        //}
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            RestartScene();
+        }
     }
-    void RestartScene()
+    public void RestartScene()
     {
         // Get the current scene's index
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
 
         // Reload the current scene
         SceneManager.LoadScene(currentSceneIndex);
+
+        CR.reset = true;
+    }
+    public void HUB()
+    {
+        SceneManager.LoadScene("HUB");
     }
 }
