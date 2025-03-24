@@ -12,17 +12,29 @@ public class Grille_3d : MonoBehaviour
 
 
     public GameObject joueur;
-    public GameObject prefabBoite;
+    private GameObject prefabBoite;
+    public bool CubeJaune;
+    public GameObject prefabBoiteNormale;
+    public GameObject prefabBoiteJaune;
     public bool Non_Blockeur = false;
     public Destructeur des;
     public ResetTom ResetTom;
     public GameObject prefabCubeRouge;
     public ListeTom listeTom;
+    public float CS;
     private void Start()
     {
+        if (CubeJaune)
+        {
+            prefabBoite = prefabBoiteJaune;
+        }
+        else
+        {
+            prefabBoite = prefabBoiteNormale;
 
+        }
     }
-    void Update()
+        void Update()
     {
 
     }
@@ -45,9 +57,7 @@ public class Grille_3d : MonoBehaviour
             {
                 if (t.GetComponent<Boite>().fin)
                 {
-                    Debug.Log("Player reached the end!");
                     Rapatriment();
-                    t.GetComponent<ResetTom>().enabled = true;
                 }
             }
         }
@@ -74,7 +84,7 @@ public class Grille_3d : MonoBehaviour
             }
 
         }
-        return false;
+        return false;   
     }
 
 
@@ -99,7 +109,7 @@ public class Grille_3d : MonoBehaviour
     public void Rapatriment()// Rapatriment du joueur
     {
         FMODUnity.RuntimeManager.PlayOneShot("event:/V1/System/leveldone");
-        foreach (Transform t in this.transform)
+        foreach(Transform t in this.transform)
         {
             if (t.gameObject.GetComponent<Boite>().equalType("Debut"))
             {
@@ -110,6 +120,7 @@ public class Grille_3d : MonoBehaviour
         {
             Debug.Log("ResetListe");
         }
+        CS++;
         listeTom.setIndex();
     }
     public bool est_temporaire(Vector3 vec)// si N'est pas un freez padh
@@ -133,22 +144,20 @@ public class Grille_3d : MonoBehaviour
                 {
                     Debug.Log("BOITE_FIN : " + vec);
                 }
-            }
-            else
+            }else
             {
                 if (debug)
                 {
                     Debug.Log("ERREURE_BOITE_INCONNUE : " + vec);
                 }
             }
-        }
-        else
+        }else 
         {
-            GameObject boite = Instantiate(prefabBoite, vec, Quaternion.identity);
-            boite.transform.SetParent(this.transform);
-            boite.GetComponent<Boite>().SetType("Phantome");//une boit normal donc
-            FMODUnity.RuntimeManager.PlayOneShot("event:/V2/Blocs/Place");
-            print("fais_cube : " + vec);
+                GameObject boite = Instantiate(prefabBoite, vec, Quaternion.identity);
+                boite.transform.SetParent(this.transform);
+                boite.GetComponent<Boite>().SetType("Phantome");//une boit normal donc
+                FMODUnity.RuntimeManager.PlayOneShot("event:/V2/Blocs/Place");
+                print("fais_cube : "+vec);
         }
     }
     public void Faire_Trou(Vector3 vec) //Sur la position du joueur !!!!
