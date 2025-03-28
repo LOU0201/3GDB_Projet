@@ -10,6 +10,7 @@ public class ResetTom : MonoBehaviour
     public TMP_Text scoreText;
     public TMP_Text scoreText2;
     public TMP_Text scoreText3;
+    public TMP_Text scoreText4;
     public int playerScore = 0;
     public int minsortie;
     public int maxsortie;
@@ -17,7 +18,9 @@ public class ResetTom : MonoBehaviour
     public bool Max= false;
     public GameObject écran;
     public Collectible collec;
-    public event Action nivFini;
+    public bool annule = false;
+    private bool _return = false;
+    //public event Action nivFini;
     void Start()
     {
         if(scoreText != null)
@@ -25,6 +28,7 @@ public class ResetTom : MonoBehaviour
             scoreText.text = "Sorties: " + playerScore.ToString() + "/" + minsortie.ToString();
             scoreText2.text = "Sorties Maximum: " + playerScore.ToString() + "/" + maxsortie.ToString();
             scoreText3.text = "Collectible: Non-obtenu";
+            scoreText4.text = "Retour arriere: Non-utilisé";
         }
 
     }
@@ -39,6 +43,15 @@ public class ResetTom : MonoBehaviour
         {
             scoreText3.text = "Collectible: Obtenu";
             Star();
+            collec.collecté = false;
+        }
+        if(annule)
+        {
+            if (Input.GetKeyDown(KeyCode.RightShift))
+            {
+                _return = true;
+                scoreText4.text = "Retour arriere: Utilisé";
+            }
         }
     }
     public void Rappatriment(Transform joueur)
@@ -57,6 +70,10 @@ public class ResetTom : MonoBehaviour
             {
                 écran.SetActive(true);
                 Star();
+                if(annule)
+                {
+                    CheckReturn();
+                }
             }
             else
             {
@@ -67,6 +84,10 @@ public class ResetTom : MonoBehaviour
         {
             écran.SetActive(true);
             Star();
+            if (annule)
+            {
+                CheckReturn();
+            }
         }
         //popUpText.ShowPopUpText("+1");
         print("rapatrimenyyyyyyyyyyyt" + this.transform.position);
@@ -74,5 +95,12 @@ public class ResetTom : MonoBehaviour
     private void Star()
     {
         GameManager.Instance.starsUp();
+    }
+    private void CheckReturn()
+    {
+        if(!_return)
+        {
+            Star();
+        }
     }
 }

@@ -36,4 +36,12 @@ public class Reset : MonoBehaviour
     {
         SceneManager.LoadScene("HUB");
     }
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+    public void Quit()
+    {
+        Application.Quit();
+    }
 }
