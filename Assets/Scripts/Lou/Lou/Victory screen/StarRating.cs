@@ -12,9 +12,8 @@ public class StarRating : MonoBehaviour
     public TMP_Text[] challengeTexts; // 3 challenge descriptions (TMP)
 
     [Header("Challenge Conditions")]
-    public bool levelCompleted = false;
-    public bool collectedItem = false;
-    public bool noUndoUsed = false;
+    public ResetTom resetTom; // Reference to the ResetTom script
+    public Collectible collectible; // Reference to the Collectible script
 
     [Header("Animation Settings")]
     public float dropDuration = 0.5f;
@@ -32,7 +31,16 @@ public class StarRating : MonoBehaviour
 
     void CheckChallenges()
     {
-        bool[] challengeStatus = { levelCompleted, collectedItem, noUndoUsed };
+        bool[] challengeStatus = new bool[3];
+
+        // Challenge 1: Reached Max Sortie
+        challengeStatus[0] = resetTom.playerScore >= resetTom.maxsortie;
+        // Challenge 2: Collected Item
+        challengeStatus[1] = collectible != null && collectible.collecté;
+        // Challenge 3: No Undo Used
+        challengeStatus[2] = resetTom.annule && !resetTom._return;
+
+        int activeStarCount = 0;
 
         for (int i = 0; i < challengeStatus.Length; i++)
         {
@@ -40,11 +48,18 @@ public class StarRating : MonoBehaviour
             {
                 challengeTexts[i].color = Color.green; // Set text to green (Challenge passed)
                 StartCoroutine(ShowStarAnimation(stars[i])); // Play animation
+                activeStarCount++;
             }
             else
             {
                 challengeTexts[i].color = Color.red; // Set text to red (Challenge failed)
             }
+        }
+
+        // Activate only the number of stars matching the achieved challenges.
+        for (int i = 0; i < stars.Length; i++)
+        {
+            stars[i].gameObject.SetActive(i < activeStarCount);
         }
     }
 

@@ -19,7 +19,7 @@ public class ResetTom : MonoBehaviour
     public GameObject écran;
     public Collectible collec;
     public bool annule = false;
-    private bool _return = false;
+    public bool _return = false;
     //public event Action nivFini;
     void Start()
     {
@@ -28,7 +28,7 @@ public class ResetTom : MonoBehaviour
             scoreText.text = "Sorties: " + playerScore.ToString() + "/" + minsortie.ToString();
             scoreText2.text = "Sorties Maximum: " + playerScore.ToString() + "/" + maxsortie.ToString();
             scoreText3.text = "Collectible: Non-obtenu";
-            scoreText4.text = "Retour arriere: Non-utilisé";
+            //scoreText4.text = "Retour arriere: Non-utilisé";
         }
 
     }
