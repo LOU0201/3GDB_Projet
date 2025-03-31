@@ -208,33 +208,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 707764637}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 490645047}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 23971546}
-        m_TargetAssemblyTypeName: Pause_menu_anim, Assembly-CSharp
-        m_MethodName: FadeIn
+      - m_Target: {fileID: 909968865}
+        m_TargetAssemblyTypeName: Reset, Assembly-CSharp
+        m_MethodName: HUB
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -344,18 +320,6 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
---- !u!114 &23971546 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 330919682615893411, guid: 92e8705844ce2684caa68b5178a6cde7,
-    type: 3}
-  m_PrefabInstance: {fileID: 1602314809}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40b80ffeb124a6148b3693fdfb5bbbc8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &58955355
 GameObject:
   m_ObjectHideFlags: 0
@@ -442,9 +406,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 909968858}
+      - m_Target: {fileID: 909968865}
         m_TargetAssemblyTypeName: Reset, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: Quit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1444,12 +1408,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 9199166548283537931, guid: 24033214ff78c2646b9d0cc4d5d3987b,
     type: 3}
   m_PrefabInstance: {fileID: 444298816}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &707764637 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8567132677209521598, guid: 92e8705844ce2684caa68b5178a6cde7,
-    type: 3}
-  m_PrefabInstance: {fileID: 1602314809}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &734228517
 GameObject:

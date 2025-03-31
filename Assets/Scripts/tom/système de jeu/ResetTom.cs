@@ -14,7 +14,6 @@ public class ResetTom : MonoBehaviour
     public int playerScore = 0;
     public int minsortie;
     public int maxsortie;
-    public Popup popUpText;
     public bool Max= false;
     public GameObject écran;
     public Collectible collec;
@@ -28,7 +27,7 @@ public class ResetTom : MonoBehaviour
             scoreText.text = "Sorties: " + playerScore.ToString() + "/" + minsortie.ToString();
             scoreText2.text = "Sorties Maximum: " + playerScore.ToString() + "/" + maxsortie.ToString();
             scoreText3.text = "Collectible: Non-obtenu";
-            //scoreText4.text = "Retour arriere: Non-utilisé";
+            scoreText4.text = "Retour arriere: Non-utilise";
         }
 
     }
@@ -89,12 +88,22 @@ public class ResetTom : MonoBehaviour
                 CheckReturn();
             }
         }
-        //popUpText.ShowPopUpText("+1");
+
+        if (playerScore == minsortie)
+        {
+    
+            StarRating starSystem = écran.GetComponent<StarRating>();
+            if (starSystem != null)
+            {
+                starSystem.UpdateStarRating();
+            }
+        }
+
         print("rapatrimenyyyyyyyyyyyt" + this.transform.position);
     }
     private void Star()
     {
-        GameManager.Instance.starsUp();
+        //GameManager.Instance.starsUp();
     }
     private void CheckReturn()
     {

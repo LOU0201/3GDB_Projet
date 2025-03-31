@@ -16,61 +16,73 @@ public class StarRating : MonoBehaviour
     public Collectible collectible; // Reference to the Collectible script
 
     [Header("Animation Settings")]
-    public float dropDuration = 0.5f;
+    public float starDropDuration = 0.5f;
+    public float starBounceStrength = 0.3f;
 
-    void Start()
+    private void Start()
     {
-        // Hide all stars initially
+        // Ensure stars and texts are hidden initially
         foreach (var star in stars)
         {
             star.gameObject.SetActive(false);
         }
-
-        CheckChallenges();
+        foreach (var text in challengeTexts)
+        {
+            text.gameObject.SetActive(false);
+        }
     }
 
-    void CheckChallenges()
+    public void UpdateStarRating()
     {
+        Debug.Log("Updating Star Rating...");
+
+        // Activate and update challenge texts
+        for (int i = 0; i < challengeTexts.Length; i++)
+        {
+            challengeTexts[i].gameObject.SetActive(true);
+        }
+
+        // Check challenge conditions
         bool[] challengeStatus = new bool[3];
 
-        // Challenge 1: Reached Max Sortie
-        challengeStatus[0] = resetTom.playerScore >= resetTom.maxsortie;
-        // Challenge 2: Collected Item
-        challengeStatus[1] = collectible != null && collectible.collecté;
-        // Challenge 3: No Undo Used
-        challengeStatus[2] = resetTom.annule && !resetTom._return;
+        // Challenge 1: Reached Minimum Sortie (Level Complete)
+        challengeStatus[0] = resetTom.playerScore >= resetTom.minsortie && !resetTom.Max;
 
-        int activeStarCount = 0;
+        // Challenge 2: Reached Max Sortie (Bonus Objective)
+        challengeStatus[1] = resetTom.playerScore >= resetTom.maxsortie;
 
+        // Challenge 3: Collected Item & No Undo Used (if applicable)
+        challengeStatus[2] = (collectible != null && collectible.collecté) ||
+                            (!resetTom.annule || !resetTom._return);
+
+        // Update UI based on challenge status
         for (int i = 0; i < challengeStatus.Length; i++)
         {
+            challengeTexts[i].color = challengeStatus[i] ? Color.green : Color.red;
+
             if (challengeStatus[i])
             {
-                challengeTexts[i].color = Color.green; // Set text to green (Challenge passed)
-                StartCoroutine(ShowStarAnimation(stars[i])); // Play animation
-                activeStarCount++;
+                ActivateStarWithAnimation(stars[i]);
             }
             else
             {
-                challengeTexts[i].color = Color.red; // Set text to red (Challenge failed)
+                stars[i].gameObject.SetActive(false); // Hide if failed
             }
-        }
-
-        // Activate only the number of stars matching the achieved challenges.
-        for (int i = 0; i < stars.Length; i++)
-        {
-            stars[i].gameObject.SetActive(i < activeStarCount);
         }
     }
 
-    IEnumerator ShowStarAnimation(Image star)
+    private void ActivateStarWithAnimation(Image star)
     {
-        star.gameObject.SetActive(true); // Activate star
-        star.transform.localScale = Vector3.zero; // Start scale at 0 (invisible)
+        if (star == null) return;
 
-        // Tweening Animation (Scale from 0 to 1 with bounce effect)
-        star.transform.DOScale(1, dropDuration).SetEase(Ease.OutBounce);
+        star.gameObject.SetActive(true);
+        star.transform.localScale = Vector3.zero;
 
-        yield return new WaitForSeconds(0.2f); // Small delay before next star animates
+        // Bounce animation using DOTween
+        star.transform.DOScale(1f, starDropDuration)
+            .SetEase(Ease.OutBounce)
+            .OnComplete(() => {
+                // Optional: Add sparkle effect here
+            });
     }
 }

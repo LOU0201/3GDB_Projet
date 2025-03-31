@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7260695335499758499}
   - component: {fileID: 8883954813513022747}
+  - component: {fileID: 2704461344269988736}
   - component: {fileID: 1052464620029773395}
   m_Layer: 0
   m_Name: Joueur 1
@@ -58,6 +59,19 @@ MonoBehaviour:
   cameraPrincipal: {fileID: 0}
   trou: 1
   Ygrav: 1.5
+--- !u!114 &2704461344269988736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 204350628122206957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d2f7a4e6a5ba8d428103b51969f029e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CR: {fileID: 0}
 --- !u!114 &1052464620029773395
 MonoBehaviour:
   m_ObjectHideFlags: 0

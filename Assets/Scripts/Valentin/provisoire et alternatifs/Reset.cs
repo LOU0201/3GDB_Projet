@@ -7,7 +7,6 @@ public class Reset : MonoBehaviour
 {
     //public Transform joueur;
     //[SerializeField] public bool exit;
-    public CheckReset CR;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,8 +28,6 @@ public class Reset : MonoBehaviour
 
         // Reload the current scene
         SceneManager.LoadScene(currentSceneIndex);
-
-        CR.reset = true;
     }
     public void HUB()
     {
