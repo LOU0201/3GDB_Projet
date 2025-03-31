@@ -8,6 +8,7 @@ Maintenant vous pouvez modifier vos niveaux facilement.
 Notez bien pour creer des cubes spéciaux modifier le type.
 Exception pour les cubes temporaires modifier manuellement le boolean Temporaire.
 Dans le Manageur vous choisisser votre liste
+pour que les block créer par le joueur soit bloquant (jaune) aller dans Grille3d et cocher BlockJaune
 	Si vous avez des bugs ou des incompréentions, n'ésitez surtout pas à nous faire signe !!!
 	Ou encore des idées d'améliorations !!!
 
