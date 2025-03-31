@@ -2,14 +2,15 @@ README:
 
 
 	Pour commencer prenez le prefab cube dans Prefab > Tom > Level Design
-Penssez bien à activer le Grid Snapping, en haut au milieu.créez
-Quand vous créer de nouveaux block maiter les dans la Grille3d
+Pensez bien à activer le Grid Snapping, en haut au milieu.créez
+Quand vous créer de nouveaux block mettez les dans la Grille3d
 Maintenant vous pouvez modifier vos niveaux facilement.
-Notez bien pour creer des cubes spéciaux modifier le type.
+Notez bien pour créer des cubes spéciaux modifier le type.
 Exception pour les cubes temporaires modifier manuellement le boolean Temporaire.
-Dans le Manageur vous choisisser votre liste
-	Si vous avez des bugs ou des incompréentions, n'ésitez surtout pas à nous faire signe !!!
+Dans le Manageur vous choisissez votre liste
+	Si vous avez des bugs ou des incompréhensions, n'hésitez surtout pas à nous faire signe !!!
 	Ou encore des idées d'améliorations !!!
+
 
 
 
