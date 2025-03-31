@@ -44,3 +44,8 @@ POUR L'UI, UTILISER LE CROIX ROUGE!!!
 pour le reste contentez-vous de copier coller dans la scène SceneDebut
 et de vider la hiérarchie emphant de grille3d pour avoir une scène vierge
 
+Pour créer un niveau, copier-coller la scène SceneDebut. Commencer la création d'un nouveau niveau en glissant un préfab Boite dans
+l'empty Grille3d. Régler le bloc d'entrée sur Debut et de sortie sur Fin. Une fois le niveau créé, ajouter un empty, l'appeler "centre"
+et le positionner au milieu des axes x, y et z du niveau. L'assigner, ensuite, comme valeur des variables Target du préfab Camera et
+Player Transform du script Camera Turn du Text (TMP) de l'intro. Vous pouvez ajuster la position de "centre" si vous ne la considérez
+pas comme correcte.
