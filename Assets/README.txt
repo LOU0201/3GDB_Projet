@@ -1,6 +1,6 @@
 README:
 
-
+	Aller dans Scenes->SceneDebut
 	Pour commencer prenez le prefab cube dans Prefab > Tom > Level Design
 Penssez bien à activer le Grid Snapping, en haut au milieu.créez
 Quand vous créer de nouveaux block maiter les dans la Grille3d
