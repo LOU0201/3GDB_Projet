@@ -2,9 +2,17 @@ using UnityEngine;
 
 public class Billboarding_2D : MonoBehaviour
 {
-
+    [SerializeField] bool freezeXZAxis = true;
     void Update()
     {
-        transform.rotation = Quaternion.Euler(0f, Camera.main.transform.rotation.eulerAngles.y, 0f);
+        if(freezeXZAxis)
+        {
+            transform.rotation = Quaternion.Euler(0f, Camera.main.transform.rotation.eulerAngles.y, 0f);
+        }
+        else
+        {
+            transform.rotation = Camera.main.transform.rotation;
+        }
+        
     }
 }
