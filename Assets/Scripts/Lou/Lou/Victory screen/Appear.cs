@@ -9,7 +9,8 @@ public class Appear : MonoBehaviour
     public CanvasGroup mainImageCanvasGroup;
     public RectTransform mainImageRectTransform;
     public List<GameObject> uiElements = new List<GameObject>();
-    public Ease animationEase = Ease.OutElastic; // DOTween's easing type
+    public Ease animationEase = Ease.OutElastic;
+    public StarRating starRatingSystem; 
 
     public Vector2 originalPosition;
 
@@ -18,15 +19,14 @@ public class Appear : MonoBehaviour
         if (mainImageRectTransform != null)
         {
             originalPosition = mainImageRectTransform.anchoredPosition;
-            mainImageCanvasGroup.alpha = 0f; // Ensure it's hidden initially
-            gameObject.SetActive(true); // Activate this UI element
+            mainImageCanvasGroup.alpha = 0f;
+            gameObject.SetActive(true);
             PlayMainImageAnimation();
         }
     }
 
     void PlayMainImageAnimation()
     {
-        // Move and fade in the main image
         mainImageRectTransform.anchoredPosition = new Vector2(originalPosition.x, originalPosition.y - 1000f);
         mainImageRectTransform.DOAnchorPos(originalPosition, fadeTime).SetEase(animationEase);
         mainImageCanvasGroup.DOFade(1, fadeTime).OnComplete(() =>
@@ -44,5 +44,10 @@ public class Appear : MonoBehaviour
             element.transform.DOScale(1f, fadeTime).SetEase(Ease.OutBounce);
             yield return new WaitForSeconds(0.25f);
         }
+
+        // After all UI elements animate, call the Star Rating System
+      
+            starRatingSystem.UpdateStarRating();
+        
     }
 }

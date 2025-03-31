@@ -19,7 +19,7 @@ public class ResetTom : MonoBehaviour
     public Collectible collec;
     public bool annule = false;
     public bool _return = false;
-    //public event Action nivFini;
+  
     void Start()
     {
         if(scoreText != null)
@@ -29,7 +29,7 @@ public class ResetTom : MonoBehaviour
             scoreText3.text = "Collectible: Non-obtenu";
             scoreText4.text = "Retour arriere: Non-utilise";
         }
-
+       
     }
     public void Update()
     {
@@ -89,9 +89,11 @@ public class ResetTom : MonoBehaviour
             }
         }
 
-        if (playerScore == minsortie)
+        if (playerScore >= maxsortie)
         {
-    
+            écran.SetActive(true);
+
+            // Update Star Rating UI
             StarRating starSystem = écran.GetComponent<StarRating>();
             if (starSystem != null)
             {

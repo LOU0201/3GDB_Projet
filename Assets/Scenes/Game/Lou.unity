@@ -3638,6 +3638,7 @@ MonoBehaviour:
   - {fileID: 304280736}
   - {fileID: 831506679}
   animationEase: 25
+  starRatingSystem: {fileID: 855257449}
   originalPosition: {x: 0, y: 0}
 --- !u!114 &855257449
 MonoBehaviour:
@@ -3646,7 +3647,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 855257443}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a1a20ae8602c85640af51e213bbbfc91, type: 3}
   m_Name: 
@@ -3655,14 +3656,20 @@ MonoBehaviour:
   - {fileID: 1201762851}
   - {fileID: 283104850}
   - {fileID: 1152680022}
-  challengeTexts:
-  - {fileID: 1570053165}
-  - {fileID: 1620767884}
-  - {fileID: 1278957150}
+  challenges:
+  - isActive: 1
+    text: {fileID: 1570053165}
+    type: 0
+  - isActive: 1
+    text: {fileID: 1620767884}
+    type: 3
+  - isActive: 1
+    text: {fileID: 1278957150}
+    type: 4
   resetTom: {fileID: 1199563173}
   collectible: {fileID: 379850911}
-  starDropDuration: 0.5
-  starBounceStrength: 0.3
+  starAnimationDuration: 0.5
+  starAnimationEase: 30
 --- !u!114 &880340776 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 338155596719930816, guid: 58a6c0657e5666743a13c482f151a800,
@@ -4763,7 +4770,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1278957149
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5675,7 +5682,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1570053164
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6045,7 +6052,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1620767883
 RectTransform:
   m_ObjectHideFlags: 0

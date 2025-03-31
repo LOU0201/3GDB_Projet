@@ -7,82 +7,128 @@ using TMPro;
 
 public class StarRating : MonoBehaviour
 {
-    [Header("Stars & Text")]
-    public Image[] stars; // 3 UI stars (Set inactive by default)
-    public TMP_Text[] challengeTexts; // 3 challenge descriptions (TMP)
+    [System.Serializable]
+    public struct Challenge
+    {
+        public bool isActive;       // Whether this challenge is enabled for this level
+        public TMP_Text text;       // The UI text for this challenge
+        public ChallengeType type;  // Which challenge this is
+    }
 
-    [Header("Challenge Conditions")]
-    public ResetTom resetTom; // Reference to the ResetTom script
-    public Collectible collectible; // Reference to the Collectible script
+    public enum ChallengeType
+    {
+        FinishLevel,        // Challenge 1: Finish the level (minsortie reached)
+        MinExits,           // Challenge 2: Reach minimum exits (minsortie)
+        MaxExits,           // Challenge 3: Reach maximum exits (maxsortie)
+        CollectCollectible, // Challenge 4: Collect a collectible
+        NoUndoUsed         // Challenge 5: Don't use the undo button
+    }
+
+    [Header("Stars")]
+    public Image[] stars; // 3 star images (set inactive by default)
+
+    [Header("Challenges")]
+    public Challenge[] challenges; // All 5 possible challenges (enable 3 per level)
+
+    [Header("References")]
+    public ResetTom resetTom;
+    public Collectible collectible;
 
     [Header("Animation Settings")]
-    public float starDropDuration = 0.5f;
-    public float starBounceStrength = 0.3f;
+    public float starAnimationDuration = 0.5f;
+    public Ease starAnimationEase = Ease.OutBounce;
 
     private void Start()
     {
-        // Ensure stars and texts are hidden initially
+        // Hide all stars initially
         foreach (var star in stars)
         {
             star.gameObject.SetActive(false);
         }
-        foreach (var text in challengeTexts)
+
+        // Hide all challenge texts initially
+        foreach (var challenge in challenges)
         {
-            text.gameObject.SetActive(false);
+            if (challenge.text != null)
+                challenge.text.gameObject.SetActive(false);
         }
     }
 
     public void UpdateStarRating()
     {
-        Debug.Log("Updating Star Rating...");
+        int starsEarned = 0;
 
-        // Activate and update challenge texts
-        for (int i = 0; i < challengeTexts.Length; i++)
+        // Check each active challenge
+        for (int i = 0; i < challenges.Length; i++)
         {
-            challengeTexts[i].gameObject.SetActive(true);
-        }
+            if (!challenges[i].isActive) continue;
 
-        // Check challenge conditions
-        bool[] challengeStatus = new bool[3];
+            bool challengeCompleted = CheckChallengeCompletion(challenges[i].type);
+            UpdateChallengeUI(challenges[i], challengeCompleted);
 
-        // Challenge 1: Reached Minimum Sortie (Level Complete)
-        challengeStatus[0] = resetTom.playerScore >= resetTom.minsortie && !resetTom.Max;
-
-        // Challenge 2: Reached Max Sortie (Bonus Objective)
-        challengeStatus[1] = resetTom.playerScore >= resetTom.maxsortie;
-
-        // Challenge 3: Collected Item & No Undo Used (if applicable)
-        challengeStatus[2] = (collectible != null && collectible.collecté) ||
-                            (!resetTom.annule || !resetTom._return);
-
-        // Update UI based on challenge status
-        for (int i = 0; i < challengeStatus.Length; i++)
-        {
-            challengeTexts[i].color = challengeStatus[i] ? Color.green : Color.red;
-
-            if (challengeStatus[i])
+            if (challengeCompleted)
             {
-                ActivateStarWithAnimation(stars[i]);
-            }
-            else
-            {
-                stars[i].gameObject.SetActive(false); // Hide if failed
+                // Only animate stars for the first 3 completed challenges
+                if (starsEarned < stars.Length)
+                {
+                    AnimateStar(stars[starsEarned]);
+                    starsEarned++;
+                }
             }
         }
     }
 
-    private void ActivateStarWithAnimation(Image star)
+    private bool CheckChallengeCompletion(ChallengeType type)
+    {
+        switch (type)
+        {
+            case ChallengeType.FinishLevel:
+                return resetTom.playerScore >= resetTom.minsortie;
+
+            case ChallengeType.MinExits:
+                return resetTom.playerScore >= resetTom.minsortie;
+
+            case ChallengeType.MaxExits:
+                return resetTom.playerScore >= resetTom.maxsortie;
+
+            case ChallengeType.CollectCollectible:
+                return collectible != null && collectible.collecté;
+
+            case ChallengeType.NoUndoUsed:
+                return !resetTom._return; // True if undo was NOT used
+
+            default:
+                return false;
+        }
+    }
+
+    private void UpdateChallengeUI(Challenge challenge, bool completed)
+    {
+        if (challenge.text == null) return;
+
+        // Activate the text (hidden by default)
+        challenge.text.gameObject.SetActive(true);
+
+        // Special case for NoUndoUsed (inverted logic)
+        if (challenge.type == ChallengeType.NoUndoUsed)
+        {
+            challenge.text.color = completed ? Color.green : Color.red;
+        }
+        else
+        {
+            challenge.text.color = completed ? Color.green : Color.red;
+        }
+    }
+
+    private void AnimateStar(Image star)
     {
         if (star == null) return;
 
         star.gameObject.SetActive(true);
         star.transform.localScale = Vector3.zero;
 
-        // Bounce animation using DOTween
-        star.transform.DOScale(1f, starDropDuration)
-            .SetEase(Ease.OutBounce)
-            .OnComplete(() => {
-                // Optional: Add sparkle effect here
-            });
+        // Bounce animation
+        star.transform.DOScale(1f, starAnimationDuration)
+            .SetEase(starAnimationEase);
     }
 }
