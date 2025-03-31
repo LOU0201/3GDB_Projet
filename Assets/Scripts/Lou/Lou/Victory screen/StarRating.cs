@@ -92,7 +92,7 @@ public class StarRating : MonoBehaviour
                 return resetTom.playerScore >= resetTom.maxsortie;
 
             case ChallengeType.CollectCollectible:
-                return collectible != null && collectible.collecté;
+                return !GameObject.FindObjectOfType<Collectible>()?.GetComponent<Collectible>()?.collecté ?? true;
 
             case ChallengeType.NoUndoUsed:
                 return !resetTom._return; // True if undo was NOT used

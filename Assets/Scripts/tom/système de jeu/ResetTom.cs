@@ -29,7 +29,7 @@ public class ResetTom : MonoBehaviour
             scoreText3.text = "Collectible: Non-obtenu";
             scoreText4.text = "Retour arriere: Non-utilise";
         }
-       
+        
     }
     public void Update()
     {
