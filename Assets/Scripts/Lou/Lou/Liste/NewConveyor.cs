@@ -60,7 +60,16 @@ public class NewConveyor : MonoBehaviour
 
         UpdateHighlightedElements();
     }
-
+    public void ResetElementsScale()
+    {
+        foreach (var elementRect in elementRectTransforms)
+        {
+            if (elementRect != null)
+            {
+                elementRect.localScale = normalScale;
+            }
+        }
+    }
     void UpdateHighlightedElements()
     {
        

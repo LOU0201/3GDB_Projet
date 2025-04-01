@@ -94,6 +94,7 @@ public class ListeTom : MonoBehaviour
     public void setIndex()
     {
         currentIndex = 0;
+
         var=true;
         print("setIndex FAIS");
     }
