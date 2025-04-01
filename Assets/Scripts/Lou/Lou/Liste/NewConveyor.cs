@@ -18,6 +18,7 @@ public class NewConveyor : MonoBehaviour
     void Start()
     {
         InitializeConveyor();
+        ResetElementsScale();
     }
 
     void InitializeConveyor()
