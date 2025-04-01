@@ -127,6 +127,7 @@ public class Joueur : MonoBehaviour
     }
     public void surveillePhantome(Boite b)
     {
+
         if(b != null)
         {
             if (debug)
@@ -137,13 +138,22 @@ public class Joueur : MonoBehaviour
             {
                 b.gameObject.GetComponent<Boite>().SetType("Normal");
             }
+            else
+            {
+                if (b.equalType("PhantomeJaune"))
+                {
+                    b.gameObject.GetComponent<Boite>().SetType("Stop");
+                }
+            }
         }
-
     }
     public void TP()
     {
         transform.position = pos;
     }
+
+
+
     void MovePlayer(Vector3 targetPosition)
     {
         if (Update_grille3d.isPlein(targetPosition))

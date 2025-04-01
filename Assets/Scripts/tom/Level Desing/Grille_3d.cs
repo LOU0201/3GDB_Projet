@@ -31,7 +31,6 @@ public class Grille_3d : MonoBehaviour
         else
         {
             prefabBoite = prefabBoiteNormale;
-
         }
     }
         void Update()
@@ -155,7 +154,6 @@ public class Grille_3d : MonoBehaviour
         {
                 GameObject boite = Instantiate(prefabBoite, vec, Quaternion.identity);
                 boite.transform.SetParent(this.transform);
-                boite.GetComponent<Boite>().SetType("Phantome");//une boit normal donc
                 FMODUnity.RuntimeManager.PlayOneShot("event:/V2/Blocs/Place");
                 print("fais_cube : "+vec);
         }

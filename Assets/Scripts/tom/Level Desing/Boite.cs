@@ -13,10 +13,11 @@ public class Boite : MonoBehaviour
         Fin,
         Debut,
         RedGhost,
-        Stop
+        Stop,
+        PhantomeJaune
     }
     public Type type;
-    private string stringType;
+    public string stringType;
     public bool phantome = false;
     public bool fin = false;
     public bool début = false;
@@ -32,6 +33,7 @@ public class Boite : MonoBehaviour
     public Material RedGhost;
     public Material Stop;
     public Material Debut;
+    public Material PhantomeJaune;
 
 
 
@@ -43,6 +45,12 @@ public class Boite : MonoBehaviour
                 childRenderer.sharedMaterial = Solide;
                 gameObject.GetComponent<ResetTom>().enabled = false;
                 stringType = "Normal";
+                fin = false;
+                break;
+            case Type.PhantomeJaune:
+                childRenderer.sharedMaterial = PhantomeJaune;
+                gameObject.GetComponent<ResetTom>().enabled = false;
+                stringType = "PhantomeJaune";
                 fin = false;
                 break;
             case Type.Phantome:
@@ -110,7 +118,11 @@ public class Boite : MonoBehaviour
                 OnValidate();
                 break;
             case "Stop":
-                this.type= Type.Stop;
+                this.type = Type.Stop;
+                OnValidate();
+                break;
+            case "PhantomeJaune":
+                this.type = Type.PhantomeJaune;
                 OnValidate();
                 break;
         }
@@ -136,21 +148,6 @@ public class Boite : MonoBehaviour
         this.fin = fin;
         this.début = début;
         this.temporaire = temporaire;
-    }
-    public void OnTriggerEnter(Collider collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            // Call the Rappatriment() function on the ResetTom object
-            if (reTurne != null) // Check if reTurne is assigned
-            {
-               // reTurne.GetComponent<ResetTom>().Rappatriment();
-            }
-            else
-            {
-                Debug.LogError("reTurne is not assigned in Boite script.");
-            }
-        }
     }
     // Update is called once per frame
     void Update()

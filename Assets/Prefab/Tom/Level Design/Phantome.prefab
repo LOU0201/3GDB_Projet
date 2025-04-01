@@ -250,7 +250,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: 1a207e3bee00db44b940e6f362a8e148, type: 3}
+  - {fileID: 2100000, guid: 63e54989b59d3e3419190632df8055d6, type: 2}
   - {fileID: 2100000, guid: df4e7e5935f5b8141ace5e1ce0cf6473, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -307,7 +307,7 @@ GameObject:
   - component: {fileID: 1793110974088734330}
   - component: {fileID: 6476511047616165731}
   m_Layer: 0
-  m_Name: Boite
+  m_Name: Phantome
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -367,8 +367,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1d19b7341d28664e8d1d1e820722429, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
-  stringType: Normal
+  type: 1
+  stringType: Phantome
   phantome: 0
   fin: 0
   "d\xE9but": 0
@@ -397,17 +397,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 0}
-  scoreText2: {fileID: 0}
-  scoreText3: {fileID: 0}
-  scoreText4: {fileID: 0}
-  playerScore: 0
-  minsortie: 0
-  maxsortie: 0
-  Max: 0
-  "\xE9cran": {fileID: 0}
-  collec: {fileID: 0}
-  annule: 0
-  _return: 0
+  popUpText: {fileID: 0}
 --- !u!1 &4735093434459908334
 GameObject:
   m_ObjectHideFlags: 0
