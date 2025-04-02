@@ -50,7 +50,7 @@ public class ResetTom : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.RightShift))
             {
                 _return = true;
-                scoreText4.text = "Retour arriere: Utilisé";
+                scoreText4.text = "Retour arriere: Utilise";
             }
         }
     }
