@@ -45,12 +45,14 @@ public class Boite : MonoBehaviour
                 childRenderer.sharedMaterial = Solide;
                 gameObject.GetComponent<ResetTom>().enabled = false;
                 stringType = "Normal";
+
                 fin = false;
                 break;
             case Type.PhantomeJaune:
                 childRenderer.sharedMaterial = PhantomeJaune;
                 gameObject.GetComponent<ResetTom>().enabled = false;
                 stringType = "PhantomeJaune";
+
                 fin = false;
                 break;
             case Type.Phantome:
