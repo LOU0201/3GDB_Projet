@@ -19,6 +19,7 @@ public class ResetTom : MonoBehaviour
     public Collectible collec;
     public bool annule = false;
     public bool _return = false;
+    public ListeTom LT;
   
     void Start()
     {
@@ -55,7 +56,8 @@ public class ResetTom : MonoBehaviour
     }
     public void Rappatriment(Transform joueur)
     {
-        playerScore+= 1;
+        LT.setIndex();
+        playerScore += 1;
         joueur.transform.position = this.transform.position+new Vector3(0,1,0);
         if (scoreText != null) 
         {
