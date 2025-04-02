@@ -39,7 +39,7 @@ public class ListeTom : MonoBehaviour
             string currentItem = liste[currentIndex];
             if (currentItem == "cube")
             {
-                GetComponent<musiqueblocs>().Note();
+                //GetComponent<musiqueblocs>().Note();
                 G3D.Faire_carrer(joueur.position); // Spawn a cube
             }
             else if (currentItem == "trou")

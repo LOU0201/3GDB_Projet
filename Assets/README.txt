@@ -50,3 +50,5 @@ et le positionner au milieu des axes x, y et z du niveau. L'assigner, ensuite, c
 Player Transform du script Camera Turn du Text (TMP) de l'intro. Vous pouvez ajuster la position de "centre" si vous ne la considérez
 pas comme correcte. Puis, régler le zoom de la caméra (variable Distance from Target du préfab Camera) à une valeur permettant d'avoir
 une bonne vue du niveau. Enfin, assigner la Grille3d au G3D du Manager et les valeurs 3 à distance et 10 à speed de la Capsule.
+
+	Dans le ResetTom, Il faut remplir les références des Texts, pour cela aller dans l'objects de la scéne DisplayNext Variant, puis dans Score, prendre les 4 premiers emphants et les mettres dans les 4 Texts.
