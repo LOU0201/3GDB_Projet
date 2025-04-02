@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Collectible : MonoBehaviour
 {
@@ -25,7 +26,6 @@ public class Collectible : MonoBehaviour
         y = Random.Range(1, 7);
         tempy = y;
         tempy += 0.5f;
-        //transform.position = new Vector3(tempx, tempy, tempz);
     }
 
     // Update is called once per frame
@@ -36,7 +36,6 @@ public class Collectible : MonoBehaviour
         if (CJ== coordonnees)
         {
             FMODUnity.RuntimeManager.PlayOneShot("event:/Placeholders/Items/itemcollect");
-            //Instantiate(this.gameObject, new Vector3(x, y, z), Quaternion.identity);
             collecté = true;
             Destroy(this.gameObject);
         }
