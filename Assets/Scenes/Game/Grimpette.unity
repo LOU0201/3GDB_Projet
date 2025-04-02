@@ -2727,6 +2727,16 @@ PrefabInstance:
       propertyPath: type
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1793110974088734330, guid: c8b18993afa00a840bd0627d4ebf3a15,
+        type: 3}
+      propertyPath: stringType
+      value: Fin
+      objectReference: {fileID: 0}
+    - target: {fileID: 2527332890232393355, guid: c8b18993afa00a840bd0627d4ebf3a15,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4021901750627738393, guid: c8b18993afa00a840bd0627d4ebf3a15,
         type: 3}
       propertyPath: m_Name
@@ -3494,6 +3504,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1793110974088734330, guid: c8b18993afa00a840bd0627d4ebf3a15,
         type: 3}
+      propertyPath: stringType
+      value: Debut
+      objectReference: {fileID: 0}
+    - target: {fileID: 1793110974088734330, guid: c8b18993afa00a840bd0627d4ebf3a15,
+        type: 3}
       propertyPath: temporaire
       value: 1
       objectReference: {fileID: 0}
@@ -3552,6 +3567,11 @@ PrefabInstance:
       propertyPath: scoreText3
       value: 
       objectReference: {fileID: 1033131721}
+    - target: {fileID: 6476511047616165731, guid: c8b18993afa00a840bd0627d4ebf3a15,
+        type: 3}
+      propertyPath: scoreText4
+      value: 
+      objectReference: {fileID: 1562983855}
     - target: {fileID: 8471816980154278000, guid: c8b18993afa00a840bd0627d4ebf3a15,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3868,9 +3888,9 @@ MonoBehaviour:
   G3D: {fileID: 277475589}
   joueur: {fileID: 1358197610}
   upcomingSpawnIcons:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 3677212798889535492, guid: 1f8ac1ae6b7824a44bffb5f596b53be4, type: 3}
+  - {fileID: 3677212798889535492, guid: 1f8ac1ae6b7824a44bffb5f596b53be4, type: 3}
+  - {fileID: 3677212798889535492, guid: 1f8ac1ae6b7824a44bffb5f596b53be4, type: 3}
   rienSprite: {fileID: 21300000, guid: bf9c82489d43e004ea2b82afc0993be4, type: 3}
   trouSprite: {fileID: 21300000, guid: b7a801a841999814b9f5a838ee43828b, type: 3}
   cubeSprite: {fileID: 21300000, guid: 9add30ee206ad9b4b9182ba6636bf4ae, type: 3}
@@ -3976,6 +3996,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 553498919}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1562983855 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 224110606773059199, guid: 58a6c0657e5666743a13c482f151a800,
+    type: 3}
+  m_PrefabInstance: {fileID: 1033131720}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1574670858
 PrefabInstance:
   m_ObjectHideFlags: 0

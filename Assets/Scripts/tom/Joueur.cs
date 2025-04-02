@@ -152,8 +152,6 @@ public class Joueur : MonoBehaviour
         transform.position = pos;
     }
 
-
-
     void MovePlayer(Vector3 targetPosition)
     {
         if (Update_grille3d.isPlein(targetPosition))
@@ -178,7 +176,7 @@ public class Joueur : MonoBehaviour
                     surveillePhantome(Update_grille3d.trouve_boit(transform.position));
                     transform.position = (targetPosition + new Vector3(0, 1, 0));
                     Update_grille3d.refreche();
-                    if (Liste & Update_grille3d.est_temporaire(targetPosition))
+                    if (Liste & Update_grille3d.non_est_temporaire(targetPosition))
                     {
                         Liste.GetComponent<ListeTom>().UpdateTom();//Déplacement donc on lence la liste si néscéssaire
                     }
@@ -188,7 +186,7 @@ public class Joueur : MonoBehaviour
                     }
                 }
             }
-        }
+        }// temporaire
         else 
         {
             if (Update_grille3d.isPlein(targetPosition + new Vector3(0, -1, 0)))
@@ -196,7 +194,7 @@ public class Joueur : MonoBehaviour
                 surveillePhantome(Update_grille3d.trouve_boit(transform.position));
                 transform.position = (targetPosition);
                 Update_grille3d.refreche();
-                if (Liste & Update_grille3d.est_temporaire(targetPosition + new Vector3(0, -1, 0)))
+                if (Liste & Update_grille3d.non_est_temporaire(targetPosition + new Vector3(0, -1, 0)))
                 {
                     Liste.GetComponent<ListeTom>().UpdateTom();//Déplacement donc on lence la liste si néscéssaire
                 }
@@ -212,7 +210,7 @@ public class Joueur : MonoBehaviour
                     surveillePhantome(Update_grille3d.trouve_boit(transform.position));
                     transform.position = (targetPosition + new Vector3(0, -1, 0));
                     Update_grille3d.refreche();
-                    if (Liste & Update_grille3d.est_temporaire(targetPosition + new Vector3(0, -2, 0)))
+                    if (Liste & Update_grille3d.non_est_temporaire(targetPosition + new Vector3(0, -2, 0)))
                     {
                         Liste.GetComponent<ListeTom>().UpdateTom();//Déplacement donc on lence la liste si néscéssaire
                     }

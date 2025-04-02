@@ -86,7 +86,6 @@ public class Grille_3d : MonoBehaviour
         return false;   
     }
 
-
     public Boolean EstStop(Vector3 vec)
     {
         if (Non_Blockeur)
@@ -122,15 +121,26 @@ public class Grille_3d : MonoBehaviour
         CS++;
         listeTom.setIndex();
     }
-    public bool est_temporaire(Vector3 vec)// si N'est pas un freez padh
+    public bool non_est_temporaire(Vector3 vec)// si N'est pas un freez padh
     {
         foreach (Transform t in this.transform)
         {
             if (t.transform.position == vec)
             {
-                return !t.GetComponent<Boite>().temporaire;
+                if (t.GetComponent<Boite>().temporaire)
+                {
+                    return false;
+                }
+                else
+                {
+                    if (t.GetComponent<Boite>().equalType("Debut") || t.GetComponent<Boite>().equalType("Fin"))
+                    {
+                        return true;
+                    }
+                }
             }
         }
+        print("Erreure non_est_temporaire ne trouve pas de cube");
         return true;
     }
     public void Faire_carrer(Vector3 vec)// Fais un phantome(un obstacle donc) Sur la position du joueur !!!!
@@ -192,7 +202,6 @@ public class Grille_3d : MonoBehaviour
                     }
                 }
             }
-
         }
     }
 }
