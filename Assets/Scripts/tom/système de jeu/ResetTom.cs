@@ -26,8 +26,7 @@ public class ResetTom : MonoBehaviour
     public GameObject Space_bouton;
     public TMP_Text next_level;
     public ListeTom LT;
-    public GameObject collectible_UI;
-
+    
     void Start()
     {
         if(scoreText != null)
@@ -48,7 +47,6 @@ public class ResetTom : MonoBehaviour
         if(collec!=null && collec.collecté)
         {
             scoreText3.text = "1/1";
-            collectible_UI.gameObject.SetActive(true);
             collec.collecté = false;
         }
         if(annule)
