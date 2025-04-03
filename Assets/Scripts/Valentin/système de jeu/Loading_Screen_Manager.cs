@@ -145,10 +145,10 @@ public class Loading_Screen_Manager : MonoBehaviour
 
     void Hide()
     {
-        loadingText.gameObject.SetActive(false);
-        loadingDoneIcon.gameObject.SetActive(false);
-        progressBar.gameObject.SetActive(false);
+        loadingText.CrossFadeAlpha(1, fadeDuration, true);
+        loadingDoneIcon.CrossFadeAlpha(1, fadeDuration, true);
+        progressBar.CrossFadeAlpha(1, fadeDuration, true);
         fadeOverlay.gameObject.SetActive(false);
-        Background.gameObject.SetActive(false);
+        Background.CrossFadeAlpha(1, fadeDuration, true);
     }
 }
