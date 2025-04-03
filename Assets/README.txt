@@ -51,4 +51,11 @@ Player Transform du script Camera Turn du Text (TMP) de l'intro. Vous pouvez aju
 pas comme correcte. Puis, régler le zoom de la caméra (variable Distance from Target du préfab Camera) à une valeur permettant d'avoir
 une bonne vue du niveau. Enfin, assigner la Grille3d au G3D du Manager et les valeurs 3 à distance et 10 à speed de la Capsule.
 
-	Dans le ResetTom, Il faut remplir les références des Texts, pour cela aller dans l'objects de la scéne DisplayNext Variant, puis dans Score, prendre les 4 premiers emphants et les mettres dans les 4 Texts.
+Dans le ResetTom, Il faut remplir les références des Textes. Pour cela, allez dans l'objet "DisplayNext Variant", puis dans Score,
+prendre les enfants Score Text, Collectible Text et Return Text et les mettres comme valeurs des 3 Score_Text du ResetTom du bloc de
+Début, dans ce même ordre.
+
+Pour les niveaux possédant un nombre minimum et maximum de sorties, entrer le nombre minimum dans Minsortie et maximum dans Maxsortie.
+Pour ceux n'ayant pas de minimum de sorties, rentrer le nombre de sortie dans Maxsortie et -1 dans Minsortie.
+Si le niveau possède un collectible, le référencer dans Collec.
+Activer Annule si le niveau comporte le challenge de ne pas utiliser le retour-arrière.
