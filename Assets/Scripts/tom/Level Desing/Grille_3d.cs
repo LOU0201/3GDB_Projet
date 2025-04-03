@@ -8,7 +8,7 @@ using UnityEngine;
 public class Grille_3d : MonoBehaviour
 {
     //Refactorisation
-    public bool debug = false;
+    public bool debug1 = false;
 
 
     public GameObject joueur;
@@ -60,7 +60,7 @@ public class Grille_3d : MonoBehaviour
                 }
             }
         }
-    }
+    }//debug
     public Boite trouve_boit(Vector3 vec)//Rend la boite au niveaux du vecteur demander, Atention peux rendre null
     {
         foreach (Transform t in this.transform)
@@ -114,7 +114,7 @@ public class Grille_3d : MonoBehaviour
                 t.gameObject.GetComponent<ResetTom>().Rappatriment(joueur.transform);
             }
         }
-        if (debug)
+        if (debug1)
         {
             Debug.Log("ResetListe");
         }
@@ -135,6 +135,10 @@ public class Grille_3d : MonoBehaviour
                 {
                     if (t.GetComponent<Boite>().equalType("Debut") || t.GetComponent<Boite>().equalType("Fin"))
                     {
+                        return false;
+                    }
+                    else
+                    {
                         return true;
                     }
                 }
@@ -149,13 +153,13 @@ public class Grille_3d : MonoBehaviour
         {
             if (trouve_boit(vec).equalType("Fin"))
             {
-                if (debug)
+                if (debug1)
                 {
                     Debug.Log("BOITE_FIN : " + vec);
                 }
             }else
             {
-                if (debug)
+                if (debug1)
                 {
                     Debug.Log("ERREURE_BOITE_INCONNUE : " + vec);
                 }
@@ -179,7 +183,7 @@ public class Grille_3d : MonoBehaviour
                 if (!(trouve_boit(vec) && trouve_boit(vec).transform.GetComponent<Boite>().fin))//On s'aintéresse ici, au bloc que l'on veux détruir c'est à dire celui juste endessous du joueur et on vérifie si le block ou l'on est est une sortie
                 {
                     t.gameObject.GetComponent<Boite>().SetType("RedGhost");
-                    if (debug)
+                    if (debug1)
                     {
                         Debug.Log("RedGhost : " + (vec));
                     }
@@ -188,14 +192,14 @@ public class Grille_3d : MonoBehaviour
                 {
                     if (t.transform.position == vec + new Vector3(0, -1, 0))
                     {
-                        if (debug)
+                        if (debug1)
                         {
                             Debug.Log("FIN : " + (vec));
                         }
                     }
                     else
                     {
-                        if (debug)
+                        if (debug1)
                         {
                             Debug.Log("ERREURE_Boite_absente : " + (vec));
                         }

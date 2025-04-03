@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class Joueur : MonoBehaviour
 {
     //Refactorisation
-    public bool debug=false;
+    public bool debug=true;
 
     public GameObject Liste;
     public int compte_carré;
@@ -23,7 +23,8 @@ public class Joueur : MonoBehaviour
     // Start is called before the first frame update
     public void Start()
     {
-        
+        print("Debug :  " + debug); 
+        debug = true;  
         RB = GetComponent<Rigidbody>();
     }
     public int GetNextAction()
@@ -127,9 +128,10 @@ public class Joueur : MonoBehaviour
     }
     public void surveillePhantome(Boite b)
     {
-
         if(b != null)
         {
+            print("Boite : " + b.transform.position);
+
             if (debug)
             {
                 Debug.Log("fais_surveillePhantome");
@@ -142,6 +144,8 @@ public class Joueur : MonoBehaviour
             {
                 if (b.equalType("PhantomeJaune"))
                 {
+                    print("fais");
+
                     b.gameObject.GetComponent<Boite>().SetType("Stop");
                 }
             }
@@ -186,7 +190,7 @@ public class Joueur : MonoBehaviour
                     }
                 }
             }
-        }// temporaire
+        }
         else 
         {
             if (Update_grille3d.isPlein(targetPosition + new Vector3(0, -1, 0)))

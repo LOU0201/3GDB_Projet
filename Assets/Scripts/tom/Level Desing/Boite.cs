@@ -17,7 +17,7 @@ public class Boite : MonoBehaviour
         PhantomeJaune
     }
     public Type type;
-    public string stringType;
+    private string stringType;
     public bool phantome = false;
     public bool fin = false;
     public bool début = false;

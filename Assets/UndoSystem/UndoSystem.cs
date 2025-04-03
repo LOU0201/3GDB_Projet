@@ -1,0 +1,60 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class UndoSystem : MonoBehaviour
+{
+    private static UndoSystem instance;
+    public static UndoSystem Instance
+    {
+        get
+        {
+            if(instance == null)
+            {
+                //Get or Create
+                instance = FindAnyObjectByType<UndoSystem>();
+                if (instance == null)
+                {
+                    instance = new GameObject("UndoSystem").AddComponent<UndoSystem>();
+                    DontDestroyOnLoad(instance.gameObject);
+                }
+            }
+            return instance;
+        }
+    }
+
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Destroy(this);
+        }
+    }
+
+
+    public Stack<UndoableAction> undoStack = new();
+
+    private void Start()
+    {
+        ///Exemple d'utilisation :
+        UndoSystem.Instance.RecordAction(new UndoableAction(Vector3.zero));
+        //UndoableAction action = UndoSystem.Instance.UndoAction(); 
+    }
+
+    public void RecordAction(UndoableAction action)
+    {
+        undoStack.Push(action);
+    }
+
+    public UndoableAction UndoAction()
+    {
+        if (undoStack.Count > 0)
+        {
+            return undoStack.Pop();
+        }
+        else
+        {
+            return null;
+        }
+    }
+}
