@@ -5,15 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class Reset : MonoBehaviour
 {
-    //public Transform joueur;
-    //[SerializeField] public bool exit;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.R))
@@ -31,11 +22,11 @@ public class Reset : MonoBehaviour
     }
     public void HUB()
     {
-        SceneManager.LoadScene("HUB");
+        SceneLoader.LoadScene("HUB");
     }
     public void MainMenu()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneLoader.LoadScene("MainMenu");
     }
     public void Quit()
     {

@@ -8,7 +8,6 @@ using System;
 public class ResetTom : MonoBehaviour
 {
     public TMP_Text scoreText;
-    public TMP_Text scoreText2;
     public TMP_Text scoreText3;
     public TMP_Text scoreText4;
     public int playerScore = 0;
@@ -19,30 +18,31 @@ public class ResetTom : MonoBehaviour
     public Collectible collec;
     public bool annule = false;
     public bool _return = false;
+    public GameObject Space_bouton;
+    public TMP_Text next_level;
     public ListeTom LT;
-  
+
     void Start()
     {
         if(scoreText != null)
         {
-            scoreText.text = "Sorties: " + playerScore.ToString() + "/" + minsortie.ToString();
-            scoreText2.text = "Sorties Maximum: " + playerScore.ToString() + "/" + maxsortie.ToString();
-            scoreText3.text = "Collectible: Non-obtenu";
+            scoreText.text = "Sorties: " + playerScore.ToString() + "/" + maxsortie.ToString();
+            scoreText3.text = "0/1";
             scoreText4.text = "Retour arriere: Non-utilise";
         }
         
     }
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && playerScore == minsortie && Max)
+        if (Input.GetKeyDown(KeyCode.Space) && playerScore == minsortie || Max)
         {
             écran.SetActive(true);
-            Star();
+           
         }
         if(collec!=null && collec.collecté)
         {
-            scoreText3.text = "Collectible: Obtenu";
-            Star();
+            scoreText3.text = "1/1";
+           
             collec.collecté = false;
         }
         if(annule)
@@ -57,20 +57,20 @@ public class ResetTom : MonoBehaviour
     public void Rappatriment(Transform joueur)
     {
         LT.setIndex();
-        playerScore += 1;
+        playerScore+= 1;
         joueur.transform.position = this.transform.position+new Vector3(0,1,0);
         if (scoreText != null) 
         {
-            scoreText.text = "Sorties: " + playerScore.ToString() + "/" + minsortie.ToString();
-            scoreText2.text = "Sorties Maximum: " + playerScore.ToString() + "/" + maxsortie.ToString();
+            scoreText.text = "Sorties: " + playerScore.ToString() + "/" + maxsortie.ToString();
         }
 
         if (playerScore == minsortie)
         {
             if (!Max)
             {
-                écran.SetActive(true);
-                Star();
+                Space_bouton.SetActive(true);
+                next_level.gameObject.SetActive(true);
+               
                 if(annule)
                 {
                     CheckReturn();
@@ -84,7 +84,7 @@ public class ResetTom : MonoBehaviour
         if(playerScore == maxsortie)
         {
             écran.SetActive(true);
-            Star();
+           
             if (annule)
             {
                 CheckReturn();
@@ -102,18 +102,12 @@ public class ResetTom : MonoBehaviour
                 starSystem.UpdateStarRating();
             }
         }
-
-        print("rapatrimenyyyyyyyyyyyt" + this.transform.position);
-    }
-    private void Star()
-    {
-        //GameManager.Instance.starsUp();
     }
     private void CheckReturn()
     {
         if(!_return)
         {
-            Star();
+            
         }
     }
 }
