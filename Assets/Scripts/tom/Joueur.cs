@@ -131,7 +131,7 @@ public class Joueur : MonoBehaviour
         if(b != null)
         {
             print("Boite : " + b.transform.position);
-
+            print("Boite = " +  b.getType());
             if (debug)
             {
                 Debug.Log("fais_surveillePhantome");
@@ -139,15 +139,16 @@ public class Joueur : MonoBehaviour
             if (b.equalType("Phantome"))
             {
                 b.gameObject.GetComponent<Boite>().SetType("Normal");
+                print("fais Phantome");
             }
             else
             {
                 if (b.equalType("PhantomeJaune"))
                 {
-                    print("fais");
-
+                    print("fais PhantomeJaune");
                     b.gameObject.GetComponent<Boite>().SetType("Stop");
                 }
+                print("rien============");
             }
         }
     }
