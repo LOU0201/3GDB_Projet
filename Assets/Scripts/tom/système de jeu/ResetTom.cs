@@ -20,6 +20,7 @@ public class ResetTom : MonoBehaviour
     public bool _return = false;
     public GameObject Space_bouton;
     public TMP_Text next_level;
+    public ListeTom LT;
 
     void Start()
     {
@@ -49,12 +50,13 @@ public class ResetTom : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.RightShift))
             {
                 _return = true;
-                scoreText4.text = "Retour arriere: Utilisé";
+                scoreText4.text = "Retour arriere: Utilise";
             }
         }
     }
     public void Rappatriment(Transform joueur)
     {
+        LT.setIndex();
         playerScore+= 1;
         joueur.transform.position = this.transform.position+new Vector3(0,1,0);
         if (scoreText != null) 

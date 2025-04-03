@@ -21,7 +21,7 @@ public class Niveau : MonoBehaviour
         Vector3 CJ = joueur.position;
         if (CJ == coordonnees)
         {
-            SceneManager.LoadScene(LVname);
+            SceneLoader.LoadScene(LVname);
         }
 
         foreach(Transform t in alentours)
