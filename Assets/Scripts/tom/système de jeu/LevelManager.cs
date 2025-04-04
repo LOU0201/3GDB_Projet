@@ -62,7 +62,7 @@ public class LevelManager : MonoBehaviour
 
     public void Rappatriment(Transform joueur)
     {
-        LT.setIndex();
+        LT.RefrecheIndex();
         playerExitCount += 1;
         joueur.transform.position = this.transform.position + new Vector3(0, 1, 0);
         if (scoreText != null)
