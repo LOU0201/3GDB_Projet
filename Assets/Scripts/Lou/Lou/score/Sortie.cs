@@ -10,7 +10,7 @@ public class Sortie : MonoBehaviour
 
     [Header("Game References")]
     public GameObject playerSpawnPoint; // Predetermined spawn point for the player
-    public ResetTom resetTom; // Reference to the ResetTom script
+    public LevelManager resetTom; // Reference to the ResetTom script
 
     private int playerScore = 0; // Keeps track of the player's score
 

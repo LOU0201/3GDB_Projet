@@ -31,7 +31,7 @@ public class StarRating : MonoBehaviour
     public Challenge[] challenges; // All 5 possible challenges (enable 3 per level)
 
     [Header("References")]
-    public ResetTom resetTom;
+    public LevelManager resetTom;
     public Collectible collectible;
 
     [Header("Animation Settings")]
@@ -83,19 +83,19 @@ public class StarRating : MonoBehaviour
         switch (type)
         {
             case ChallengeType.FinishLevel:
-                return resetTom.playerScore >= resetTom.minsortie;
+                return resetTom.playerExitCount >= resetTom.minExitCount;
 
             case ChallengeType.MinExits:
-                return resetTom.playerScore >= resetTom.minsortie;
+                return resetTom.playerExitCount >= resetTom.minExitCount;
 
             case ChallengeType.MaxExits:
-                return resetTom.playerScore >= resetTom.maxsortie;
+                return resetTom.playerExitCount >= resetTom.maxExitCount;
 
             case ChallengeType.CollectCollectible:
-                return !GameObject.FindObjectOfType<Collectible>()?.GetComponent<Collectible>()?.collecté ?? true;
+                return !GameObject.FindObjectOfType<Collectible>()?.GetComponent<Collectible>()?.collected ?? true;
 
             case ChallengeType.NoUndoUsed:
-                return !resetTom._return; // True if undo was NOT used
+                return !resetTom.undoUsed; // True if undo was NOT used
 
             default:
                 return false;
