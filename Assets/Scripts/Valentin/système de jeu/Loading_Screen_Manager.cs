@@ -42,14 +42,12 @@ public class Loading_Screen_Manager : MonoBehaviour
 
     void Awake()
     {
-        // If another instance exists, destroy this one
         if (FindObjectsOfType<Loading_Screen_Manager>().Length > 1)
         {
             Destroy(gameObject);
             return;
         }
 
-        // Only persist if we're the loading scene
         if (SceneManager.GetActiveScene().name == loadingSceneName)
         {
             DontDestroyOnLoad(gameObject);
@@ -67,7 +65,6 @@ public class Loading_Screen_Manager : MonoBehaviour
 
     private IEnumerator LoadAsync(string sceneName)
     {
-        // Initialize
         ShowLoadingVisuals();
         fadeOverlay.gameObject.SetActive(true);
         fadeOverlay.canvasRenderer.SetAlpha(1f);
@@ -91,21 +88,15 @@ public class Loading_Screen_Manager : MonoBehaviour
             }
         }
 
-        // Finalize progress bar
         progressBar.fillAmount = 1f;
-
-        // Show completion visuals
         ShowCompletionVisuals();
         yield return new WaitForSeconds(waitOnLoadEnd);
 
-        // Fade out
+        // Fade out before activating the next scene
         FadeOut();
         yield return new WaitForSeconds(fadeDuration);
 
-        // Hide all loading UI elements
-        HideAllLoadingElements();
-
-        // Complete the scene transition
+        // Ensure the scene transition happens smoothly
         if (loadSceneMode == LoadSceneMode.Additive)
         {
             audioListener.enabled = false;
@@ -116,7 +107,13 @@ public class Loading_Screen_Manager : MonoBehaviour
             operation.allowSceneActivation = true;
         }
 
-        // Destroy the loading screen if we're not in the loading scene anymore
+        // Wait until the new scene is fully active
+        yield return new WaitUntil(() => SceneManager.GetActiveScene().name == sceneName);
+
+        // Hide all loading UI elements after the scene switch
+        HideAllLoadingElements();
+
+        // Destroy the loading screen
         if (SceneManager.GetActiveScene().name != loadingSceneName)
         {
             Destroy(gameObject);
