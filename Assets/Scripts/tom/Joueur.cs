@@ -7,7 +7,7 @@ public class Joueur : MonoBehaviour
 {
     //Refactorisation
     public bool debug=true;
-
+    UndoableAction undoableAction;
     public GameObject Liste;
     public int compte_carré;
     public int variable_compte_carré = 3;
@@ -157,6 +157,11 @@ public class Joueur : MonoBehaviour
         transform.position = pos;
     }
 
+    public void ReMove()
+    {
+
+    }
+
     void MovePlayer(Vector3 targetPosition)
     {
         if (Update_grille3d.isPlein(targetPosition))
@@ -179,6 +184,8 @@ public class Joueur : MonoBehaviour
                 else
                 {
                     surveillePhantome(Update_grille3d.trouve_boit(transform.position));
+                    undoableAction.position=transform.position; 
+                    UndoSystem.Instance.RecordAction(undoableAction);
                     transform.position = (targetPosition + new Vector3(0, 1, 0));
                     Update_grille3d.refreche();
                     if (Liste & Update_grille3d.non_est_temporaire(targetPosition))
@@ -197,6 +204,8 @@ public class Joueur : MonoBehaviour
             if (Update_grille3d.isPlein(targetPosition + new Vector3(0, -1, 0)))
             {
                 surveillePhantome(Update_grille3d.trouve_boit(transform.position));
+                undoableAction.position = transform.position;
+                UndoSystem.Instance.RecordAction(undoableAction);
                 transform.position = (targetPosition);
                 Update_grille3d.refreche();
                 if (Liste & Update_grille3d.non_est_temporaire(targetPosition + new Vector3(0, -1, 0)))
@@ -213,6 +222,8 @@ public class Joueur : MonoBehaviour
                 if (Update_grille3d.isPlein(targetPosition + new Vector3(0, -2, 0)))
                 {
                     surveillePhantome(Update_grille3d.trouve_boit(transform.position));
+                    undoableAction.position = transform.position;
+                    UndoSystem.Instance.RecordAction(undoableAction);
                     transform.position = (targetPosition + new Vector3(0, -1, 0));
                     Update_grille3d.refreche();
                     if (Liste & Update_grille3d.non_est_temporaire(targetPosition + new Vector3(0, -2, 0)))

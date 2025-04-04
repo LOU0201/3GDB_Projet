@@ -5,7 +5,7 @@ using UnityEngine;
 public class UndoSystem : MonoBehaviour
 {
     private static UndoSystem instance;
-    public static UndoSystem Instance
+    public static UndoSystem Instance//C'est un Getter GetInstance()
     {
         get
         {
@@ -27,7 +27,7 @@ public class UndoSystem : MonoBehaviour
     {
         if (instance != null)
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
     }
 
@@ -37,7 +37,7 @@ public class UndoSystem : MonoBehaviour
     private void Start()
     {
         ///Exemple d'utilisation :
-        UndoSystem.Instance.RecordAction(new UndoableAction(Vector3.zero));
+        UndoSystem.Instance.RecordAction(new UndoableAction(Vector3.zero,0));
         //UndoableAction action = UndoSystem.Instance.UndoAction(); 
     }
 

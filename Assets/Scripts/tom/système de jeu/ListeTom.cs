@@ -87,11 +87,18 @@ public class ListeTom : MonoBehaviour
             // Update the predictions for the next three items
             UpdateUpcomingSpawnDisplay();
         }
-        
-
+    }
+    public int GetIndex()
+    {
+        return currentIndex;    
     }
 
-    public void setIndex()
+    public void setIndex(int index)
+    {
+        currentIndex=index; 
+    }
+
+    public void RefrecheIndex()
     {
         currentIndex = 0;
         conveyorBelt.ResetElementsScale();

@@ -18,7 +18,7 @@ public class Grille_3d : MonoBehaviour
     public GameObject prefabBoiteJaune;
     public bool Non_Blockeur = false;
     public Destructeur des;
-    public ResetTom ResetTom;
+    public LevelManager ResetTom;
     public GameObject prefabCubeRouge;
     public ListeTom listeTom;
     public float CS;
@@ -111,7 +111,7 @@ public class Grille_3d : MonoBehaviour
         {
             if (t.gameObject.GetComponent<Boite>().equalType("Debut"))
             {
-                t.gameObject.GetComponent<ResetTom>().Rappatriment(joueur.transform);
+                t.gameObject.GetComponent<LevelManager>().Rappatriment(joueur.transform);
             }
         }
         if (debug1)
@@ -119,7 +119,7 @@ public class Grille_3d : MonoBehaviour
             Debug.Log("ResetListe");
         }
         CS++;
-        listeTom.setIndex();
+        listeTom.RefrecheIndex();
     }
     public bool non_est_temporaire(Vector3 vec)// si N'est pas un freez padh
     {
