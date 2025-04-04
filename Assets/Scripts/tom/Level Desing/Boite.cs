@@ -43,45 +43,45 @@ public class Boite : MonoBehaviour
         {
             case Type.Normal:
                 childRenderer.sharedMaterial = Solide;
-                gameObject.GetComponent<ResetTom>().enabled = false;
+                gameObject.GetComponent<LevelManager>().enabled = false;
                 stringType = "Normal";
 
                 fin = false;
                 break;
             case Type.PhantomeJaune:
                 childRenderer.sharedMaterial = PhantomeJaune;
-                gameObject.GetComponent<ResetTom>().enabled = false;
+                gameObject.GetComponent<LevelManager>().enabled = false;
                 stringType = "PhantomeJaune";
 
                 fin = false;
                 break;
             case Type.Phantome:
                 childRenderer.sharedMaterial = Phantome;
-                gameObject.GetComponent<ResetTom>().enabled = false;
+                gameObject.GetComponent<LevelManager>().enabled = false;
                 stringType = "Phantome";
                 fin = false;
                 break;
             case Type.Fin:
                 childRenderer.sharedMaterial = Sortie;
-                gameObject.GetComponent<ResetTom>().enabled = false;
+                gameObject.GetComponent<LevelManager>().enabled = false;
                 fin = true;
                 stringType = "Fin";
                 break;
             case Type.Debut:
                 stringType = "Debut";
                 childRenderer.sharedMaterial = Debut;
-                gameObject.GetComponent<ResetTom>().enabled = true;
+                gameObject.GetComponent<LevelManager>().enabled = true;
                 fin = false;
                 break;
             case Type.RedGhost:
                 childRenderer.sharedMaterial = RedGhost;
-                gameObject.GetComponent<ResetTom>().enabled = false;
+                gameObject.GetComponent<LevelManager>().enabled = false;
                 fin = false;
                 stringType = "RedGhost";
                 break;
             case Type.Stop:
                 childRenderer.sharedMaterial = Stop;
-                gameObject.GetComponent<ResetTom>().enabled = false;
+                gameObject.GetComponent<LevelManager>().enabled = false;
                 fin = false;
                 stringType = "Stop";
                 break;

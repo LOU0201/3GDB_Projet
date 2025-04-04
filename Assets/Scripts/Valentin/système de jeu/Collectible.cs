@@ -18,7 +18,7 @@ public class Collectible : MonoBehaviour
     private float tempz;
     private float tempy;
     public int max;
-    public bool collecté;
+    public bool collected;
 
     void Start()
     {
@@ -41,9 +41,9 @@ public class Collectible : MonoBehaviour
         Vector3 coordonnees = transform.position;
         Vector3 CJ = joueur.position;
 
-        if (CJ == coordonnees && !collecté)
+        if (CJ == coordonnees && !collected)
         {
-            collecté = true;
+            collected = true;
             StartCoroutine(CollectAnimation());
         }
     }
