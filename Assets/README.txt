@@ -59,3 +59,6 @@ Pour les niveaux possédant un nombre minimum et maximum de sorties, entrer le n
 Pour ceux n'ayant pas de minimum de sorties, rentrer le nombre de sortie dans Maxsortie et -1 dans Minsortie.
 Si le niveau possède un collectible, le référencer dans Collec.
 Activer Annule si le niveau comporte le challenge de ne pas utiliser le retour-arrière.
+
+[IMPORTANT] : ne pas oublier de définir le Conveyor Belt 2.0 du Display All du DisplayNext Variant comme valeur de la variable
+"Conveyor Belt" du manager ou la sortie ne marchera pas!!
