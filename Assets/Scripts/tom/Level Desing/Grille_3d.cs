@@ -119,7 +119,7 @@ public class Grille_3d : MonoBehaviour
             Debug.Log("ResetListe");
         }
         CS++;
-        listeTom.setIndex();
+        listeTom.RefrecheIndex();
     }
     public bool non_est_temporaire(Vector3 vec)// si N'est pas un freez padh
     {
