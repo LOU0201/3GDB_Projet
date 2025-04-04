@@ -10,7 +10,6 @@ public class Grille_3d : MonoBehaviour
     //Refactorisation
     public bool debug1 = false;
 
-
     public GameObject joueur;
     private GameObject prefabBoite;
     public bool CubeJaune;
@@ -147,6 +146,24 @@ public class Grille_3d : MonoBehaviour
         print("Erreure non_est_temporaire ne trouve pas de cube");
         return true;
     }
+
+    public void RemoveGrille()
+    {
+        foreach (Transform t in this.transform)
+        {
+
+            if (t.GetComponent<Boite>().equalType("RedGhost"))
+            {
+                t.GetComponent<Boite>().SetType("Normal");
+            }
+
+            if (t.GetComponent<Boite>().equalType("Phantome"))
+            {
+                Destroy(t.gameObject);
+            }
+        }
+    }
+
     public void Faire_carrer(Vector3 vec)// Fais un phantome(un obstacle donc) Sur la position du joueur !!!!
     {
         if (trouve_boit(vec))

@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class Joueur : MonoBehaviour
 {
+
+
+
     //Refactorisation
     public bool debug=true;
     UndoableAction undoableAction;
@@ -73,6 +76,10 @@ public class Joueur : MonoBehaviour
             MovePlayer(vec);
             Update_grille3d.isFin(transform.position);
 
+        }
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            ReMove();
         }
         //if (transform.position == new Vector3(transform.position.x, Ygrav, transform.position.z))
         //{
@@ -157,12 +164,47 @@ public class Joueur : MonoBehaviour
         transform.position = pos;
     }
 
-    public void ReMove()
+    public void ReMove()//Marche arrière 
     {
+        Update_grille3d.RemoveGrille();//ON rafraichie la grille
+        undoableAction = UndoSystem.Instance.UndoAction();//ON prend la dernière action en mémoir
+        transform.position = undoableAction.position;//ON change l'amplacement du joueur selon cette emplacement
+        Liste.GetComponent<ListeTom>().setIndex(undoableAction.currentIndex);//ON change l'index selon l'ancienne index
 
+        var boiteIci = Update_grille3d.trouve_boit(transform.position);//ON regarde au niveau de sa position
+        if(boiteIci != null)
+        {
+            if (boiteIci.equalType("Normal")) /*si le cube est plein, on le transforme en phantome,*/
+            {
+                boiteIci.SetType("Phantome");
+            }
+            if (boiteIci.equalType("Stop"))//SI le cube est Stop, on le transforme en phantomejaune
+            {
+                boiteIci.SetType("PhantomeJaune");
+            }
+        }
+
+        var boiteIciBas = Update_grille3d.trouve_boit(transform.position+new Vector3(0,-1,0));//ON regarde à la position bas du joueur
+        if (boiteIciBas != null)
+        {
+            if (boiteIciBas.equalType("RedGhost"))//SI il y a
+            {
+                boiteIciBas.SetType("Normal");
+            }
+            else
+            {
+                Update_grille3d.Faire_carrer(transform.position);
+            }
+        }
     }
-
-    void MovePlayer(Vector3 targetPosition)
+    public  UndoableAction MakeUndoableAction(Vector3 vec, int index)
+    {
+        UndoableAction undo= new UndoableAction(vec, index);
+        undo.position = vec;
+        undo.currentIndex = index;
+        return undo;    
+    }
+    public void MovePlayer(Vector3 targetPosition)
     {
         if (Update_grille3d.isPlein(targetPosition))
         {
@@ -183,12 +225,12 @@ public class Joueur : MonoBehaviour
                 }
                 else
                 {
+
                     surveillePhantome(Update_grille3d.trouve_boit(transform.position));
-                    undoableAction.position=transform.position; 
-                    UndoSystem.Instance.RecordAction(undoableAction);
+                    UndoSystem.Instance.RecordAction(MakeUndoableAction(transform.position, Liste.GetComponent<ListeTom>().GetIndex()));
                     transform.position = (targetPosition + new Vector3(0, 1, 0));
                     Update_grille3d.refreche();
-                    if (Liste & Update_grille3d.non_est_temporaire(targetPosition))
+                    if ( Update_grille3d.non_est_temporaire(targetPosition))
                     {
                         Liste.GetComponent<ListeTom>().UpdateTom();//Déplacement donc on lence la liste si néscéssaire
                     }
@@ -204,11 +246,10 @@ public class Joueur : MonoBehaviour
             if (Update_grille3d.isPlein(targetPosition + new Vector3(0, -1, 0)))
             {
                 surveillePhantome(Update_grille3d.trouve_boit(transform.position));
-                undoableAction.position = transform.position;
-                UndoSystem.Instance.RecordAction(undoableAction);
+                UndoSystem.Instance.RecordAction(MakeUndoableAction(transform.position, Liste.GetComponent<ListeTom>().GetIndex()));
                 transform.position = (targetPosition);
                 Update_grille3d.refreche();
-                if (Liste & Update_grille3d.non_est_temporaire(targetPosition + new Vector3(0, -1, 0)))
+                if ( Update_grille3d.non_est_temporaire(targetPosition + new Vector3(0, -1, 0)))
                 {
                     Liste.GetComponent<ListeTom>().UpdateTom();//Déplacement donc on lence la liste si néscéssaire
                 }
@@ -222,11 +263,10 @@ public class Joueur : MonoBehaviour
                 if (Update_grille3d.isPlein(targetPosition + new Vector3(0, -2, 0)))
                 {
                     surveillePhantome(Update_grille3d.trouve_boit(transform.position));
-                    undoableAction.position = transform.position;
-                    UndoSystem.Instance.RecordAction(undoableAction);
+                    UndoSystem.Instance.RecordAction(MakeUndoableAction(transform.position, Liste.GetComponent<ListeTom>().GetIndex()));
                     transform.position = (targetPosition + new Vector3(0, -1, 0));
                     Update_grille3d.refreche();
-                    if (Liste & Update_grille3d.non_est_temporaire(targetPosition + new Vector3(0, -2, 0)))
+                    if ( Update_grille3d.non_est_temporaire(targetPosition + new Vector3(0, -2, 0)))
                     {
                         Liste.GetComponent<ListeTom>().UpdateTom();//Déplacement donc on lence la liste si néscéssaire
                     }

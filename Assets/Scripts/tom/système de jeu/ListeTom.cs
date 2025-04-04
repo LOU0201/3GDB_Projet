@@ -92,7 +92,10 @@ public class ListeTom : MonoBehaviour
     {
         return currentIndex;    
     }
-
+    public string GetcurrentItem()
+    {
+        return liste[currentIndex];
+    }
     public void setIndex(int index)
     {
         currentIndex=index; 
