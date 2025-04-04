@@ -39,7 +39,7 @@ public class ResetTom : MonoBehaviour
     }
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && playerScore == minsortie || Max)
+        if (Input.GetKeyDown(KeyCode.Space) && playerScore >= minsortie && playerScore < maxsortie)
         {
             écran.SetActive(true);
            
