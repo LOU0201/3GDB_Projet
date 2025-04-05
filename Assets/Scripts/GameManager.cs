@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public float étoiles = 0f;
+    public ScriptableObject[] LevelsDataList;
 
     private void Awake()
     {

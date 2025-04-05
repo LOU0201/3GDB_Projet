@@ -9,6 +9,7 @@ public class DisplayHub : MonoBehaviour
     public TMP_Text levelNameText;
     public TMP_Text[] challengeTexts = new TMP_Text[3];
     public Image[] starImages; // Array of star Image components
+    public int MinExitNum= 0;
 
     void Update()
     {
@@ -30,12 +31,13 @@ public class DisplayHub : MonoBehaviour
                     challengeTexts[i].text = "Collect Collectable";
                     break;
                 case ObjectiveType.NoUndo:
-                    challengeTexts[i].text = "Don t use the undo";
+                    challengeTexts[i].text = "Didn t use the undo button";
                     break;
-                case ObjectiveType.None:
-                    challengeTexts[i].text = "mmm";
+                case ObjectiveType.MinExits:
+                    challengeTexts[i].text = "Entered the exit "+ MinExitNum + " times";
                     break;
                 default:
+                    challengeTexts[i].text = "Performed all possible exits";
                     break;
             }
 
