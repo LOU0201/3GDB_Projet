@@ -161,6 +161,10 @@ public class Grille_3d : MonoBehaviour
             {
                 Destroy(t.gameObject);
             }
+            if (t.GetComponent<Boite>().equalType("PhantomeJaune"))
+            {
+                Destroy(t.gameObject);
+            }
         }
     }
 
