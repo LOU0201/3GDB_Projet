@@ -98,7 +98,18 @@ public class ListeTom : MonoBehaviour
     }
     public void setIndex(int index)
     {
-        currentIndex=index; 
+        if (index == 0)
+        {
+            RefrecheIndex();
+        }
+        else
+        {
+            currentIndex = index;
+            FindObjectOfType<NewConveyor>().UpdateConveyor();
+            // Update the predictions for the next three items
+            UpdateUpcomingSpawnDisplay();
+            print("Index : " + index);
+        }
     }
 
     public void RefrecheIndex()

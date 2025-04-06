@@ -41,13 +41,20 @@ public class UndoSystem : MonoBehaviour
         //UndoableAction action = UndoSystem.Instance.UndoAction(); 
     }
 
+    public bool isFinich()
+    {
+        return undoStack.Count > 0;
+    }
+
     public void RecordAction(UndoableAction action)
     {
+        print("RecordAction");
         undoStack.Push(action);
     }
 
     public UndoableAction UndoAction()
     {
+        print("UndoAction");
         if (undoStack.Count > 0)
         {
             return undoStack.Pop();

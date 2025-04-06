@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class Joueur : MonoBehaviour
 {
 
-
+    public GameObject prefabBoite;
 
     //Refactorisation
     public bool debug=true;
@@ -166,34 +166,35 @@ public class Joueur : MonoBehaviour
 
     public void ReMove()//Marche arrière 
     {
-        Update_grille3d.RemoveGrille();//ON rafraichie la grille
-        undoableAction = UndoSystem.Instance.UndoAction();//ON prend la dernière action en mémoir
-        transform.position = undoableAction.position;//ON change l'amplacement du joueur selon cette emplacement
-        Liste.GetComponent<ListeTom>().setIndex(undoableAction.currentIndex);//ON change l'index selon l'ancienne index
-
-        var boiteIci = Update_grille3d.trouve_boit(transform.position);//ON regarde au niveau de sa position
-        if(boiteIci != null)
+        if (UndoSystem.Instance.isFinich())
         {
-            if (boiteIci.equalType("Normal")) /*si le cube est plein, on le transforme en phantome,*/
-            {
-                boiteIci.SetType("Phantome");
-            }
-            if (boiteIci.equalType("Stop"))//SI le cube est Stop, on le transforme en phantomejaune
-            {
-                boiteIci.SetType("PhantomeJaune");
-            }
-        }
+            Update_grille3d.RemoveGrille();//ON rafraichie la grille
+            undoableAction = UndoSystem.Instance.UndoAction();//ON prend la dernière action en mémoir
+            transform.position = undoableAction.position;//ON change l'amplacement du joueur selon cette emplacement
+            Liste.GetComponent<ListeTom>().setIndex(undoableAction.currentIndex);//ON change l'index selon l'ancienne index
 
-        var boiteIciBas = Update_grille3d.trouve_boit(transform.position+new Vector3(0,-1,0));//ON regarde à la position bas du joueur
-        if (boiteIciBas != null)
-        {
-            if (boiteIciBas.equalType("RedGhost"))//SI il y a
+            var boiteIci = Update_grille3d.trouve_boit(transform.position);//ON regarde au niveau de sa position
+            if (boiteIci != null)
             {
-                boiteIciBas.SetType("Normal");
+                if (boiteIci.equalType("Normal")) /*si le cube est plein, on le transforme en phantome,*/
+                {
+                    boiteIci.SetType("Phantome");
+                }
+                if (boiteIci.equalType("Stop"))//SI le cube est Stop, on le transforme en phantomejaune
+                {
+                    boiteIci.SetType("PhantomeJaune");
+                }
             }
-            else
+
+            var boiteIciBas = Update_grille3d.trouve_boit(transform.position + new Vector3(0, -1, 0));//ON regarde à la position bas du joueur
+            if (boiteIciBas == null)
             {
-                Update_grille3d.Faire_carrer(transform.position);
+                GameObject boite = Instantiate(prefabBoite, transform.position + new Vector3(0, -1, 0), Quaternion.identity);
+                boite.transform.SetParent(Update_grille3d.transform);
+                if (debug)
+                {
+                    print("RE_BOITE");
+                }
             }
         }
     }
