@@ -2,8 +2,8 @@
 {
     CompleteLevel,
     CollectCollectable,
-    NoUndo,
-    LessThan5,
-    None
+    MinExits,
+    MaxExits,
+    NoUndo
 }
 

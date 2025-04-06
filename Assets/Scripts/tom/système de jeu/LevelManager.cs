@@ -132,9 +132,11 @@ public class LevelManager : MonoBehaviour
                         levelData.objectivesCompleted[i] = true;
                     }
                     break;
-                case ObjectiveType.None:
+                case ObjectiveType.MinExits:
+                    levelData.objectivesCompleted[i] = true;
                     break;
-                case ObjectiveType.LessThan5:
+                case ObjectiveType.MaxExits:
+                    levelData.objectivesCompleted[i] = true;
                     break;
             }
         }
