@@ -1,61 +1,155 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Boite : MonoBehaviour
 {
-    public bool libre=true;
+
+    public enum Type
+    {
+        Normal,
+        Phantome,
+        Fin,
+        Debut,
+        RedGhost,
+        Stop,
+        PhantomeJaune
+    }
+    public Type type;
+    public string stringType;
     public bool phantome = false;
     public bool fin = false;
     public bool début = false;
     public bool temporaire = false;
-    public bool Stop = false;
     public bool phantomeRouge=false;
     public int valeur;
     public GameObject reTurne;
-    // Start is called before the first frame update
-    void Start()
+
+    public MeshRenderer childRenderer;
+    public Material Solide;
+    public Material Phantome;
+    public Material Sortie;
+    public Material RedGhost;
+    public Material Stop;
+    public Material Debut;
+    public Material PhantomeJaune;
+
+
+
+    private void OnValidate()
     {
-        if (Stop)
+        switch (type)
         {
-            transform.GetChild(0).gameObject.GetComponent<Renderer>().material.color = Color.yellow;
+            case Type.Normal:
+                childRenderer.sharedMaterial = Solide;
+                gameObject.GetComponent<LevelManager>().enabled = false;
+                stringType = "Normal";
+
+                fin = false;
+                break;
+            case Type.PhantomeJaune:
+                childRenderer.sharedMaterial = PhantomeJaune;
+                gameObject.GetComponent<LevelManager>().enabled = false;
+                stringType = "PhantomeJaune";
+
+                fin = false;
+                break;
+            case Type.Phantome:
+                childRenderer.sharedMaterial = Phantome;
+                gameObject.GetComponent<LevelManager>().enabled = false;
+                stringType = "Phantome";
+                fin = false;
+                break;
+            case Type.Fin:
+                childRenderer.sharedMaterial = Sortie;
+                gameObject.GetComponent<LevelManager>().enabled = false;
+                fin = true;
+                stringType = "Fin";
+                break;
+            case Type.Debut:
+                stringType = "Debut";
+                childRenderer.sharedMaterial = Debut;
+                gameObject.GetComponent<LevelManager>().enabled = true;
+                fin = false;
+                break;
+            case Type.RedGhost:
+                childRenderer.sharedMaterial = RedGhost;
+                gameObject.GetComponent<LevelManager>().enabled = false;
+                fin = false;
+                stringType = "RedGhost";
+                break;
+            case Type.Stop:
+                childRenderer.sharedMaterial = Stop;
+                gameObject.GetComponent<LevelManager>().enabled = false;
+                fin = false;
+                stringType = "Stop";
+                break;
         }
-        if (fin)
-        {
-            transform.GetChild(2).gameObject.SetActive(true);
-        }
-        if(temporaire)
+        if (temporaire)
         {
             transform.GetChild(3).gameObject.SetActive(true);
         }
-        if (Stop)
+        else
         {
-            transform.GetChild(0).gameObject.SetActive(true);
+            transform.GetChild(3).gameObject.SetActive(false);
         }
     }
-
-    public void Initialisation (bool libre, bool phantome, bool fin, bool début, bool temporaire)
+    public void SetType(string i)
     {
-        this.libre = libre;
+        switch (i)
+        {
+            case "Normal":
+                this.type = Type.Normal;
+                OnValidate();
+                break;
+            case "Phantome":
+                this.type = Type.Phantome;
+                OnValidate();
+                break;
+            case "Fin":
+                this.type = Type.Fin;
+                OnValidate();
+                break;
+            case "Debut":
+                this.type = Type.Debut;
+                OnValidate();
+                break;
+            case "RedGhost":
+                this.type = Type.RedGhost;
+                OnValidate();
+                break;
+            case "Stop":
+                this.type = Type.Stop;
+                OnValidate();
+                break;
+            case "PhantomeJaune":
+                this.type = Type.PhantomeJaune;
+                OnValidate();
+                break;
+        }
+    }
+    public string getType() {
+        return stringType;
+    }
+    public bool equalType(string i)
+    {
+        return String.Equals(i, stringType);
+    }
+    // Start is called before the first frame update
+    void Start()
+    {
+
+    }
+
+    public void Initialisation (bool phantome, bool fin, bool début, bool temporaire) 
+        //(Type newType)
+    {
+        //this.type = newType;
         this.phantome = phantome;
         this.fin = fin;
         this.début = début;
         this.temporaire = temporaire;
-    }
-    public void OnTriggerEnter(Collider collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            // Call the Rappatriment() function on the ResetTom object
-            if (reTurne != null) // Check if reTurne is assigned
-            {
-                reTurne.GetComponent<ResetTom>().Rappatriment();
-            }
-            else
-            {
-                Debug.LogError("reTurne is not assigned in Boite script.");
-            }
-        }
     }
     // Update is called once per frame
     void Update()

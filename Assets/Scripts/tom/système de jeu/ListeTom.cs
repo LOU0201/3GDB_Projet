@@ -31,20 +31,21 @@ public class ListeTom : MonoBehaviour
     // Update is called once per frame
     public void UpdateTom()
     {
-        if (false)
+        print("currentIndex : " + currentIndex);
+        if (var)
         {
             var=false;
             // Perform the action for the current item
             string currentItem = liste[currentIndex];
             if (currentItem == "cube")
             {
-                GetComponent<musiqueblocs>().Note();
+                //GetComponent<musiqueblocs>().Note();
                 G3D.Faire_carrer(joueur.position); // Spawn a cube
             }
             else if (currentItem == "trou")
             {
                 G3D.Faire_Trou(joueur.position); // Spawn a hole FaireTrou va donc désactiver le cube en bas du joueur
-                GetComponent<musiqueblocs>().Note();
+               // GetComponent<musiqueblocs>().Note();
             }
             else if (currentItem == "rien")
             {
@@ -66,13 +67,13 @@ public class ListeTom : MonoBehaviour
             string currentItem = liste[currentIndex];
             if (currentItem == "cube")
             {
-                GetComponent<musiqueblocs>().Note();
+               // GetComponent<musiqueblocs>().Note();
                 G3D.Faire_carrer(joueur.position); // Spawn a cube
             }
             else if (currentItem == "trou")
             {
                 G3D.Faire_Trou(joueur.position); // Spawn a hole FaireTrou va donc désactiver le cube en bas du joueur
-                GetComponent<musiqueblocs>().Note();
+                //GetComponent<musiqueblocs>().Note();
             }
             else if (currentItem == "rien")
             {
@@ -86,13 +87,37 @@ public class ListeTom : MonoBehaviour
             // Update the predictions for the next three items
             UpdateUpcomingSpawnDisplay();
         }
-        
-
+    }
+    public int GetIndex()
+    {
+        return currentIndex;    
+    }
+    public string GetcurrentItem()
+    {
+        return liste[currentIndex];
+    }
+    public void setIndex(int index)
+    {
+        if (index == 0)
+        {
+            RefrecheIndex();
+        }
+        else
+        {
+            currentIndex = index;
+            FindObjectOfType<NewConveyor>().UpdateConveyor();
+            // Update the predictions for the next three items
+            UpdateUpcomingSpawnDisplay();
+            print("Index : " + index);
+        }
     }
 
-    public void setIndex()
+    public void RefrecheIndex()
     {
         currentIndex = 0;
+        conveyorBelt.ResetElementsScale();
+        var =true;
+        print("setIndex FAIS");
     }
 
 

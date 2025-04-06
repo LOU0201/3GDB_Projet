@@ -5,27 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class Reset : MonoBehaviour
 {
-    //public Transform joueur;
-    //[SerializeField] public bool exit;
-    //public Joueur_V scriptJ;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        //Vector3 coordonnees = transform.position;
-        //Vector3 CJ = joueur.position;
         if (Input.GetKeyDown(KeyCode.R))
         {
             RestartScene();
-            //scriptJ.Debut();
         }
     }
-    void RestartScene()
+    public void RestartScene()
     {
         // Get the current scene's index
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
@@ -33,15 +20,16 @@ public class Reset : MonoBehaviour
         // Reload the current scene
         SceneManager.LoadScene(currentSceneIndex);
     }
-
-    public void GameQuit()
+    public void HUB()
+    {
+        SceneLoader.LoadScene("HUB");
+    }
+    public void MainMenu()
+    {
+        SceneLoader.LoadScene("MainMenu");
+    }
+    public void Quit()
     {
         Application.Quit();
-    }
-
-    // Loads the Main Menu
-    public void ReturnToMainMenu()
-    {
-        SceneManager.LoadScene(0);
     }
 }
