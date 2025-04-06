@@ -78,6 +78,6 @@ public class Collectible : MonoBehaviour
         }
 
         Destroy(flyingObj);
-        Destroy(gameObject);
+        Destroy(this.gameObject);
     }
 }

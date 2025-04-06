@@ -42,22 +42,22 @@ public class Scènes : MonoBehaviour
     }
     public void Montée()
     {
-        SceneManager.LoadScene(scene1);
+        SceneLoader.LoadScene(scene1);
     }
     public void Descente()
     {
-        SceneManager.LoadScene(scene2);
+        SceneLoader.LoadScene(scene2);
     }
     public void Liste()
     {
-        SceneManager.LoadScene(scene3);
+        SceneLoader.LoadScene(scene3);
     }
     public void Block()
     {
-        SceneManager.LoadScene(scene4);
+        SceneLoader.LoadScene(scene4);
     }
     public void Dalle()
     {
-        SceneManager.LoadScene(scene5);
+        SceneLoader.LoadScene(scene5);
     }
 }
