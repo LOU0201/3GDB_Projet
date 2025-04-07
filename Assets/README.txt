@@ -35,6 +35,7 @@ Manager:
 
 Joueur:
 	Liste:Manager
+	Prefa Boite : Prendre dans Assets > Prefab > Tom > Level Design le préfab Boite
 	Update-grille 3d:Grille3d
 
 Upcoming Spawn Icons : à ignorer, cherche dans Lou prefab folder --> "display" coller dedans pour qu'il marche normalement 

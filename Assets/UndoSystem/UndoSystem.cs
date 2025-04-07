@@ -37,7 +37,7 @@ public class UndoSystem : MonoBehaviour
     private void Start()
     {
         ///Exemple d'utilisation :
-        UndoSystem.Instance.RecordAction(new UndoableAction(Vector3.zero,0));
+        //UndoSystem.Instance.RecordAction(new UndoableAction(Vector3.zero,0));
         //UndoableAction action = UndoSystem.Instance.UndoAction(); 
     }
 
