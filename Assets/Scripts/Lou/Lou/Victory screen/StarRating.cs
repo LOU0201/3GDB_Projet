@@ -10,33 +10,34 @@ public class StarRating : MonoBehaviour
     [System.Serializable]
     public struct Challenge
     {
-        public bool isActive;       // Whether this challenge is enabled for this level
-        public TMP_Text text;       // The UI text for this challenge
-        public ChallengeType type;  // Which challenge this is
+        public bool isActive;
+        public TMP_Text text;
+        public ChallengeType type;
     }
 
     public enum ChallengeType
     {
-        FinishLevel,        // Challenge 1: Finish the level (minsortie reached)
-        MinExits,           // Challenge 2: Reach minimum exits (minsortie)
-        MaxExits,           // Challenge 3: Reach maximum exits (maxsortie)
-        CollectCollectible, // Challenge 4: Collect a collectible
-        NoUndoUsed         // Challenge 5: Don't use the undo button
+        FinishLevel,
+        MinExits,
+        MaxExits,
+        CollectCollectible,
+        NoUndoUsed
     }
 
     [Header("Stars")]
-    public Image[] stars; // 3 star images (set inactive by default)
+    public Image[] stars;
 
     [Header("Challenges")]
-    public Challenge[] challenges; // All 5 possible challenges (enable 3 per level)
+    public Challenge[] challenges;
 
     [Header("References")]
     public LevelManager resetTom;
-    public Collectible collectible;
 
     [Header("Animation Settings")]
     public float starAnimationDuration = 0.5f;
     public Ease starAnimationEase = Ease.OutBounce;
+
+    private Collectible[] allCollectibles; // Array to hold all collectible scripts
 
     private void Start()
     {
@@ -52,6 +53,9 @@ public class StarRating : MonoBehaviour
             if (challenge.text != null)
                 challenge.text.gameObject.SetActive(false);
         }
+
+        // Find all Collectible scripts in the scene at the start
+        allCollectibles = FindObjectsOfType<Collectible>();
     }
 
     public void UpdateStarRating()
@@ -92,7 +96,15 @@ public class StarRating : MonoBehaviour
                 return resetTom.playerExitCount >= resetTom.maxExitCount;
 
             case ChallengeType.CollectCollectible:
-                return !GameObject.FindObjectOfType<Collectible>()?.GetComponent<Collectible>()?.collected ?? true;
+                // Check if at least one collectible has been collected
+                foreach (var collectible in allCollectibles)
+                {
+                    if (collectible.collected)
+                    {
+                        return true;
+                    }
+                }
+                return false;
 
             case ChallengeType.NoUndoUsed:
                 return !resetTom.undoUsed; // True if undo was NOT used

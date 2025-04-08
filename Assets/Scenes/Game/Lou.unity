@@ -4884,6 +4884,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1287886429}
+  - component: {fileID: 1287886430}
   m_Layer: 0
   m_Name: Level Data
   m_TagString: Untagged
@@ -4906,6 +4907,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1287886430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1287886428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ec876f19e1a43947946db9867b7e4d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelData: {fileID: 11400000, guid: c15f61826ab05234a8b07e2efe5eb720, type: 2}
+  scoreText: {fileID: 1861662136}
+  scoreText3: {fileID: 63609996}
+  scoreText4: {fileID: 1936342950}
+  playerExitCount: 0
+  minExitCount: 2
+  maxExitCount: 4
+  max: 0
+  screen: {fileID: 855257443}
+  collectable: {fileID: 379850911}
+  undoForbidden: 0
+  undoUsed: 0
+  spaceButton: {fileID: 2078708488}
+  nextLevel: {fileID: 1618307228}
+  LT: {fileID: 1466179450}
 --- !u!1001 &1316125389
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6080,6 +6108,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1610948287}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1618307228 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4407694087010922389, guid: 58a6c0657e5666743a13c482f151a800,
+    type: 3}
+  m_PrefabInstance: {fileID: 1316125389}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1620767882
 GameObject:
   m_ObjectHideFlags: 0

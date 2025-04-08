@@ -34,6 +34,8 @@ public class Collectible : MonoBehaviour
 
         if (mainCamera == null)
             mainCamera = Camera.main;
+
+
     }
 
     void Update()
@@ -78,6 +80,6 @@ public class Collectible : MonoBehaviour
         }
 
         Destroy(flyingObj);
-        Destroy(this.gameObject);
+        gameObject.SetActive(false);
     }
 }

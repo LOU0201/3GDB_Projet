@@ -143,7 +143,6 @@ public class Boite : MonoBehaviour
     }
 
     public void Initialisation (bool phantome, bool fin, bool début, bool temporaire) 
-        //(Type newType)
     {
         //this.type = newType;
         this.phantome = phantome;
