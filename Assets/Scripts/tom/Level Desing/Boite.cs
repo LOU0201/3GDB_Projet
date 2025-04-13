@@ -136,28 +136,11 @@ public class Boite : MonoBehaviour
     {
         return String.Equals(i, stringType);
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
     public void Initialisation (bool phantome, bool fin, bool début, bool temporaire) 
     {
-        //this.type = newType;
         this.phantome = phantome;
         this.fin = fin;
         this.début = début;
         this.temporaire = temporaire;
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        //Vector3 coordonnees = transform.position;
-        //Vector3 CJ = joueur.position;
-        //if (CJ != coordonnees)
-        //{
-        //    transform.GetChild(0).transform.GetComponent<Renderer>().material = opaque;
-        //}
     }
 }

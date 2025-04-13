@@ -95,13 +95,6 @@ public class LevelManager : MonoBehaviour
         {
             screen.SetActive(true);
             levelEnded = true;
-
-            // Update Star Rating UI
-            //StarRating starSystem = screen.GetComponent<StarRating>();
-            //if (starSystem != null)
-            //{
-            //    starSystem.UpdateStarRating();
-            //}
         }
 
         if (levelEnded)
