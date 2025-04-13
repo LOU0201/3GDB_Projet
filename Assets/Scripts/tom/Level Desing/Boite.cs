@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class Boite : MonoBehaviour
 {
-
     public enum Type
     {
         Normal,

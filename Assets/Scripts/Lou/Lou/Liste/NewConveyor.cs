@@ -106,6 +106,10 @@ public class NewConveyor : MonoBehaviour
         {
             image.sprite = listeTom.trouSprite;
         }
+        else if (item == "yellow")
+        {
+            image.sprite = listeTom.yellowSprite;
+        }
         else
         {
             image.sprite = listeTom.rienSprite;

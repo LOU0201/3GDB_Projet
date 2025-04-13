@@ -8,7 +8,7 @@ public class DisplayHub : MonoBehaviour
     public LevelData levelData;
     public TMP_Text levelNameText;
     public TMP_Text[] challengeTexts = new TMP_Text[3];
-    public Image[] starImages; // Array of star Image components
+    public Image[] starImages; // Array of star Image 
     public int MinExitNum;
     public GameObject LevelInfo;
     void Start()

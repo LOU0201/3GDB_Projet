@@ -13,9 +13,10 @@ public class ListeTom : MonoBehaviour
 
     // UI for displaying the current and upcoming spawnable objects
 
-    public Sprite rienSprite; // Icon for "Rien"
-    public Sprite trouSprite; // Icon for "Trou"
-    public Sprite cubeSprite; // Icon for "Cube"
+    public Sprite rienSprite; 
+    public Sprite trouSprite; 
+    public Sprite cubeSprite;
+    public Sprite yellowSprite;
     public NewConveyor conveyorBelt;
 
     private bool var=true;
@@ -32,53 +33,52 @@ public class ListeTom : MonoBehaviour
         print("currentIndex : " + currentIndex);
         if (var)
         {
-            var=false;
-            // Perform the action for the current item
+            var = false;
             string currentItem = liste[currentIndex];
-            if (currentItem == "cube")
-            {
-                
-                G3D.Faire_carrer(joueur.position); // Spawn a cube
-            }
-            else if (currentItem == "trou")
-            {
-                G3D.Faire_Trou(joueur.position); // Spawn a hole FaireTrou va donc désactiver le cube en bas du joueur
-               // GetComponent<musiqueblocs>().Note();
-            }
-            else if (currentItem == "rien")
-            {
-                Debug.Log("Nothing spawned this step.");
-                FMODUnity.RuntimeManager.PlayOneShot("event:/V2/Player/Move");
-            }
+            ExecuteCurrentItem(currentItem);
 
-
-            // Move to the next index in the list
-            currentIndex = (currentIndex) % liste.Length;
+            currentIndex = currentIndex % liste.Length;
             FindObjectOfType<NewConveyor>().UpdateConveyor();
         }
         else
         {
-            // Perform the action for the current item
             currentIndex = (currentIndex + 1) % liste.Length;
             string currentItem = liste[currentIndex];
-            if (currentItem == "cube")
-            {
-              
-                G3D.Faire_carrer(joueur.position); // Spawn a cube
-            }
-            else if (currentItem == "trou")
-            {
-                G3D.Faire_Trou(joueur.position); // Spawn a hole FaireTrou va donc désactiver le cube en bas du joueur
-               
-            }
-            else if (currentItem == "rien")
-            {
-                Debug.Log("Nothing spawned this step.");
-                FMODUnity.RuntimeManager.PlayOneShot("event:/V2/Player/Move");
-            }
-            // Move to the next index in the list
-            FindObjectOfType<NewConveyor>().UpdateConveyor();
+            ExecuteCurrentItem(currentItem);
 
+            FindObjectOfType<NewConveyor>().UpdateConveyor();
+        }
+    }
+
+    // NEW: Helper method to handle item execution
+    private void ExecuteCurrentItem(string currentItem)
+    {
+        switch (currentItem)
+        {
+            case "cube":
+                G3D.Faire_carrer(joueur.position);
+                break;
+
+            case "trou":
+                G3D.Faire_Trou(joueur.position);
+                break;
+
+            case "yellow":
+                // NEW: Handle yellow cube logic
+                if (G3D.EstStop(joueur.position))
+                {
+                    // Show yellow icon or perform yellow-specific action
+                    FMODUnity.RuntimeManager.PlayOneShot("event:/V2/Blocs/SpecialYellow"); // Example sound
+                }
+                break;
+
+            case "rien":
+                FMODUnity.RuntimeManager.PlayOneShot("event:/V2/Player/Move");
+                break;
+
+            default:
+                Debug.LogWarning("Unknown item type: " + currentItem);
+                break;
         }
     }
     public int GetIndex()

@@ -201,7 +201,7 @@ public class Grille_3d : MonoBehaviour
         {
             if (t.transform.position == vec + new Vector3(0, -1, 0))
             {
-                if (!(trouve_boit(vec) && trouve_boit(vec).transform.GetComponent<Boite>().fin))//On s'aintéresse ici, au bloc que l'on veux détruir c'est à dire celui juste endessous du joueur et on vérifie si le block ou l'on est est une sortie
+                if (!(trouve_boit(vec) && trouve_boit(vec).transform.GetComponent<Boite>().fin))//On s'intéresse ici, au bloc que l'on veux détruir c'est à dire celui juste endessous du joueur et on vérifie si le block ou l'on est est une sortie
                 {
                     t.gameObject.GetComponent<Boite>().SetType("RedGhost");
                     if (debug1)
