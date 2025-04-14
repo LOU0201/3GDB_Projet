@@ -81,14 +81,6 @@ public class Joueur : MonoBehaviour
         {
             ReMove();
         }
-        //if (transform.position == new Vector3(transform.position.x, Ygrav, transform.position.z))
-        //{
-        //    RB.useGravity = true;
-        //}
-        //else
-        //{
-        //    RB.useGravity = false;
-        //}
     }
     public bool isDebut()//Ici, Luu
     {
@@ -96,7 +88,7 @@ public class Joueur : MonoBehaviour
     }
     public void Update_plus()
     {
-        //Atention LP active UpdateTom()
+        //Attention LP active UpdateTom()
         if (LP == false)
         {
             if (compte_carré >= variable_compte_carré )
@@ -113,10 +105,8 @@ public class Joueur : MonoBehaviour
                 {
                     Update_grille3d.Faire_carrer(transform.position);
                     compte_carré = 0;
-
-                    //print("obstacle");
                 }
-                if (fonction == 2)
+                else if (fonction == 2)
                 {
                     if (trou)
                     {
@@ -128,7 +118,15 @@ public class Joueur : MonoBehaviour
                     {
                         Update_grille3d.Faire_carrer(transform.position);
                         compte_carré = 0;
-                    }
+                    }  
+                }
+                else if (fonction == 3) // NEW: Yellow cube logic
+                {
+                    // Spawn a yellow cube (stop block)
+                    Update_grille3d.CubeJaune = true; // Enable yellow mode
+                    Update_grille3d.Faire_carrer(transform.position);
+                    Update_grille3d.CubeJaune = false; // Reset to normal
+                    compte_carré = 0;
                 }
             }
         }
@@ -184,6 +182,10 @@ public class Joueur : MonoBehaviour
                 {
                     boiteIci.SetType("PhantomeJaune");
                 }
+            }
+            else if (boiteIci.equalType("Stop")) // Handle yellow cube undo
+            {
+                boiteIci.SetType("PhantomeJaune");
             }
 
             var boiteIciBas = Update_grille3d.trouve_boit(transform.position + new Vector3(0, -1, 0));//ON regarde à la position bas du joueur

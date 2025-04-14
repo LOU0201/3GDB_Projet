@@ -12,10 +12,11 @@ public class ListeTom : MonoBehaviour
     public Transform joueur; // Player position
 
     // UI for displaying the current and upcoming spawnable objects
-    public Image[] upcomingSpawnIcons; // Array of 3 UI Images for displaying sprites
-    public Sprite rienSprite; // Icon for "Rien"
-    public Sprite trouSprite; // Icon for "Trou"
-    public Sprite cubeSprite; // Icon for "Cube"
+
+    public Sprite rienSprite; 
+    public Sprite trouSprite; 
+    public Sprite cubeSprite;
+    public Sprite yellowSprite;
     public NewConveyor conveyorBelt;
 
     private bool var=true;
@@ -24,8 +25,6 @@ public class ListeTom : MonoBehaviour
     void Start()
     {
         currentIndex = 0;
-
-        UpdateUpcomingSpawnDisplay(); // Show the first set of predictions
     }
 
     // Update is called once per frame
@@ -34,58 +33,52 @@ public class ListeTom : MonoBehaviour
         print("currentIndex : " + currentIndex);
         if (var)
         {
-            var=false;
-            // Perform the action for the current item
+            var = false;
             string currentItem = liste[currentIndex];
-            if (currentItem == "cube")
-            {
-                //GetComponent<musiqueblocs>().Note();
-                G3D.Faire_carrer(joueur.position); // Spawn a cube
-            }
-            else if (currentItem == "trou")
-            {
-                G3D.Faire_Trou(joueur.position); // Spawn a hole FaireTrou va donc désactiver le cube en bas du joueur
-               // GetComponent<musiqueblocs>().Note();
-            }
-            else if (currentItem == "rien")
-            {
-                Debug.Log("Nothing spawned this step.");
-                FMODUnity.RuntimeManager.PlayOneShot("event:/V2/Player/Move");
-            }
+            ExecuteCurrentItem(currentItem);
 
-
-            // Move to the next index in the list
-            currentIndex = (currentIndex) % liste.Length;
+            currentIndex = currentIndex % liste.Length;
             FindObjectOfType<NewConveyor>().UpdateConveyor();
-            // Update the predictions for the next three items
-            UpdateUpcomingSpawnDisplay();
         }
         else
         {
-            // Perform the action for the current item
             currentIndex = (currentIndex + 1) % liste.Length;
             string currentItem = liste[currentIndex];
-            if (currentItem == "cube")
-            {
-               // GetComponent<musiqueblocs>().Note();
-                G3D.Faire_carrer(joueur.position); // Spawn a cube
-            }
-            else if (currentItem == "trou")
-            {
-                G3D.Faire_Trou(joueur.position); // Spawn a hole FaireTrou va donc désactiver le cube en bas du joueur
-                //GetComponent<musiqueblocs>().Note();
-            }
-            else if (currentItem == "rien")
-            {
-                Debug.Log("Nothing spawned this step.");
-                FMODUnity.RuntimeManager.PlayOneShot("event:/V2/Player/Move");
-            }
+            ExecuteCurrentItem(currentItem);
 
-
-            // Move to the next index in the list
             FindObjectOfType<NewConveyor>().UpdateConveyor();
-            // Update the predictions for the next three items
-            UpdateUpcomingSpawnDisplay();
+        }
+    }
+
+    // NEW: Helper method to handle item execution
+    private void ExecuteCurrentItem(string currentItem)
+    {
+        switch (currentItem)
+        {
+            case "cube":
+                G3D.Faire_carrer(joueur.position);
+                break;
+
+            case "trou":
+                G3D.Faire_Trou(joueur.position);
+                break;
+
+            case "yellow":
+                // NEW: Handle yellow cube logic
+                if (G3D.EstStop(joueur.position))
+                {
+                    // Show yellow icon or perform yellow-specific action
+                    FMODUnity.RuntimeManager.PlayOneShot("event:/V2/Blocs/SpecialYellow"); // Example sound
+                }
+                break;
+
+            case "rien":
+                FMODUnity.RuntimeManager.PlayOneShot("event:/V2/Player/Move");
+                break;
+
+            default:
+                Debug.LogWarning("Unknown item type: " + currentItem);
+                break;
         }
     }
     public int GetIndex()
@@ -106,9 +99,6 @@ public class ListeTom : MonoBehaviour
         {
             currentIndex = index;
             FindObjectOfType<NewConveyor>().UpdateConveyor();
-            // Update the predictions for the next three items
-            UpdateUpcomingSpawnDisplay();
-            print("Index : " + index);
         }
     }
 
@@ -118,31 +108,5 @@ public class ListeTom : MonoBehaviour
         conveyorBelt.ResetElementsScale();
         var =true;
         print("setIndex FAIS");
-    }
-
-
-    // Updates the UI Images to show the items in positions 1, 2, and 3
-    private void UpdateUpcomingSpawnDisplay()
-    {
-        for (int i = 0; i < upcomingSpawnIcons.Length; i++) // Loop through the 3 upcoming icons
-        {
-            // Get the index for the current, next, and the one after that
-            int index = (currentIndex + i) % liste.Length;
-            string nextItem = liste[index];
-
-            // Assign the appropriate sprite to each Image
-            if (nextItem == "cube")
-            {
-                upcomingSpawnIcons[i].sprite = cubeSprite;
-            }
-            else if (nextItem == "trou")
-            {
-                upcomingSpawnIcons[i].sprite = trouSprite;
-            }
-            else
-            {
-                upcomingSpawnIcons[i].sprite = rienSprite; // Default to "Rien" icon
-            }
-        }
     }
 }

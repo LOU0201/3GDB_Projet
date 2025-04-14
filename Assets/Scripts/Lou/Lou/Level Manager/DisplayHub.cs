@@ -8,18 +8,23 @@ public class DisplayHub : MonoBehaviour
     public LevelData levelData;
     public TMP_Text levelNameText;
     public TMP_Text[] challengeTexts = new TMP_Text[3];
-    public Image[] starImages; // Array of star Image components
-    public int MinExitNum= 0;
+    public Image[] starImages; // Array of star Image 
+    public int MinExitNum;
+    public GameObject LevelInfo;
+    void Start()
+    {
+        HideSheet();
+    }
 
     void Update()
     {
-        UpdateUI();
+        //UpdateUI();
     }
 
-    private void UpdateUI()
+    public void UpdateUI()
     {
         levelNameText.text = "Level: " + levelData.name;
-
+        LevelInfo.GetComponent<Canvas>().enabled = true;
         for (int i = 0; i < challengeTexts.Length; i++)
         {
             switch (levelData.objectiveTypes[i])
@@ -43,5 +48,10 @@ public class DisplayHub : MonoBehaviour
 
             starImages[i].gameObject.SetActive(i < levelData.CountStarsUnlocked());
         }
+    }
+
+    public void HideSheet()
+    {
+        LevelInfo.GetComponent<Canvas>().enabled = false;
     }
 }

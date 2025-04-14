@@ -8,6 +8,9 @@ public class Niveau : MonoBehaviour
     public string LVname;
     public Transform joueur;
     public Transform[] alentours;
+    public LevelData LD;
+    public DisplayHub Display;
+    public int MinExits;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,8 +32,22 @@ public class Niveau : MonoBehaviour
             Vector3 COT = t.transform.position;
             if (CJ == COT)
             {
-                Debug.Log("ça marche");
+                Transfert();
+                if(Input.anyKey)
+                {
+                    if (CJ == COT)
+                    {
+                        Display.HideSheet();
+                    }
+                }
             }
         }
+    }
+
+    void Transfert()
+    {
+        Display.levelData = LD;
+        Display.MinExitNum = MinExits;
+        Display.UpdateUI();
     }
 }
