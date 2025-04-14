@@ -1618,7 +1618,6 @@ MonoBehaviour:
     text: {fileID: 418084540}
     type: 4
   resetTom: {fileID: 0}
-  collectible: {fileID: 0}
   starAnimationDuration: 0.5
   starAnimationEase: 30
 --- !u!114 &394980861
@@ -8222,13 +8221,10 @@ MonoBehaviour:
   currentIndex: 0
   G3D: {fileID: 147037774}
   joueur: {fileID: 1682725681}
-  upcomingSpawnIcons:
-  - {fileID: 7967904676703100280, guid: f8222caf6ea53ad4a8beb33562c55658, type: 3}
-  - {fileID: 7967904676703100280, guid: f8222caf6ea53ad4a8beb33562c55658, type: 3}
-  - {fileID: 7967904676703100280, guid: f8222caf6ea53ad4a8beb33562c55658, type: 3}
   rienSprite: {fileID: 21300000, guid: 64c74fc6642043a428153820b196b1c5, type: 3}
   trouSprite: {fileID: 21300000, guid: b7a801a841999814b9f5a838ee43828b, type: 3}
   cubeSprite: {fileID: 21300000, guid: 9add30ee206ad9b4b9182ba6636bf4ae, type: 3}
+  yellowSprite: {fileID: 0}
   conveyorBelt: {fileID: 735735516}
 --- !u!4 &1466179451
 Transform:
@@ -8730,74 +8726,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1598395454}
   m_CullTransparentMesh: 1
---- !u!1001 &1660614330
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5724997429677148873, guid: a34a2995bb3fcd646886b9157c3e83fd,
-        type: 3}
-      propertyPath: m_Name
-      value: Collectible (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 8677176522461977754, guid: a34a2995bb3fcd646886b9157c3e83fd,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8677176522461977754, guid: a34a2995bb3fcd646886b9157c3e83fd,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8677176522461977754, guid: a34a2995bb3fcd646886b9157c3e83fd,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8677176522461977754, guid: a34a2995bb3fcd646886b9157c3e83fd,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8677176522461977754, guid: a34a2995bb3fcd646886b9157c3e83fd,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8677176522461977754, guid: a34a2995bb3fcd646886b9157c3e83fd,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8677176522461977754, guid: a34a2995bb3fcd646886b9157c3e83fd,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8677176522461977754, guid: a34a2995bb3fcd646886b9157c3e83fd,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8677176522461977754, guid: a34a2995bb3fcd646886b9157c3e83fd,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8677176522461977754, guid: a34a2995bb3fcd646886b9157c3e83fd,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: a34a2995bb3fcd646886b9157c3e83fd, type: 3}
 --- !u!1 &1669336663
 GameObject:
   m_ObjectHideFlags: 0
@@ -9596,6 +9524,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1171125785443505925, guid: a34a2995bb3fcd646886b9157c3e83fd,
+        type: 3}
+      propertyPath: joueur
+      value: 
+      objectReference: {fileID: 999275279}
+    - target: {fileID: 1171125785443505925, guid: a34a2995bb3fcd646886b9157c3e83fd,
+        type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 588938244}
     - target: {fileID: 5724997429677148873, guid: a34a2995bb3fcd646886b9157c3e83fd,
         type: 3}
       propertyPath: m_Name
@@ -11217,4 +11155,3 @@ SceneRoots:
   - {fileID: 1322244952}
   - {fileID: 394980865}
   - {fileID: 1879127205}
-  - {fileID: 1660614330}
