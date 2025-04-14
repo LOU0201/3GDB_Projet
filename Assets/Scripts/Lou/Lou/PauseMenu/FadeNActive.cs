@@ -15,11 +15,15 @@ public class FadeNActive : MonoBehaviour
     [SerializeField] private Camera mainCamera; // Reference to the main camera
     [SerializeField] private GameObject PauseButton; // UI element to activate
     [SerializeField] private GameObject Intro; // Parent GameObject to deactivate
+    public GameObject _joueur;
+    public GameObject _sprite;
 
     private Coroutine activationCoroutine; // Reference to the coroutine
 
     private void Start()
     {
+        _joueur.SetActive(false);
+        _sprite.SetActive(false);
         // Start the fade process if the text is assigned
         if (fadeText != null)
         {
@@ -74,7 +78,9 @@ public class FadeNActive : MonoBehaviour
             PauseButton.SetActive(true);       
         // Deactivate intro     
             Intro.SetActive(false);
-        
+
+        _joueur.SetActive(true);
+        _sprite.SetActive(true);
     }
 }
 
