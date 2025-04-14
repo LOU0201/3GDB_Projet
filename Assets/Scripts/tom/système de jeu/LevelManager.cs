@@ -38,27 +38,22 @@ public class LevelManager : MonoBehaviour
             scoreText3.text = "0/1";
             scoreText4.text = "Retour arriere: Non-utilise";
         }
-    }
 
+    }
     public void Update()
     {
-        // if minExit is -1, only check max exit
-        bool canComplete = minExitCount == -1
-            ? playerExitCount >= maxExitCount
-            : playerExitCount >= minExitCount && playerExitCount < maxExitCount;
-
-        if (Input.GetKeyDown(KeyCode.Space) && canComplete)
+        if (Input.GetKeyDown(KeyCode.Space) && playerExitCount >= minExitCount && playerExitCount < maxExitCount)
         {
             screen.SetActive(true);
-        }
 
+        }
         if (collectable != null && collectable.collected)
         {
             scoreText3.text = "1/1";
             collectable.collected = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.I))
+        if (Input.GetKeyDown(KeyCode.RightShift))
         {
             undoUsed = true;
             scoreText4.text = "Retour arriere: Utilise";
@@ -70,36 +65,36 @@ public class LevelManager : MonoBehaviour
         LT.RefrecheIndex();
         playerExitCount += 1;
         joueur.transform.position = this.transform.position + new Vector3(0, 1, 0);
-
         if (scoreText != null)
         {
             scoreText.text = "Sorties: " + playerExitCount.ToString() + "/" + maxExitCount.ToString();
         }
 
-        bool levelEnded = false;
 
-        // Modified victory conditions
-        if (minExitCount == -1)
+        bool levelEnded = false;
+        if (playerExitCount == minExitCount)
         {
-            if (playerExitCount >= maxExitCount)
-            {
-                screen.SetActive(true);
-                levelEnded = true;
-            }
-        }
-        else
-        {
-            if (playerExitCount == minExitCount && !max)
+            if (!max)
             {
                 spaceButton.SetActive(true);
+                levelEnded = true;
                 nextLevel.gameObject.SetActive(true);
             }
-
-            if (playerExitCount >= maxExitCount)
+            else
             {
-                screen.SetActive(true);
-                levelEnded = true;
+                Debug.Log("INPUT DE FIN");
             }
+        }
+        if (playerExitCount == maxExitCount)
+        {
+            screen.SetActive(true);
+            levelEnded = true;
+        }
+
+        if (playerExitCount >= maxExitCount)
+        {
+            screen.SetActive(true);
+            levelEnded = true;
         }
 
         if (levelEnded)
@@ -131,16 +126,14 @@ public class LevelManager : MonoBehaviour
                     }
                     break;
                 case ObjectiveType.MinExits:
-                    // Skip min exit check if set to -1
-                    if (minExitCount != -1)
-                    {
-                        levelData.objectivesCompleted[i] = playerExitCount >= minExitCount;
-                    }
+                    levelData.objectivesCompleted[i] = true;
                     break;
                 case ObjectiveType.MaxExits:
-                    levelData.objectivesCompleted[i] = playerExitCount >= maxExitCount;
+                    levelData.objectivesCompleted[i] = true;
                     break;
             }
         }
+
     }
+
 }

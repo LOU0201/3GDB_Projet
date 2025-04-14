@@ -12,7 +12,7 @@ public class ListeTom : MonoBehaviour
     public Transform joueur; // Player position
 
     // UI for displaying the current and upcoming spawnable objects
-
+    [Header("Icons")]
     public Sprite rienSprite; 
     public Sprite trouSprite; 
     public Sprite cubeSprite;
@@ -65,7 +65,7 @@ public class ListeTom : MonoBehaviour
 
             case "yellow":
                 // NEW: Handle yellow cube logic
-                if (G3D.EstStop(joueur.position))
+                if (G3D.Non_Blockeur == true)
                 {
                     // Show yellow icon or perform yellow-specific action
                     FMODUnity.RuntimeManager.PlayOneShot("event:/V2/Blocs/SpecialYellow"); // Example sound

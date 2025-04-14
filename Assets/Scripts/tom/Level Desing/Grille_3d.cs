@@ -32,9 +32,13 @@ public class Grille_3d : MonoBehaviour
             prefabBoite = prefabBoiteNormale;
         }
     }
-        void Update()
+    public void Update()
     {
-
+        listeTom.conveyorBelt.UpdateConveyor();
+    }
+    public bool IsNonBlockeurEnabled()
+    {
+        return Non_Blockeur;
     }
     public void refreche()
     {

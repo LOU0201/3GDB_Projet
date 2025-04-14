@@ -1,51 +1,31 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
 public class Collectible : MonoBehaviour
 {
+    [Header("References")]
     public Transform joueur;
     public RectTransform collectibleUIElement;
-    public Camera mainCamera;
     public GameObject objectToActivateOnComplete;
 
-    private int x;
-    private int z;
-    private int y;
-    private float tempx;
-    private float tempz;
-    private float tempy;
-    public int max;
+    [Header("Settings")]
+    public float flySpeed = 1f; // Modifiable fly speed
+    public float flyUpDistance = 100f;
+    public float initialScale = 0.5f;
+    public float finalScale = 0.2f;
+    public float collectionRadius = 0.1f; // Small radius for precise collection
+
     public bool collected;
-
-    void Start()
-    {
-        z = Random.Range(2, 16);
-        tempz = z;
-        tempz += 0.5f;
-        x = Random.Range(1, 16);
-        tempx = x;
-        tempx += 0.5f;
-        y = Random.Range(1, 7);
-        tempy = y;
-        tempy += 0.5f;
-
-        if (mainCamera == null)
-            mainCamera = Camera.main;
-
-
-    }
+    private bool isAnimating;
 
     void Update()
     {
-        Vector3 coordonnees = transform.position;
-        Vector3 CJ = joueur.position;
-
-        if (CJ == coordonnees && !collected)
+        if (!collected && !isAnimating && Vector3.Distance(joueur.position, transform.position) <= collectionRadius)
         {
             collected = true;
+            isAnimating = true;
             StartCoroutine(CollectAnimation());
         }
     }
@@ -55,31 +35,33 @@ public class Collectible : MonoBehaviour
         FMODUnity.RuntimeManager.PlayOneShot("event:/Placeholders/Items/itemcollect");
         GetComponent<Collider>().enabled = false;
 
-        Vector3 screenPos = mainCamera.WorldToScreenPoint(transform.position);
-
+        // Create the flying object
         GameObject flyingObj = new GameObject("FlyingCollectible");
         flyingObj.transform.SetParent(collectibleUIElement.parent, false);
         Image flyingImage = flyingObj.AddComponent<Image>();
         flyingImage.sprite = GetComponent<SpriteRenderer>().sprite;
 
-        flyingObj.GetComponent<RectTransform>().position = screenPos;
-        flyingObj.GetComponent<RectTransform>().localScale = Vector3.one * 0.5f;
+        RectTransform flyingRT = flyingObj.GetComponent<RectTransform>();
+        flyingRT.position = RectTransformUtility.WorldToScreenPoint(Camera.main, transform.position);
+        flyingRT.localScale = Vector3.one * initialScale;
+
+        // Calculate durations based on flySpeed
+        float flyUpDuration = 0.3f / flySpeed;
+        float flyToUIDuration = 0.7f / flySpeed;
 
         Sequence seq = DOTween.Sequence();
-
-        seq.Append(flyingObj.transform.DOMoveY(screenPos.y + 100f, 0.3f).SetEase(Ease.OutQuad));
-        seq.Append(flyingObj.transform.DOMove(collectibleUIElement.position, 0.7f).SetEase(Ease.InQuad));
-        seq.Join(flyingObj.transform.DOScale(0.2f, 0.7f));
+        seq.Append(flyingRT.DOMoveY(flyingRT.position.y + flyUpDistance, flyUpDuration).SetEase(Ease.OutQuad));
+        seq.Append(flyingRT.DOMove(collectibleUIElement.position, flyToUIDuration).SetEase(Ease.InQuad));
+        seq.Join(flyingRT.DOScale(finalScale, flyToUIDuration));
+        seq.OnComplete(() => {
+            if (objectToActivateOnComplete != null)
+            {
+                objectToActivateOnComplete.SetActive(true);
+            }
+            Destroy(flyingObj);
+            gameObject.SetActive(false);
+        });
 
         yield return seq.WaitForCompletion();
-
-        // Activate the GameObject if it's assigned
-        if (objectToActivateOnComplete != null)
-        {
-            objectToActivateOnComplete.SetActive(true);
-        }
-
-        Destroy(flyingObj);
-        gameObject.SetActive(false);
     }
 }

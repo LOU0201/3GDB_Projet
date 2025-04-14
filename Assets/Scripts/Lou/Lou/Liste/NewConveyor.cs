@@ -98,6 +98,12 @@ public class NewConveyor : MonoBehaviour
 
     private void UpdateElementSprite(Image image, string item)
     {
+
+        if (listeTom.G3D.IsNonBlockeurEnabled() && item == "cube")
+        {
+            image.sprite = listeTom.yellowSprite;
+            return;
+        }
         if (item == "cube")
         {
             image.sprite = listeTom.cubeSprite;
