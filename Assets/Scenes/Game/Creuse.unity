@@ -382,7 +382,6 @@ MonoBehaviour:
     text: {fileID: 1361915541}
     type: 4
   resetTom: {fileID: 1808380970}
-  collectible: {fileID: 0}
   starAnimationDuration: 0.5
   starAnimationEase: 30
 --- !u!114 &64085367
@@ -4048,7 +4047,6 @@ MonoBehaviour:
     text: {fileID: 1614068651}
     type: 4
   resetTom: {fileID: 1808380970}
-  collectible: {fileID: 0}
   starAnimationDuration: 0.5
   starAnimationEase: 30
 --- !u!114 &688504760
@@ -4265,6 +4263,12 @@ PrefabInstance:
       propertyPath: Liste
       value: 
       objectReference: {fileID: 1466179449}
+    - target: {fileID: 8247233099554317461, guid: d2d6a17767a04c6418705b858e004317,
+        type: 3}
+      propertyPath: prefabBoite
+      value: 
+      objectReference: {fileID: 4021901750627738393, guid: c8b18993afa00a840bd0627d4ebf3a15,
+        type: 3}
     - target: {fileID: 8247233099554317461, guid: d2d6a17767a04c6418705b858e004317,
         type: 3}
       propertyPath: Update_grille3d
@@ -7708,13 +7712,10 @@ MonoBehaviour:
   currentIndex: 0
   G3D: {fileID: 1713147509}
   joueur: {fileID: 1358197610}
-  upcomingSpawnIcons:
-  - {fileID: 1490399010}
-  - {fileID: 1490399010}
-  - {fileID: 1490399010}
   rienSprite: {fileID: 21300000, guid: 64c74fc6642043a428153820b196b1c5, type: 3}
   trouSprite: {fileID: 21300000, guid: b7a801a841999814b9f5a838ee43828b, type: 3}
   cubeSprite: {fileID: 21300000, guid: 9add30ee206ad9b4b9182ba6636bf4ae, type: 3}
+  yellowSprite: {fileID: 0}
   conveyorBelt: {fileID: 926908925}
 --- !u!4 &1466179451
 Transform:
@@ -7809,18 +7810,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c8b18993afa00a840bd0627d4ebf3a15, type: 3}
---- !u!114 &1490399010 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1100278790005551158, guid: 58a6c0657e5666743a13c482f151a800,
-    type: 3}
-  m_PrefabInstance: {fileID: 757465863}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1523800056 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8471816980154278000, guid: c8b18993afa00a840bd0627d4ebf3a15,
@@ -9658,6 +9647,11 @@ PrefabInstance:
         type: 3}
       propertyPath: minExitCount
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6476511047616165731, guid: c8b18993afa00a840bd0627d4ebf3a15,
+        type: 3}
+      propertyPath: undoForbidden
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8471816980154278000, guid: c8b18993afa00a840bd0627d4ebf3a15,
         type: 3}

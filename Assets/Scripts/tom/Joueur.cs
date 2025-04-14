@@ -183,10 +183,6 @@ public class Joueur : MonoBehaviour
                     boiteIci.SetType("PhantomeJaune");
                 }
             }
-            else if (boiteIci.equalType("Stop")) // Handle yellow cube undo
-            {
-                boiteIci.SetType("PhantomeJaune");
-            }
 
             var boiteIciBas = Update_grille3d.trouve_boit(transform.position + new Vector3(0, -1, 0));//ON regarde à la position bas du joueur
             if (boiteIciBas == null)

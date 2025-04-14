@@ -58,7 +58,7 @@ public class LevelManager : MonoBehaviour
             collectable.collected = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.RightShift))
+        if (Input.GetKeyDown(KeyCode.I))
         {
             undoUsed = true;
             scoreText4.text = "Retour arriere: Utilise";

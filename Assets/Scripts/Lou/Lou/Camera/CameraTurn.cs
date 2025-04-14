@@ -15,6 +15,8 @@ public class CameraTurn : MonoBehaviour
 
     private bool isRotating = false;
     public float targetYPosition = 19.32f; // Target Y position for the side camera
+    public GameObject _joueur;
+    public GameObject _sprite;
 
     void Start()
     {
@@ -87,5 +89,7 @@ public class CameraTurn : MonoBehaviour
         gameObject.SetActive(false);
 
         isRotating = false;
+        _joueur.SetActive(true);
+        _sprite.SetActive(true);
     }
 }
