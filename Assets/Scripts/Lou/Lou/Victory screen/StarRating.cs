@@ -13,6 +13,7 @@ public class StarRating : MonoBehaviour
         public bool isActive;
         public TMP_Text text;
         public ChallengeType type;
+        [HideInInspector] public bool completed; // Track completion state
     }
 
     public enum ChallengeType
@@ -37,29 +38,50 @@ public class StarRating : MonoBehaviour
     public float starAnimationDuration = 0.5f;
     public Ease starAnimationEase = Ease.OutBounce;
 
-    private Collectible[] allCollectibles; // Array to hold all collectible scripts
+    private Collectible[] allCollectibles;
+    private bool initialized = false;
 
     private void Start()
     {
+        Initialize();
+    }
+
+    private void Initialize()
+    {
+        if (initialized) return;
+
         // Hide all stars initially
         foreach (var star in stars)
         {
             star.gameObject.SetActive(false);
         }
 
-        // Hide all challenge texts initially
+        // Initialize challenge texts
         foreach (var challenge in challenges)
         {
             if (challenge.text != null)
-                challenge.text.gameObject.SetActive(false);
+            {
+                challenge.text.gameObject.SetActive(true);
+                // Special handling for NoUndoUsed (green by default)
+                if (challenge.type == ChallengeType.NoUndoUsed)
+                {
+                    challenge.text.color = Color.green;
+                }
+                else
+                {
+                    challenge.text.color = Color.red;
+                }
+            }
         }
 
-        // Find all Collectible scripts in the scene at the start
         allCollectibles = FindObjectsOfType<Collectible>();
+        initialized = true;
     }
 
     public void UpdateStarRating()
     {
+        Initialize(); // Ensure initialization
+
         int starsEarned = 0;
 
         // Check each active challenge
@@ -67,12 +89,11 @@ public class StarRating : MonoBehaviour
         {
             if (!challenges[i].isActive) continue;
 
-            bool challengeCompleted = CheckChallengeCompletion(challenges[i].type);
-            UpdateChallengeUI(challenges[i], challengeCompleted);
+            challenges[i].completed = CheckChallengeCompletion(challenges[i].type);
+            UpdateChallengeUI(challenges[i]);
 
-            if (challengeCompleted)
+            if (challenges[i].completed)
             {
-                // Only animate stars for the first 3 completed challenges
                 if (starsEarned < stars.Length)
                 {
                     AnimateStar(stars[starsEarned]);
@@ -87,7 +108,7 @@ public class StarRating : MonoBehaviour
         switch (type)
         {
             case ChallengeType.FinishLevel:
-                return resetTom.playerExitCount >= resetTom.minExitCount;
+                return resetTom.playerExitCount >= 1;
 
             case ChallengeType.MinExits:
                 return resetTom.playerExitCount >= resetTom.minExitCount;
@@ -96,40 +117,27 @@ public class StarRating : MonoBehaviour
                 return resetTom.playerExitCount >= resetTom.maxExitCount;
 
             case ChallengeType.CollectCollectible:
-                // Check if at least one collectible has been collected
-                foreach (var collectible in allCollectibles)
+                /*foreach (var collectible in allCollectibles)
                 {
-                    if (collectible.collected)
-                    {
+                    if (collectible != null && collectible.collected == true)
                         return true;
-                    }
                 }
-                return false;
+                return false;*/
+                return resetTom.collectable != null && resetTom.collectable.collected;
 
             case ChallengeType.NoUndoUsed:
-                return !resetTom.undoUsed; // True if undo was NOT used
+                return !resetTom.undoUsed;
 
             default:
                 return false;
         }
     }
 
-    private void UpdateChallengeUI(Challenge challenge, bool completed)
+    private void UpdateChallengeUI(Challenge challenge)
     {
         if (challenge.text == null) return;
 
-        // Activate the text (hidden by default)
-        challenge.text.gameObject.SetActive(true);
-
-        // Special case for NoUndoUsed (inverted logic)
-        if (challenge.type == ChallengeType.NoUndoUsed)
-        {
-            challenge.text.color = completed ? Color.green : Color.red;
-        }
-        else
-        {
-            challenge.text.color = completed ? Color.green : Color.red;
-        }
+        challenge.text.color = challenge.completed ? Color.green : Color.red;
     }
 
     private void AnimateStar(Image star)
@@ -139,8 +147,8 @@ public class StarRating : MonoBehaviour
         star.gameObject.SetActive(true);
         star.transform.localScale = Vector3.zero;
 
-        // Bounce animation
-        star.transform.DOScale(1f, starAnimationDuration)
-            .SetEase(starAnimationEase);
+        Sequence seq = DOTween.Sequence();
+        seq.Append(star.transform.DOScale(1.2f, starAnimationDuration).SetEase(Ease.OutBack));
+        seq.Append(star.transform.DOScale(1f, starAnimationDuration * 0.5f));
     }
 }

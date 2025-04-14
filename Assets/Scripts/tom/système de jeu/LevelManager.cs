@@ -30,13 +30,15 @@ public class LevelManager : MonoBehaviour
     public TMP_Text nextLevel;
     public ListeTom LT;
 
+    private StarRating starRatingSystem;
+
     void Start()
     {
         if (scoreText != null)
         {
             scoreText.text = "Sorties: " + playerExitCount.ToString() + "/" + maxExitCount.ToString();
             scoreText3.text = "0/1";
-            scoreText4.text = "Retour arriere: Non-utilise";
+            scoreText4.text = "Undo: Not Used";
         }
 
     }
@@ -50,13 +52,12 @@ public class LevelManager : MonoBehaviour
         if (collectable != null && collectable.collected)
         {
             scoreText3.text = "1/1";
-            collectable.collected = false;
         }
 
         if (Input.GetKeyDown(KeyCode.RightShift))
         {
             undoUsed = true;
-            scoreText4.text = "Retour arriere: Utilise";
+            scoreText4.text = "Undo: Used";
         }
     }
 
@@ -135,5 +136,24 @@ public class LevelManager : MonoBehaviour
         }
 
     }
+    public void HandleCollectibleCollected()
+    {
+        // Update UI
+        if (scoreText3 != null) scoreText3.text = "1/1";
 
+        // Update star rating
+        if (starRatingSystem != null) starRatingSystem.UpdateStarRating();
+
+        // Clean up collectible later
+        StartCoroutine(DelayedCollectibleCleanup());
+    }
+
+    IEnumerator DelayedCollectibleCleanup()
+    {
+        yield return new WaitForSeconds(1f); // Wait until rating is updated
+        if (collectable != null)
+        {
+            Destroy(collectable.gameObject);
+        }
+    }
 }

@@ -34,13 +34,6 @@ public class UndoSystem : MonoBehaviour
 
     public Stack<UndoableAction> undoStack = new();
 
-    private void Start()
-    {
-        ///Exemple d'utilisation :
-        //UndoSystem.Instance.RecordAction(new UndoableAction(Vector3.zero,0));
-        //UndoableAction action = UndoSystem.Instance.UndoAction(); 
-    }
-
     public bool isFinich()
     {
         return undoStack.Count > 0;

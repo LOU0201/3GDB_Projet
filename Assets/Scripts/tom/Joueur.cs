@@ -112,21 +112,12 @@ public class Joueur : MonoBehaviour
                     {
                         Update_grille3d.Faire_Trou(transform.position);
                         compte_carré = 0;
-                        //print("trou");
                     }
                     else
                     {
                         Update_grille3d.Faire_carrer(transform.position);
                         compte_carré = 0;
                     }  
-                }
-                else if (fonction == 3) // NEW: Yellow cube logic
-                {
-                    // Spawn a yellow cube (stop block)
-                    Update_grille3d.CubeJaune = true; // Enable yellow mode
-                    Update_grille3d.Faire_carrer(transform.position);
-                    Update_grille3d.CubeJaune = false; // Reset to normal
-                    compte_carré = 0;
                 }
             }
         }

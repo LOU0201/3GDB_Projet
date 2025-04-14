@@ -107,6 +107,6 @@ public class ListeTom : MonoBehaviour
         currentIndex = 0;
         conveyorBelt.ResetElementsScale();
         var =true;
-        print("setIndex FAIS");
+        
     }
 }
