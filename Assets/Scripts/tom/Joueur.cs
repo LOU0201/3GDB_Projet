@@ -23,6 +23,7 @@ public class Joueur : MonoBehaviour
     public bool trou;
     public float Ygrav;
     private Rigidbody RB;
+    public Animator anims;
     // Start is called before the first frame update
     public void Start()
     {
@@ -215,7 +216,7 @@ public class Joueur : MonoBehaviour
                 }
                 else
                 {
-
+                    anims.SetTrigger("Climbing");
                     surveillePhantome(Update_grille3d.trouve_boit(transform.position));
                     UndoSystem.Instance.RecordAction(MakeUndoableAction(transform.position, Liste.GetComponent<ListeTom>().GetIndex()));
                     transform.position = (targetPosition + new Vector3(0, 1, 0));
@@ -235,6 +236,7 @@ public class Joueur : MonoBehaviour
         {
             if (Update_grille3d.isPlein(targetPosition + new Vector3(0, -1, 0)))
             {
+                anims.SetTrigger("Walking");
                 surveillePhantome(Update_grille3d.trouve_boit(transform.position));
                 UndoSystem.Instance.RecordAction(MakeUndoableAction(transform.position, Liste.GetComponent<ListeTom>().GetIndex()));
                 transform.position = (targetPosition);
@@ -252,6 +254,7 @@ public class Joueur : MonoBehaviour
             {
                 if (Update_grille3d.isPlein(targetPosition + new Vector3(0, -2, 0)))
                 {
+                    anims.SetTrigger("Descending");
                     surveillePhantome(Update_grille3d.trouve_boit(transform.position));
                     UndoSystem.Instance.RecordAction(MakeUndoableAction(transform.position, Liste.GetComponent<ListeTom>().GetIndex()));
                     transform.position = (targetPosition + new Vector3(0, -1, 0));

@@ -375,12 +375,15 @@ MonoBehaviour:
   - isActive: 1
     text: {fileID: 308015996}
     type: 1
+    completed: 0
   - isActive: 1
     text: {fileID: 2092241249}
     type: 2
+    completed: 0
   - isActive: 1
     text: {fileID: 1361915541}
     type: 4
+    completed: 0
   resetTom: {fileID: 1808380970}
   starAnimationDuration: 0.5
   starAnimationEase: 30
@@ -4040,12 +4043,15 @@ MonoBehaviour:
   - isActive: 1
     text: {fileID: 286456618}
     type: 1
+    completed: 0
   - isActive: 1
     text: {fileID: 879589702}
     type: 2
+    completed: 0
   - isActive: 1
     text: {fileID: 1614068651}
     type: 4
+    completed: 0
   resetTom: {fileID: 1808380970}
   starAnimationDuration: 0.5
   starAnimationEase: 30
@@ -4263,6 +4269,11 @@ PrefabInstance:
       propertyPath: Liste
       value: 
       objectReference: {fileID: 1466179449}
+    - target: {fileID: 8247233099554317461, guid: d2d6a17767a04c6418705b858e004317,
+        type: 3}
+      propertyPath: anims
+      value: 
+      objectReference: {fileID: 1622274402}
     - target: {fileID: 8247233099554317461, guid: d2d6a17767a04c6418705b858e004317,
         type: 3}
       propertyPath: prefabBoite
@@ -5959,7 +5970,7 @@ PrefabInstance:
     - target: {fileID: 7935649112319463428, guid: 19f00c72afd4c3645960697335b09e3f,
         type: 3}
       propertyPath: m_Name
-      value: Capsule Joueur
+      value: Apparence Joueur
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8530,6 +8541,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8471816980154278000, guid: c8b18993afa00a840bd0627d4ebf3a15,
     type: 3}
   m_PrefabInstance: {fileID: 1924475443}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1622274402 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4211426989502328039, guid: 19f00c72afd4c3645960697335b09e3f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1064446188}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1628412628
 PrefabInstance:
