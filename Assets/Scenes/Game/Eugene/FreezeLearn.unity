@@ -624,7 +624,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Complete the level
+  m_text: Minimum Exits
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cd7c19e3fcba54746b57a9cfd49d9b5c, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: a519177773a0b014cb0b3dceb4700ee4, type: 2}
@@ -1249,7 +1249,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &478971135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1748,6 +1748,11 @@ PrefabInstance:
       propertyPath: PauseButton
       value: 
       objectReference: {fileID: 757465865}
+    - target: {fileID: 7972154800602138116, guid: f246c0ac11c6e204881f46931c43282a,
+        type: 3}
+      propertyPath: m_text
+      value: FreezeLearn
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2025,6 +2030,11 @@ PrefabInstance:
       objectReference: {fileID: 1466179449}
     - target: {fileID: 8247233099554317461, guid: d2d6a17767a04c6418705b858e004317,
         type: 3}
+      propertyPath: anims
+      value: 
+      objectReference: {fileID: 980402475}
+    - target: {fileID: 8247233099554317461, guid: d2d6a17767a04c6418705b858e004317,
+        type: 3}
       propertyPath: Update_grille3d
       value: 
       objectReference: {fileID: 1713147509}
@@ -2150,11 +2160,21 @@ PrefabInstance:
       propertyPath: objectToActivateOnComplete
       value: 
       objectReference: {fileID: 489217746}
+    - target: {fileID: 4001243204297482617, guid: a34a2995bb3fcd646886b9157c3e83fd,
+        type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 1904824961}
     - target: {fileID: 5724997429677148873, guid: a34a2995bb3fcd646886b9157c3e83fd,
         type: 3}
       propertyPath: m_Name
       value: Collectible
       objectReference: {fileID: 0}
+    - target: {fileID: 8187884579470495124, guid: a34a2995bb3fcd646886b9157c3e83fd,
+        type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 1904824961}
     - target: {fileID: 8677176522461977754, guid: a34a2995bb3fcd646886b9157c3e83fd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3237,7 +3257,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 957788068}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1358197611}
+        m_TargetAssemblyTypeName: Reset, Assembly-CSharp
+        m_MethodName: HUB
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &957788068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3294,7 +3326,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 80, y: -65}
+  m_AnchoredPosition: {x: 80, y: -115}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &980402473
@@ -3378,6 +3410,12 @@ PrefabInstance:
 --- !u!1 &980402474 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1087557569149745537, guid: 19f00c72afd4c3645960697335b09e3f,
+    type: 3}
+  m_PrefabInstance: {fileID: 980402473}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &980402475 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4211426989502328039, guid: 19f00c72afd4c3645960697335b09e3f,
     type: 3}
   m_PrefabInstance: {fileID: 980402473}
   m_PrefabAsset: {fileID: 0}
@@ -4803,14 +4841,16 @@ MonoBehaviour:
   - isActive: 1
     text: {fileID: 331999664}
     type: 1
+    completed: 0
   - isActive: 1
     text: {fileID: 1420714840}
     type: 2
+    completed: 0
   - isActive: 1
     text: {fileID: 1830541296}
     type: 3
+    completed: 0
   resetTom: {fileID: 1400112177}
-  collectible: {fileID: 711908601}
   starAnimationDuration: 0.5
   starAnimationEase: 30
 --- !u!114 &1288778941
@@ -5266,7 +5306,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Collect the collectible
+  m_text: Maximum Exits
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cd7c19e3fcba54746b57a9cfd49d9b5c, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: a519177773a0b014cb0b3dceb4700ee4, type: 2}
@@ -5824,13 +5864,10 @@ MonoBehaviour:
   currentIndex: 0
   G3D: {fileID: 1713147509}
   joueur: {fileID: 1358197610}
-  upcomingSpawnIcons:
-  - {fileID: 1490399010}
-  - {fileID: 1490399010}
-  - {fileID: 1490399010}
   rienSprite: {fileID: 21300000, guid: 64c74fc6642043a428153820b196b1c5, type: 3}
   trouSprite: {fileID: 21300000, guid: b7a801a841999814b9f5a838ee43828b, type: 3}
   cubeSprite: {fileID: 21300000, guid: 9add30ee206ad9b4b9182ba6636bf4ae, type: 3}
+  yellowSprite: {fileID: 0}
   conveyorBelt: {fileID: 757465867}
 --- !u!4 &1466179451
 Transform:
@@ -5936,18 +5973,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1489610212}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1490399010 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1100278790005551158, guid: 58a6c0657e5666743a13c482f151a800,
-    type: 3}
-  m_PrefabInstance: {fileID: 757465863}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1498157285
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6204,7 +6229,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1567707035}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1358197611}
+        m_TargetAssemblyTypeName: Reset, Assembly-CSharp
+        m_MethodName: RestartScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1567707035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7309,7 +7346,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Not using Undo button
+  m_text: Collect the collectible
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cd7c19e3fcba54746b57a9cfd49d9b5c, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: a519177773a0b014cb0b3dceb4700ee4, type: 2}

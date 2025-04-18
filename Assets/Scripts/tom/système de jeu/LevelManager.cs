@@ -54,7 +54,7 @@ public class LevelManager : MonoBehaviour
             scoreText3.text = "1/1";
         }
 
-        if (Input.GetKeyDown(KeyCode.RightShift))
+        if (Input.GetKeyDown(KeyCode.I))
         {
             undoUsed = true;
             scoreText4.text = "Undo: Used";
