@@ -2388,6 +2388,11 @@ PrefabInstance:
       objectReference: {fileID: 1358197610}
     - target: {fileID: 1171125785443505925, guid: a34a2995bb3fcd646886b9157c3e83fd,
         type: 3}
+      propertyPath: finalScale
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1171125785443505925, guid: a34a2995bb3fcd646886b9157c3e83fd,
+        type: 3}
       propertyPath: collectibleUIElement
       value: 
       objectReference: {fileID: 9339057}
@@ -2455,6 +2460,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9223076234310415590, guid: a34a2995bb3fcd646886b9157c3e83fd,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3056,6 +3066,11 @@ PrefabInstance:
       propertyPath: Liste
       value: 
       objectReference: {fileID: 1466179449}
+    - target: {fileID: 8247233099554317461, guid: d2d6a17767a04c6418705b858e004317,
+        type: 3}
+      propertyPath: anims
+      value: 
+      objectReference: {fileID: 1939312272}
     - target: {fileID: 8247233099554317461, guid: d2d6a17767a04c6418705b858e004317,
         type: 3}
       propertyPath: Update_grille3d
@@ -5441,6 +5456,11 @@ PrefabInstance:
       propertyPath: _position
       value: 
       objectReference: {fileID: 1358197608}
+    - target: {fileID: 4105895396451892632, guid: 19f00c72afd4c3645960697335b09e3f,
+        type: 3}
+      propertyPath: outlineMode
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5629981127278477749, guid: 19f00c72afd4c3645960697335b09e3f,
         type: 3}
       propertyPath: mainCamera
@@ -10734,7 +10754,7 @@ PrefabInstance:
     - target: {fileID: 797712365325667328, guid: 03807a1437532d04983e6ee1d79f4cc0,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2068969472331630923, guid: 03807a1437532d04983e6ee1d79f4cc0,
         type: 3}
@@ -10875,6 +10895,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: -12.169956
+      objectReference: {fileID: 0}
+    - target: {fileID: 6748100513114062099, guid: 03807a1437532d04983e6ee1d79f4cc0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8918388058685825095, guid: 03807a1437532d04983e6ee1d79f4cc0,
         type: 3}
@@ -11140,6 +11165,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8471816980154278000, guid: c8b18993afa00a840bd0627d4ebf3a15,
     type: 3}
   m_PrefabInstance: {fileID: 1245673435}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1939312272 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4211426989502328039, guid: 19f00c72afd4c3645960697335b09e3f,
+    type: 3}
+  m_PrefabInstance: {fileID: 996941125}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &2002901416 stripped
 Transform:

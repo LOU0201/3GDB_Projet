@@ -205,7 +205,8 @@ public class Joueur : MonoBehaviour
                 {
                     Debug.Log("BLOQUE_MUR : " + (targetPosition + new Vector3(0, 1, 0)));
                 }
-            }else
+            }
+            else
             {
                 if (Update_grille3d.EstStop(targetPosition))
                 {
@@ -213,6 +214,7 @@ public class Joueur : MonoBehaviour
                     {
                         Debug.Log("BLOQUE_BLOQUANT : " + (targetPosition));
                     }
+                    
                 }
                 else
                 {
