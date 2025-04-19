@@ -35,4 +35,10 @@ public class Animation_player : MonoBehaviour
 
         }
     }
+
+    public void Climb_Upfinish()
+    {
+        _animator.SetBool("Climbing", false);
+        _animator.SetBool("Grounded", true);
+    }
 }

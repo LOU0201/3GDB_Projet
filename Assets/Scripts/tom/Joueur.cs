@@ -17,10 +17,12 @@ public class Joueur : MonoBehaviour
     public bool trou;
     public float Ygrav;
     private Rigidbody RB;
+
+    private Animator player_anims;
     // Start is called before the first frame update
     public void Start()
     {
-        
+        player_anims = GameObject.FindGameObjectWithTag("Visuels").GetComponent<Animator>();
         RB = GetComponent<Rigidbody>();
     }
     public int GetNextAction()
@@ -101,6 +103,8 @@ public class Joueur : MonoBehaviour
                 Vector3 vec_haut =vec + new Vector3(0,1,0);
                 if(Update_grille3d.GetComponent<Grille_3d>().Estprit(vec_haut))
                 {
+                    player_anims.SetBool("Grounded", false);
+                    player_anims.SetBool("Climbing", true);
                     FMODUnity.RuntimeManager.PlayOneShot("event:/V2/Player/Climb");
                     surveillePhantome(Update_grille3d.GetComponent<Grille_3d>().trouve_boit(transform.position));
                     this.transform.position = vec_haut;
