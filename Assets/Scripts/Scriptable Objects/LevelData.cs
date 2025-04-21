@@ -7,7 +7,7 @@ public class LevelData : ScriptableObject
     //public string levelName;
     public ObjectiveType[] objectiveTypes = new ObjectiveType[3];
     public bool[] objectivesCompleted = new bool[3];
-
+    public int theme;
     public int CountStarsUnlocked()
     {
         int starsUnlocked = 0;

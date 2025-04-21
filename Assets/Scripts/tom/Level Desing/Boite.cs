@@ -26,6 +26,7 @@ public class Boite : MonoBehaviour
     public GameObject reTurne;
 
     public MeshRenderer childRenderer;
+    public Material[] Solides;
     public Material Solide;
     public Material Phantome;
     public Material Sortie;
@@ -33,7 +34,7 @@ public class Boite : MonoBehaviour
     public Material Stop;
     public Material Debut;
     public Material PhantomeJaune;
-
+    public int theme;
 
 
     private void OnValidate()
@@ -41,7 +42,7 @@ public class Boite : MonoBehaviour
         switch (type)
         {
             case Type.Normal:
-                childRenderer.sharedMaterial = Solide;
+                childRenderer.sharedMaterial = Solides[theme];
                 gameObject.GetComponent<LevelManager>().enabled = false;
                 stringType = "Normal";
 

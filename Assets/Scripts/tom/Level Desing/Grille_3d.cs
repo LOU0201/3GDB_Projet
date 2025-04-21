@@ -21,6 +21,22 @@ public class Grille_3d : MonoBehaviour
     public GameObject prefabCubeRouge;
     public ListeTom listeTom;
     public float CS;
+    //private void Awake()
+    //{
+    //    LevelManager levelManager = gameObject.GetComponentInChildren<LevelManager>();
+
+    //    if (levelManager != null && levelManager.levelData != null)
+    //    {
+    //        foreach (Transform child in gameObject.transform)
+    //        {
+    //            Boite b = child.GetComponent<Boite>();
+    //            if (b != null)
+    //            {
+    //                b.theme = levelManager.levelData.theme;
+    //            }
+    //        }
+    //    }
+    //}
     private void Start()
     {
         if (CubeJaune)
