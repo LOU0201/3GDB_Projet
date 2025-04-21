@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{879c3362-55e6-4c1c-b1c7-fd568b12a711}">
 		<property name="name">
-			<value>PlayerExitHatch</value>
+			<value>PlayerUseHatch</value>
 		</property>
 		<property name="outputFormat">
 			<value>0</value>
@@ -116,6 +116,7 @@
 	<object class="MixerBusEffectChain" id="{df5a3d2b-6168-48db-9557-69821f4d4a13}">
 		<relationship name="effects">
 			<destination>{8f06e96f-ed73-4639-a4c4-eaa5b56f470e}</destination>
+			<destination>{3209e33e-6d27-452f-b873-6c6cf3fe76d5}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{88be1eb2-ce7a-4905-9778-3a3742b3bf94}" />
@@ -127,5 +128,19 @@
 	</object>
 	<object class="MixerBusPanner" id="{ecbc8ed0-f638-4ea6-b7d9-3772bc81c2f6}" />
 	<object class="MixerBusFader" id="{8f06e96f-ed73-4639-a4c4-eaa5b56f470e}" />
+	<object class="SFXReverbEffect" id="{3209e33e-6d27-452f-b873-6c6cf3fe76d5}">
+		<property name="decayTime">
+			<value>3000</value>
+		</property>
+		<property name="diffusion">
+			<value>48.5</value>
+		</property>
+		<property name="lowShelfFrequency">
+			<value>1000</value>
+		</property>
+		<property name="lowShelfGain">
+			<value>-18.5</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{6a6477ac-6b0e-4ecc-9f6e-04df7d4d0592}" />
 </objects>
