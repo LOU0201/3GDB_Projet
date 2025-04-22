@@ -265,6 +265,7 @@ public class Joueur : MonoBehaviour
                     if ( Update_grille3d.non_est_temporaire(targetPosition + new Vector3(0, -2, 0)))
                     {
                         Liste.GetComponent<ListeTom>().UpdateTom();//Déplacement donc on lence la liste si néscéssaire
+                        FMODUnity.RuntimeManager.PlayOneShot("event:/V3/Player/Land");
                     }
                     if (debug)
                     {
