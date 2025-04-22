@@ -73,7 +73,7 @@ public class ListeTom : MonoBehaviour
                 break;
 
             case "rien":
-                FMODUnity.RuntimeManager.PlayOneShot("event:/V2/Player/Move");
+                FMODUnity.RuntimeManager.PlayOneShot("event:/V3/Player/Jump");
                 break;
 
             default:

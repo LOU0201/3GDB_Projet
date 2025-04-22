@@ -219,6 +219,7 @@ public class Joueur : MonoBehaviour
                 else
                 {
                     anims.SetTrigger("Climbing");
+                    FMODUnity.RuntimeManager.PlayOneShot("event:/V3/Player/Climb");
                     surveillePhantome(Update_grille3d.trouve_boit(transform.position));
                     UndoSystem.Instance.RecordAction(MakeUndoableAction(transform.position, Liste.GetComponent<ListeTom>().GetIndex()));
                     transform.position = (targetPosition + new Vector3(0, 1, 0));
