@@ -50,7 +50,7 @@ public class Grille_3d : MonoBehaviour
     }
     public void Update()
     {
-        listeTom.conveyorBelt.UpdateConveyor();
+        //listeTom.conveyorBelt.UpdateConveyor();
     }
     public bool IsNonBlockeurEnabled()
     {

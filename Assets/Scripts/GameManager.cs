@@ -14,11 +14,6 @@ public class GameManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(this.gameObject);
     }
-    public void Hello_World()
-    {
-        Debug.Log("Hello World!");
-    }
-
     public void Start()
     {
         foreach(LevelData niv in LevelsDataList)
