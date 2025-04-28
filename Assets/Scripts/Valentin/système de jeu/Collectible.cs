@@ -46,7 +46,7 @@ public class Collectible : MonoBehaviour
 
     IEnumerator CollectAnimation()
     {
-        FMODUnity.RuntimeManager.PlayOneShot("event:/Placeholders/Items/itemcollect");
+        FMODUnity.RuntimeManager.PlayOneShot("event:/V3/Level/Collectible");
         //GetComponent<Collider>().enabled = false;
 
         // Create flying object
