@@ -18,12 +18,6 @@ public class DisplayHub : MonoBehaviour
         displayAnimation = LevelInfo.GetComponent<DisplayAnimation>();
         HideSheet();
     }
-
-    void Update()
-    {
-        //UpdateUI();
-    }
-
     public void UpdateUI()
     {
         LevelInfo.SetActive(true); 
