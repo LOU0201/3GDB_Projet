@@ -2458,6 +2458,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 581907938}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &584575292 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6303923151387855534, guid: 19f00c72afd4c3645960697335b09e3f,
+    type: 3}
+  m_PrefabInstance: {fileID: 980402473}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &615174248
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2550,6 +2556,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1849276179182745396, guid: f246c0ac11c6e204881f46931c43282a,
+        type: 3}
+      propertyPath: _joueur
+      value: 
+      objectReference: {fileID: 1358197608}
+    - target: {fileID: 1849276179182745396, guid: f246c0ac11c6e204881f46931c43282a,
+        type: 3}
+      propertyPath: _sprite
+      value: 
+      objectReference: {fileID: 584575292}
     - target: {fileID: 1849276179182745396, guid: f246c0ac11c6e204881f46931c43282a,
         type: 3}
       propertyPath: uiElement
@@ -2670,6 +2686,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5393508406687934712, guid: f246c0ac11c6e204881f46931c43282a,
+        type: 3}
+      propertyPath: _joueur
+      value: 
+      objectReference: {fileID: 1358197608}
+    - target: {fileID: 5393508406687934712, guid: f246c0ac11c6e204881f46931c43282a,
+        type: 3}
+      propertyPath: _sprite
+      value: 
+      objectReference: {fileID: 584575292}
     - target: {fileID: 5393508406687934712, guid: f246c0ac11c6e204881f46931c43282a,
         type: 3}
       propertyPath: mainCamera
@@ -3593,6 +3619,12 @@ PrefabInstance:
       objectReference: {fileID: 1288778939}
     - target: {fileID: 6476511047616165731, guid: c8b18993afa00a840bd0627d4ebf3a15,
         type: 3}
+      propertyPath: levelData
+      value: 
+      objectReference: {fileID: 11400000, guid: e7b54da26f0e56341a187941bccb7fd5,
+        type: 2}
+    - target: {fileID: 6476511047616165731, guid: c8b18993afa00a840bd0627d4ebf3a15,
+        type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
@@ -4084,6 +4116,11 @@ PrefabInstance:
       propertyPath: _position
       value: 
       objectReference: {fileID: 1358197608}
+    - target: {fileID: 3517382688482910747, guid: 19f00c72afd4c3645960697335b09e3f,
+        type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 1904824961}
     - target: {fileID: 5629981127278477749, guid: 19f00c72afd4c3645960697335b09e3f,
         type: 3}
       propertyPath: mainCamera
