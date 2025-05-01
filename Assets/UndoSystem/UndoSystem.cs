@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -32,19 +33,35 @@ public class UndoSystem : MonoBehaviour
     }
 
 
-    public Stack<UndoableAction> undoStack = new();
+    public  Stack<UndoableAction> undoStack = new();
 
-    public bool isFinich()
+    public void Reset()
     {
-        return undoStack.Count > 0;
+        undoStack = new();
+    }
+
+    public  bool isFinich()
+    {
+        return undoStack.Count == 0;
     }
 
     public void RecordAction(UndoableAction action)
     {
-        print("RecordAction");
+        print("RecordAction: " + action.Write());
         undoStack.Push(action);
     }
+    public  bool isBoucle()
+    {
+        if (undoStack.Count!=0)
+        {
+            return undoStack.Peek().isreturn;
 
+        }
+        else
+        {
+            return false;
+        }
+    }
     public UndoableAction UndoAction()
     {
         print("UndoAction");

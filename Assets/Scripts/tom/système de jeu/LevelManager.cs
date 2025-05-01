@@ -88,13 +88,20 @@ public class LevelManager : MonoBehaviour
         }
         if (playerExitCount == maxExitCount)
         {
-            screen.SetActive(true);
+            if (screen)
+            {
+                screen.SetActive(true);
+
+            }
             levelEnded = true;
         }
 
         if (playerExitCount >= maxExitCount)
         {
-            screen.SetActive(true);
+            if (screen)
+            {
+                screen.SetActive(true);
+            }
             levelEnded = true;
         }
 

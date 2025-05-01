@@ -75,6 +75,7 @@ public class Grille_3d : MonoBehaviour
             {
                 if (t.GetComponent<Boite>().fin)
                 {
+                    UndoSystem.Instance.RecordAction(UndoableAction.MakeUndoableAction(t.transform.position, listeTom.GetIndex(), true));
                     Rapatriment();
                 }
             }
@@ -126,7 +127,8 @@ public class Grille_3d : MonoBehaviour
     public void Rapatriment()// Rapatriment du joueur
     {
         FMODUnity.RuntimeManager.PlayOneShot("event:/V1/System/leveldone");
-        foreach(Transform t in this.transform)
+
+        foreach (Transform t in this.transform)
         {
             if (t.gameObject.GetComponent<Boite>().equalType("Debut"))
             {

@@ -9,7 +9,7 @@ public class TestUndo : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            UndoSystem.Instance.RecordAction(new UndoableAction(transform.position,0));
+            UndoSystem.Instance.RecordAction(new UndoableAction(transform.position,0,false));
             transform.position += transform.forward;
         }
     }
