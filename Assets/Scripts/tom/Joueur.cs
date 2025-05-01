@@ -27,7 +27,7 @@ public class Joueur : MonoBehaviour
     public bool trou;
     public float Ygrav;
     private Rigidbody RB;
-   // public Animator anims;
+    public Animator anims;
     // Start is called before the first frame update
     public void Start()
     {
