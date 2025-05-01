@@ -15,7 +15,7 @@ public class Joueur : MonoBehaviour
     //Refactorisation
     public bool debug=false;
     UndoableAction undoableAction;
-    public ListeTom Liste;
+    public GameObject Liste;
     public int compte_carré;
     public int variable_compte_carré = 3;
     public Grille_3d Update_grille3d;
@@ -27,7 +27,7 @@ public class Joueur : MonoBehaviour
     public bool trou;
     public float Ygrav;
     private Rigidbody RB;
-   // public Animator anims;
+    public Animator anims;
     // Start is called before the first frame update
     public void Start()
     {
@@ -164,7 +164,7 @@ public class Joueur : MonoBehaviour
             Update_grille3d.RemoveGrille();//ON rafraichie la grille
             undoableAction = UndoSystem.Instance.UndoAction();//ON prend la dernière action en mémoir
             transform.position = undoableAction.position;//ON change l'amplacement du joueur selon cette emplacement
-            Liste.setIndex(undoableAction.currentIndex);//ON change l'index selon l'ancienne index
+            Liste.GetComponent<ListeTom>().setIndex(undoableAction.currentIndex);//ON change l'index selon l'ancienne index
 
             var boiteIci = Update_grille3d.trouve_boit(transform.position);//ON regarde au niveau de sa position
             if (boiteIci != null)
@@ -218,12 +218,12 @@ public class Joueur : MonoBehaviour
                     anims.SetTrigger("Climbing");
                     FMODUnity.RuntimeManager.PlayOneShot("event:/V3/Player/Climb");
                     surveillePhantome(Update_grille3d.trouve_boit(transform.position));
-                    UndoSystem.Instance.RecordAction(UndoableAction.MakeUndoableAction(transform.position, Liste.GetIndex()));
+                    UndoSystem.Instance.RecordAction(UndoableAction.MakeUndoableAction(transform.position, Liste.GetComponent<ListeTom>().GetIndex()));
                     transform.position = (targetPosition + new Vector3(0, 1, 0));
                     Update_grille3d.refreche();
                     if ( Update_grille3d.non_est_temporaire(targetPosition))
                     {
-                        Liste.UpdateTom();//Déplacement donc on lence la liste si néscéssaire
+                        Liste.GetComponent<ListeTom>().UpdateTom();//Déplacement donc on lence la liste si néscéssaire
                     }
                     if (debug)
                     {
@@ -238,12 +238,12 @@ public class Joueur : MonoBehaviour
             {
                // anims.SetTrigger("Walking");
                 surveillePhantome(Update_grille3d.trouve_boit(transform.position));
-                UndoSystem.Instance.RecordAction(UndoableAction.MakeUndoableAction(transform.position, Liste.GetIndex()));
+                UndoSystem.Instance.RecordAction(UndoableAction.MakeUndoableAction(transform.position, Liste.GetComponent<ListeTom>().GetIndex()));
                 transform.position = (targetPosition);
                 Update_grille3d.refreche();
                 if ( Update_grille3d.non_est_temporaire(targetPosition + new Vector3(0, -1, 0)))
                 {
-                    Liste.UpdateTom();//Déplacement donc on lence la liste si néscéssaire
+                    Liste.GetComponent<ListeTom>().UpdateTom();//Déplacement donc on lence la liste si néscéssaire
                 }
                 if (debug)
                 {
@@ -256,14 +256,14 @@ public class Joueur : MonoBehaviour
                 {
                   //  anims.SetTrigger("Descending");
                     surveillePhantome(Update_grille3d.trouve_boit(transform.position));
-                    UndoSystem.Instance.RecordAction(UndoableAction.MakeUndoableAction(transform.position, Liste.GetIndex()));
+                    UndoSystem.Instance.RecordAction(UndoableAction.MakeUndoableAction(transform.position, Liste.GetComponent<ListeTom>().GetIndex()));
                     transform.position = (targetPosition + new Vector3(0, -1, 0));
                     Update_grille3d.refreche();
                     if ( Update_grille3d.non_est_temporaire(targetPosition + new Vector3(0, -2, 0)))
                     {
 
                         FMODUnity.RuntimeManager.PlayOneShot("event:/V3/Player/Land");
-                        Liste.UpdateTom();//Déplacement donc on lence la liste si néscéssaire
+                        Liste.GetComponent<ListeTom>().UpdateTom();//Déplacement donc on lence la liste si néscéssaire
                     }
                     if (debug)
                     {
