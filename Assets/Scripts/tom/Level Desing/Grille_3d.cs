@@ -50,7 +50,7 @@ public class Grille_3d : MonoBehaviour
     }
     public void Update()
     {
-        listeTom.conveyorBelt.UpdateConveyor();
+        //listeTom.conveyorBelt.UpdateConveyor();
     }
     public bool IsNonBlockeurEnabled()
     {
@@ -126,9 +126,8 @@ public class Grille_3d : MonoBehaviour
     }
     public void Rapatriment()// Rapatriment du joueur
     {
-        FMODUnity.RuntimeManager.PlayOneShot("event:/V1/System/leveldone");
-
-        foreach (Transform t in this.transform)
+        FMODUnity.RuntimeManager.PlayOneShot("event:/V3/System/CompleteLap");
+        foreach(Transform t in this.transform)
         {
             if (t.gameObject.GetComponent<Boite>().equalType("Debut"))
             {
@@ -211,14 +210,14 @@ public class Grille_3d : MonoBehaviour
         {
                 GameObject boite = Instantiate(prefabBoite, vec, Quaternion.identity);
                 boite.transform.SetParent(this.transform);
-                FMODUnity.RuntimeManager.PlayOneShot("event:/V2/Blocs/Place");
+                FMODUnity.RuntimeManager.PlayOneShot("event:/V3/Blocs/Place");
                 print("fais_cube : "+vec);
         }
     }
     public void Faire_Trou(Vector3 vec) //Sur la position du joueur !!!!
     {
         print("FaireTroue: " + vec);
-        FMODUnity.RuntimeManager.PlayOneShot("event:/V2/Blocs/Break");
+        FMODUnity.RuntimeManager.PlayOneShot("event:/V3/Blocs/Break");
         foreach (Transform t in transform)
         {
             if (t.transform.position == vec + new Vector3(0, -1, 0))

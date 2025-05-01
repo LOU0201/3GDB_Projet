@@ -8,9 +8,8 @@ public class Loading_Screen_Manager : MonoBehaviour
 {
     [Header("Loading Visuals")]
     public Image loadingIcon;
-    public Image loadingDoneIcon;
     public TMP_Text loadingText;
-    public Image progressBar;
+    public Slider progressBar;
     public Image fadeOverlay;
     public Image background;
 
@@ -83,20 +82,24 @@ public class Loading_Screen_Manager : MonoBehaviour
             yield return null;
             if (!Mathf.Approximately(operation.progress, lastProgress))
             {
-                progressBar.fillAmount = operation.progress;
-                lastProgress = operation.progress;
+                float progress = operation.progress;
+                progressBar.value = progress;
+                loadingIcon.fillAmount = progress; // Link icon fill to progress
+                loadingText.text = $"LOADING {Mathf.RoundToInt(progress * 100)}%"; // Update text with percentage
+                lastProgress = progress;
             }
         }
 
-        progressBar.fillAmount = 1f;
-        ShowCompletionVisuals();
+        // When loading is complete
+        progressBar.value = 1f;
+        loadingIcon.fillAmount = 1f;
+        loadingText.text = "LOADING DONE";
         yield return new WaitForSeconds(waitOnLoadEnd);
 
         // Fade out before activating the next scene
         FadeOut();
         yield return new WaitForSeconds(fadeDuration);
 
-        // Ensure the scene transition happens smoothly
         if (loadSceneMode == LoadSceneMode.Additive)
         {
             audioListener.enabled = false;
@@ -109,8 +112,6 @@ public class Loading_Screen_Manager : MonoBehaviour
 
         // Wait until the new scene is fully active
         yield return new WaitUntil(() => SceneManager.GetActiveScene().name == sceneName);
-
-        // Hide all loading UI elements after the scene switch
         HideAllLoadingElements();
 
         // Destroy the loading screen
@@ -150,23 +151,15 @@ public class Loading_Screen_Manager : MonoBehaviour
     void ShowLoadingVisuals()
     {
         loadingIcon.gameObject.SetActive(true);
-        loadingDoneIcon.gameObject.SetActive(false);
-        progressBar.fillAmount = 0f;
-        loadingText.text = "Materialized world...";
+        loadingIcon.fillAmount = 0f; 
+        progressBar.value = 0f; 
+        loadingText.text = "LOADING 0%";
         background.gameObject.SetActive(true);
-    }
-
-    void ShowCompletionVisuals()
-    {
-        loadingIcon.gameObject.SetActive(false);
-        loadingDoneIcon.gameObject.SetActive(true);
-        loadingText.text = "LOADING DONE";
     }
 
     void HideAllLoadingElements()
     {
         loadingIcon.gameObject.SetActive(false);
-        loadingDoneIcon.gameObject.SetActive(false);
         loadingText.gameObject.SetActive(false);
         progressBar.gameObject.SetActive(false);
         background.gameObject.SetActive(false);

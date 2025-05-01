@@ -8,22 +8,22 @@ public class DisplayHub : MonoBehaviour
     public LevelData levelData;
     public TMP_Text levelNameText;
     public TMP_Text[] challengeTexts = new TMP_Text[3];
-    public Image[] starImages; // Array of star Image 
+    public Image[] starImages; 
     public int MinExitNum;
     public GameObject LevelInfo;
+
+    private DisplayAnimation displayAnimation;
     void Start()
     {
+        displayAnimation = LevelInfo.GetComponent<DisplayAnimation>();
         HideSheet();
     }
-
-    void Update()
-    {
-        //UpdateUI();
-    }
-
     public void UpdateUI()
     {
-        levelNameText.text = "Level: " + levelData.name;
+        LevelInfo.SetActive(true); 
+        Animator animator = LevelInfo.GetComponent<Animator>();
+
+        levelNameText.text = " " + levelData.name;
         LevelInfo.GetComponent<Canvas>().enabled = true;
         for (int i = 0; i < challengeTexts.Length; i++)
         {
@@ -48,10 +48,27 @@ public class DisplayHub : MonoBehaviour
 
             starImages[i].gameObject.SetActive(i < levelData.CountStarsUnlocked());
         }
+
+        ShowSheet();
+    }
+
+    public void ShowSheet()
+    {
+        LevelInfo.SetActive(true);
+        displayAnimation?.PlayEnterAnimation();
     }
 
     public void HideSheet()
     {
-        LevelInfo.GetComponent<Canvas>().enabled = false;
+        LevelInfo.SetActive(false);
+
+        // Optional: Reset alpha for next time
+        if (displayAnimation != null)
+        {
+            foreach (var cg in displayAnimation.uiElementsToShow)
+            {
+                if (cg != null) cg.alpha = 0;
+            }
+        }
     }
 }

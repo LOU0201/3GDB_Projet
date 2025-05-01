@@ -215,7 +215,8 @@ public class Joueur : MonoBehaviour
                 }
                 else
                 {
-                    //anims.SetTrigger("Climbing");
+                    anims.SetTrigger("Climbing");
+                    FMODUnity.RuntimeManager.PlayOneShot("event:/V3/Player/Climb");
                     surveillePhantome(Update_grille3d.trouve_boit(transform.position));
                     UndoSystem.Instance.RecordAction(UndoableAction.MakeUndoableAction(transform.position, Liste.GetIndex()));
                     transform.position = (targetPosition + new Vector3(0, 1, 0));
@@ -260,6 +261,8 @@ public class Joueur : MonoBehaviour
                     Update_grille3d.refreche();
                     if ( Update_grille3d.non_est_temporaire(targetPosition + new Vector3(0, -2, 0)))
                     {
+
+                        FMODUnity.RuntimeManager.PlayOneShot("event:/V3/Player/Land");
                         Liste.UpdateTom();//Déplacement donc on lence la liste si néscéssaire
                     }
                     if (debug)

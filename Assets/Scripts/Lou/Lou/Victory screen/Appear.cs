@@ -37,6 +37,7 @@ public class Appear : MonoBehaviour
 
     IEnumerator ShowUIElements()
     {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/V3/System/EndLevel");
         foreach (var element in uiElements)
         {
             element.SetActive(true);
