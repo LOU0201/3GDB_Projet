@@ -25,6 +25,7 @@ public class Niveau : MonoBehaviour
         if (CJ == coordonnees)
         {
             SceneLoader.LoadScene(LVname);
+            UndoSystem.Instance.Reset();
         }
 
         foreach(Transform t in alentours)

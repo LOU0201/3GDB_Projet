@@ -6,9 +6,11 @@ using UnityEngine.SceneManagement;
 public class Joueur : MonoBehaviour
 {
     //Timer
-    private float Timer_max=10f;
+    private float Timer_max=0.5f;
     private float Timer = -1;
     private bool isSleep=false;
+    private int serecureInt = 0;
+    private bool ReMoveEnCasquadeGo=false;
 
     public GameObject prefabBoite;
 
@@ -92,19 +94,59 @@ public class Joueur : MonoBehaviour
         //Timer
         if (Timer > -1)
         {
+
             Timer += Time.deltaTime;
             if (Timer > Timer_max)
             {
                 Timer = -2;
                 isSleep = false;
-                print("Une boucle temporrelle");
+                print("Une boucle temporrelle"+isSleep);
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            Timer = 0;
+            print("test?");
+        }
+
+        // ReMoveEnCasquadeGo
+        if (ReMoveEnCasquadeGo)
+        {
+            if (!UndoSystem.Instance.isBoucle() && !UndoSystem.Instance.isFinich())
+            {
+                if (!isSleep)
+                {
+                    ReMove();
+                    print("fais boucle");
+                    sleep();
+                }
+                else
+                {
+                    print("fais pas boucle");
+                    if (serecureInt > 100)
+                    {
+                        isSleep = false;
+                        serecureInt = 0;
+
+                    }
+                    else
+                    {
+                        serecureInt++;
+                    }
+                }
+            }
+            else
+            {
+                ReMoveEnCasquadeGo = false;
+                ReMove();
+
             }
         }
     }
     public void sleep()
     {
         Timer = 0;
-        isSleep=false;
+        isSleep=true;
         print("isSleep");
     }
 
@@ -146,16 +188,8 @@ public class Joueur : MonoBehaviour
     }
     public void ReMoveEnCasquade()
     {
-        while (!UndoSystem.Instance.isBoucle() && !UndoSystem.Instance.isFinich())
-            {
-                if (!isSleep )
-                {
-                    ReMove();
-                    print("fais boucle");
-                    sleep();
-                }
-            }
-        ReMove();
+        ReMoveEnCasquadeGo=true;
+
     }//Marche arrière 
     public void ReMove()//Marche arrière 
     {
@@ -215,19 +249,29 @@ public class Joueur : MonoBehaviour
                 }
                 else
                 {
-                    anims.SetTrigger("Climbing");
-                    FMODUnity.RuntimeManager.PlayOneShot("event:/V3/Player/Climb");
-                    surveillePhantome(Update_grille3d.trouve_boit(transform.position));
-                    UndoSystem.Instance.RecordAction(UndoableAction.MakeUndoableAction(transform.position, Liste.GetComponent<ListeTom>().GetIndex()));
-                    transform.position = (targetPosition + new Vector3(0, 1, 0));
-                    Update_grille3d.refreche();
-                    if ( Update_grille3d.non_est_temporaire(targetPosition))
+                    if(Update_grille3d.isPlein(transform.position+new Vector3(0, 1, 0)))
                     {
-                        Liste.GetComponent<ListeTom>().UpdateTom();//Déplacement donc on lence la liste si néscéssaire
+                        if (debug)
+                        {
+                            Debug.Log("PLAFON_BLOQUANT : " + (transform.position + new Vector3(0, 1, 0)));
+                        }
                     }
-                    if (debug)
+                    else
                     {
-                        Debug.Log("AVANCE_HAUT : " + (targetPosition + new Vector3(0, 1, 0)));
+                        anims.SetTrigger("Climbing");
+                        FMODUnity.RuntimeManager.PlayOneShot("event:/V3/Player/Climb");
+                        surveillePhantome(Update_grille3d.trouve_boit(transform.position));
+                        UndoSystem.Instance.RecordAction(UndoableAction.MakeUndoableAction(transform.position, Liste.GetComponent<ListeTom>().GetIndex()));
+                        transform.position = (targetPosition + new Vector3(0, 1, 0));
+                        Update_grille3d.refreche();
+                        if (Update_grille3d.non_est_temporaire(targetPosition))
+                        {
+                            Liste.GetComponent<ListeTom>().UpdateTom();//Déplacement donc on lence la liste si néscéssaire
+                        }
+                        if (debug)
+                        {
+                            Debug.Log("AVANCE_HAUT : " + (targetPosition + new Vector3(0, 1, 0)));
+                        }
                     }
                 }
             }
