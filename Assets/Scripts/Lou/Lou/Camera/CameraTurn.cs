@@ -91,5 +91,6 @@ public class CameraTurn : MonoBehaviour
         isRotating = false;
         _joueur.SetActive(true);
         _sprite.SetActive(true);
+        FMODUnity.RuntimeManager.PlayOneShot("event:/V3/Level/HatchClose");
     }
 }
