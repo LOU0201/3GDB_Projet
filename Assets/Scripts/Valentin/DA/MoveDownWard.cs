@@ -9,6 +9,7 @@ public class MoveDownWard : MonoBehaviour
     public float _distance;
 
     public float _speed;
+    public bool son = false;
 
     void Update()
     {
@@ -18,5 +19,18 @@ public class MoveDownWard : MonoBehaviour
         {
             transform.position = Vector3.MoveTowards(this.transform.position, _position.transform.position, _distance * Time.deltaTime * _speed);
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(son)
+        {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/V3/Level/PlayerUseHatch");
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        son = false;
     }
 }
