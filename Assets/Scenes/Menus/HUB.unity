@@ -37035,13 +37035,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 521d2c82b6b3c90458556eda31945e6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  backgroundPanel: {fileID: 607856329}
   uiElementsToShow:
-  - {fileID: 607856333}
   - {fileID: 626186254}
   - {fileID: 750899730}
   - {fileID: 85493435}
+  backgroundAnimDuration: 0.3
+  elementsFadeInDuration: 0.2
   delayBetweenElements: 0.2
-  fadeInDuration: 0.5
+  backgroundEase: 27
   fadeEase: 24
 --- !u!1001 &1401915796
 PrefabInstance:
