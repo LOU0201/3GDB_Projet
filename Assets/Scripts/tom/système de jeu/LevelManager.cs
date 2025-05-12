@@ -16,7 +16,7 @@ public class LevelManager : MonoBehaviour
     public TMP_Text scoreText4;
 
     [Header("Min Max Sorties")]
-    public int playerExitCount = 0;
+    public static int playerExitCount = 0;
     public int minExitCount;
     public int maxExitCount;
     public bool max = false;

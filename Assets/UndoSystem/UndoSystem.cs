@@ -6,6 +6,7 @@ using UnityEngine;
 public class UndoSystem : MonoBehaviour
 {
     private static UndoSystem instance;
+
     public static UndoSystem Instance//C'est un Getter GetInstance()
     {
         get
@@ -47,6 +48,7 @@ public class UndoSystem : MonoBehaviour
 
     public void RecordAction(UndoableAction action)
     {
+        action.playerExitCount= LevelManager.playerExitCount;
         print("RecordAction: " + action.Write());
         undoStack.Push(action);
     }

@@ -108,13 +108,13 @@ public class StarRating : MonoBehaviour
         switch (type)
         {
             case ChallengeType.FinishLevel:
-                return resetTom.playerExitCount >= 1;
+                return LevelManager.playerExitCount >= 1;
 
             case ChallengeType.MinExits:
-                return resetTom.playerExitCount >= resetTom.minExitCount;
+                return LevelManager.playerExitCount >= resetTom.minExitCount;
 
             case ChallengeType.MaxExits:
-                return resetTom.playerExitCount >= resetTom.maxExitCount;
+                return LevelManager.playerExitCount >= resetTom.maxExitCount;
 
             case ChallengeType.CollectCollectible:
                 /*foreach (var collectible in allCollectibles)
