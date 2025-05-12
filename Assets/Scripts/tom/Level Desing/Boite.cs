@@ -34,6 +34,7 @@ public class Boite : MonoBehaviour
     public Material Stop;
     public Material Debut;
     public Material PhantomeJaune;
+    public GameObject Trigger;
     public int theme;
 
 
@@ -45,14 +46,13 @@ public class Boite : MonoBehaviour
                 childRenderer.sharedMaterial = Solides[theme];
                 gameObject.GetComponent<LevelManager>().enabled = false;
                 stringType = "Normal";
-
+                Trigger.SetActive(false);
                 fin = false;
                 break;
             case Type.PhantomeJaune:
                 childRenderer.sharedMaterial = PhantomeJaune;
                 gameObject.GetComponent<LevelManager>().enabled = false;
                 stringType = "PhantomeJaune";
-
                 fin = false;
                 break;
             case Type.Phantome:
@@ -66,22 +66,26 @@ public class Boite : MonoBehaviour
                 gameObject.GetComponent<LevelManager>().enabled = false;
                 fin = true;
                 stringType = "Fin";
+                Trigger.SetActive(false);
                 break;
             case Type.Debut:
                 stringType = "Debut";
                 childRenderer.sharedMaterial = Debut;
                 gameObject.GetComponent<LevelManager>().enabled = true;
+                Trigger.SetActive(true);
                 fin = false;
                 break;
             case Type.RedGhost:
                 childRenderer.sharedMaterial = RedGhost;
                 gameObject.GetComponent<LevelManager>().enabled = false;
+                Trigger.SetActive(false);
                 fin = false;
                 stringType = "RedGhost";
                 break;
             case Type.Stop:
                 childRenderer.sharedMaterial = Stop;
                 gameObject.GetComponent<LevelManager>().enabled = false;
+                Trigger.SetActive(false);
                 fin = false;
                 stringType = "Stop";
                 break;

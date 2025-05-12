@@ -30,6 +30,9 @@ public class LevelManager : MonoBehaviour
     public TMP_Text nextLevel;
     public ListeTom LT;
 
+    [Header("Son Bulle")]
+    public MoveDownWard MDW;
+    
     private StarRating starRatingSystem;
 
     void Start()
@@ -64,6 +67,7 @@ public class LevelManager : MonoBehaviour
     public void Rappatriment(Transform joueur)
     {
         LT.RefrecheIndex();
+        MDW.son = true;
         playerExitCount += 1;
         joueur.transform.position = this.transform.position + new Vector3(0, 1, 0);
         if (scoreText != null)
