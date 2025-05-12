@@ -37,6 +37,7 @@ public class LevelManager : MonoBehaviour
 
     void Start()
     {
+        playerExitCount = 0;
         if (scoreText != null)
         {
             scoreText.text = "Sorties: " + playerExitCount.ToString() + "/" + maxExitCount.ToString();
