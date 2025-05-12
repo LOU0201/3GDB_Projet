@@ -282,7 +282,7 @@ public class Joueur : MonoBehaviour
         {
             if (Update_grille3d.isPlein(targetPosition + new Vector3(0, -1, 0)))
             {
-               // anims.SetTrigger("Walking");
+                anims.SetTrigger("Walking");
                 surveillePhantome(Update_grille3d.trouve_boit(transform.position));
                 UndoSystem.Instance.RecordAction(UndoableAction.MakeUndoableAction(transform.position, Liste.GetComponent<ListeTom>().GetIndex()));
                 transform.position = (targetPosition);
@@ -300,7 +300,7 @@ public class Joueur : MonoBehaviour
             {
                 if (Update_grille3d.isPlein(targetPosition + new Vector3(0, -2, 0)))
                 {
-                  //  anims.SetTrigger("Descending");
+                    anims.SetTrigger("Descending");
                     surveillePhantome(Update_grille3d.trouve_boit(transform.position));
                     UndoSystem.Instance.RecordAction(UndoableAction.MakeUndoableAction(transform.position, Liste.GetComponent<ListeTom>().GetIndex()));
                     transform.position = (targetPosition + new Vector3(0, -1, 0));

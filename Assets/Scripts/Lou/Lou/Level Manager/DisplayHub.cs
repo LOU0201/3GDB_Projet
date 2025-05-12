@@ -11,6 +11,7 @@ public class DisplayHub : MonoBehaviour
     public Image[] starImages; 
     public int MinExitNum;
     public GameObject LevelInfo;
+    private bool isShowing = false;
 
     private DisplayAnimation displayAnimation;
     void Start()
@@ -20,11 +21,15 @@ public class DisplayHub : MonoBehaviour
     }
     public void UpdateUI()
     {
-        LevelInfo.SetActive(true); 
+        if (isShowing) return;
+
+        isShowing = true;
+        LevelInfo.SetActive(true);
         Animator animator = LevelInfo.GetComponent<Animator>();
 
         levelNameText.text = " " + levelData.name;
         LevelInfo.GetComponent<Canvas>().enabled = true;
+
         for (int i = 0; i < challengeTexts.Length; i++)
         {
             switch (levelData.objectiveTypes[i])
@@ -36,10 +41,10 @@ public class DisplayHub : MonoBehaviour
                     challengeTexts[i].text = "Collect Collectable";
                     break;
                 case ObjectiveType.NoUndo:
-                    challengeTexts[i].text = "Didn t use the undo button";
+                    challengeTexts[i].text = "Didn’t use the undo button";
                     break;
                 case ObjectiveType.MinExits:
-                    challengeTexts[i].text = "Entered the exit "+ MinExitNum + " times";
+                    challengeTexts[i].text = "Entered the exit " + MinExitNum + " times";
                     break;
                 default:
                     challengeTexts[i].text = "Performed all possible exits";
@@ -60,15 +65,12 @@ public class DisplayHub : MonoBehaviour
 
     public void HideSheet()
     {
+        isShowing = false;
         LevelInfo.SetActive(false);
 
-        // Optional: Reset alpha for next time
-        if (displayAnimation != null)
+        foreach (var cg in displayAnimation.uiElementsToShow)
         {
-            foreach (var cg in displayAnimation.uiElementsToShow)
-            {
-                if (cg != null) cg.alpha = 0;
-            }
+            if (cg != null) cg.alpha = 0;
         }
     }
 }

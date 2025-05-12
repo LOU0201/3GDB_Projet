@@ -498,6 +498,11 @@ PrefabInstance:
       propertyPath: _position
       value: 
       objectReference: {fileID: 1358197608}
+    - target: {fileID: 3517382688482910747, guid: 19f00c72afd4c3645960697335b09e3f,
+        type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 1904824961}
     - target: {fileID: 7127177297475632845, guid: 19f00c72afd4c3645960697335b09e3f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -558,6 +563,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19f00c72afd4c3645960697335b09e3f, type: 3}
+--- !u!1 &294974325 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6303923151387855534, guid: 19f00c72afd4c3645960697335b09e3f,
+    type: 3}
+  m_PrefabInstance: {fileID: 294974324}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &302845228
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1002,11 +1013,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 757465864}
+      objectReference: {fileID: 0}
     - target: {fileID: 873910048734958872, guid: 7b9d3b869b977504bb1198d4fb264630,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: FadeOut
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1026005432591008871, guid: 7b9d3b869b977504bb1198d4fb264630,
         type: 3}
@@ -1520,7 +1531,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &478971135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2056,7 +2067,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _sprite
       value: 
-      objectReference: {fileID: 1358197608}
+      objectReference: {fileID: 294974325}
     - target: {fileID: 1849276179182745396, guid: f246c0ac11c6e204881f46931c43282a,
         type: 3}
       propertyPath: uiElement
@@ -2196,7 +2207,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _sprite
       value: 
-      objectReference: {fileID: 1358197608}
+      objectReference: {fileID: 294974325}
     - target: {fileID: 5393508406687934712, guid: f246c0ac11c6e204881f46931c43282a,
         type: 3}
       propertyPath: mainCamera
@@ -2723,18 +2734,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58a6c0657e5666743a13c482f151a800, type: 3}
---- !u!114 &757465864 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5479860055774653811, guid: 58a6c0657e5666743a13c482f151a800,
-    type: 3}
-  m_PrefabInstance: {fileID: 757465863}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 757465865}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40b80ffeb124a6148b3693fdfb5bbbc8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &757465865 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5965591668284745341, guid: 58a6c0657e5666743a13c482f151a800,
@@ -3604,7 +3603,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 80, y: -65}
+  m_AnchoredPosition: {x: 80, y: -115}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &978227967

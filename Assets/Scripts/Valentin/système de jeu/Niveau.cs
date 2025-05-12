@@ -24,6 +24,7 @@ public class Niveau : MonoBehaviour
         Vector3 CJ = joueur.position;
         if (CJ == coordonnees)
         {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/V3/Level/HatchOpen");
             SceneLoader.LoadScene(LVname);
             UndoSystem.Instance.Reset();
         }
