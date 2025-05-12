@@ -29,7 +29,10 @@ public class Joueur : MonoBehaviour
     public bool trou;
     public float Ygrav;
     private Rigidbody RB;
-    public Animator anims;
+    public Animator anims_Front;
+    public Animator anims_Back;
+    public Animator anims_SideRight;
+    public Animator anims_SideLeft;
     // Start is called before the first frame update
     public void Start()
     {
@@ -258,7 +261,10 @@ public class Joueur : MonoBehaviour
                     }
                     else
                     {
-                        anims.SetTrigger("Climbing");
+                        anims_Front.SetTrigger("Climbing");
+                        anims_Back.SetTrigger("Climbing");
+                        anims_SideRight.SetTrigger("Climbing");
+                        anims_SideLeft.SetTrigger("Climbing");
                         FMODUnity.RuntimeManager.PlayOneShot("event:/V3/Player/Climb");
                         surveillePhantome(Update_grille3d.trouve_boit(transform.position));
                         UndoSystem.Instance.RecordAction(UndoableAction.MakeUndoableAction(transform.position, Liste.GetComponent<ListeTom>().GetIndex()));
@@ -280,7 +286,10 @@ public class Joueur : MonoBehaviour
         {
             if (Update_grille3d.isPlein(targetPosition + new Vector3(0, -1, 0)))
             {
-                anims.SetTrigger("Walking");
+                anims_Front.SetTrigger("Jump");
+                anims_Back.SetTrigger("Jump");
+                anims_SideRight.SetTrigger("Jump");
+                anims_SideLeft.SetTrigger("Jump");
                 surveillePhantome(Update_grille3d.trouve_boit(transform.position));
                 UndoSystem.Instance.RecordAction(UndoableAction.MakeUndoableAction(transform.position, Liste.GetComponent<ListeTom>().GetIndex()));
                 transform.position = (targetPosition);
@@ -298,7 +307,10 @@ public class Joueur : MonoBehaviour
             {
                 if (Update_grille3d.isPlein(targetPosition + new Vector3(0, -2, 0)))
                 {
-                    anims.SetTrigger("Descending");
+                    anims_Front.SetTrigger("JumpDown");
+                    anims_Back.SetTrigger("JumpDown");
+                    anims_SideRight.SetTrigger("JumpDown");
+                    anims_SideLeft.SetTrigger("JumpDown");
                     surveillePhantome(Update_grille3d.trouve_boit(transform.position));
                     UndoSystem.Instance.RecordAction(UndoableAction.MakeUndoableAction(transform.position, Liste.GetComponent<ListeTom>().GetIndex()));
                     transform.position = (targetPosition + new Vector3(0, -1, 0));
