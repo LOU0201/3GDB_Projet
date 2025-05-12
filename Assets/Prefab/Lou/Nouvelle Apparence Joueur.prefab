@@ -75,6 +75,7 @@ GameObject:
   - component: {fileID: 6789014614844521033}
   - component: {fileID: 6009193127452520510}
   - component: {fileID: 5850751511031914397}
+  - component: {fileID: 2883254588323235118}
   m_Layer: 0
   m_Name: Animations_Side-Left
   m_TagString: Untagged
@@ -184,6 +185,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2883254588323235118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2194166169859645019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bd3b98af8a49ce42912b9d7a2fc8618, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _parent: {fileID: 1344843686097310527}
 --- !u!1 &2919739464422191538
 GameObject:
   m_ObjectHideFlags: 0
@@ -196,6 +210,7 @@ GameObject:
   - component: {fileID: 4378723744869331776}
   - component: {fileID: 5244796302219276080}
   - component: {fileID: 9189002508384715419}
+  - component: {fileID: 7046278846576517928}
   m_Layer: 0
   m_Name: Animations_Side-Right
   m_TagString: Untagged
@@ -305,6 +320,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7046278846576517928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2919739464422191538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bd3b98af8a49ce42912b9d7a2fc8618, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _parent: {fileID: 9022729375047592024}
 --- !u!1 &2968426809932554244
 GameObject:
   m_ObjectHideFlags: 0
@@ -433,6 +461,7 @@ GameObject:
   - component: {fileID: 3499552307542312706}
   - component: {fileID: 4163792401161344572}
   - component: {fileID: 8814729100379861109}
+  - component: {fileID: 3795484421488796390}
   m_Layer: 0
   m_Name: Animations_Back
   m_TagString: Untagged
@@ -542,6 +571,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3795484421488796390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4593587746172147575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bd3b98af8a49ce42912b9d7a2fc8618, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _parent: {fileID: 6393279546405106102}
 --- !u!1 &6393279546405106102
 GameObject:
   m_ObjectHideFlags: 0
@@ -633,6 +675,7 @@ MonoBehaviour:
   _speed: 159.97
   son: 0
   CanMove: 1
+  Joueur: {fileID: 0}
 --- !u!114 &6063235161565755826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1405,6 +1448,7 @@ GameObject:
   - component: {fileID: 2899558195585946972}
   - component: {fileID: 1784732435533283577}
   - component: {fileID: 8470638711043516703}
+  - component: {fileID: 3280417328746301627}
   m_Layer: 0
   m_Name: Animations_Front
   m_TagString: Untagged
@@ -1514,6 +1558,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3280417328746301627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8377721469261315398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bd3b98af8a49ce42912b9d7a2fc8618, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _parent: {fileID: 2968426809932554244}
 --- !u!1 &9022729375047592024
 GameObject:
   m_ObjectHideFlags: 0

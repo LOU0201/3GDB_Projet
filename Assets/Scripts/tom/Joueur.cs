@@ -61,16 +61,17 @@ public class Joueur : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
+            anims_SideRight.GetComponentInParent<MoveDownWard>().CantMove();
             vec = transform.position + right;
             MovePlayer(vec);
             Update_grille3d.isFin(transform.position);
         }
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
+            anims_SideLeft.GetComponentInParent<MoveDownWard>().CantMove();
             vec = transform.position - right;
             MovePlayer(vec);
             Update_grille3d.isFin(transform.position);
-
         }
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
@@ -267,6 +268,7 @@ public class Joueur : MonoBehaviour
                         anims_Back.SetTrigger("Climbing");
                         anims_SideRight.SetTrigger("Climbing");
                         anims_SideLeft.SetTrigger("Climbing");
+                        anims_Front.GetComponentInParent<MoveDownWard>().CantMove();
                         FMODUnity.RuntimeManager.PlayOneShot("event:/V3/Player/Climb");
                         surveillePhantome(Update_grille3d.trouve_boit(transform.position));
                         UndoSystem.Instance.RecordAction(UndoableAction.MakeUndoableAction(transform.position, Liste.GetComponent<ListeTom>().GetIndex()));
@@ -313,6 +315,7 @@ public class Joueur : MonoBehaviour
                     anims_Back.SetTrigger("JumpDown");
                     anims_SideRight.SetTrigger("JumpDown");
                     anims_SideLeft.SetTrigger("JumpDown");
+                    anims_Front.GetComponentInParent<MoveDownWard>().CantMove();
                     surveillePhantome(Update_grille3d.trouve_boit(transform.position));
                     UndoSystem.Instance.RecordAction(UndoableAction.MakeUndoableAction(transform.position, Liste.GetComponent<ListeTom>().GetIndex()));
                     transform.position = (targetPosition + new Vector3(0, -1, 0));
