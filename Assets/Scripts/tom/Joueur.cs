@@ -89,6 +89,7 @@ public class Joueur : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.I))
         {
             ReMove();
+            LevelManager.playerExitCount = 0;
         }
         if (Input.GetKeyDown(KeyCode.J))
         {
@@ -200,6 +201,7 @@ public class Joueur : MonoBehaviour
         {
             Update_grille3d.RemoveGrille();//ON rafraichie la grille
             undoableAction = UndoSystem.Instance.UndoAction();//ON prend la dernière action en mémoir
+            LevelManager.playerExitCount=undoableAction.playerExitCount;
             transform.position = undoableAction.position;//ON change l'amplacement du joueur selon cette emplacement
             Liste.GetComponent<ListeTom>().setIndex(undoableAction.currentIndex);//ON change l'index selon l'ancienne index
 

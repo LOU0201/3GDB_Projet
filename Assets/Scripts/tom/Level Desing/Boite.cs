@@ -43,7 +43,7 @@ public class Boite : MonoBehaviour
         switch (type)
         {
             case Type.Normal:
-                childRenderer.sharedMaterial = Solides[theme];
+                childRenderer.sharedMaterial = Solide;
                 gameObject.GetComponent<LevelManager>().enabled = false;
                 stringType = "Normal";
                 Trigger.SetActive(false);

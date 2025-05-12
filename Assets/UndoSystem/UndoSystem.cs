@@ -47,7 +47,7 @@ public class UndoSystem : MonoBehaviour
 
     public void RecordAction(UndoableAction action)
     {
-        print("RecordAction: " + action.Write());
+       
         undoStack.Push(action);
     }
     public  bool isBoucle()

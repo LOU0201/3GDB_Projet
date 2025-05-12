@@ -4,12 +4,15 @@ public class UndoableAction
 {
     public Vector3 position;
     public int currentIndex;
+    public int playerExitCount;
+
     public bool isreturn;
     public UndoableAction(Vector3 position,int currentIndex, bool isreturn)
     {
         this.position = position;
         this.currentIndex = currentIndex;
         this.isreturn = isreturn;
+
     }
     public static UndoableAction  MakeUndoableAction(Vector3 vec, int index)
     {
@@ -27,6 +30,6 @@ public class UndoableAction
     }
     public string Write()
     {
-        return position + " " + currentIndex + " " + isreturn;
+        return"position : " +  position + " currentIndex : " + currentIndex + " isreturn :  " + isreturn + " playerExitCount : " + playerExitCount;
     }
 }
