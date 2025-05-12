@@ -10,14 +10,18 @@ public class MoveDownWard : MonoBehaviour
 
     public float _speed;
     public bool son = false;
+    public bool CanMove = true;
 
     void Update()
     {
-        _distance = Vector3.Distance(transform.position, _position.transform.position);
-
-        if (_distance > 0.01)
+        if (CanMove)
         {
-            transform.position = Vector3.MoveTowards(this.transform.position, _position.transform.position, _distance * Time.deltaTime * _speed);
+            _distance = Vector3.Distance(transform.position, _position.transform.position);
+
+            if (_distance > 0.01)
+            {
+                transform.position = Vector3.MoveTowards(this.transform.position, _position.transform.position, _distance * Time.deltaTime * _speed);
+            }
         }
     }
 
