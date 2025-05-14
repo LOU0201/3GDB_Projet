@@ -290,6 +290,7 @@ public class Joueur : MonoBehaviour
         {
             if (Update_grille3d.isPlein(targetPosition + new Vector3(0, -1, 0)))
             {
+                FMODUnity.RuntimeManager.PlayOneShot("event:/V3/Player/Jump");
                 anims_Front.SetTrigger("Jump");
                 anims_Back.SetTrigger("Jump");
                 anims_SideRight.SetTrigger("Jump");
