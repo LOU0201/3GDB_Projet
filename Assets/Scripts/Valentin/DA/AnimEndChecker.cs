@@ -9,4 +9,8 @@ public class AnimEndChecker : MonoBehaviour
     {
         _parent.GetComponentInParent<MoveDownWard>().TPMove();
     }
+    public void Land()
+    {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/V3/Player/Land");
+    }
 }
