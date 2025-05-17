@@ -15,10 +15,10 @@ public class Reset : MonoBehaviour
     public void RestartScene()
     {
         // Get the current scene's index
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        string currentSceneIndex = SceneManager.GetActiveScene().name;
 
         // Reload the current scene
-        SceneManager.LoadScene(currentSceneIndex);
+        SceneLoader.LoadScene(currentSceneIndex);
     }
     public void HUB()
     {

@@ -37,4 +37,15 @@ public class MoveDownWard : MonoBehaviour
     {
         son = false;
     }
+
+    public void CantMove()
+    {
+        CanMove = false;
+    }
+
+    public void TPMove()
+    {
+        transform.position = _position.transform.position;
+        CanMove = true;
+    }
 }

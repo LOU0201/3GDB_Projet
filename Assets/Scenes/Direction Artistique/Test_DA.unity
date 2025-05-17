@@ -13903,6 +13903,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1990061605}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &669781655 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2968426809932554244, guid: cca9c72467296b74c94d2c2e0294e58c,
+    type: 3}
+  m_PrefabInstance: {fileID: 3392377340606577117}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &675711099
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -44413,16 +44419,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1770001627390633058, guid: cca9c72467296b74c94d2c2e0294e58c,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1
-      objectReference: {fileID: 0}
     - target: {fileID: 1784732435533283577, guid: cca9c72467296b74c94d2c2e0294e58c,
         type: 3}
       propertyPath: cam
       value: 
       objectReference: {fileID: 588938244}
+    - target: {fileID: 3280417328746301627, guid: cca9c72467296b74c94d2c2e0294e58c,
+        type: 3}
+      propertyPath: _parent
+      value: 
+      objectReference: {fileID: 669781655}
     - target: {fileID: 4163792401161344572, guid: cca9c72467296b74c94d2c2e0294e58c,
         type: 3}
       propertyPath: cam
@@ -44493,25 +44499,10 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 588938244}
-    - target: {fileID: 6682315496983309980, guid: cca9c72467296b74c94d2c2e0294e58c,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1
-      objectReference: {fileID: 0}
     - target: {fileID: 7604540141659148198, guid: cca9c72467296b74c94d2c2e0294e58c,
         type: 3}
       propertyPath: m_Name
       value: Apparence Joueur
-      objectReference: {fileID: 0}
-    - target: {fileID: 8140882104584439076, guid: cca9c72467296b74c94d2c2e0294e58c,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8336103128287143387, guid: cca9c72467296b74c94d2c2e0294e58c,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
