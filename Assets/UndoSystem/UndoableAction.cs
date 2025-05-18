@@ -12,6 +12,7 @@ public class UndoableAction
         this.position = position;
         this.currentIndex = currentIndex;
         this.isreturn = isreturn;
+        playerExitCount = LevelManager.playerExitCount;
 
     }
     public static UndoableAction  MakeUndoableAction(Vector3 vec, int index)
@@ -19,6 +20,7 @@ public class UndoableAction
         UndoableAction undo = new UndoableAction(vec, index, false);
         undo.position = vec;
         undo.currentIndex = index;
+     undo.playerExitCount = LevelManager.playerExitCount;
         return undo;
     }
     public static UndoableAction MakeUndoableAction(Vector3 vec, int index, bool isreturn)

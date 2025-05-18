@@ -48,6 +48,10 @@ public class LevelManager : MonoBehaviour
     }
     public void Update()
     {
+        if (scoreText != null)
+        {
+            scoreText.text = "Sorties: " + playerExitCount.ToString() + "/" + maxExitCount.ToString();
+        }
         if (Input.GetKeyDown(KeyCode.Space) && playerExitCount >= minExitCount && playerExitCount < maxExitCount)
         {
             screen.SetActive(true);
@@ -68,14 +72,12 @@ public class LevelManager : MonoBehaviour
     public void Rappatriment(Transform joueur)
     {
         LT.RefrecheIndex();
-        MDW.son = true;
+        if (MDW)
+        {
+            MDW.son = true;
+        }
         playerExitCount += 1;
         joueur.transform.position = this.transform.position + new Vector3(0, 1, 0);
-        if (scoreText != null)
-        {
-            scoreText.text = "Sorties: " + playerExitCount.ToString() + "/" + maxExitCount.ToString();
-        }
-
 
         bool levelEnded = false;
         if (playerExitCount == minExitCount)
@@ -146,7 +148,6 @@ public class LevelManager : MonoBehaviour
                     break;
             }
         }
-
     }
     public void HandleCollectibleCollected()
     {

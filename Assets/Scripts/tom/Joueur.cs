@@ -55,6 +55,7 @@ public class Joueur : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             UndoSystem.Instance.Reset();
+            LevelManager.playerExitCount = 0;
             Scene scene = SceneManager.GetActiveScene();
             SceneManager.LoadScene(scene.name);
 
@@ -90,7 +91,6 @@ public class Joueur : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.I))
         {
             ReMove();
-            LevelManager.playerExitCount = 0;
         }
         if (Input.GetKeyDown(KeyCode.J))
         {
