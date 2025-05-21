@@ -15,14 +15,16 @@ public class Reset : MonoBehaviour
     public void RestartScene()
     {
         // Get the current scene's index
-        string currentSceneIndex = SceneManager.GetActiveScene().name;
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
 
         // Reload the current scene
-        SceneLoader.LoadScene(currentSceneIndex);
+        SceneManager.LoadScene(currentSceneIndex);
     }
     public void HUB()
     {
         SceneLoader.LoadScene("HUB");
+        GameManager.Instance.étoiles = 0;
+        GameManager.Instance.starsUp();
     }
     public void MainMenu()
     {

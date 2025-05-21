@@ -52,10 +52,9 @@ public class LevelManager : MonoBehaviour
         {
             scoreText.text = "Sorties: " + playerExitCount.ToString() + "/" + maxExitCount.ToString();
         }
-        if (Input.GetKeyDown(KeyCode.Space) && playerExitCount >= minExitCount && playerExitCount < maxExitCount)
+        if (Input.GetKeyDown(KeyCode.Space) && playerExitCount >= minExitCount && playerExitCount < maxExitCount && minExitCount != -1)
         {
             screen.SetActive(true);
-
         }
         if (collectable != null && collectable.collected)
         {
@@ -98,7 +97,6 @@ public class LevelManager : MonoBehaviour
             if (screen)
             {
                 screen.SetActive(true);
-
             }
             levelEnded = true;
         }

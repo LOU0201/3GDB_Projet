@@ -16,21 +16,21 @@ public class GameManager : MonoBehaviour
     }
     public void Start()
     {
-        foreach(LevelData niv in LevelsDataList)
+        starsUp();
+    }
+    public void starsUp()
+    {
+        foreach (LevelData niv in LevelsDataList)
         {
             star = 0;
             foreach (bool C in niv.objectivesCompleted)
             {
-                if(C == true)
+                if (C == true)
                 {
                     star++;
                 }
             }
             étoiles += star;
         }
-    }
-    public void starsUp()
-    {
-        étoiles += 1;
     }
 }

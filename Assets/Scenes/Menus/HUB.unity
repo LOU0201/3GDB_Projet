@@ -633,6 +633,12 @@ PrefabInstance:
       objectReference: {fileID: 1049990705}
     - target: {fileID: 7433240802569283296, guid: bd21f0a6293c2374aa3de8e6e5118b7d,
         type: 3}
+      propertyPath: LD
+      value: 
+      objectReference: {fileID: 11400000, guid: 5b63d7a7c14f47746af10a28f7e3cc0d,
+        type: 2}
+    - target: {fileID: 7433240802569283296, guid: bd21f0a6293c2374aa3de8e6e5118b7d,
+        type: 3}
       propertyPath: name
       value: chemin dalles
       objectReference: {fileID: 0}
@@ -7744,6 +7750,12 @@ PrefabInstance:
       propertyPath: joueur
       value: 
       objectReference: {fileID: 1049990705}
+    - target: {fileID: 7433240802569283296, guid: bd21f0a6293c2374aa3de8e6e5118b7d,
+        type: 3}
+      propertyPath: LD
+      value: 
+      objectReference: {fileID: 11400000, guid: 3561ab6daed15524e866d309972d2384,
+        type: 2}
     - target: {fileID: 7433240802569283296, guid: bd21f0a6293c2374aa3de8e6e5118b7d,
         type: 3}
       propertyPath: name
@@ -17356,6 +17368,12 @@ PrefabInstance:
       objectReference: {fileID: 1049990705}
     - target: {fileID: 7433240802569283296, guid: bd21f0a6293c2374aa3de8e6e5118b7d,
         type: 3}
+      propertyPath: LD
+      value: 
+      objectReference: {fileID: 11400000, guid: 5c8b86acb5bea7543967b81ba5e2f7cd,
+        type: 2}
+    - target: {fileID: 7433240802569283296, guid: bd21f0a6293c2374aa3de8e6e5118b7d,
+        type: 3}
       propertyPath: name
       value: chemin dalles
       objectReference: {fileID: 0}
@@ -19344,7 +19362,7 @@ PrefabInstance:
     - target: {fileID: 7433240802569283296, guid: bd21f0a6293c2374aa3de8e6e5118b7d,
         type: 3}
       propertyPath: LVname
-      value: Intro Trou
+      value: Intro Cube Jaune
       objectReference: {fileID: 0}
     - target: {fileID: 7433240802569283296, guid: bd21f0a6293c2374aa3de8e6e5118b7d,
         type: 3}
@@ -20497,7 +20515,7 @@ PrefabInstance:
     - target: {fileID: 7433240802569283296, guid: bd21f0a6293c2374aa3de8e6e5118b7d,
         type: 3}
       propertyPath: LVname
-      value: Intro Cube
+      value: Intro Trou
       objectReference: {fileID: 0}
     - target: {fileID: 7433240802569283296, guid: bd21f0a6293c2374aa3de8e6e5118b7d,
         type: 3}
@@ -27702,6 +27720,12 @@ PrefabInstance:
       propertyPath: joueur
       value: 
       objectReference: {fileID: 1049990705}
+    - target: {fileID: 7433240802569283296, guid: bd21f0a6293c2374aa3de8e6e5118b7d,
+        type: 3}
+      propertyPath: LD
+      value: 
+      objectReference: {fileID: 11400000, guid: f75c56b1de16a1149a7b999263a6d99f,
+        type: 2}
     - target: {fileID: 7433240802569283296, guid: bd21f0a6293c2374aa3de8e6e5118b7d,
         type: 3}
       propertyPath: name
@@ -40528,6 +40552,10 @@ MonoBehaviour:
   LevelsDataList:
   - {fileID: 11400000, guid: 1e3b52fdf7d4b63478f138e9b8c0064f, type: 2}
   - {fileID: 11400000, guid: c15f61826ab05234a8b07e2efe5eb720, type: 2}
+  - {fileID: 11400000, guid: e7b54da26f0e56341a187941bccb7fd5, type: 2}
+  - {fileID: 11400000, guid: 6e12b7dc9baf73241a689f9ef89317a4, type: 2}
+  - {fileID: 11400000, guid: f5b2f612f25c5af4f8d002c632106006, type: 2}
+  - {fileID: 11400000, guid: 5c8b86acb5bea7543967b81ba5e2f7cd, type: 2}
 --- !u!4 &1350308629
 Transform:
   m_ObjectHideFlags: 0
@@ -45908,7 +45936,7 @@ MonoBehaviour:
     m_Bits: 16
   SB: {fileID: 1559013444}
   CR: {fileID: 0}
-  StarsNeeded: 15
+  StarsNeeded: 5
   GameManagerInstance: {fileID: 1350308628}
   StarCountText: {fileID: 1302062543}
   StarImage: {fileID: 1598694415}
@@ -50856,11 +50884,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: ec20b7109d5be164ba6f3845ddece8fe, type: 2}
+      objectReference: {fileID: 2100000, guid: ea24dc99c49148f43871a153998ff4c2, type: 2}
     - target: {fileID: 1793110974088734330, guid: c8b18993afa00a840bd0627d4ebf3a15,
         type: 3}
       propertyPath: theme
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4021901750627738393, guid: c8b18993afa00a840bd0627d4ebf3a15,
         type: 3}
