@@ -38,6 +38,7 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         playerExitCount = 0;
+        LoadLevelProgress();
         if (scoreText != null)
         {
             scoreText.text = "Sorties: " + playerExitCount.ToString() + "/" + maxExitCount.ToString();
@@ -65,6 +66,12 @@ public class LevelManager : MonoBehaviour
         {
             undoUsed = true;
             scoreText4.text = "Undo: Used";
+        }
+        if (Input.GetKeyDown(KeyCode.F1)) // Press F1 to clear all saved data
+        {
+            PlayerPrefs.DeleteAll();
+            PlayerPrefs.Save();
+            Debug.Log("All PlayerPrefs deleted.");
         }
     }
 
@@ -113,6 +120,8 @@ public class LevelManager : MonoBehaviour
         if (levelEnded)
         {
             CheckObjectives();
+            SaveLevelProgress(); //Save the updated level data to persistence
+            GameManager.Instance.starsUp();
         }
     }
 
@@ -133,16 +142,13 @@ public class LevelManager : MonoBehaviour
                     }
                     break;
                 case ObjectiveType.NoUndo:
-                    if (undoUsed == false)
-                    {
-                        levelData.objectivesCompleted[i] = true;
-                    }
+                    levelData.objectivesCompleted[i] = !undoUsed;
                     break;
                 case ObjectiveType.MinExits:
-                    levelData.objectivesCompleted[i] = true;
+                    levelData.objectivesCompleted[i] = (playerExitCount == minExitCount);
                     break;
                 case ObjectiveType.MaxExits:
-                    levelData.objectivesCompleted[i] = true;
+                    levelData.objectivesCompleted[i] = (playerExitCount == maxExitCount);
                     break;
             }
         }
@@ -155,7 +161,7 @@ public class LevelManager : MonoBehaviour
         // Update star rating
         if (starRatingSystem != null) starRatingSystem.UpdateStarRating();
 
-        // Clean up collectible later
+        // Clean up collectible
         StartCoroutine(DelayedCollectibleCleanup());
     }
 
@@ -166,5 +172,45 @@ public class LevelManager : MonoBehaviour
         {
             Destroy(collectable.gameObject);
         }
+    }
+
+    private string GetPlayerPrefsKey(int objectiveIndex)
+    {
+        // Creates a unique key for each objective of each LevelData instance.
+        return levelData.name + "_Objective_" + objectiveIndex;
+    }
+
+    public void SaveLevelProgress()
+    {
+        if (levelData == null)
+        {
+            Debug.LogWarning("LevelData is not assigned in LevelManager. Cannot save progress.");
+            return;
+        }
+
+        for (int i = 0; i < levelData.objectivesCompleted.Length; i++)
+        {
+            // PlayerPrefs.SetInt stores integers. We convert bool (true/false) to int (1/0).
+            PlayerPrefs.SetInt(GetPlayerPrefsKey(i), levelData.objectivesCompleted[i] ? 1 : 0);
+        }
+        PlayerPrefs.Save(); // Ensures data is written to disk immediately.
+        Debug.Log($"Level progress saved for {levelData.name}.");
+    }
+
+    public void LoadLevelProgress()
+    {
+        if (levelData == null)
+        {
+            Debug.LogWarning("LevelData is not assigned in LevelManager. Cannot load progress.");
+            return;
+        }
+
+        for (int i = 0; i < levelData.objectivesCompleted.Length; i++)
+        {
+            // PlayerPrefs.GetInt retrieves an integer. The second argument (0) is the default value
+            // if the key doesn't exist yet (meaning the objective hasn't been completed).
+            levelData.objectivesCompleted[i] = PlayerPrefs.GetInt(GetPlayerPrefsKey(i), 0) == 1;
+        }
+        Debug.Log($"Level progress loaded for {levelData.name}.");
     }
 }
