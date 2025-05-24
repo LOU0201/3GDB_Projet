@@ -22,7 +22,7 @@ public class Loading_Screen_Manager : MonoBehaviour
     public ThreadPriority loadThreadPriority;
 
     [Header("Other")]
-    public AudioListener audioListener;
+    //public AudioListener audioListener;
 
     private AsyncOperation operation;
     private Scene currentScene;
@@ -102,7 +102,7 @@ public class Loading_Screen_Manager : MonoBehaviour
 
         if (loadSceneMode == LoadSceneMode.Additive)
         {
-            audioListener.enabled = false;
+            //audioListener.enabled = false;
             yield return SceneManager.UnloadSceneAsync(currentScene.name);
         }
         else
