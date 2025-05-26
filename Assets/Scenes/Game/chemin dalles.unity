@@ -1286,11 +1286,12 @@ MonoBehaviour:
   prefabBoiteJaune: {fileID: 0}
   Non_Blockeur: 0
   des: {fileID: 1077107641}
-  ResetTom: {fileID: 0}
+  ResetTom: {fileID: 894455238}
   prefabCubeRouge: {fileID: 3197968449055342827, guid: 48e418f9865c38e40bb2d7f0d7e3fb25,
     type: 3}
   listeTom: {fileID: 1466179450}
   CS: 0
+  Front: {fileID: 851422453}
 --- !u!114 &169934634 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 224110606773059199, guid: 58a6c0657e5666743a13c482f151a800,
@@ -1315,7 +1316,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 5ee1dfd8fa775a442b95819b7b30d7b8, type: 2}
+      objectReference: {fileID: 2100000, guid: 5dfe2f0ab9bc1ee428bf935cd004519c, type: 2}
     - target: {fileID: 1793110974088734330, guid: c8b18993afa00a840bd0627d4ebf3a15,
         type: 3}
       propertyPath: type
@@ -2531,6 +2532,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: "T\xE9l\xE9porteur"
       objectReference: {fileID: 0}
+    - target: {fileID: 5179447266720956601, guid: 14d94ef18b4d9e845b3bd6c4a7a05e81,
+        type: 3}
+      propertyPath: Front
+      value: 
+      objectReference: {fileID: 851422453}
     - target: {fileID: 5179447266720956601, guid: 14d94ef18b4d9e845b3bd6c4a7a05e81,
         type: 3}
       propertyPath: joueur
@@ -11584,6 +11590,11 @@ PrefabInstance:
       propertyPath: stringType
       value: Fin
       objectReference: {fileID: 0}
+    - target: {fileID: 1858194284638284550, guid: c8b18993afa00a840bd0627d4ebf3a15,
+        type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 588938244}
     - target: {fileID: 4021901750627738393, guid: c8b18993afa00a840bd0627d4ebf3a15,
         type: 3}
       propertyPath: m_Name

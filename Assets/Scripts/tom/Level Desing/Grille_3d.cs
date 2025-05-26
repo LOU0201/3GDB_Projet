@@ -21,6 +21,7 @@ public class Grille_3d : MonoBehaviour
     public GameObject prefabCubeRouge;
     public ListeTom listeTom;
     public float CS;
+    public Animator Front;
     //private void Awake()
     //{
     //    LevelManager levelManager = gameObject.GetComponentInChildren<LevelManager>();
@@ -131,6 +132,7 @@ public class Grille_3d : MonoBehaviour
         {
             if (t.gameObject.GetComponent<Boite>().equalType("Debut"))
             {
+                Front.SetTrigger("Exiting");
                 t.gameObject.GetComponent<LevelManager>().Rappatriment(joueur.transform);
             }
         }

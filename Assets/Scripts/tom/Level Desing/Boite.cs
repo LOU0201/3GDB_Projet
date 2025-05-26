@@ -35,6 +35,8 @@ public class Boite : MonoBehaviour
     public Material Debut;
     public Material PhantomeJaune;
     public GameObject Trigger;
+    public GameObject trappe;
+    public GameObject bulle;
     public int theme;
 
 
@@ -43,63 +45,79 @@ public class Boite : MonoBehaviour
         switch (type)
         {
             case Type.Normal:
+                childRenderer.enabled = true;
                 childRenderer.sharedMaterial = Solides[theme];
                 gameObject.GetComponent<LevelManager>().enabled = false;
                 stringType = "Normal";
-                if (Trigger)
+                if (Trigger && trappe && bulle)
                 {
-                   Trigger.SetActive(false);
+                    Trigger.SetActive(false);
+                    trappe.SetActive(false);
+                    bulle.SetActive(false);
                 }
                 fin = false;
                 break;
             case Type.PhantomeJaune:
+                childRenderer.enabled = true;
                 childRenderer.sharedMaterial = PhantomeJaune;
                 gameObject.GetComponent<LevelManager>().enabled = false;
                 stringType = "PhantomeJaune";
                 fin = false;
                 break;
             case Type.Phantome:
+                childRenderer.enabled = true;
                 childRenderer.sharedMaterial = Phantome;
                 gameObject.GetComponent<LevelManager>().enabled = false;
                 stringType = "Phantome";
                 fin = false;
                 break;
             case Type.Fin:
-                childRenderer.sharedMaterial = Sortie;
+                childRenderer.enabled = false;
                 gameObject.GetComponent<LevelManager>().enabled = false;
                 fin = true;
                 stringType = "Fin";
-                if (Trigger)
+                if (Trigger && trappe && bulle)
                 {
                     Trigger.SetActive(false);
+                    trappe.SetActive(false);
+                    bulle.SetActive(true);
                 }
                 break;
             case Type.Debut:
                 stringType = "Debut";
-                childRenderer.sharedMaterial = Debut;
+                childRenderer.enabled = true;
+                childRenderer.sharedMaterial = Solides[theme];
                 gameObject.GetComponent<LevelManager>().enabled = true;
-                if (Trigger)
+                if (Trigger && trappe && bulle)
                 {
                     Trigger.SetActive(true);
+                    trappe.SetActive(true);
+                    bulle.SetActive(false);
                 }
                 fin = false;
                 break;
             case Type.RedGhost:
+                childRenderer.enabled = true;
                 childRenderer.sharedMaterial = RedGhost;
                 gameObject.GetComponent<LevelManager>().enabled = false;
-                if (Trigger)
+                if (Trigger && trappe && bulle)
                 {
                     Trigger.SetActive(false);
+                    trappe.SetActive(false);
+                    bulle.SetActive(false);
                 }
                 fin = false;
                 stringType = "RedGhost";
                 break;
             case Type.Stop:
+                childRenderer.enabled = true;
                 childRenderer.sharedMaterial = Stop;
                 gameObject.GetComponent<LevelManager>().enabled = false;
-                if (Trigger)
+                if (Trigger && trappe && bulle)
                 {
                     Trigger.SetActive(false);
+                    trappe.SetActive(false);
+                    bulle.SetActive(false);
                 }
                 fin = false;
                 stringType = "Stop";

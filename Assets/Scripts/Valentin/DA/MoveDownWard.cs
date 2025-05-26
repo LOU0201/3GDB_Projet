@@ -41,10 +41,12 @@ public class MoveDownWard : MonoBehaviour
     public void CantMove()
     {
         CanMove = false;
+        _position.GetComponent<Joueur>().enabled= false;
     }
 
     public void TPMove()
     {
+        _position.GetComponent<Joueur>().enabled = true;
         transform.position = _position.transform.position;
         CanMove = true;
     }
