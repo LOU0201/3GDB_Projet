@@ -21,7 +21,6 @@ public class TP : MonoBehaviour
         Vector3 CJ = joueur.position;
         if (CJ == coordonnees)
         {
-            Front.SetTrigger("Exiting");
             scriptJ.TP();
             FMODUnity.RuntimeManager.PlayOneShot("event:/V3/System/leveldone");
         }
