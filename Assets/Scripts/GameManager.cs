@@ -46,4 +46,12 @@ public class GameManager : MonoBehaviour
             étoiles += star;
         }
     }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            étoiles++;
+        }
+    }
 }
