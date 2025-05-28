@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using System;
 
 public class Grille_3d : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class Grille_3d : MonoBehaviour
     public ListeTom listeTom;
     public float CS;
     public Animator Front;
+    public static event Action Sortie;
     //private void Awake()
     //{
     //    LevelManager levelManager = gameObject.GetComponentInChildren<LevelManager>();
@@ -132,7 +134,7 @@ public class Grille_3d : MonoBehaviour
         {
             if (t.gameObject.GetComponent<Boite>().equalType("Debut"))
             {
-                Front.SetTrigger("Exiting");
+                Sortie?.Invoke();
                 t.gameObject.GetComponent<LevelManager>().Rappatriment(joueur.transform);
             }
         }

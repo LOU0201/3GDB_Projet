@@ -22,7 +22,7 @@ public class TP : MonoBehaviour
         if (CJ == coordonnees)
         {
             scriptJ.TP();
-            FMODUnity.RuntimeManager.PlayOneShot("event:/V3/System/leveldone");
+            FMODUnity.RuntimeManager.PlayOneShot("event:/V3/Level/PlayerUseHatch");
         }
     }
 

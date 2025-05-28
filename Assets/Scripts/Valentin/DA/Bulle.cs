@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bulle : MonoBehaviour
 {
     public GameObject apparence;
+    public GameObject _parent;
     public Animator sortie;
     // Start is called before the first frame update
     void Start()
@@ -15,7 +16,7 @@ public class Bulle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 coordonnees = transform.position;
+        Vector3 coordonnees = _parent.transform.position;
         Vector3 CJ = apparence.transform.position;
         if (CJ == coordonnees)
         {

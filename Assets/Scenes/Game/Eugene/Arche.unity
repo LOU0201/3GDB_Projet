@@ -2973,6 +2973,31 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3914923759801278278, guid: d2d6a17767a04c6418705b858e004317,
+        type: 3}
+      propertyPath: EventReference.Path
+      value: event:/Music/LevelAmbience3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3914923759801278278, guid: d2d6a17767a04c6418705b858e004317,
+        type: 3}
+      propertyPath: EventReference.Guid.Data1
+      value: -1782568997
+      objectReference: {fileID: 0}
+    - target: {fileID: 3914923759801278278, guid: d2d6a17767a04c6418705b858e004317,
+        type: 3}
+      propertyPath: EventReference.Guid.Data2
+      value: 1262347300
+      objectReference: {fileID: 0}
+    - target: {fileID: 3914923759801278278, guid: d2d6a17767a04c6418705b858e004317,
+        type: 3}
+      propertyPath: EventReference.Guid.Data3
+      value: 2039783340
+      objectReference: {fileID: 0}
+    - target: {fileID: 3914923759801278278, guid: d2d6a17767a04c6418705b858e004317,
+        type: 3}
+      propertyPath: EventReference.Guid.Data4
+      value: -1384690610
+      objectReference: {fileID: 0}
     - target: {fileID: 6487273777093752211, guid: d2d6a17767a04c6418705b858e004317,
         type: 3}
       propertyPath: m_Name
@@ -2983,6 +3008,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7308769031534230359, guid: d2d6a17767a04c6418705b858e004317,
+        type: 3}
+      propertyPath: emitterAStopper
+      value: 
+      objectReference: {fileID: 1358197612}
     - target: {fileID: 7930719130216090326, guid: d2d6a17767a04c6418705b858e004317,
         type: 3}
       propertyPath: m_LocalScale.y
@@ -5913,6 +5943,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0d2f7a4e6a5ba8d428103b51969f029e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1358197612 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3914923759801278278, guid: d2d6a17767a04c6418705b858e004317,
+    type: 3}
+  m_PrefabInstance: {fileID: 700413108}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1358197608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1368817706

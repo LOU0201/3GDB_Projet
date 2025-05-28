@@ -84,7 +84,7 @@ public class FadeNActive : MonoBehaviour
         _joueur.SetActive(true);
         _sprite.SetActive(true);
         Fermeture?.Invoke();
-        FMODUnity.RuntimeManager.PlayOneShot("event:/V3/Level/HatchClose");
+        FMODUnity.RuntimeManager.PlayOneShot("event:/V3/Scrapped/HatchClose");
     }
 }
 

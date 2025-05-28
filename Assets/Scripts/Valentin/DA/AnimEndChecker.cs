@@ -5,11 +5,9 @@ using UnityEngine;
 public class AnimEndChecker : MonoBehaviour
 {
     public GameObject _parent;
-    public GameObject Apparence;
     public void AnimEnd()
     {
         _parent.GetComponentInParent<MoveDownWard>().TPMove();
-        Apparence.SetActive(true);
 
     }
     public void AnimBeg()
