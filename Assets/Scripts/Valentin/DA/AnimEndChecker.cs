@@ -8,6 +8,7 @@ public class AnimEndChecker : MonoBehaviour
     public void AnimEnd()
     {
         _parent.GetComponentInParent<MoveDownWard>().TPMove();
+
     }
     public void AnimBeg()
     {

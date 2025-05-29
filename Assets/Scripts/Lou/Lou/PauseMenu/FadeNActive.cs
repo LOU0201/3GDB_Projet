@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using TMPro;
+using System;
 
 public class FadeNActive : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class FadeNActive : MonoBehaviour
     [SerializeField] private GameObject Intro; // Parent GameObject to deactivate
     public GameObject _joueur;
     public GameObject _sprite;
+    public static event Action Fermeture;
 
     private Coroutine activationCoroutine; // Reference to the coroutine
 
@@ -81,7 +83,8 @@ public class FadeNActive : MonoBehaviour
 
         _joueur.SetActive(true);
         _sprite.SetActive(true);
-        FMODUnity.RuntimeManager.PlayOneShot("event:/V3/Level/HatchClose");
+        Fermeture?.Invoke();
+        FMODUnity.RuntimeManager.PlayOneShot("event:/V3/Scrapped/HatchClose");
     }
 }
 
