@@ -351,6 +351,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 2000
+--- !u!114 &-4102174176806752702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/HUBAmbiance
+  m_EditorClassIdentifier: 
+  Path: event:/Music/HUBAmbiance
+  Guid:
+    Data1: 1049802068
+    Data2: 1340990562
+    Data3: -1291551863
+    Data4: 120946951
+  Banks:
+  - {fileID: 4127592583148613159}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 135497
 --- !u!114 &-3253404009478158798
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -447,10 +474,10 @@ MonoBehaviour:
   Path: FMODGhost/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638840336131522939
+  lastModified: 638841102235153706
   FileSizes:
   - Name: Desktop
-    Value: 2854
+    Value: 2908
   Exists: 1
 --- !u!114 &-1830352195125456146
 MonoBehaviour:
@@ -675,12 +702,13 @@ MonoBehaviour:
   - {fileID: 2935629979291306671}
   - {fileID: -1830352195125456146}
   - {fileID: -5851338724422733095}
+  - {fileID: -4102174176806752702}
   EditorParameters: []
   MasterBanks:
   - {fileID: 4127592583148613159}
   StringsBanks:
   - {fileID: -2270063363258868177}
-  cacheTime: 638840336131522939
+  cacheTime: 638841102235153706
   cacheVersion: 131609
 --- !u!114 &377282789518350029
 MonoBehaviour:
@@ -1073,10 +1101,10 @@ MonoBehaviour:
   Path: FMODGhost/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638840336131492951
+  lastModified: 638841102235104248
   FileSizes:
   - Name: Desktop
-    Value: 4320800
+    Value: 5861984
   Exists: 1
 --- !u!114 &4202055398318246775
 MonoBehaviour:
