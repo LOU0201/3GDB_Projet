@@ -273,10 +273,10 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: -1759226457
-      Data2: 1153745901
-      Data3: -1115543379
-      Data4: 913202735
+      Data1: -1465951434
+      Data2: 1183760047
+      Data3: -2009129303
+      Data4: -1759778992
     Path: event:/V3/UI/Click
   Event: 
   PlayEvent: 19
@@ -304,10 +304,10 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: -399244511
-      Data2: 1137797356
-      Data3: -79662404
-      Data4: 1936206221
+      Data1: 652204624
+      Data2: 1240788539
+      Data3: 1358325673
+      Data4: -619019887
     Path: event:/V3/UI/Hover
   Event: 
   PlayEvent: 17
@@ -507,10 +507,10 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: -1759226457
-      Data2: 1153745901
-      Data3: -1115543379
-      Data4: 913202735
+      Data1: -1465951434
+      Data2: 1183760047
+      Data3: -2009129303
+      Data4: -1759778992
     Path: event:/V3/UI/Click
   Event: 
   PlayEvent: 19
@@ -538,10 +538,10 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: -399244511
-      Data2: 1137797356
-      Data3: -79662404
-      Data4: 1936206221
+      Data1: 652204624
+      Data2: 1240788539
+      Data3: 1358325673
+      Data4: -619019887
     Path: event:/V3/UI/Hover
   Event: 
   PlayEvent: 17
@@ -1262,7 +1262,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttons:
   - {fileID: 12144308}
-  - {fileID: 0}
   - {fileID: 58955356}
   - {fileID: 1503196880}
   animationSpeed: 1000
@@ -2383,6 +2382,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d2f7a4e6a5ba8d428103b51969f029e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  emitterAStopper: {fileID: 0}
 --- !u!114 &909968866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2442,6 +2442,8 @@ GameObject:
   - component: {fileID: 1134653634}
   - component: {fileID: 1134653633}
   - component: {fileID: 1134653632}
+  - component: {fileID: 1134653636}
+  - component: {fileID: 1134653635}
   m_Layer: 5
   m_Name: Back
   m_TagString: Untagged
@@ -2576,6 +2578,68 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1134653629}
   m_CullTransparentMesh: 1
+--- !u!114 &1134653635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1134653629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1465951434
+      Data2: 1183760047
+      Data3: -2009129303
+      Data4: -1759778992
+    Path: event:/V3/UI/Click
+  Event: 
+  PlayEvent: 19
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &1134653636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1134653629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 652204624
+      Data2: 1240788539
+      Data3: 1358325673
+      Data4: -619019887
+    Path: event:/V3/UI/Hover
+  Event: 
+  PlayEvent: 17
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &1207522735 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8769533892926504381, guid: 7bd1d9d33bfea6f4e8d3896b4190e5dc,
@@ -3221,10 +3285,10 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: -1759226457
-      Data2: 1153745901
-      Data3: -1115543379
-      Data4: 913202735
+      Data1: -1465951434
+      Data2: 1183760047
+      Data3: -2009129303
+      Data4: -1759778992
     Path: event:/V3/UI/Click
   Event: 
   PlayEvent: 19
@@ -3252,10 +3316,10 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: -399244511
-      Data2: 1137797356
-      Data3: -79662404
-      Data4: 1936206221
+      Data1: 652204624
+      Data2: 1240788539
+      Data3: 1358325673
+      Data4: -619019887
     Path: event:/V3/UI/Hover
   Event: 
   PlayEvent: 17
