@@ -5210,6 +5210,10 @@ MonoBehaviour:
   cubeSprite: {fileID: 21300000, guid: 9add30ee206ad9b4b9182ba6636bf4ae, type: 3}
   yellowSprite: {fileID: 0}
   conveyorBelt: {fileID: 1725929899}
+  eventPath: event:/V3/System/ListePitchedSound
+  allowParameterChange: 1
+  parameterName: Parameter 1
+  currentParameterValue: 0
 --- !u!4 &1466179451
 Transform:
   m_ObjectHideFlags: 0
@@ -5718,7 +5722,12 @@ PrefabInstance:
     - target: {fileID: 2145778829635300066, guid: c8b18993afa00a840bd0627d4ebf3a15,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2145778829635300066, guid: c8b18993afa00a840bd0627d4ebf3a15,
+        type: 3}
+      propertyPath: triggerDistance
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3560230201070614295, guid: c8b18993afa00a840bd0627d4ebf3a15,
         type: 3}
