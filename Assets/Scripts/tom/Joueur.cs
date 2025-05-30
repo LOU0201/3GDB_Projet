@@ -210,7 +210,8 @@ public class Joueur : MonoBehaviour
             undoableAction = UndoSystem.Instance.UndoAction();//ON prend la dernière action en mémoir
             LevelManager.playerExitCount=undoableAction.playerExitCount;
             transform.position = undoableAction.position;//ON change l'amplacement du joueur selon cette emplacement
-            Liste.GetComponent<ListeTom>().setIndex(undoableAction.currentIndex);//ON change l'index selon l'ancienne index
+            Liste.GetComponent<ListeTom>().setIndex(undoableAction.currentIndex, UndoSystem.Instance.isFinich());//ON change l'index selon l'ancienne index
+            print(" undoable : " + undoableAction.Write());
 
             var boiteIci = Update_grille3d.trouve_boit(transform.position);//ON regarde au niveau de sa position
             if (boiteIci != null)

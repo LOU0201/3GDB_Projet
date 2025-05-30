@@ -70,7 +70,7 @@ public class Grille_3d : MonoBehaviour
             }
         }
     }
-    public void isFin(Vector3 vec)
+    public void isFin(Vector3 vec)//Atention n'est pas un gettteur!!
     {
         foreach (Transform t in this.transform)
         {
