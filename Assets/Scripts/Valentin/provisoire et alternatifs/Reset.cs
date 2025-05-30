@@ -13,6 +13,31 @@ public class Reset : MonoBehaviour
         {
             RestartScene();
         }
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            SceneManager.LoadScene(5);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            SceneManager.LoadScene(4);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            SceneManager.LoadScene(10);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            SceneManager.LoadScene(6);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            SceneManager.LoadScene(14);
+        }
     }
     public void RestartScene()
     {
