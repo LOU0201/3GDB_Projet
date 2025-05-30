@@ -6,14 +6,17 @@ using DG.Tweening;
 
 public class Flyin : MonoBehaviour
 {
-    public RectTransform[] buttons; // Assign your buttons here
+    public RectTransform[] buttons; 
     public float animationSpeed = 500f; // Speed of the fly-in animation
     public float delayBetweenButtons = 0.2f; // Delay between each button's animation
     public float offscreenDistance = 500f; // How far offscreen the buttons start
     public bool skipAnimation = false; // To check if the player skips the animation
+    public float animationAcceleration = 1f;
+    public GameObject logo;
 
-    private Vector2[] originalPositions; // To store the buttons' final positions
+    private Vector2[] originalPositions; // Store the buttons' final positions
     private Coroutine animationCoroutine;
+    private Animator logoAnimator;
 
     private void Start()
     {
@@ -30,6 +33,8 @@ public class Flyin : MonoBehaviour
 
         // Start the fly-in animation
         animationCoroutine = StartCoroutine(AnimateButtons());
+        logoAnimator = logo.GetComponent<Animator>();
+
     }
 
     private void Update()
@@ -38,14 +43,11 @@ public class Flyin : MonoBehaviour
         if (!skipAnimation && (Input.anyKeyDown || Input.GetMouseButtonDown(0)))
         {
             skipAnimation = true;
-
+            logoAnimator.speed = 10f;
             // If the animation is running, stop it
-            if (animationCoroutine != null)
-            {
-                StopCoroutine(animationCoroutine);
-            }
-
-            // Instantly set all buttons to their final positions
+            animationAcceleration = 10f;
+            StopCoroutine(animationCoroutine);
+            // Set all buttons to their final positions
             for (int i = 0; i < buttons.Length; i++)
             {
                 buttons[i].anchoredPosition = originalPositions[i];
@@ -75,7 +77,7 @@ public class Flyin : MonoBehaviour
             if (skipAnimation) yield break;
 
             button.anchoredPosition = Vector2.Lerp(startPosition, targetPosition, elapsedTime / (distance / animationSpeed));
-            elapsedTime += Time.deltaTime;
+            elapsedTime += Time.deltaTime * animationAcceleration;
             yield return null;
         }
 
