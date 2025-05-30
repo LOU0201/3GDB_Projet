@@ -2682,6 +2682,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 180432131030931418, guid: f246c0ac11c6e204881f46931c43282a,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -4
+      objectReference: {fileID: 0}
     - target: {fileID: 1849276179182745396, guid: f246c0ac11c6e204881f46931c43282a,
         type: 3}
       propertyPath: _joueur
@@ -2850,12 +2855,22 @@ PrefabInstance:
     - target: {fileID: 7972154800602138116, guid: f246c0ac11c6e204881f46931c43282a,
         type: 3}
       propertyPath: m_text
-      value: '<wave> Intro Cube Jaune '
+      value: 'Intro Cube Jaune '
+      objectReference: {fileID: 0}
+    - target: {fileID: 7972154800602138116, guid: f246c0ac11c6e204881f46931c43282a,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 72.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7972154800602138116, guid: f246c0ac11c6e204881f46931c43282a,
+        type: 3}
+      propertyPath: m_margin.x
+      value: 49.845886
       objectReference: {fileID: 0}
     - target: {fileID: 7972154800602138116, guid: f246c0ac11c6e204881f46931c43282a,
         type: 3}
       propertyPath: m_margin.z
-      value: 88.76434
+      value: 7.448533
       objectReference: {fileID: 0}
     - target: {fileID: 7972154800602138116, guid: f246c0ac11c6e204881f46931c43282a,
         type: 3}
@@ -2863,6 +2878,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: cd7c19e3fcba54746b57a9cfd49d9b5c,
         type: 2}
+    - target: {fileID: 7972154800602138116, guid: f246c0ac11c6e204881f46931c43282a,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 72.6
+      objectReference: {fileID: 0}
     - target: {fileID: 7972154800602138116, guid: f246c0ac11c6e204881f46931c43282a,
         type: 3}
       propertyPath: m_sharedMaterial
@@ -8732,6 +8752,10 @@ MonoBehaviour:
   cubeSprite: {fileID: 21300000, guid: 9add30ee206ad9b4b9182ba6636bf4ae, type: 3}
   yellowSprite: {fileID: 0}
   conveyorBelt: {fileID: 757465867}
+  eventPath: event:/V3/System/ListePitchedSound
+  allowParameterChange: 1
+  parameterName: Parameter 1
+  currentParameterValue: 0
 --- !u!4 &1466179451
 Transform:
   m_ObjectHideFlags: 0

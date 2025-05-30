@@ -2585,7 +2585,17 @@ PrefabInstance:
     - target: {fileID: 7972154800602138116, guid: f246c0ac11c6e204881f46931c43282a,
         type: 3}
       propertyPath: m_text
-      value: breaker
+      value: Breaker
+      objectReference: {fileID: 0}
+    - target: {fileID: 7972154800602138116, guid: f246c0ac11c6e204881f46931c43282a,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 94.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7972154800602138116, guid: f246c0ac11c6e204881f46931c43282a,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 94.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2940,6 +2950,11 @@ PrefabInstance:
       propertyPath: listeTom
       value: 
       objectReference: {fileID: 1466179450}
+    - target: {fileID: 899624023277782966, guid: 58a6c0657e5666743a13c482f151a800,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1126906373106853238, guid: 58a6c0657e5666743a13c482f151a800,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2990,6 +3005,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2243850237708432383, guid: 58a6c0657e5666743a13c482f151a800,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -78.6
+      objectReference: {fileID: 0}
     - target: {fileID: 4565105990923695877, guid: 58a6c0657e5666743a13c482f151a800,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -3035,6 +3055,16 @@ PrefabInstance:
       propertyPath: icons.Array.data[4]
       value: 
       objectReference: {fileID: 412869937}
+    - target: {fileID: 6992724025516959455, guid: 58a6c0657e5666743a13c482f151a800,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8664192117825303202, guid: 58a6c0657e5666743a13c482f151a800,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9204419411167420219, guid: 58a6c0657e5666743a13c482f151a800,
         type: 3}
       propertyPath: m_Name
@@ -6476,6 +6506,10 @@ MonoBehaviour:
   cubeSprite: {fileID: 21300000, guid: 9add30ee206ad9b4b9182ba6636bf4ae, type: 3}
   yellowSprite: {fileID: 0}
   conveyorBelt: {fileID: 757465867}
+  eventPath: event:/V3/System/ListePitchedSound
+  allowParameterChange: 1
+  parameterName: Parameter 1
+  currentParameterValue: 0
 --- !u!4 &1466179451
 Transform:
   m_ObjectHideFlags: 0
