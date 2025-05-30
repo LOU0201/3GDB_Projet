@@ -754,6 +754,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8883954813513022747, guid: 2e1d1a04aa852c8449d0cbce4e496c1a,
         type: 3}
+      propertyPath: _sprite
+      value: 
+      objectReference: {fileID: 1801721008}
+    - target: {fileID: 8883954813513022747, guid: 2e1d1a04aa852c8449d0cbce4e496c1a,
+        type: 3}
       propertyPath: anims_Back
       value: 
       objectReference: {fileID: 1343821705}
@@ -1169,7 +1174,6 @@ MonoBehaviour:
     type: 3}
   listeTom: {fileID: 1466179450}
   CS: 0
-  Front: {fileID: 1343821704}
 --- !u!114 &157655503 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 338155596719930816, guid: 58a6c0657e5666743a13c482f151a800,
@@ -1574,6 +1578,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 147037773}
     m_Modifications:
+    - target: {fileID: 960403096991864376, guid: c8b18993afa00a840bd0627d4ebf3a15,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 999795785542011941, guid: c8b18993afa00a840bd0627d4ebf3a15,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1793110974088734330, guid: c8b18993afa00a840bd0627d4ebf3a15,
         type: 3}
       propertyPath: fin
@@ -1599,6 +1613,11 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 588938244}
+    - target: {fileID: 2145778829635300066, guid: c8b18993afa00a840bd0627d4ebf3a15,
+        type: 3}
+      propertyPath: apparence
+      value: 
+      objectReference: {fileID: 1801721008}
     - target: {fileID: 4021901750627738393, guid: c8b18993afa00a840bd0627d4ebf3a15,
         type: 3}
       propertyPath: m_Name
@@ -8210,6 +8229,10 @@ MonoBehaviour:
   cubeSprite: {fileID: 21300000, guid: 9add30ee206ad9b4b9182ba6636bf4ae, type: 3}
   yellowSprite: {fileID: 0}
   conveyorBelt: {fileID: 735735516}
+  eventPath: event:/V3/System/ListePitchedSound
+  allowParameterChange: 1
+  parameterName: Parameter 1
+  currentParameterValue: 0
 --- !u!4 &1466179451
 Transform:
   m_ObjectHideFlags: 0
@@ -11116,6 +11139,11 @@ PrefabInstance:
       propertyPath: stringType
       value: Debut
       objectReference: {fileID: 0}
+    - target: {fileID: 2603758771316016852, guid: c8b18993afa00a840bd0627d4ebf3a15,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4021901750627738393, guid: c8b18993afa00a840bd0627d4ebf3a15,
         type: 3}
       propertyPath: m_Name
@@ -11126,6 +11154,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 5ee1dfd8fa775a442b95819b7b30d7b8, type: 2}
+    - target: {fileID: 5360107653003701131, guid: c8b18993afa00a840bd0627d4ebf3a15,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6476511047616165731, guid: c8b18993afa00a840bd0627d4ebf3a15,
         type: 3}
       propertyPath: LT

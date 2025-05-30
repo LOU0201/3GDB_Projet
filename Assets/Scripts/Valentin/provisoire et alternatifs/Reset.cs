@@ -26,7 +26,7 @@ public class Reset : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            SceneManager.LoadScene(10);
+            SceneManager.LoadScene(7);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha4))

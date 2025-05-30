@@ -1250,7 +1250,6 @@ MonoBehaviour:
     type: 3}
   listeTom: {fileID: 1466179450}
   CS: 0
-  Front: {fileID: 2127023565}
 --- !u!4 &277475590
 Transform:
   m_ObjectHideFlags: 0
@@ -4158,6 +4157,11 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 1388570426}
+    - target: {fileID: 2145778829635300066, guid: c8b18993afa00a840bd0627d4ebf3a15,
+        type: 3}
+      propertyPath: apparence
+      value: 
+      objectReference: {fileID: 2127023561}
     - target: {fileID: 4021901750627738393, guid: c8b18993afa00a840bd0627d4ebf3a15,
         type: 3}
       propertyPath: m_Name
@@ -5832,6 +5836,10 @@ MonoBehaviour:
   cubeSprite: {fileID: 21300000, guid: 9add30ee206ad9b4b9182ba6636bf4ae, type: 3}
   yellowSprite: {fileID: 21300000, guid: 9add30ee206ad9b4b9182ba6636bf4ae, type: 3}
   conveyorBelt: {fileID: 1033131724}
+  eventPath: event:/V3/System/ListePitchedSound
+  allowParameterChange: 1
+  parameterName: Parameter 1
+  currentParameterValue: 0
 --- !u!4 &1466179451
 Transform:
   m_ObjectHideFlags: 0

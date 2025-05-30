@@ -10784,6 +10784,10 @@ MonoBehaviour:
   cubeSprite: {fileID: 21300000, guid: c5503edc42cdf41468993980f8fe94d3, type: 3}
   yellowSprite: {fileID: 0}
   conveyorBelt: {fileID: 757465867}
+  eventPath: event:/V3/System/ListePitchedSound
+  allowParameterChange: 1
+  parameterName: Parameter 1
+  currentParameterValue: 0
 --- !u!4 &1466179451
 Transform:
   m_ObjectHideFlags: 0
@@ -10852,6 +10856,11 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 1904824961}
+    - target: {fileID: 2145778829635300066, guid: c8b18993afa00a840bd0627d4ebf3a15,
+        type: 3}
+      propertyPath: apparence
+      value: 
+      objectReference: {fileID: 729994959}
     - target: {fileID: 4021901750627738393, guid: c8b18993afa00a840bd0627d4ebf3a15,
         type: 3}
       propertyPath: m_Name

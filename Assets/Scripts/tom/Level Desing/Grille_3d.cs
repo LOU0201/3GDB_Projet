@@ -21,7 +21,7 @@ public class Grille_3d : MonoBehaviour
     public GameObject prefabCubeRouge;
     public ListeTom listeTom;
     public float CS;
-    public Animator Front;
+    //public Animator Front;
     //public static event Action Sortie;
     //private void Awake()
     //{

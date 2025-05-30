@@ -160,6 +160,7 @@ public class Barrière : MonoBehaviour
             Destroy(gameObject);
             Destroy(StarImage.gameObject);
             Destroy(StarCountText.gameObject);
+            FMODUnity.RuntimeManager.PlayOneShot("event:/V3/System/MonolithExplode");
             hasBeenDestroyed = true;
         }
     }

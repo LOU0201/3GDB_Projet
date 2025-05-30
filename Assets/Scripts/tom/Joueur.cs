@@ -33,7 +33,7 @@ public class Joueur : MonoBehaviour
     public Animator anims_Back;
     public Animator anims_SideRight;
     public Animator anims_SideLeft;
-    public GameObject _sprite;
+    //public GameObject _sprite;
     // Start is called before the first frame update
     public void Start()
     {
@@ -149,10 +149,10 @@ public class Joueur : MonoBehaviour
             }
         }
 
-        if(transform.position == pos)
-        {
-            _sprite.SetActive(true);
-        }
+        //if(transform.position == pos)
+        //{
+        //    _sprite.SetActive(true);
+        //}
     }
     public void sleep()
     {
@@ -358,8 +358,8 @@ public class Joueur : MonoBehaviour
     //    Grille_3d.Sortie -= Desactive;
     //}
 
-    public void Desactive()
-    {
-        _sprite.SetActive(false);
-    }
+    //public void Desactive()
+    //{
+    //    _sprite.SetActive(false);
+    //}
 }
