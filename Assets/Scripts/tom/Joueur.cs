@@ -348,15 +348,15 @@ public class Joueur : MonoBehaviour
         }
     }
 
-    private void OnEnable()
-    {
-        Grille_3d.Sortie += Desactive;
-    }
+    //private voidOnEnable()
+    //{
+    //    Grille_3d.Sortie += Desactive;
+    //}
 
-    private void OnDisable()
-    {
-        Grille_3d.Sortie -= Desactive;
-    }
+    //private voidOnDisable()
+    //{
+    //    Grille_3d.Sortie -= Desactive;
+    //}
 
     public void Desactive()
     {
