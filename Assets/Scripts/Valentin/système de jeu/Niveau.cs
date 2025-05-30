@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using FMODUnity;
 
 public class Niveau : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class Niveau : MonoBehaviour
     public LevelData LD;
     public DisplayHub Display;
     public int MinExits;
+    public StudioEventEmitter emitter;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,9 +26,10 @@ public class Niveau : MonoBehaviour
         Vector3 CJ = joueur.position;
         if (CJ == coordonnees)
         {
-            FMODUnity.RuntimeManager.PlayOneShot("event:/V3/Level/HatchOpen");
+            FMODUnity.RuntimeManager.PlayOneShot("event:/V3/Level/PlayerUseHatch");
             SceneLoader.LoadScene(LVname);
             UndoSystem.Instance.Reset();
+            emitter.Stop();
         }
 
         foreach(Transform t in alentours)

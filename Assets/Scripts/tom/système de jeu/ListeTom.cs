@@ -89,12 +89,11 @@ public class ListeTom : MonoBehaviour
     {
         return liste[currentIndex];
     }
-    public void setIndex(int index)
+    public void setIndex(int index, bool isfinich)
     {
-        if (index == 0)
+        if (isfinich)
         {
-            RefrecheIndex();
-        }
+            RefrecheIndex();       }
         else
         {
             currentIndex = index;
