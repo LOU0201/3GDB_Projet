@@ -8,16 +8,25 @@ public class Bulle : MonoBehaviour
     public GameObject _parent;
     public Animator sortie;
     public float triggerDistance = 0.1f;
+    public float sortieAnimationLength = 1.1f; // Manually set to 1.1 seconds
+    private float cooldownTimer = 0f;
 
-    // Update is called once per frame
     void Update()
     {
-        Vector3 coordonnees = _parent.transform.position;
-        Vector3 CJ = apparence.transform.position;
-        if (Vector3.Distance(CJ, coordonnees) < triggerDistance)
+        if (cooldownTimer > 0)
         {
-            sortie.SetTrigger("Exit");
-            apparence.SetActive(false);
+            cooldownTimer -= Time.deltaTime;
+            return; // Skip updates during cooldown
+        }
+
+        if (Vector3.Distance(apparence.transform.position, _parent.transform.position) < triggerDistance)
+        {
+            sortie.Play("sortie", 0, 0f); // Force play from start
+            cooldownTimer = sortieAnimationLength; // Prevent interruption
+        }
+        else
+        {
+            sortie.Play("Bulle", 0, 0f); // Default state
         }
     }
 }
