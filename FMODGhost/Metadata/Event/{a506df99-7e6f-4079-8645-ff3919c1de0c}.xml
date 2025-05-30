@@ -138,6 +138,7 @@
 		<relationship name="effects">
 			<destination>{36fe88af-0e9e-43f4-9766-a03861fc0e4b}</destination>
 			<destination>{47eca67f-bf1a-4f63-8a26-7cfe18c9909a}</destination>
+			<destination>{252b4de7-7653-4ad5-85fc-be2bd4149e04}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{8e1bbc71-ef2b-4954-bc74-a72eaec148c2}" />
@@ -150,6 +151,17 @@
 		<relationship name="modulators">
 			<destination>{a265de99-1a74-4b23-97b8-5cdd5bca7e74}</destination>
 		</relationship>
+	</object>
+	<object class="SFXReverbEffect" id="{252b4de7-7653-4ad5-85fc-be2bd4149e04}">
+		<property name="decayTime">
+			<value>3000</value>
+		</property>
+		<property name="lowShelfFrequency">
+			<value>1000</value>
+		</property>
+		<property name="lowShelfGain">
+			<value>-12</value>
+		</property>
 	</object>
 	<object class="RandomizerModulator" id="{a265de99-1a74-4b23-97b8-5cdd5bca7e74}">
 		<property name="nameOfPropertyBeingModulated">
