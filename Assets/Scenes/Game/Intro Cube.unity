@@ -1161,7 +1161,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Complete the level
+  m_text: Minimum Exits
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cd7c19e3fcba54746b57a9cfd49d9b5c, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: a519177773a0b014cb0b3dceb4700ee4, type: 2}
@@ -2091,6 +2091,26 @@ PrefabInstance:
       propertyPath: m_text
       value: Intro Cube
       objectReference: {fileID: 0}
+    - target: {fileID: 7972154800602138116, guid: f246c0ac11c6e204881f46931c43282a,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 72.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7972154800602138116, guid: f246c0ac11c6e204881f46931c43282a,
+        type: 3}
+      propertyPath: m_margin.x
+      value: 10.616516
+      objectReference: {fileID: 0}
+    - target: {fileID: 7972154800602138116, guid: f246c0ac11c6e204881f46931c43282a,
+        type: 3}
+      propertyPath: m_margin.z
+      value: 12.370591
+      objectReference: {fileID: 0}
+    - target: {fileID: 7972154800602138116, guid: f246c0ac11c6e204881f46931c43282a,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 72.6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2769,6 +2789,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SetActive
       objectReference: {fileID: 0}
+    - target: {fileID: 5312787057211773351, guid: 58a6c0657e5666743a13c482f151a800,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 31.9
+      objectReference: {fileID: 0}
     - target: {fileID: 5479860055774653811, guid: 58a6c0657e5666743a13c482f151a800,
         type: 3}
       propertyPath: canvasGroup
@@ -2808,6 +2833,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7929669284759912617, guid: 58a6c0657e5666743a13c482f151a800,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 31.9
       objectReference: {fileID: 0}
     - target: {fileID: 8664192117825303202, guid: 58a6c0657e5666743a13c482f151a800,
         type: 3}
@@ -5692,7 +5722,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Collect the collectible
+  m_text: Maximum Exits
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cd7c19e3fcba54746b57a9cfd49d9b5c, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: a519177773a0b014cb0b3dceb4700ee4, type: 2}
@@ -6019,6 +6049,10 @@ MonoBehaviour:
   cubeSprite: {fileID: 21300000, guid: 9add30ee206ad9b4b9182ba6636bf4ae, type: 3}
   yellowSprite: {fileID: 0}
   conveyorBelt: {fileID: 757465867}
+  eventPath: event:/V3/System/ListePitchedSound
+  allowParameterChange: 1
+  parameterName: Parameter 1
+  currentParameterValue: 0
 --- !u!4 &1466179451
 Transform:
   m_ObjectHideFlags: 0
@@ -7635,7 +7669,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Not using Undo button
+  m_text: Collect the collectible
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cd7c19e3fcba54746b57a9cfd49d9b5c, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: a519177773a0b014cb0b3dceb4700ee4, type: 2}

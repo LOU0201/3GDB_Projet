@@ -29,7 +29,7 @@ public class MoveDownWard : MonoBehaviour
     {
         if(son)
         {
-            FMODUnity.RuntimeManager.PlayOneShot("event:/V3/Level/HatchOpen");
+            FMODUnity.RuntimeManager.PlayOneShot("event:/V3/Level/PlayerUseHatch");
         }
     }
 

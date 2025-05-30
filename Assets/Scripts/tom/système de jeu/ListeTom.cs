@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using FMODUnity;
+using FMOD.Studio;
 
 public class ListeTom : MonoBehaviour
 {
@@ -21,10 +23,29 @@ public class ListeTom : MonoBehaviour
 
     private bool var=true;
 
+    [Header("FMOD")]
+    public string eventPath = "event:/V3/System/ListePitchedSound";
+    private EventInstance myEvent;
+    public bool allowParameterChange = true;
+    public string parameterName = "Parameter 1";
+    public float currentParameterValue = 0f;
+
     // Start is called before the first frame update
     void Start()
     {
         currentIndex = 0;
+        currentParameterValue = 0f;
+        // Crée une instance de l’event FMOD à contrôler
+        myEvent = RuntimeManager.CreateInstance(eventPath);
+        myEvent.start(); // Démarre l'event si nécessaire
+    }
+
+    public void IncrementParameter()
+    {
+        if (!allowParameterChange) return;
+
+        currentParameterValue += 1f; // Incrémente (tu peux adapter l'incrément)
+        myEvent.setParameterByName(parameterName, currentParameterValue);
     }
 
     // Update is called once per frame
@@ -57,10 +78,14 @@ public class ListeTom : MonoBehaviour
         {
             case "cube":
                 G3D.Faire_carrer(joueur.position);
+                IncrementParameter();
+                CheckParameter();
                 break;
 
             case "trou":
                 G3D.Faire_Trou(joueur.position);
+                IncrementParameter();
+                CheckParameter();
                 break;
 
             case "yellow":
@@ -74,6 +99,8 @@ public class ListeTom : MonoBehaviour
 
             case "rien":
                 FMODUnity.RuntimeManager.PlayOneShot("event:/V3/Player/Jump");
+                IncrementParameter();
+                CheckParameter();
                 break;
 
             default:
@@ -93,7 +120,8 @@ public class ListeTom : MonoBehaviour
     {
         if (isfinich)
         {
-            RefrecheIndex();       }
+            RefrecheIndex();
+        }
         else
         {
             currentIndex = index;
@@ -106,6 +134,20 @@ public class ListeTom : MonoBehaviour
         currentIndex = 0;
         conveyorBelt.ResetElementsScale();
         var =true;
-        
+    }
+
+    public void CheckParameter()
+    {
+        if (currentParameterValue >= liste.Length)
+        {
+            ResetParameter();
+        }
+    }
+
+    public void ResetParameter()
+    {
+        currentParameterValue = 0f;
+        myEvent.setParameterByName(parameterName, currentParameterValue);
+        myEvent.start(); // Rejoue la salve à nouveau
     }
 }
