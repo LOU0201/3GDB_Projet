@@ -13,6 +13,11 @@ public class Barrière : MonoBehaviour
     private bool hasEnoughStars = false;
     private bool hasBeenDestroyed = false;
     private Sequence flashSequence;
+    public GameObject PancementMur1;
+    public GameObject PancementMur2;
+    public GameObject PancementMur3;
+
+
 
     [Header("References")]
     public Boite SB;
@@ -157,11 +162,22 @@ public class Barrière : MonoBehaviour
     {
         if (!hasBeenDestroyed)
         {
+
+            Destroy(PancementMur1);
+            Destroy(PancementMur2);
+            Destroy(PancementMur3);
+
             Destroy(gameObject);
             Destroy(StarImage.gameObject);
             Destroy(StarCountText.gameObject);
             FMODUnity.RuntimeManager.PlayOneShot("event:/V3/System/MonolithExplode");
             hasBeenDestroyed = true;
+            Destroy(this);
+            print("Destroy Barrière fait");
+        }
+        else
+        {
+            print("erreure");
         }
     }
 
